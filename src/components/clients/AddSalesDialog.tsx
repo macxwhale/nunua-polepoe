@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ShoppingCart, DollarSign } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import type { ClientWithDetails } from "@/api/clients.api";
 
 interface AddSalesDialogProps {
@@ -120,7 +120,7 @@ export function AddSalesDialog({ open, onClose, client }: AddSalesDialogProps) {
 
             <div>
               <Label htmlFor="price" className="flex items-center gap-2 font-medium text-sm sm:text-base">
-                <DollarSign className="h-4 w-4" />
+                <span className="text-lg font-bold">Ksh</span>
                 Price
               </Label>
               <Input

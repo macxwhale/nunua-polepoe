@@ -165,6 +165,45 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_details: {
+        Row: {
+          account_no: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          name: string
+          paybill: string | null
+          payment_type: string
+          tenant_id: string
+          till: string | null
+          updated_at: string
+        }
+        Insert: {
+          account_no?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          paybill?: string | null
+          payment_type: string
+          tenant_id: string
+          till?: string | null
+          updated_at?: string
+        }
+        Update: {
+          account_no?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          paybill?: string | null
+          payment_type?: string
+          tenant_id?: string
+          till?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           created_at: string
@@ -379,10 +418,7 @@ export type Database = {
       }
     }
     Functions: {
-      get_user_tenant_id: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
+      get_user_tenant_id: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

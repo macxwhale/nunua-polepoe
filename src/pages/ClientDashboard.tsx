@@ -275,15 +275,15 @@ const ClientDashboard = () => {
                 className={`group overflow-hidden bg-gradient-to-br ${gradientClass} hover:scale-[1.02] text-white transition-all duration-300 shadow-lg hover:shadow-2xl border-0`}
               >
                 <CardHeader className="pb-4">
-                  {/* Header with Invoice Number */}
+                  {/* Header with Product Name */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                         <Receipt className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-xs font-medium opacity-90">Invoice</p>
-                        <p className="text-sm font-semibold">{invoice.invoice_number}</p>
+                        <p className="text-xs font-medium opacity-90">Product</p>
+                        <p className="text-sm font-semibold">{invoice.notes || 'N/A'}</p>
                       </div>
                     </div>
                     <Badge className="bg-white/20 text-white border-white/30 hover:bg-white/30">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayoutDashboard, Users, FileText, Package, ChevronRight, Settings, Plus } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Package, Menu, Settings, Plus, Smartphone } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { ClientDialog } from "@/components/clients/ClientDialog";
 import { Button } from "@/components/ui/button";
@@ -34,6 +34,12 @@ const menuGroups = [
       { title: "Client List", url: "/clients", icon: Users },
       { title: "Invoices", url: "/invoices", icon: FileText },
       { title: "Products", url: "/products", icon: Package },
+    ]
+  },
+  {
+    label: "Settings",
+    items: [
+      { title: "Payment", url: "/payments", icon: Smartphone },
     ]
   }
 ];
@@ -90,7 +96,7 @@ export function AppSidebar() {
                 <SidebarGroupLabel className="text-xs font-semibold text-sidebar-foreground/60 uppercase tracking-wider px-3 mb-2 flex items-center justify-between hover:text-sidebar-foreground/80 transition-colors cursor-pointer">
                   <span>{showText ? group.label : ""}</span>
                   {showText && (
-                    <ChevronRight className={cn(
+                    <Menu className={cn(
                       "h-4 w-4 transition-transform duration-200",
                       openGroups.includes(group.label) && "rotate-90"
                     )} />
@@ -157,17 +163,6 @@ export function AppSidebar() {
         ))}
       </SidebarContent>
 
-      <div className="mt-auto p-3 border-t border-sidebar-border/30">
-        <button 
-          onClick={handleMobileMenuClick}
-          className={cn(
-          "w-full flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold bg-gradient-to-r from-green-500/20 to-teal-500/20 hover:from-green-500/30 hover:to-teal-500/30 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105",
-          !showText && "justify-center"
-        )}>
-          <Settings className="h-6 w-6 text-green-500" />
-          {showText && <span>Settings</span>}
-        </button>
-      </div>
 
       <ClientDialog
         open={clientDialogOpen}

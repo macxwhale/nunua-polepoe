@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CalendarIcon, Coins, TrendingUp, Banknote, FileText } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { CalendarIcon, Coins, TrendingUp, Banknote, FileText, Copy, CheckCircle2 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
@@ -15,6 +16,7 @@ import type { ClientWithDetails } from "@/api/clients.api";
 import { useInvoicesByClient } from "@/hooks/useInvoices";
 import type { Tables } from "@/integrations/supabase/types";
 import { useCreateNotification } from "@/hooks/useNotifications";
+import { useActivePaymentDetails } from "@/hooks/usePayments";
 
 interface ClientTopUpDialogProps {
   open: boolean;
@@ -28,9 +30,11 @@ export function ClientTopUpDialog({ open, onClose, client }: ClientTopUpDialogPr
   const [loading, setLoading] = useState(false);
   const [selectedInvoiceId, setSelectedInvoiceId] = useState<string>("");
   const [selectedInvoice, setSelectedInvoice] = useState<Tables<"invoices"> | null>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const createNotification = useCreateNotification();
 
   const { data: invoices = [], refetch: refetchInvoices } = useInvoicesByClient(client?.id || "");
+  const { data: paymentDetails = [] } = useActivePaymentDetails();
 
   // Filter unpaid and partially paid invoices
   const unpaidInvoices = invoices.filter(inv => inv.status !== "paid");
@@ -164,6 +168,13 @@ export function ClientTopUpDialog({ open, onClose, client }: ClientTopUpDialogPr
 
   if (!client) return null;
 
+  const handleCopyToClipboard = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    toast.success("Copied to clipboard!");
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-[calc(100vw-2rem)] sm:max-w-[500px] mx-4 max-h-[90vh] overflow-y-auto">
@@ -176,6 +187,89 @@ export function ClientTopUpDialog({ open, onClose, client }: ClientTopUpDialogPr
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+          {/* Payment Options - Show only configured payment details */}
+          {paymentDetails.length > 0 && (
+            <div className="space-y-3">
+              <h3 className="text-sm font-semibold">Payment Options</h3>
+              <div className="space-y-2">
+                {paymentDetails.map((payment) => (
+                  <Card key={payment.id} className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold text-base mb-3 flex items-center gap-2">
+                        <Coins className="h-4 w-4 text-primary" />
+                        {payment.name}
+                      </h4>
+                      <div className="space-y-2 text-sm">
+                        {payment.payment_type === 'mpesa_paybill' ? (
+                          <>
+                            <div className="flex items-center justify-between p-2 bg-background/50 rounded">
+                              <span className="text-muted-foreground">Paybill:</span>
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono font-semibold">{payment.paybill}</span>
+                                <Button
+                                  type="button"
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 w-6 p-0"
+                                  onClick={() => handleCopyToClipboard(payment.paybill || '', `paybill-${payment.id}`)}
+                                >
+                                  {copiedId === `paybill-${payment.id}` ? (
+                                    <CheckCircle2 className="h-3 w-3 text-success" />
+                                  ) : (
+                                    <Copy className="h-3 w-3" />
+                                  )}
+                                </Button>
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between p-2 bg-background/50 rounded">
+                              <span className="text-muted-foreground">Account No:</span>
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono font-semibold">{payment.account_no}</span>
+                                <Button
+                                  type="button"
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 w-6 p-0"
+                                  onClick={() => handleCopyToClipboard(payment.account_no || '', `account-${payment.id}`)}
+                                >
+                                  {copiedId === `account-${payment.id}` ? (
+                                    <CheckCircle2 className="h-3 w-3 text-success" />
+                                  ) : (
+                                    <Copy className="h-3 w-3" />
+                                  )}
+                                </Button>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="flex items-center justify-between p-2 bg-background/50 rounded">
+                            <span className="text-muted-foreground">Till Number:</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-semibold">{payment.till}</span>
+                              <Button
+                                type="button"
+                                size="sm"
+                                variant="ghost"
+                                className="h-6 w-6 p-0"
+                                onClick={() => handleCopyToClipboard(payment.till || '', `till-${payment.id}`)}
+                              >
+                                {copiedId === `till-${payment.id}` ? (
+                                  <CheckCircle2 className="h-3 w-3 text-success" />
+                                ) : (
+                                  <Copy className="h-3 w-3" />
+                                )}
+                              </Button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div>
             <h3 className="text-sm font-semibold mb-3">Account Summary</h3>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">

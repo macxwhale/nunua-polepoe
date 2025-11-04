@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Clients from "./pages/Clients";
 import Invoices from "./pages/Invoices";
 import Products from "./pages/Products";
+import Payments from "./pages/Payments";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import ClientDashboard from "./pages/ClientDashboard";
@@ -112,6 +113,14 @@ const App = () => (
             element={
               <ProtectedRoute requireOwner>
                 <Products />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/payments"
+            element={
+              <ProtectedRoute requireOwner>
+                <Payments />
               </ProtectedRoute>
             }
           />
