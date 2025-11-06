@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -101,7 +100,7 @@ const Payments = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto p-6 space-y-8">
         <div>
           <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
@@ -324,7 +323,7 @@ const Payments = () => {
         title="Delete Payment Method"
         description="Are you sure you want to delete this payment method? This action cannot be undone."
       />
-    </Layout>
+    </>
   );
 };
 
