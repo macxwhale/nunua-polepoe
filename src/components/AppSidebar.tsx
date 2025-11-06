@@ -96,10 +96,7 @@ export function AppSidebar() {
                 <SidebarGroupLabel className="text-xs font-semibold text-sidebar-foreground/60 uppercase tracking-wider px-3 mb-2 flex items-center justify-between hover:text-sidebar-foreground/80 transition-colors cursor-pointer">
                   <span>{showText ? group.label : ""}</span>
                   {showText && (
-                    <Menu className={cn(
-                      "h-4 w-4 transition-transform duration-200",
-                      openGroups.includes(group.label) && "rotate-90"
-                    )} />
+                    <Menu className="h-4 w-4" />
                   )}
                 </SidebarGroupLabel>
               </CollapsibleTrigger>
