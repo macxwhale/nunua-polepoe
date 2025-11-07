@@ -16,13 +16,13 @@ import { useInvoicesByClient } from "@/hooks/useInvoices";
 import type { Tables } from "@/integrations/supabase/types";
 import { useCreateNotification } from "@/hooks/useNotifications";
 
-interface ClientTopUpDialogProps {
+interface SimpleTopUpDialogProps {
   open: boolean;
   onClose: () => void;
   client: ClientWithDetails | null;
 }
 
-export function ClientTopUpDialog({ open, onClose, client }: ClientTopUpDialogProps) {
+export function SimpleTopUpDialog({ open, onClose, client }: SimpleTopUpDialogProps) {
   const [date, setDate] = useState<Date>(new Date());
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
