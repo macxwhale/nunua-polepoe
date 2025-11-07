@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ClientTopUpDialog } from "@/components/clients/ClientTopUpDialog";
+import { SimpleTopUpDialog } from "@/components/clients/SimpleTopUpDialog";
 import { ClientSalesDialog } from "@/components/clients/ClientSalesDialog";
 import { ClientTransactionsDialog } from "@/components/clients/ClientTransactionsDialog";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
@@ -91,7 +91,7 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <ClientTopUpDialog
+      <SimpleTopUpDialog
         open={topUpDialogOpen}
         onClose={() => {
           setTopUpDialogOpen(false);
