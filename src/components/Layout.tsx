@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Input } from "@/components/ui/input";
 import { Search, ChevronDown, UserRound, Menu } from "lucide-react";
@@ -21,6 +21,7 @@ export function Layout({ children }: LayoutProps) {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
+  const { toggleSidebar } = useSidebar();
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -44,9 +45,14 @@ export function Layout({ children }: LayoutProps) {
         <main className="flex-1 flex flex-col">
           <header className="sticky top-0 z-10 h-16 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 flex items-center justify-between px-6">
             <div className="flex items-center gap-4 flex-1 max-w-2xl">
-              <SidebarTrigger className="hover:bg-accent/10 transition-colors">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={toggleSidebar}
+                className="hover:bg-accent/10 transition-colors"
+              >
                 <Menu className="h-5 w-5" />
-              </SidebarTrigger>
+              </Button>
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input 
