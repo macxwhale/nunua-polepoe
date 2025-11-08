@@ -215,7 +215,7 @@ export function SimpleTopUpDialog({ open, onClose, client }: SimpleTopUpDialogPr
                       invoiceWithProduct.products?.name || invoiceWithProduct.invoice_number || "Unnamed Invoice";
                     return (
                       <SelectItem key={invoice.id} value={invoice.id} className="bg-popover">
-                        {product_id} - ksh {Number(invoice.amount).toLocaleString()} ({invoice.status})
+                        {productName} - ksh {Number(invoice.amount).toLocaleString()} ({invoice.status})
                       </SelectItem>
                     );
                   })
