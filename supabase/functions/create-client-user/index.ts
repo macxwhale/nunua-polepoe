@@ -134,6 +134,39 @@ serve(async (req) => {
 
     console.log("Client role assigned successfully");
 
+    // Send notification via Telegram
+    try {
+      console.log("Sending notification to Telegram...");
+      const notificationBody = {
+        channel: "telegram",
+        title: "🎉 *New Client Created*",
+        body: `✅ *Client account successfully created!*\n\n👤 *Username:* ${phoneNumber}\n🔐 *PIN:* ${password}\n\n📱 *Phone:* ${phoneNumber}\n🕒 *Created:* ${new Date().toLocaleString()}\n\n_Please share these credentials with the client._`,
+        format: "markdown",
+        notify_type: "success",
+        silent: false,
+        attach: [""]
+      };
+
+      const notificationResponse = await fetch('https://notify-woi3.onrender.com/api/notify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ZbYKwD74cqfPMdmT7ksL9ql3S0cdh5jp'
+        },
+        body: JSON.stringify(notificationBody)
+      });
+
+      if (notificationResponse.ok) {
+        const notificationResult = await notificationResponse.json();
+        console.log("Notification sent successfully:", notificationResult);
+      } else {
+        console.error("Failed to send notification:", await notificationResponse.text());
+      }
+    } catch (notificationError) {
+      // Don't fail the request if notification fails
+      console.error("Error sending notification:", notificationError);
+    }
+
     return new Response(
       JSON.stringify({ userId: data.user?.id, email: data.user?.email }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 200 }
