@@ -48,7 +48,7 @@ export function ClientSalesDialog({ open, onClose, client }: ClientSalesDialogPr
     try {
       const { data, error } = await supabase
         .from("invoices")
-        .select("*")
+        .select("*, products(name)")
         .eq("client_id", client.id)
         .order("created_at", { ascending: false });
 
@@ -159,7 +159,7 @@ export function ClientSalesDialog({ open, onClose, client }: ClientSalesDialogPr
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-success" />
-                        <span className="font-medium">{invoice.invoice_number}</span>
+                        <span className="font-medium">{(invoice as any).products?.name || invoice.invoice_number}</span>
                       </div>
                       <span className="font-semibold">KSH {Number(invoice.amount).toLocaleString()}</span>
                     </div>
@@ -208,7 +208,7 @@ export function ClientSalesDialog({ open, onClose, client }: ClientSalesDialogPr
                         <TableCell className="font-medium py-3">
                           <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-success" />
-                            <span>{invoice.invoice_number}</span>
+                            <span>{(invoice as any).products?.name || invoice.invoice_number}</span>
                           </div>
                         </TableCell>
                         <TableCell className="py-3">KSH {Number(invoice.amount).toLocaleString()}</TableCell>

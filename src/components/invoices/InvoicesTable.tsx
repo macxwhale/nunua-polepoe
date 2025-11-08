@@ -200,7 +200,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="font-bold text-base">
-                    {invoice.invoice_number}
+                    {(invoice as any).products?.name || invoice.invoice_number}
                   </div>
                   <div className="text-xs text-white/90 mt-1">
                     {formatDateShort(invoice.created_at)}
@@ -333,7 +333,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                     e.currentTarget.style.background = 'transparent';
                   }}
                 >
-                  <TableCell className="font-semibold py-5 group-hover:text-white">{invoice.invoice_number}</TableCell>
+                  <TableCell className="font-semibold py-5 group-hover:text-white">{(invoice as any).products?.name || invoice.invoice_number}</TableCell>
                   <TableCell className="font-bold py-5 text-lg group-hover:text-white">{formatCurrency(invoice.amount)}</TableCell>
                   <TableCell className="py-5">
                     <Badge

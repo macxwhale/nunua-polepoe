@@ -118,7 +118,7 @@ const ClientDashboard = () => {
       // Fetch invoices for this client
       const { data: invoiceData, error: invoiceError } = await supabase
         .from('invoices')
-        .select('*')
+        .select('*, products(name)')
         .eq('client_id', clientInfo.id)
         .order('created_at', { ascending: false });
 
@@ -372,7 +372,7 @@ const ClientDashboard = () => {
             </DialogTitle>
             {selectedInvoice && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span>Invoice: {selectedInvoice.invoice_number}</span>
+                <span>Invoice: {(selectedInvoice as any).products?.name || selectedInvoice.invoice_number}</span>
                 <span>•</span>
                 <span>{format(new Date(selectedInvoice.created_at), 'MMM dd, yyyy')}</span>
               </div>

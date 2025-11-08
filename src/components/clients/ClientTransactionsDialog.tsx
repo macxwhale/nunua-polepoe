@@ -42,7 +42,7 @@ export function ClientTransactionsDialog({ open, onClose, client }: ClientTransa
           .order("date", { ascending: false }),
         supabase
           .from("invoices")
-          .select("*")
+          .select("*, products(name)")
           .eq("client_id", client.id)
           .order("created_at", { ascending: false }),
       ]);
@@ -155,7 +155,7 @@ export function ClientTransactionsDialog({ open, onClose, client }: ClientTransa
                     >
                       <div className="flex items-center gap-3">
                         <FileText className="h-5 w-5 text-info" />
-                        <span className="font-medium">{invoice.invoice_number}</span>
+                        <span className="font-medium">{(invoice as any).products?.name || invoice.invoice_number}</span>
                       </div>
                       <span className="text-muted-foreground">KSH {Number(invoice.amount).toLocaleString()}</span>
                     </div>
