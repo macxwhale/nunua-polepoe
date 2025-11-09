@@ -33,52 +33,60 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
 
-    // 1) Try resolve via profiles -> user_id
-    const { data: profile, error: profileError } = await supabaseAdmin
-      .from('profiles')
-      .select('user_id')
-      .eq('phone_number', phone_number)
-      .maybeSingle();
-
-    if (profileError) {
-      console.error('Error fetching profile:', profileError);
-    }
-
-    if (profile?.user_id) {
-      const { data: userById, error: userByIdError } = await supabaseAdmin.auth.admin.getUserById(profile.user_id);
-      if (userByIdError) {
-        console.error('Error fetching user by id:', userByIdError);
-      } else if (userById?.user?.email) {
-        console.log(`Resolved email via profile: ${userById.user.email}`);
-        return new Response(
-          JSON.stringify({ email: userById.user.email }),
-          { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
-      }
-    }
-
-    // 2) Fallback: see if phone-based emails exist
-    const clientEmail = `${phone_number}@client.internal`;
-    const ownerEmail = `${phone_number}@owner.internal`;
+    // Search for all users matching this phone number
     const { data: allUsers, error: listError } = await supabaseAdmin.auth.admin.listUsers();
 
     if (listError) {
       console.error('Error listing users:', listError);
-    } else {
-      const match = allUsers.users.find(u => u.email === clientEmail) || allUsers.users.find(u => u.email === ownerEmail);
-      if (match?.email) {
-        console.log(`Resolved email via fallback: ${match.email}`);
-        return new Response(
-          JSON.stringify({ email: match.email }),
-          { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
-      }
+      return new Response(
+        JSON.stringify({ error: "Failed to search users" }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
-    // 3) Nothing found
+    // Find all users matching the phone number pattern
+    // Supports both new format (phone-tenantId@client.internal) and legacy formats
+    const matchingUsers = allUsers.users.filter(u => {
+      if (!u.email) return false;
+      
+      // New format: phoneNumber-tenantId@client.internal
+      const newClientPattern = new RegExp(`^${phone_number}-[^-]+@client\\.internal$`);
+      // Legacy format: phoneNumber@client.internal or phoneNumber@owner.internal
+      const legacyClientEmail = `${phone_number}@client.internal`;
+      const ownerEmail = `${phone_number}@owner.internal`;
+      
+      return newClientPattern.test(u.email) || u.email === legacyClientEmail || u.email === ownerEmail;
+    });
+
+    if (matchingUsers.length === 0) {
+      console.log('No user found with phone number:', phone_number);
+      return new Response(
+        JSON.stringify({ error: "No account found for this phone number" }),
+        { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // If multiple matches found, return all possible emails
+    if (matchingUsers.length > 1) {
+      console.log(`Found ${matchingUsers.length} users with phone number:`, phone_number);
+      return new Response(
+        JSON.stringify({ 
+          emails: matchingUsers.map(u => u.email).filter(Boolean),
+          multipleAccounts: true
+        }),
+        { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Single match found
+    const user = matchingUsers[0];
+    console.log(`Resolved email for phone number:`, phone_number);
     return new Response(
-      JSON.stringify({ error: "No account found for this phone number" }),
-      { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      JSON.stringify({ 
+        email: user.email,
+        multipleAccounts: false 
+      }),
+      { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
     console.error('Error in resolve-login-email function:', error);

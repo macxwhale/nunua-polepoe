@@ -43,8 +43,10 @@ serve(async (req) => {
       });
     }
 
-    const { email, password, metadata, tenantId, phoneNumber } = validationResult.data;
-    console.log("Creating client user with phone:", phoneNumber);
+    const { password, metadata, tenantId, phoneNumber } = validationResult.data;
+    // Create tenant-specific email format: phoneNumber-tenantId@client.internal
+    const email = `${phoneNumber}-${tenantId}@client.internal`;
+    console.log("Creating client user with phone:", phoneNumber, "and email:", email);
 
     const supabaseAdmin = createClient(
       Deno.env.get("SUPABASE_URL")!,

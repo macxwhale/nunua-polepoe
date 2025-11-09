@@ -49,20 +49,28 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
     try {
-      // 1) Resolve the correct auth email for this phone number (owner/client)
+      // Resolve all possible emails for this phone number
       const resolved = await supabase.functions.invoke('resolve-login-email', {
         body: { phone_number: data.phone_number },
       });
 
       const emails: string[] = [];
-      if (resolved.data?.email) emails.push(resolved.data.email);
+      
+      // Handle multiple accounts or single account
+      if (resolved.data?.multipleAccounts && resolved.data?.emails) {
+        emails.push(...resolved.data.emails);
+      } else if (resolved.data?.email) {
+        emails.push(resolved.data.email);
+      }
+      
       // Fallbacks (deduped) in case resolution fails
-      const clientEmail = `${data.phone_number}@client.internal`;
+      const legacyClientEmail = `${data.phone_number}@client.internal`;
       const ownerEmail = `${data.phone_number}@owner.internal`;
-      for (const e of [clientEmail, ownerEmail]) {
+      for (const e of [legacyClientEmail, ownerEmail]) {
         if (!emails.includes(e)) emails.push(e);
       }
 
+      // Try to log in with each email until one succeeds
       let lastError: any = null;
       for (const email of emails) {
         const { error } = await supabase.auth.signInWithPassword({
@@ -96,11 +104,13 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         throw response.error;
       }
 
-      const { pin } = response.data;
+      const { pin, accountCount, message } = response.data;
 
       toast.success(`Your new PIN is: ${pin}`, {
         duration: 10000,
-        description: 'Please save this PIN. You can now log in with it.',
+        description: accountCount > 1 
+          ? `Password reset for ${accountCount} accounts. You can now log in with this PIN.`
+          : 'Please save this PIN. You can now log in with it.',
       });
 
       setIsResetOpen(false);

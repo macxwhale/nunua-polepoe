@@ -182,7 +182,7 @@ export const createClientUser = async (
 
   const { data, error } = await supabase.functions.invoke('create-client-user', {
     body: {
-      email: `${phoneNumber}@client.internal`,
+      email: `${phoneNumber}-${tenantId}@client.internal`, // Will be overridden by edge function
       password: pin,
       metadata: { role: 'client', phone_number: phoneNumber },
       tenantId,

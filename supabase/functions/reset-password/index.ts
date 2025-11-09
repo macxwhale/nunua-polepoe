@@ -46,38 +46,36 @@ const handler = async (req: Request): Promise<Response> => {
 
     const newPin = generatePin();
 
-    let userId: string | null = null;
+    // Search for all users matching this phone number
+    const { data: allUsers, error: listError } = await supabaseAdmin.auth.admin.listUsers();
 
-    // First, check profiles table for the phone number to get user_id
-    const { data: profile, error: profileError } = await supabaseAdmin
-      .from('profiles')
-      .select('user_id')
-      .eq('phone_number', phone_number)
-      .single();
-
-    if (profile && !profileError) {
-      userId = profile.user_id;
-      console.log(`Found user via profile: ${userId}`);
-    } else {
-      // Fallback: Try to find user with either client or owner email format
-      const clientEmail = `${phone_number}@client.internal`;
-      const ownerEmail = `${phone_number}@owner.internal`;
-      
-      const { data: clientUsers } = await supabaseAdmin.auth.admin.listUsers();
-      
-      const clientUser = clientUsers.users.find(u => u.email === clientEmail);
-      const ownerUser = clientUsers.users.find(u => u.email === ownerEmail);
-      
-      if (clientUser) {
-        userId = clientUser.id;
-        console.log(`Found client user: ${userId}`);
-      } else if (ownerUser) {
-        userId = ownerUser.id;
-        console.log(`Found owner user: ${userId}`);
-      }
+    if (listError) {
+      console.error('Error listing users:', listError);
+      return new Response(
+        JSON.stringify({ error: "Failed to search users" }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
     }
 
-    if (!userId) {
+    // Find all users matching the phone number pattern
+    // Supports both new format (phone-tenantId@client.internal) and legacy formats
+    const matchingUsers = allUsers.users.filter(u => {
+      if (!u.email) return false;
+      
+      // New format: phoneNumber-tenantId@client.internal
+      const newClientPattern = new RegExp(`^${phone_number}-[^-]+@client\\.internal$`);
+      // Legacy format: phoneNumber@client.internal or phoneNumber@owner.internal
+      const legacyClientEmail = `${phone_number}@client.internal`;
+      const ownerEmail = `${phone_number}@owner.internal`;
+      
+      return newClientPattern.test(u.email) || u.email === legacyClientEmail || u.email === ownerEmail;
+    });
+
+    if (matchingUsers.length === 0) {
+      console.log('No user found with phone number:', phone_number);
       return new Response(
         JSON.stringify({ error: "No account found with this phone number" }),
         {
@@ -87,24 +85,27 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Update the user's password
-    const { error } = await supabaseAdmin.auth.admin.updateUserById(userId, {
-      password: newPin,
-    });
+    // Update password for all matching users (in case same phone exists in multiple tenants)
+    const updatePromises = matchingUsers.map(user => 
+      supabaseAdmin.auth.admin.updateUserById(user.id, { password: newPin })
+    );
 
-    if (error) {
-      console.error("Error updating password:", error);
-      return new Response(
-        JSON.stringify({ error: "Failed to reset password" }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
-      );
+    const results = await Promise.allSettled(updatePromises);
+    const failures = results.filter(r => r.status === 'rejected');
+
+    if (failures.length > 0) {
+      console.error('Some password updates failed:', failures);
     }
 
+    console.log(`Password updated successfully for ${matchingUsers.length} account(s)`);
     return new Response(
-      JSON.stringify({ pin: newPin }),
+      JSON.stringify({ 
+        pin: newPin,
+        message: matchingUsers.length > 1 
+          ? `Password reset for ${matchingUsers.length} accounts with this phone number`
+          : 'Password reset successfully',
+        accountCount: matchingUsers.length
+      }),
       {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
