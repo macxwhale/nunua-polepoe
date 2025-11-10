@@ -46,13 +46,16 @@ const handler = async (req: Request): Promise<Response> => {
 
     const newPin = generatePin();
 
-    // Search for all users matching this phone number
-    const { data: allUsers, error: listError } = await supabaseAdmin.auth.admin.listUsers();
+    // Find users by phone via profiles to avoid pagination and email pattern issues
+    const { data: profiles, error: profilesError } = await supabaseAdmin
+      .from('profiles')
+      .select('user_id')
+      .eq('phone_number', phone_number);
 
-    if (listError) {
-      console.error('Error listing users:', listError);
+    if (profilesError) {
+      console.error('Error querying profiles:', profilesError);
       return new Response(
-        JSON.stringify({ error: "Failed to search users" }),
+        JSON.stringify({ error: 'Failed to search users' }),
         {
           status: 500,
           headers: { "Content-Type": "application/json", ...corsHeaders },
@@ -60,21 +63,9 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Find all users matching the phone number pattern
-    // Supports both new format (phone-tenantId@client.internal) and legacy formats
-    const matchingUsers = allUsers.users.filter(u => {
-      if (!u.email) return false;
-      
-      // New format: phoneNumber-tenantId@client.internal
-      const newClientPattern = new RegExp(`^${phone_number}-[^-]+@client\\.internal$`);
-      // Legacy format: phoneNumber@client.internal or phoneNumber@owner.internal
-      const legacyClientEmail = `${phone_number}@client.internal`;
-      const ownerEmail = `${phone_number}@owner.internal`;
-      
-      return newClientPattern.test(u.email) || u.email === legacyClientEmail || u.email === ownerEmail;
-    });
+    const userIds = Array.from(new Set((profiles ?? []).map((p: { user_id: string }) => p.user_id))).filter(Boolean);
 
-    if (matchingUsers.length === 0) {
+    if (userIds.length === 0) {
       console.log('No user found with phone number:', phone_number);
       return new Response(
         JSON.stringify({ error: "No account found with this phone number" }),
@@ -86,25 +77,25 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Update password for all matching users (in case same phone exists in multiple tenants)
-    const updatePromises = matchingUsers.map(user => 
-      supabaseAdmin.auth.admin.updateUserById(user.id, { password: newPin })
+    const updatePromises = userIds.map((id) =>
+      supabaseAdmin.auth.admin.updateUserById(id, { password: newPin })
     );
 
     const results = await Promise.allSettled(updatePromises);
-    const failures = results.filter(r => r.status === 'rejected');
+    const failures = results.filter((r) => r.status === 'rejected');
 
     if (failures.length > 0) {
       console.error('Some password updates failed:', failures);
     }
 
-    console.log(`Password updated successfully for ${matchingUsers.length} account(s)`);
+    console.log(`Password updated successfully for ${userIds.length} account(s)`);
     return new Response(
       JSON.stringify({ 
         pin: newPin,
-        message: matchingUsers.length > 1 
-          ? `Password reset for ${matchingUsers.length} accounts with this phone number`
+        message: userIds.length > 1 
+          ? `Password reset for ${userIds.length} accounts with this phone number`
           : 'Password reset successfully',
-        accountCount: matchingUsers.length
+        accountCount: userIds.length
       }),
       {
         status: 200,

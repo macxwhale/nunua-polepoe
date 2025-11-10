@@ -33,32 +33,23 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
 
-    // Search for all users matching this phone number
-    const { data: allUsers, error: listError } = await supabaseAdmin.auth.admin.listUsers();
+    // Find users by phone via profiles table to avoid pagination and email pattern issues
+    const { data: profiles, error: profilesError } = await supabaseAdmin
+      .from('profiles')
+      .select('user_id')
+      .eq('phone_number', phone_number);
 
-    if (listError) {
-      console.error('Error listing users:', listError);
+    if (profilesError) {
+      console.error('Error querying profiles:', profilesError);
       return new Response(
         JSON.stringify({ error: "Failed to search users" }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
-    // Find all users matching the phone number pattern
-    // Supports both new format (phone-tenantId@client.internal) and legacy formats
-    const matchingUsers = allUsers.users.filter(u => {
-      if (!u.email) return false;
-      
-      // New format: phoneNumber-tenantId@client.internal
-      const newClientPattern = new RegExp(`^${phone_number}-[^-]+@client\\.internal$`);
-      // Legacy format: phoneNumber@client.internal or phoneNumber@owner.internal
-      const legacyClientEmail = `${phone_number}@client.internal`;
-      const ownerEmail = `${phone_number}@owner.internal`;
-      
-      return newClientPattern.test(u.email) || u.email === legacyClientEmail || u.email === ownerEmail;
-    });
+    const userIds = Array.from(new Set((profiles ?? []).map((p: { user_id: string }) => p.user_id))).filter(Boolean);
 
-    if (matchingUsers.length === 0) {
+    if (userIds.length === 0) {
       console.log('No user found with phone number:', phone_number);
       return new Response(
         JSON.stringify({ error: "No account found for this phone number" }),
@@ -66,12 +57,22 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // If multiple matches found, return all possible emails
-    if (matchingUsers.length > 1) {
-      console.log(`Found ${matchingUsers.length} users with phone number:`, phone_number);
+    // Fetch emails for each user id
+    const lookups = await Promise.allSettled(
+      userIds.map(id => supabaseAdmin.auth.admin.getUserById(id))
+    );
+
+    const emails = lookups
+      .map(r => (r.status === 'fulfilled' ? r.value.data.user?.email : null))
+      .filter((e): e is string => !!e);
+
+    const uniqueEmails = Array.from(new Set(emails));
+
+    if (uniqueEmails.length > 1) {
+      console.log(`Found ${uniqueEmails.length} users with phone number:`, phone_number);
       return new Response(
         JSON.stringify({ 
-          emails: matchingUsers.map(u => u.email).filter(Boolean),
+          emails: uniqueEmails,
           multipleAccounts: true
         }),
         { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
@@ -79,11 +80,10 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Single match found
-    const user = matchingUsers[0];
     console.log(`Resolved email for phone number:`, phone_number);
     return new Response(
       JSON.stringify({ 
-        email: user.email,
+        email: uniqueEmails[0],
         multipleAccounts: false 
       }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
