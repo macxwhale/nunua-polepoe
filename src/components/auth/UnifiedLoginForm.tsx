@@ -100,8 +100,13 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         body: { phone_number: data.phone_number },
       });
 
+      // Handle both response.error and error in response.data
       if (response.error) {
         throw response.error;
+      }
+      
+      if (response.data?.error) {
+        throw new Error(response.data.error);
       }
 
       const { pin, accountCount, message } = response.data;
