@@ -101,13 +101,10 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         body: { phone_number: data.phone_number },
       });
 
-      // Handle both response.error and error in response.data
-      if (response.error) {
-        throw response.error;
-      }
-      
-      if (response.data?.error) {
-        throw new Error(response.data.error);
+      // Check for error in response - prioritize specific error message from response body
+      if (response.error || response.data?.error) {
+        const errorMessage = response.data?.error || response.error?.message || 'Failed to reset password';
+        throw new Error(errorMessage);
       }
 
       const { pin, accountCount, message } = response.data;
