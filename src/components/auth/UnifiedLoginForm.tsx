@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Eye, EyeOff } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const loginSchema = z.object({
@@ -30,6 +30,7 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isResetOpen, setIsResetOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -152,7 +153,16 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
               <FormItem>
                 <FormLabel>Password/PIN</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="Enter your password or PIN" {...field} />
+                  <div className="relative">
+                    <Input type={showPassword ? "text" : "password"} placeholder="Enter your password or PIN" {...field} />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    </button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
