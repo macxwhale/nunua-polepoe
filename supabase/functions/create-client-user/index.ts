@@ -65,15 +65,28 @@ serve(async (req) => {
     if (error) {
       console.error("Auth user creation failed:", error);
       
-      // Sanitize error message for client
-      let clientMessage = 'Failed to create client user';
-      if (error.message?.includes('already been registered') || error.message?.includes('already exists')) {
-        clientMessage = 'A client with this phone number already exists';
+      // Sanitize error message for client with detailed logging
+      let clientMessage = 'Failed to create client account';
+      let statusCode = 400;
+      
+      if (error.message?.includes('already been registered') || error.message?.includes('already exists') || error.code === 'email_exists') {
+        clientMessage = 'A client with this phone number already exists for this business';
+        statusCode = 409; // Conflict
+      } else if (error.message?.includes('Invalid') || error.message?.includes('invalid')) {
+        clientMessage = 'Invalid phone number or data format';
+      } else if (error.message?.includes('network') || error.message?.includes('timeout')) {
+        clientMessage = 'Network error. Please check your connection and try again';
+        statusCode = 503;
+      } else if (error.status && error.status >= 500) {
+        clientMessage = 'Server error. Please try again later';
+        statusCode = 500;
       }
+      
+      console.error("Returning client error:", clientMessage, "Status:", statusCode);
       
       return new Response(JSON.stringify({ error: clientMessage }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 400,
+        status: statusCode,
       });
     }
 
@@ -93,16 +106,26 @@ serve(async (req) => {
     if (profileError) {
       console.error("Profile creation failed:", profileError);
       // Rollback: delete the auth user if profile creation fails
+      console.log("Rolling back auth user creation due to profile error");
       await supabaseAdmin.auth.admin.deleteUser(data.user!.id);
       
       let clientMessage = 'Failed to create client profile';
-      if (profileError.message?.includes('duplicate') || profileError.message?.includes('already exists')) {
-        clientMessage = 'Client profile already exists';
+      let statusCode = 400;
+      
+      if (profileError.message?.includes('duplicate') || profileError.message?.includes('already exists') || profileError.code === '23505') {
+        clientMessage = 'Client profile already exists for this phone number';
+        statusCode = 409;
+      } else if (profileError.message?.includes('foreign key') || profileError.code === '23503') {
+        clientMessage = 'Invalid tenant reference. Please contact support';
+      } else if (profileError.message?.includes('not null') || profileError.code === '23502') {
+        clientMessage = 'Missing required information';
       }
+      
+      console.error("Returning profile error:", clientMessage, "Status:", statusCode);
       
       return new Response(JSON.stringify({ error: clientMessage }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 400,
+        status: statusCode,
       });
     }
 
@@ -120,13 +143,16 @@ serve(async (req) => {
     if (roleError) {
       console.error("Role assignment failed:", roleError);
       // Rollback: delete profile and auth user
+      console.log("Rolling back profile and auth user due to role assignment error");
       await supabaseAdmin.from("profiles").delete().eq("user_id", data.user!.id);
       await supabaseAdmin.auth.admin.deleteUser(data.user!.id);
       
-      let clientMessage = 'Failed to assign client role';
-      if (roleError.message?.includes('duplicate') || roleError.message?.includes('already exists')) {
+      let clientMessage = 'Failed to assign client permissions';
+      if (roleError.message?.includes('duplicate') || roleError.code === '23505') {
         clientMessage = 'Client role already assigned';
       }
+      
+      console.error("Returning role error:", clientMessage);
       
       return new Response(JSON.stringify({ error: clientMessage }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -175,17 +201,25 @@ serve(async (req) => {
     );
   } catch (e) {
     const msg = e instanceof Error ? e.message : (typeof e === 'string' ? e : 'Unknown error');
-    console.error("Unexpected error:", msg);
+    console.error("Unexpected error in create-client-user:", msg);
+    if (e instanceof Error) {
+      console.error("Error details:", e.stack);
+    }
     
     // Sanitize error message for client
-    let clientMessage = 'Failed to create client user';
+    let clientMessage = 'An unexpected error occurred while creating the client account';
     if (e instanceof Error) {
-      if (e.message.includes('duplicate') || e.message.includes('already exists')) {
-        clientMessage = 'User already exists';
-      } else if (e.message.includes('foreign key') || e.message.includes('Invalid')) {
-        clientMessage = 'Invalid data provided';
+      // Don't expose internal error details to client
+      if (e.message?.includes('fetch') || e.message?.includes('network')) {
+        clientMessage = 'Network error. Please check your connection and try again';
+      } else if (e.message?.includes('duplicate') || e.message?.includes('already exists')) {
+        clientMessage = 'A client with this information already exists';
+      } else if (e.message?.includes('foreign key') || e.message?.includes('Invalid')) {
+        clientMessage = 'Invalid data provided. Please check your input';
       }
     }
+    
+    console.error("Returning error to client:", clientMessage);
     
     return new Response(JSON.stringify({ error: clientMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
