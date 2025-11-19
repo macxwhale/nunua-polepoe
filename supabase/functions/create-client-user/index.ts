@@ -53,26 +53,64 @@ serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    // Create auth user
-    console.log("Creating auth user...");
-    const { data, error } = await supabaseAdmin.auth.admin.createUser({
+    // Try to create auth user, or retrieve if already exists
+    console.log("Creating or retrieving auth user...");
+    let { data, error } = await supabaseAdmin.auth.admin.createUser({
       email,
       password,
       email_confirm: true,
       user_metadata: metadata ?? {},
     });
 
-    if (error) {
+    // If user already exists, retrieve the existing user
+    if (error && (error.message?.includes('already been registered') || error.message?.includes('already exists') || error.code === 'email_exists')) {
+      console.log("User already exists, retrieving existing user...");
+      
+      // Get the user by email
+      const { data: { users }, error: listError } = await supabaseAdmin.auth.admin.listUsers();
+      
+      if (listError) {
+        console.error("Failed to retrieve existing user:", listError);
+        return new Response(JSON.stringify({ error: 'Failed to retrieve existing user account' }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 500,
+        });
+      }
+      
+      const existingUser = users.find(u => u.email === email);
+      
+      if (!existingUser) {
+        console.error("User email exists but could not find user in list");
+        return new Response(JSON.stringify({ error: 'User account exists but could not be retrieved' }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 500,
+        });
+      }
+      
+      // Update password for existing user
+      console.log("Updating password for existing user:", existingUser.id);
+      const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(
+        existingUser.id,
+        { password }
+      );
+      
+      if (updateError) {
+        console.error("Failed to update password:", updateError);
+        return new Response(JSON.stringify({ error: 'Failed to update account password' }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 500,
+        });
+      }
+      
+      data = { user: existingUser };
+    } else if (error) {
+      // Handle other errors
       console.error("Auth user creation failed:", error);
       
-      // Sanitize error message for client with detailed logging
       let clientMessage = 'Failed to create client account';
       let statusCode = 400;
       
-      if (error.message?.includes('already been registered') || error.message?.includes('already exists') || error.code === 'email_exists') {
-        clientMessage = 'A client with this phone number already exists for this business';
-        statusCode = 409; // Conflict
-      } else if (error.message?.includes('Invalid') || error.message?.includes('invalid')) {
+      if (error.message?.includes('Invalid') || error.message?.includes('invalid')) {
         clientMessage = 'Invalid phone number or data format';
       } else if (error.message?.includes('network') || error.message?.includes('timeout')) {
         clientMessage = 'Network error. Please check your connection and try again';
@@ -90,77 +128,119 @@ serve(async (req) => {
       });
     }
 
-    console.log("Auth user created successfully:", data.user!.id);
+    console.log("Auth user ready:", data.user!.id);
 
-    // Create profile for the client user
-    console.log("Creating profile...");
-    const { error: profileError } = await supabaseAdmin
+    // Create profile for the client user (check if already exists)
+    console.log("Creating or updating profile...");
+    const { data: existingProfile, error: profileCheckError } = await supabaseAdmin
       .from("profiles")
-      .insert({
-        user_id: data.user!.id,
-        tenant_id: tenantId,
-        full_name: phoneNumber,
-        phone_number: phoneNumber,
-      });
+      .select()
+      .eq("user_id", data.user!.id)
+      .single();
 
-    if (profileError) {
-      console.error("Profile creation failed:", profileError);
-      // Rollback: delete the auth user if profile creation fails
-      console.log("Rolling back auth user creation due to profile error");
-      await supabaseAdmin.auth.admin.deleteUser(data.user!.id);
-      
-      let clientMessage = 'Failed to create client profile';
-      let statusCode = 400;
-      
-      if (profileError.message?.includes('duplicate') || profileError.message?.includes('already exists') || profileError.code === '23505') {
-        clientMessage = 'Client profile already exists for this phone number';
-        statusCode = 409;
-      } else if (profileError.message?.includes('foreign key') || profileError.code === '23503') {
-        clientMessage = 'Invalid tenant reference. Please contact support';
-      } else if (profileError.message?.includes('not null') || profileError.code === '23502') {
-        clientMessage = 'Missing required information';
-      }
-      
-      console.error("Returning profile error:", clientMessage, "Status:", statusCode);
-      
-      return new Response(JSON.stringify({ error: clientMessage }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: statusCode,
-      });
+    if (profileCheckError && profileCheckError.code !== 'PGRST116') { // PGRST116 = not found
+      console.error("Failed to check existing profile:", profileCheckError);
     }
 
-    console.log("Profile created successfully");
+    if (existingProfile) {
+      console.log("Profile already exists, updating...");
+      const { error: profileUpdateError } = await supabaseAdmin
+        .from("profiles")
+        .update({
+          tenant_id: tenantId,
+          full_name: phoneNumber,
+          phone_number: phoneNumber,
+        })
+        .eq("user_id", data.user!.id);
 
-    // Assign client role
+      if (profileUpdateError) {
+        console.error("Profile update failed:", profileUpdateError);
+      }
+    } else {
+      console.log("Creating new profile...");
+      const { error: profileError } = await supabaseAdmin
+        .from("profiles")
+        .insert({
+          user_id: data.user!.id,
+          tenant_id: tenantId,
+          full_name: phoneNumber,
+          phone_number: phoneNumber,
+        });
+
+      if (profileError) {
+        console.error("Profile creation failed:", profileError);
+        // Rollback: delete the auth user if profile creation fails
+        console.log("Rolling back auth user creation due to profile error");
+        await supabaseAdmin.auth.admin.deleteUser(data.user!.id);
+        
+        let clientMessage = 'Failed to create client profile';
+        let statusCode = 400;
+        
+        if (profileError.message?.includes('duplicate') || profileError.message?.includes('already exists') || profileError.code === '23505') {
+          clientMessage = 'Client profile already exists for this phone number';
+          statusCode = 409;
+        } else if (profileError.message?.includes('foreign key') || profileError.code === '23503') {
+          clientMessage = 'Invalid tenant reference. Please contact support';
+        } else if (profileError.message?.includes('not null') || profileError.code === '23502') {
+          clientMessage = 'Missing required information';
+        }
+        
+        console.error("Returning profile error:", clientMessage, "Status:", statusCode);
+        
+        return new Response(JSON.stringify({ error: clientMessage }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: statusCode,
+        });
+      }
+    }
+
+    console.log("Profile ready");
+
+    // Assign client role (check if already exists)
     console.log("Assigning client role...");
-    const { error: roleError } = await supabaseAdmin
+    const { data: existingRole, error: roleCheckError } = await supabaseAdmin
       .from("user_roles")
-      .insert({
-        user_id: data.user!.id,
-        role: 'client',
-      });
+      .select()
+      .eq("user_id", data.user!.id)
+      .single();
 
-    if (roleError) {
-      console.error("Role assignment failed:", roleError);
-      // Rollback: delete profile and auth user
-      console.log("Rolling back profile and auth user due to role assignment error");
-      await supabaseAdmin.from("profiles").delete().eq("user_id", data.user!.id);
-      await supabaseAdmin.auth.admin.deleteUser(data.user!.id);
-      
-      let clientMessage = 'Failed to assign client permissions';
-      if (roleError.message?.includes('duplicate') || roleError.code === '23505') {
-        clientMessage = 'Client role already assigned';
-      }
-      
-      console.error("Returning role error:", clientMessage);
-      
-      return new Response(JSON.stringify({ error: clientMessage }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 400,
-      });
+    if (roleCheckError && roleCheckError.code !== 'PGRST116') { // PGRST116 = not found
+      console.error("Failed to check existing role:", roleCheckError);
     }
 
-    console.log("Client role assigned successfully");
+    if (!existingRole) {
+      console.log("Creating role assignment...");
+      const { error: roleError } = await supabaseAdmin
+        .from("user_roles")
+        .insert({
+          user_id: data.user!.id,
+          role: 'client',
+        });
+
+      if (roleError) {
+        console.error("Role assignment failed:", roleError);
+        // Rollback: delete profile and auth user
+        console.log("Rolling back profile and auth user due to role assignment error");
+        await supabaseAdmin.from("profiles").delete().eq("user_id", data.user!.id);
+        await supabaseAdmin.auth.admin.deleteUser(data.user!.id);
+        
+        let clientMessage = 'Failed to assign client permissions';
+        if (roleError.message?.includes('duplicate') || roleError.code === '23505') {
+          clientMessage = 'Client role already assigned';
+        }
+        
+        console.error("Returning role error:", clientMessage);
+        
+        return new Response(JSON.stringify({ error: clientMessage }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 400,
+        });
+      }
+    } else {
+      console.log("Role already assigned");
+    }
+
+    console.log("Client role ready");
 
     // Send notification via Telegram
     try {
