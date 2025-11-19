@@ -50,6 +50,8 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
     },
   });
 
+  const isLoading = createClient.isPending || updateClient.isPending || createClientUser.isPending;
+
   useEffect(() => {
     if (client) {
       form.reset({
@@ -132,6 +134,7 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
                       placeholder="0712345678" 
                       className="h-11 sm:h-10 text-base" 
                       {...field} 
+                      disabled={!!client || isLoading}
                     />
                   </FormControl>
                   <FormMessage />
@@ -139,10 +142,10 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
               )}
             />
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button type="submit" className="flex-1 h-11 sm:h-10 text-base sm:text-sm">
-                {client ? "Update Client" : "Create Client"}
+              <Button type="submit" className="flex-1 h-11 sm:h-10 text-base sm:text-sm" disabled={isLoading}>
+                {isLoading ? "Processing..." : client ? "Update Client" : "Create Client"}
               </Button>
-              <Button type="button" variant="secondary" className="flex-1 h-11 sm:h-10 text-base sm:text-sm" onClick={onClose}>
+              <Button type="button" variant="secondary" className="flex-1 h-11 sm:h-10 text-base sm:text-sm" onClick={onClose} disabled={isLoading}>
                 Cancel
               </Button>
             </div>
