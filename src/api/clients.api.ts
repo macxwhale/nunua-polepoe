@@ -190,8 +190,31 @@ export const createClientUser = async (
     },
   });
 
-  if (error) throw error;
-  if ((data as any)?.error) throw new Error((data as any).error as string);
+  if (error) {
+    console.error('create-client-user edge function error:', error);
+    let message = 'Failed to create client account';
+
+    // Try to extract a user-friendly message from the edge function response
+    if (typeof error.message === 'string') {
+      const jsonMatch = error.message.match(/{.*}$/s);
+      if (jsonMatch) {
+        try {
+          const parsed = JSON.parse(jsonMatch[0]);
+          if (parsed && typeof parsed.error === 'string') {
+            message = parsed.error;
+          }
+        } catch {
+          // Ignore JSON parse errors and fall back to default message
+        }
+      }
+    }
+
+    throw new Error(message);
+  }
+
+  if ((data as any)?.error) {
+    throw new Error((data as any).error as string);
+  }
   
-  return data;
+  return data as { userId: string; email: string };
 };
