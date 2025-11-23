@@ -36,10 +36,8 @@ export const useCreateClient = () => {
       clientsApi.createClient(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.clients });
-      toast.success('Client created successfully');
     },
     onError: (error: Error) => {
-      toast.error(`Failed to create client: ${error.message}`);
       console.error('Create client error:', error);
     },
   });
@@ -57,10 +55,8 @@ export const useUpdateClient = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.clients });
       queryClient.invalidateQueries({ queryKey: queryKeys.clientById(data.id) });
-      toast.success('Client updated successfully');
     },
     onError: (error: Error) => {
-      toast.error(`Failed to update client: ${error.message}`);
       console.error('Update client error:', error);
     },
   });
