@@ -101,7 +101,28 @@ export const createClient = async (
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error creating client:', error);
+
+    // Handle unique constraint violation for phone number per tenant
+    const rawMessage = (error as any)?.message || '';
+    const rawDetails = (error as any)?.details || '';
+    const isUniquePhoneConstraint =
+      rawMessage.includes('clients_phone_tenant_unique') ||
+      rawDetails.includes('clients_phone_tenant_unique') ||
+      rawMessage.toLowerCase().includes('duplicate key value');
+
+    if (isUniquePhoneConstraint) {
+      throw new Error('A client with this phone number already exists for this business');
+    }
+
+    throw new Error('Unable to create client. Please try again.');
+  }
+
+  if (!data) {
+    throw new Error('No client data returned from server');
+  }
+
   return data;
 };
 
