@@ -25,9 +25,9 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Nunua Polepole</CardTitle>
+          <CardTitle className="text-2xl font-bold">Lipia Pole Pole</CardTitle>
           <CardDescription>
-            Buy Slowly, Build Trust - A calm and trustworthy credit management system
+            Pay Slowly, Build Trust - A calm and trustworthy credit management system
           </CardDescription>
         </CardHeader>
         <CardContent>
