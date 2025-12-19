@@ -67,17 +67,20 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon" className="border-r-0 bg-sidebar-background">
-      <div className={cn("p-6 border-b border-sidebar-border/30", !showText && "flex justify-center")}>
+    <Sidebar collapsible="icon" className="border-r-0 bg-primary">
+      <div className={cn("p-6 border-b border-primary-foreground/20", !showText && "flex justify-center")}>
         {showText ? (
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center shadow-lg">
               <LayoutDashboard className="h-7 w-7 text-white" />
             </div>
-            <h1 className="text-3xl font-extrabold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent tracking-tight">Dashboard</h1>
+            <div className="flex flex-col">
+              <h1 className="text-xl font-extrabold text-white tracking-tight">Lipia Pole Pole</h1>
+              <span className="text-xs text-primary-foreground/70">Pay Slowly, Build Trust</span>
+            </div>
           </div>
         ) : (
-          <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center shadow-lg">
             <LayoutDashboard className="h-7 w-7 text-white" />
           </div>
         )}
@@ -93,7 +96,7 @@ export function AppSidebar() {
           >
             <SidebarGroup>
               <CollapsibleTrigger className="w-full group/collapsible">
-                <SidebarGroupLabel className="text-xs font-semibold text-sidebar-foreground/60 uppercase tracking-wider px-3 mb-2 flex items-center justify-between hover:text-sidebar-foreground/80 transition-colors cursor-pointer">
+                <SidebarGroupLabel className="text-xs font-semibold text-primary-foreground/60 uppercase tracking-wider px-3 mb-2 flex items-center justify-between hover:text-primary-foreground/80 transition-colors cursor-pointer">
                   <span>{showText ? group.label : ""}</span>
                   {showText && (
                     <Menu className="h-4 w-4" />
@@ -111,23 +114,16 @@ export function AppSidebar() {
                             handleMobileMenuClick();
                           }}
                           className={cn(
-                            "flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold transition-all duration-200 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 text-sidebar-foreground w-full shadow-sm hover:shadow-md hover:scale-105",
+                            "flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold transition-all duration-200 bg-secondary hover:bg-secondary/90 text-white w-full shadow-sm hover:shadow-md hover:scale-105",
                             !showText && "justify-center"
                           )}
                         >
-                          <Plus className="h-6 w-6 flex-shrink-0 text-primary" />
+                          <Plus className="h-6 w-6 flex-shrink-0 text-white" />
                           {showText && <span>Add Client</span>}
                         </button>
                       </SidebarMenuItem>
                     )}
                     {group.items.map((item, index) => {
-                      const colors = [
-                        "from-red-500/20 to-orange-500/20 hover:from-red-500/30 hover:to-orange-500/30",
-                        "from-blue-500/20 to-cyan-500/20 hover:from-blue-500/30 hover:to-cyan-500/30",
-                        "from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30",
-                      ];
-                      const iconColors = ["text-red-500", "text-blue-500", "text-purple-500"];
-                      
                       return (
                         <SidebarMenuItem key={item.title}>
                           <SidebarMenuButton asChild>
@@ -137,15 +133,15 @@ export function AppSidebar() {
                               onClick={handleMobileMenuClick}
                               className={({ isActive }) =>
                                 cn(
-                                  "flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold transition-all duration-200 shadow-sm",
+                                  "flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold transition-all duration-200",
                                   isActive
-                                    ? `bg-gradient-to-r ${colors[index % colors.length]} scale-105 shadow-md`
-                                    : `hover:bg-gradient-to-r ${colors[index % colors.length]} hover:scale-105`,
+                                    ? "bg-white text-primary shadow-md scale-105"
+                                    : "text-primary-foreground hover:bg-white/20 hover:scale-105",
                                   !showText && "justify-center"
                                 )
                               }
                             >
-                              <item.icon className={cn("h-6 w-6 flex-shrink-0", iconColors[index % iconColors.length])} />
+                              <item.icon className="h-6 w-6 flex-shrink-0" />
                               {showText && <span>{item.title}</span>}
                             </NavLink>
                           </SidebarMenuButton>
