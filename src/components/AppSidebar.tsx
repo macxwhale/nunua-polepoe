@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { LayoutDashboard, Users, FileText, Package, Plus, Smartphone, ChevronDown, Wallet } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Package, Menu, Settings, Plus, Smartphone } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { ClientDialog } from "@/components/clients/ClientDialog";
+import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Sidebar,
@@ -13,6 +14,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -41,9 +45,9 @@ const menuGroups = [
 ];
 
 export function AppSidebar() {
-  const { state, openMobile, setOpenMobile } = useSidebar();
+  const { state, setOpen, open, openMobile, setOpenMobile } = useSidebar();
   const isMobile = useIsMobile();
-  const [openGroups, setOpenGroups] = useState<string[]>(["Dashboards", "Client & Sales", "Settings"]);
+  const [openGroups, setOpenGroups] = useState<string[]>(["Dashboards"]);
   const [clientDialogOpen, setClientDialogOpen] = useState(false);
   
   const showText = state === "expanded" || (isMobile && openMobile);
@@ -63,79 +67,68 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon" className="border-r-0">
-      {/* Brand Header */}
-      <div className={cn(
-        "p-4 border-b border-white/10",
-        !showText && "flex justify-center p-3"
-      )}>
+    <Sidebar collapsible="icon" className="border-r-0 bg-sidebar-background">
+      <div className={cn("p-6 border-b border-sidebar-border/30", !showText && "flex justify-center")}>
         {showText ? (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center shadow-md">
-              <Wallet className="h-5 w-5 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg">
+              <LayoutDashboard className="h-7 w-7 text-white" />
             </div>
-            <div className="flex flex-col">
-              <h1 className="text-base font-bold text-white leading-tight">Lipia Pole Pole</h1>
-              <span className="text-[10px] text-white/60 font-medium">Pay Slowly, Build Trust</span>
-            </div>
+            <h1 className="text-3xl font-extrabold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent tracking-tight">Dashboard</h1>
           </div>
         ) : (
-          <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center shadow-md">
-            <Wallet className="h-5 w-5 text-white" />
+          <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg">
+            <LayoutDashboard className="h-7 w-7 text-white" />
           </div>
         )}
       </div>
 
-      <SidebarContent className="px-3 py-4">
-        {menuGroups.map((group) => {
-          const isOpen = openGroups.includes(group.label);
-          
-          return (
-            <Collapsible
-              key={group.label}
-              open={isOpen}
-              onOpenChange={() => toggleGroup(group.label)}
-              className="mb-2"
-            >
-              <SidebarGroup className="p-0">
-                <CollapsibleTrigger className="w-full group/collapsible">
-                  <SidebarGroupLabel className={cn(
-                    "text-[11px] font-semibold text-white/50 uppercase tracking-wider px-3 py-2 flex items-center justify-between hover:text-white/70 transition-colors cursor-pointer rounded-md hover:bg-white/5",
-                    !showText && "justify-center px-2"
-                  )}>
-                    <span>{showText ? group.label : ""}</span>
-                    {showText && (
-                      <ChevronDown className={cn(
-                        "h-3.5 w-3.5 transition-transform duration-200",
-                        isOpen ? "rotate-0" : "-rotate-90"
-                      )} />
-                    )}
-                  </SidebarGroupLabel>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarGroupContent>
-                    <SidebarMenu className="space-y-0.5 mt-1">
-                      {/* Add Client Button - only in Client & Sales */}
-                      {group.label === "Client & Sales" && (
+      <SidebarContent className="px-3 py-6">
+        {menuGroups.map((group) => (
+          <Collapsible
+            key={group.label}
+            open={openGroups.includes(group.label)}
+            onOpenChange={() => toggleGroup(group.label)}
+            className="mb-4"
+          >
+            <SidebarGroup>
+              <CollapsibleTrigger className="w-full group/collapsible">
+                <SidebarGroupLabel className="text-xs font-semibold text-sidebar-foreground/60 uppercase tracking-wider px-3 mb-2 flex items-center justify-between hover:text-sidebar-foreground/80 transition-colors cursor-pointer">
+                  <span>{showText ? group.label : ""}</span>
+                  {showText && (
+                    <Menu className="h-4 w-4" />
+                  )}
+                </SidebarGroupLabel>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu className="space-y-1">
+                    {group.label === "Client & Sales" && (
                         <SidebarMenuItem>
-                          <button
-                            onClick={() => {
-                              setClientDialogOpen(true);
-                              handleMobileMenuClick();
-                            }}
-                            className={cn(
-                              "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 bg-secondary hover:bg-secondary/80 text-white w-full",
-                              !showText && "justify-center px-2"
-                            )}
-                          >
-                            <Plus className="h-4 w-4 flex-shrink-0" />
-                            {showText && <span>Add Client</span>}
-                          </button>
-                        </SidebarMenuItem>
-                      )}
+                        <button
+                          onClick={() => {
+                            setClientDialogOpen(true);
+                            handleMobileMenuClick();
+                          }}
+                          className={cn(
+                            "flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold transition-all duration-200 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 text-sidebar-foreground w-full shadow-sm hover:shadow-md hover:scale-105",
+                            !showText && "justify-center"
+                          )}
+                        >
+                          <Plus className="h-6 w-6 flex-shrink-0 text-primary" />
+                          {showText && <span>Add Client</span>}
+                        </button>
+                      </SidebarMenuItem>
+                    )}
+                    {group.items.map((item, index) => {
+                      const colors = [
+                        "from-red-500/20 to-orange-500/20 hover:from-red-500/30 hover:to-orange-500/30",
+                        "from-blue-500/20 to-cyan-500/20 hover:from-blue-500/30 hover:to-cyan-500/30",
+                        "from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30",
+                      ];
+                      const iconColors = ["text-red-500", "text-blue-500", "text-purple-500"];
                       
-                      {/* Menu Items */}
-                      {group.items.map((item) => (
+                      return (
                         <SidebarMenuItem key={item.title}>
                           <SidebarMenuButton asChild>
                             <NavLink
@@ -144,28 +137,29 @@ export function AppSidebar() {
                               onClick={handleMobileMenuClick}
                               className={({ isActive }) =>
                                 cn(
-                                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150",
+                                  "flex items-center gap-4 rounded-xl px-4 py-4 text-base font-semibold transition-all duration-200 shadow-sm",
                                   isActive
-                                    ? "bg-white text-primary shadow-sm"
-                                    : "text-white/90 hover:bg-white/10 hover:text-white",
-                                  !showText && "justify-center px-2"
+                                    ? `bg-gradient-to-r ${colors[index % colors.length]} scale-105 shadow-md`
+                                    : `hover:bg-gradient-to-r ${colors[index % colors.length]} hover:scale-105`,
+                                  !showText && "justify-center"
                                 )
                               }
                             >
-                              <item.icon className="h-4 w-4 flex-shrink-0" />
+                              <item.icon className={cn("h-6 w-6 flex-shrink-0", iconColors[index % iconColors.length])} />
                               {showText && <span>{item.title}</span>}
                             </NavLink>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
-                      ))}
-                    </SidebarMenu>
-                  </SidebarGroupContent>
-                </CollapsibleContent>
-              </SidebarGroup>
-            </Collapsible>
-          );
-        })}
+                      );
+                    })}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </SidebarGroup>
+          </Collapsible>
+        ))}
       </SidebarContent>
+
 
       <ClientDialog
         open={clientDialogOpen}
