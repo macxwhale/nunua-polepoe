@@ -67,8 +67,8 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon" className="border-r-0 bg-primary">
-      <div className={cn("p-6 border-b border-primary-foreground/20", !showText && "flex justify-center")}>
+    <Sidebar collapsible="icon" className="border-r-0">
+      <div className={cn("p-6 border-b border-sidebar-border", !showText && "flex justify-center")}>
         {showText ? (
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center shadow-lg">
