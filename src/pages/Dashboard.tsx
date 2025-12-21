@@ -219,10 +219,10 @@ export default function Dashboard() {
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h1 className="text-lg font-display font-bold text-foreground">
+        <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground tracking-tight">
           Overview
         </h1>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-sm text-muted-foreground mt-1">
           Welcome back, {getUserName()}.
         </p>
       </div>
@@ -231,15 +231,15 @@ export default function Dashboard() {
       <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
         {/* Total Revenue - Green Card */}
         <Card 
-          className="cursor-pointer bg-primary border-0 hover:bg-primary/90"
+          className="cursor-pointer bg-primary border-0 hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
           onClick={() => navigate('/payments')}
         >
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-primary-foreground/80 text-xs mb-1">
-              <div className="w-2 h-2 rounded-full bg-primary-foreground/60" />
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3 text-primary-foreground/80 text-sm mb-2">
+              <div className="w-3 h-3 rounded-full bg-primary-foreground/60" />
               Total Revenue
             </div>
-            <div className="text-xl font-bold text-primary-foreground">
+            <div className="text-3xl md:text-4xl font-bold text-primary-foreground tracking-tight">
               KES {stats.totalRevenue.toLocaleString()}
             </div>
           </CardContent>
@@ -247,15 +247,15 @@ export default function Dashboard() {
 
         {/* Pending Payments - Red Card */}
         <Card 
-          className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90"
+          className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-destructive-foreground/80 text-xs mb-1">
-              <div className="w-2 h-2 rounded-full bg-destructive-foreground/60" />
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3 text-destructive-foreground/80 text-sm mb-2">
+              <div className="w-3 h-3 rounded-full bg-destructive-foreground/60" />
               Pending Payments
             </div>
-            <div className="text-xl font-bold text-destructive-foreground">
+            <div className="text-3xl md:text-4xl font-bold text-destructive-foreground tracking-tight">
               KES {stats.pendingAmount.toLocaleString()}
             </div>
           </CardContent>
@@ -263,33 +263,37 @@ export default function Dashboard() {
 
         {/* Active Clients - White Card */}
         <Card 
-          className="cursor-pointer hover:bg-muted/50"
+          className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
           onClick={() => navigate('/clients')}
         >
-          <CardContent className="p-4 flex justify-between items-start">
+          <CardContent className="p-6 flex justify-between items-start h-full">
             <div>
-              <div className="text-xs text-muted-foreground mb-1">Active Clients</div>
-              <div className="text-xl font-bold text-foreground">
+              <div className="text-sm text-muted-foreground mb-2">Active Clients</div>
+              <div className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 {stats.totalClients}
               </div>
             </div>
-            <Users className="h-5 w-5 text-muted-foreground" />
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Users className="h-6 w-6 text-primary" />
+            </div>
           </CardContent>
         </Card>
 
         {/* Unpaid Invoices - White Card */}
         <Card 
-          className="cursor-pointer hover:bg-muted/50"
+          className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4 flex justify-between items-start">
+          <CardContent className="p-6 flex justify-between items-start h-full">
             <div>
-              <div className="text-xs text-muted-foreground mb-1">Unpaid Invoices</div>
-              <div className="text-xl font-bold text-foreground">
+              <div className="text-sm text-muted-foreground mb-2">Unpaid Invoices</div>
+              <div className="text-3xl md:text-4xl font-bold text-destructive tracking-tight">
                 {stats.unpaidInvoices}
               </div>
             </div>
-            <Clock className="h-5 w-5 text-muted-foreground" />
+            <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
+              <Clock className="h-6 w-6 text-destructive" />
+            </div>
           </CardContent>
         </Card>
       </div>

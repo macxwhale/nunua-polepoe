@@ -53,14 +53,14 @@ export default function Products() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h1 className="text-lg font-display font-bold text-foreground">
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground tracking-tight">
             Products
           </h1>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-sm mt-1">
             Manage your product catalog
           </p>
         </div>
-        <Button onClick={() => setDialogOpen(true)} size="sm" className="gap-1.5">
+        <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
           <Plus className="h-4 w-4" />
           Add Product
         </Button>
