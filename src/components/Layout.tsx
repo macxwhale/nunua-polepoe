@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Input } from "@/components/ui/input";
-import { Search, ChevronDown, UserRound } from "lucide-react";
+import { Search, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
@@ -48,47 +48,47 @@ export function Layout({ children }: LayoutProps) {
         <AppSidebar />
         <main className="flex-1 flex flex-col">
           {/* Header */}
-          <header className="sticky top-0 z-10 h-16 border-b border-border/50 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 flex items-center justify-between px-4 md:px-6">
-            <div className="flex items-center gap-3 flex-1 max-w-xl">
-              <SidebarTrigger className="hover:bg-accent transition-colors rounded-lg" />
+          <header className="sticky top-0 z-10 h-12 border-b border-border bg-background flex items-center justify-between px-4">
+            <div className="flex items-center gap-2 flex-1 max-w-md">
+              <SidebarTrigger className="hover:bg-accent rounded-md" />
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input 
-                  placeholder="Search clients, invoices..." 
-                  className="pl-10 bg-muted/40 border-0 focus-visible:ring-1 focus-visible:ring-primary/50 cursor-pointer rounded-xl h-10"
+                  placeholder="Search..." 
+                  className="pl-8 h-8 bg-background border-border cursor-pointer"
                   onClick={() => setSearchOpen(true)}
                   readOnly
                 />
-                <kbd className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 hidden h-6 select-none items-center gap-1 rounded-md border border-border bg-muted px-2 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                  <span className="text-xs">⌘</span>K
+                <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium sm:flex">
+                  ⌘K
                 </kbd>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <NotificationDropdown />
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="gap-2 hover:bg-accent rounded-xl px-2">
-                    <Avatar className="h-8 w-8 ring-2 ring-primary/20">
-                      <AvatarFallback className="gradient-brand text-white font-display font-bold text-xs">
+                  <Button variant="ghost" className="gap-2 h-8 px-2">
+                    <Avatar className="h-6 w-6">
+                      <AvatarFallback className="bg-foreground text-background text-xs font-medium">
                         {getInitials()}
                       </AvatarFallback>
                     </Avatar>
-                    <span className="text-sm font-medium hidden md:inline-block">{getUserName()}</span>
-                    <ChevronDown className="h-4 w-4 text-muted-foreground hidden md:block" />
+                    <span className="text-sm hidden md:inline-block">{getUserName()}</span>
+                    <ChevronDown className="h-3 w-3 text-muted-foreground hidden md:block" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 rounded-xl">
-                  <DropdownMenuLabel className="font-display">My Account</DropdownMenuLabel>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="cursor-pointer rounded-lg">Profile</DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer rounded-lg">Settings</DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer text-sm">Profile</DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer text-sm">Settings</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem 
                     onClick={handleLogout} 
-                    className="text-destructive focus:text-destructive focus:bg-destructive/10 cursor-pointer rounded-lg"
+                    className="text-destructive focus:text-destructive cursor-pointer text-sm"
                   >
                     Log out
                   </DropdownMenuItem>
@@ -98,7 +98,7 @@ export function Layout({ children }: LayoutProps) {
           </header>
           
           {/* Main Content */}
-          <div className="flex-1 p-4 md:p-6 lg:p-8 animate-fade-in">
+          <div className="flex-1 p-4 md:p-6">
             {children}
           </div>
         </main>

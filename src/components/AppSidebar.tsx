@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayoutDashboard, Users, FileText, Package, ChevronRight, Plus, Smartphone, Sparkles } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Package, ChevronRight, Plus, Smartphone } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { ClientDialog } from "@/components/clients/ClientDialog";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -63,47 +63,40 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon" className="border-r-0 bg-sidebar">
+    <Sidebar collapsible="icon" className="border-r border-sidebar-border bg-sidebar">
       {/* Brand Header */}
       <div className={cn(
-        "p-5 border-b border-sidebar-border/50",
-        !showText && "flex justify-center p-4"
+        "p-4 border-b border-sidebar-border",
+        !showText && "flex justify-center p-3"
       )}>
         {showText ? (
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl gradient-brand flex items-center justify-center shadow-lg">
-              <Sparkles className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-lg font-display font-bold text-sidebar-foreground">Lipia Pole Pole</h1>
-              <p className="text-xs text-sidebar-foreground/60">Credit Management</p>
-            </div>
+          <div>
+            <h1 className="text-sm font-display font-bold text-sidebar-foreground">Lipia Pole Pole</h1>
+            <p className="text-xs text-sidebar-foreground/60">Credit Management</p>
           </div>
         ) : (
-          <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center shadow-lg">
-            <Sparkles className="h-5 w-5 text-white" />
-          </div>
+          <span className="text-sm font-display font-bold text-sidebar-foreground">LP</span>
         )}
       </div>
 
-      <SidebarContent className="px-3 py-4">
-        {menuGroups.map((group, groupIndex) => (
+      <SidebarContent className="px-2 py-3">
+        {menuGroups.map((group) => (
           <Collapsible
             key={group.label}
             open={openGroups.includes(group.label)}
             onOpenChange={() => toggleGroup(group.label)}
-            className="mb-2"
+            className="mb-1"
           >
             <SidebarGroup>
               <CollapsibleTrigger className="w-full group/collapsible">
                 <SidebarGroupLabel className={cn(
-                  "text-[11px] font-display font-semibold text-sidebar-foreground/50 uppercase tracking-widest px-3 py-2 flex items-center justify-between hover:text-sidebar-foreground/70 transition-colors cursor-pointer",
+                  "text-[10px] font-medium text-sidebar-foreground/50 uppercase tracking-wider px-2 py-1.5 flex items-center justify-between hover:text-sidebar-foreground/70 cursor-pointer",
                   !showText && "justify-center"
                 )}>
                   <span>{showText ? group.label : ""}</span>
                   {showText && (
                     <ChevronRight className={cn(
-                      "h-3.5 w-3.5 transition-transform duration-200",
+                      "h-3 w-3 transition-transform duration-150",
                       openGroups.includes(group.label) && "rotate-90"
                     )} />
                   )}
@@ -111,7 +104,7 @@ export function AppSidebar() {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarGroupContent>
-                  <SidebarMenu className="space-y-1">
+                  <SidebarMenu className="space-y-0.5">
                     {/* Add Client Quick Action */}
                     {group.label === "Client & Sales" && (
                       <SidebarMenuItem>
@@ -121,22 +114,18 @@ export function AppSidebar() {
                             handleMobileMenuClick();
                           }}
                           className={cn(
-                            "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200",
-                            "bg-sidebar-primary/15 hover:bg-sidebar-primary/25 text-sidebar-primary",
-                            "border border-sidebar-primary/20 hover:border-sidebar-primary/40",
-                            "hover:shadow-glow-sm w-full",
+                            "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium w-full",
+                            "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground",
                             !showText && "justify-center px-2"
                           )}
                         >
-                          <div className="w-7 h-7 rounded-lg bg-sidebar-primary/20 flex items-center justify-center">
-                            <Plus className="h-4 w-4" />
-                          </div>
+                          <Plus className="h-4 w-4" />
                           {showText && <span>Add Client</span>}
                         </button>
                       </SidebarMenuItem>
                     )}
                     
-                    {group.items.map((item, index) => (
+                    {group.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild>
                           <NavLink
@@ -145,27 +134,16 @@ export function AppSidebar() {
                             onClick={handleMobileMenuClick}
                             className={({ isActive }) =>
                               cn(
-                                "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                                "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium",
                                 isActive
-                                  ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-sm"
+                                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
                                   : "text-sidebar-foreground/70 hover:bg-sidebar-muted hover:text-sidebar-foreground",
                                 !showText && "justify-center px-2"
                               )
                             }
                           >
-                            {({ isActive }) => (
-                              <>
-                                <div className={cn(
-                                  "w-7 h-7 rounded-lg flex items-center justify-center transition-colors",
-                                  isActive 
-                                    ? "bg-sidebar-primary text-sidebar-primary-foreground" 
-                                    : "bg-sidebar-muted/50"
-                                )}>
-                                  <item.icon className="h-4 w-4" />
-                                </div>
-                                {showText && <span>{item.title}</span>}
-                              </>
-                            )}
+                            <item.icon className="h-4 w-4" />
+                            {showText && <span>{item.title}</span>}
                           </NavLink>
                         </SidebarMenuButton>
                       </SidebarMenuItem>

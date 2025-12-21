@@ -27,20 +27,20 @@ export default function Products() {
 
   if (loading) {
     return (
-      <div className="space-y-6 animate-fade-in">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="space-y-2 w-full sm:w-auto">
-            <div className="h-9 w-40 bg-muted animate-shimmer rounded-xl" />
-            <div className="h-4 w-72 bg-muted animate-shimmer rounded-lg" />
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div className="space-y-1">
+            <div className="h-6 w-32 bg-muted animate-shimmer rounded" />
+            <div className="h-4 w-48 bg-muted animate-shimmer rounded" />
           </div>
-          <div className="h-11 w-full sm:w-36 bg-muted animate-shimmer rounded-xl" />
+          <div className="h-9 w-28 bg-muted animate-shimmer rounded" />
         </div>
-        <div className="rounded-xl border border-border/40 overflow-hidden">
-          <div className="bg-muted/50 h-12 w-full" />
+        <div className="rounded-md border border-border overflow-hidden">
+          <div className="bg-muted h-10 w-full" />
           {[1, 2, 3].map((i) => (
-            <div key={i} className="border-t border-border/30 p-5 space-y-3">
+            <div key={i} className="border-t border-border p-3 space-y-2">
               <div className="h-4 bg-muted animate-shimmer rounded w-1/3" />
-              <div className="h-4 bg-muted animate-shimmer rounded w-1/2" />
+              <div className="h-3 bg-muted animate-shimmer rounded w-1/2" />
             </div>
           ))}
         </div>
@@ -49,21 +49,18 @@ export default function Products() {
   }
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-foreground">
+          <h1 className="text-lg font-display font-bold text-foreground">
             Products
           </h1>
-          <p className="text-muted-foreground mt-1 text-sm">
-            Manage your product catalog and inventory
+          <p className="text-muted-foreground text-xs">
+            Manage your product catalog
           </p>
         </div>
-        <Button 
-          onClick={() => setDialogOpen(true)} 
-          className="gap-2 w-full sm:w-auto shadow-md hover:shadow-glow"
-        >
+        <Button onClick={() => setDialogOpen(true)} size="sm" className="gap-1.5">
           <Plus className="h-4 w-4" />
           Add Product
         </Button>
@@ -74,7 +71,7 @@ export default function Products() {
         <EmptyState
           icon={Package}
           title="No products yet"
-          description="Build your catalog at your own pace. Add products when you're ready."
+          description="Build your catalog by adding products."
           action={{
             label: "Add Product",
             onClick: () => setDialogOpen(true),

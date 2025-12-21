@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
-import { Users, FileText, TrendingUp, AlertCircle } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
-import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import {
   BarChart,
@@ -13,7 +11,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   PieChart,
   Pie,
@@ -91,7 +88,6 @@ export default function Dashboard() {
       const invoices = invoicesRes.data || [];
       const transactions = transactionsRes.data || [];
 
-      // Basic stats
       const totalClients = clients.length;
       const totalInvoices = invoices.length;
       const pendingInvoices = invoices.filter((inv) => inv.status === "pending");
@@ -109,13 +105,11 @@ export default function Dashboard() {
         unpaidInvoices: pendingInvoices.length,
       });
 
-      // Payment distribution
       setPaymentDistribution({
         paid: paidInvoices.length,
         unpaid: pendingInvoices.length,
       });
 
-      // Latest invoices with client names
       const clientMap = new Map(clients.map((c) => [c.id, c.name || "Unknown"]));
       const latest = invoices.slice(0, 5).map((inv) => ({
         ...inv,
@@ -123,7 +117,6 @@ export default function Dashboard() {
       }));
       setLatestInvoices(latest);
 
-      // Top clients by total payments
       const clientPayments = new Map<string, number>();
       transactions
         .filter((t) => t.type === "payment")
@@ -141,7 +134,6 @@ export default function Dashboard() {
         .slice(0, 5);
       setTopClients(topClientsList);
 
-      // Weekly payments data
       const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
       const today = new Date();
       const thisWeekStart = new Date(today);
@@ -173,7 +165,6 @@ export default function Dashboard() {
       });
       setWeeklyPayments(weeklyData);
 
-      // Yearly collection data
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const currentYear = today.getFullYear();
       const yearlyData = months.map((month, index) => {
@@ -198,22 +189,22 @@ export default function Dashboard() {
     { name: "Paid", value: paymentDistribution.paid },
     { name: "Unpaid", value: paymentDistribution.unpaid },
   ];
-  const PIE_COLORS = ["hsl(142, 70%, 49%)", "hsl(6, 78%, 57%)"];
+  const PIE_COLORS = ["hsl(142, 70%, 40%)", "hsl(4, 74%, 49%)"];
 
   const formatCurrency = (amount: number) => `KES ${amount.toLocaleString()}`;
 
   if (loading) {
     return (
-      <div className="space-y-6 animate-in fade-in duration-500 p-4 sm:p-6">
-        <Skeleton className="h-8 w-48" />
-        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+      <div className="space-y-4">
+        <Skeleton className="h-6 w-40" />
+        <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
           {[...Array(4)].map((_, i) => (
-            <Skeleton key={i} className="h-28 rounded-xl" />
+            <Skeleton key={i} className="h-20 rounded-md" />
           ))}
         </div>
-        <div className="grid gap-4 lg:grid-cols-3">
-          <Skeleton className="h-80 lg:col-span-2 rounded-xl" />
-          <Skeleton className="h-80 rounded-xl" />
+        <div className="grid gap-3 lg:grid-cols-3">
+          <Skeleton className="h-64 lg:col-span-2 rounded-md" />
+          <Skeleton className="h-64 rounded-md" />
         </div>
       </div>
     );
@@ -224,125 +215,105 @@ export default function Dashboard() {
   const unpaidPercentage = totalPieValue > 0 ? Math.round((paymentDistribution.unpaid / totalPieValue) * 100) : 0;
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500 p-4 sm:p-6 bg-muted/30 min-h-screen">
+    <div className="space-y-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Overview
-          </h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            Welcome back, {getUserName()}! Here's your business summary.
-          </p>
-        </div>
+      <div>
+        <h1 className="text-lg font-display font-bold text-foreground">
+          Overview
+        </h1>
+        <p className="text-xs text-muted-foreground">
+          Welcome back, {getUserName()}.
+        </p>
       </div>
 
       {/* Stats Cards Row */}
-      <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-        {/* Total Revenue - Green */}
+      <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
+        {/* Total Revenue */}
         <Card 
-          className="overflow-hidden cursor-pointer hover-lift bg-primary text-primary-foreground border-0 shadow-lg"
+          className="cursor-pointer hover:bg-muted/50"
           onClick={() => navigate('/payments')}
         >
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full bg-white/80" />
-              <span className="text-xs sm:text-sm font-medium opacity-90">Total Revenue</span>
-            </div>
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold">
+          <CardContent className="p-3">
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Total Revenue</div>
+            <div className="text-lg font-bold text-success">
               KES {stats.totalRevenue.toLocaleString()}
             </div>
           </CardContent>
         </Card>
 
-        {/* Pending Payments - Red */}
+        {/* Pending Payments */}
         <Card 
-          className="overflow-hidden cursor-pointer hover-lift bg-destructive text-destructive-foreground border-0 shadow-lg"
+          className="cursor-pointer hover:bg-muted/50"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full bg-white/80" />
-              <span className="text-xs sm:text-sm font-medium opacity-90">Pending Payments</span>
-            </div>
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold">
+          <CardContent className="p-3">
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Pending</div>
+            <div className="text-lg font-bold text-destructive">
               KES {stats.pendingAmount.toLocaleString()}
             </div>
           </CardContent>
         </Card>
 
-        {/* Active Clients - White */}
+        {/* Active Clients */}
         <Card 
-          className="overflow-hidden cursor-pointer hover-lift shadow-lg"
+          className="cursor-pointer hover:bg-muted/50"
           onClick={() => navigate('/clients')}
         >
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-1">Active Clients</p>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
-                  {stats.totalClients}
-                </div>
-              </div>
-              <div className="p-2 sm:p-3 bg-muted rounded-full">
-                <Users className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground" />
-              </div>
+          <CardContent className="p-3">
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Clients</div>
+            <div className="text-lg font-bold text-foreground">
+              {stats.totalClients}
             </div>
           </CardContent>
         </Card>
 
-        {/* Unpaid Invoices - White */}
+        {/* Unpaid Invoices */}
         <Card 
-          className="overflow-hidden cursor-pointer hover-lift shadow-lg"
+          className="cursor-pointer hover:bg-muted/50"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-1">Unpaid Invoices</p>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
-                  {stats.unpaidInvoices}
-                </div>
-              </div>
-              <div className="p-2 sm:p-3 bg-muted rounded-full">
-                <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground" />
-              </div>
+          <CardContent className="p-3">
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Unpaid Invoices</div>
+            <div className="text-lg font-bold text-foreground">
+              {stats.unpaidInvoices}
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Charts Row */}
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-3 lg:grid-cols-3">
         {/* Payment Records Bar Chart */}
-        <Card className="lg:col-span-2 shadow-lg">
+        <Card className="lg:col-span-2">
           <CardHeader className="pb-2">
-            <CardTitle className="text-base sm:text-lg font-semibold">Payment Records</CardTitle>
-            <div className="flex gap-4 text-xs sm:text-sm">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-primary" />
-                <span className="text-muted-foreground">This Week Payments</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-destructive" />
-                <span className="text-muted-foreground">Last Week Payments</span>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-sm font-medium">Payment Records</CardTitle>
+              <div className="flex gap-3 text-[10px]">
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-sm bg-foreground" />
+                  <span className="text-muted-foreground">This Week</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-sm bg-muted-foreground" />
+                  <span className="text-muted-foreground">Last Week</span>
+                </div>
               </div>
             </div>
           </CardHeader>
           <CardContent className="pt-0">
-            <ResponsiveContainer width="100%" height={280}>
-              <BarChart data={weeklyPayments} margin={{ top: 20, right: 10, left: -10, bottom: 5 }}>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={weeklyPayments} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
                 <XAxis 
                   dataKey="day" 
                   axisLine={false} 
                   tickLine={false} 
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} 
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }} 
                 />
                 <YAxis 
                   axisLine={false} 
                   tickLine={false} 
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                   tickFormatter={(value) => `${value / 1000}k`}
                 />
                 <Tooltip 
@@ -350,31 +321,32 @@ export default function Dashboard() {
                   contentStyle={{ 
                     backgroundColor: 'hsl(var(--card))', 
                     border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px'
+                    borderRadius: '4px',
+                    fontSize: '12px'
                   }}
                 />
-                <Bar dataKey="thisWeek" fill="hsl(142, 70%, 49%)" radius={[4, 4, 0, 0]} name="This Week" />
-                <Bar dataKey="lastWeek" fill="hsl(6, 78%, 57%)" radius={[4, 4, 0, 0]} name="Last Week" />
+                <Bar dataKey="thisWeek" fill="hsl(var(--foreground))" radius={[2, 2, 0, 0]} name="This Week" />
+                <Bar dataKey="lastWeek" fill="hsl(var(--muted-foreground))" radius={[2, 2, 0, 0]} name="Last Week" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
         {/* Payment Distribution Pie Chart */}
-        <Card className="shadow-lg">
+        <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base sm:text-lg font-semibold">Payment Distribution</CardTitle>
+            <CardTitle className="text-sm font-medium">Payment Distribution</CardTitle>
           </CardHeader>
           <CardContent className="pt-0">
             <div className="flex items-center justify-center">
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer width="100%" height={160}>
                 <PieChart>
                   <Pie
                     data={pieData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={50}
-                    outerRadius={80}
+                    innerRadius={40}
+                    outerRadius={65}
                     dataKey="value"
                     startAngle={90}
                     endAngle={-270}
@@ -387,20 +359,20 @@ export default function Dashboard() {
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="flex flex-col gap-2 mt-2">
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-destructive" />
-                  <span className="text-muted-foreground">Unpaid Invoices</span>
-                </div>
-                <span className="font-medium">{unpaidPercentage}%</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-primary" />
-                  <span className="text-muted-foreground">Paid Invoices</span>
+            <div className="flex flex-col gap-1 mt-2">
+              <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-sm bg-success" />
+                  <span className="text-muted-foreground">Paid</span>
                 </div>
                 <span className="font-medium">{paidPercentage}%</span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-sm bg-destructive" />
+                  <span className="text-muted-foreground">Unpaid</span>
+                </div>
+                <span className="font-medium">{unpaidPercentage}%</span>
               </div>
             </div>
           </CardContent>
@@ -408,82 +380,77 @@ export default function Dashboard() {
       </div>
 
       {/* Invoices and Top Clients Row */}
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-3 lg:grid-cols-3">
         {/* Latest Invoices Table */}
-        <Card className="lg:col-span-2 shadow-lg">
+        <Card className="lg:col-span-2">
           <CardHeader className="pb-2">
-            <CardTitle className="text-base sm:text-lg font-semibold">Latest Invoices</CardTitle>
+            <CardTitle className="text-sm font-medium">Latest Invoices</CardTitle>
           </CardHeader>
           <CardContent className="pt-0">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-[10px]">Invoice</TableHead>
+                  <TableHead className="text-[10px]">Amount</TableHead>
+                  <TableHead className="text-[10px]">Client</TableHead>
+                  <TableHead className="text-[10px]">Date</TableHead>
+                  <TableHead className="text-[10px]">Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {latestInvoices.length === 0 ? (
                   <TableRow>
-                    <TableHead className="text-xs">Invoice #</TableHead>
-                    <TableHead className="text-xs">Amount</TableHead>
-                    <TableHead className="text-xs">Client</TableHead>
-                    <TableHead className="text-xs">Date</TableHead>
-                    <TableHead className="text-xs">Status</TableHead>
+                    <TableCell colSpan={5} className="text-center text-muted-foreground py-6 text-xs">
+                      No invoices yet
+                    </TableCell>
                   </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {latestInvoices.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
-                        No invoices yet
+                ) : (
+                  latestInvoices.map((invoice) => (
+                    <TableRow key={invoice.id} className="cursor-pointer" onClick={() => navigate('/invoices')}>
+                      <TableCell className="text-xs font-medium">{invoice.invoice_number}</TableCell>
+                      <TableCell className="text-xs">KES {invoice.amount.toLocaleString()}</TableCell>
+                      <TableCell className="text-xs">{invoice.clientName}</TableCell>
+                      <TableCell className="text-xs text-muted-foreground">
+                        {new Date(invoice.created_at).toLocaleDateString('en-GB')}
+                      </TableCell>
+                      <TableCell>
+                        <span className={`text-xs font-medium ${invoice.status === "paid" ? "text-success" : "text-destructive"}`}>
+                          {invoice.status === "paid" ? "Paid" : "Unpaid"}
+                        </span>
                       </TableCell>
                     </TableRow>
-                  ) : (
-                    latestInvoices.map((invoice) => (
-                      <TableRow key={invoice.id} className="cursor-pointer hover:bg-muted/50" onClick={() => navigate('/invoices')}>
-                        <TableCell className="font-medium text-xs sm:text-sm">{invoice.invoice_number}</TableCell>
-                        <TableCell className="text-xs sm:text-sm">KES {invoice.amount.toLocaleString()}</TableCell>
-                        <TableCell className="text-xs sm:text-sm">{invoice.clientName}</TableCell>
-                        <TableCell className="text-xs sm:text-sm">
-                          {new Date(invoice.created_at).toLocaleDateString('en-GB')}
-                        </TableCell>
-                        <TableCell>
-                          <Badge
-                            variant={invoice.status === "paid" ? "default" : "destructive"}
-                            className={`text-xs ${invoice.status === "paid" ? "bg-primary" : "bg-destructive"}`}
-                          >
-                            {invoice.status === "paid" ? "Paid" : "Unpaid"}
-                          </Badge>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
+                  ))
+                )}
+              </TableBody>
+            </Table>
           </CardContent>
         </Card>
 
         {/* Best Performing Clients */}
-        <Card className="shadow-lg">
+        <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base sm:text-lg font-semibold">Best Performing Clients</CardTitle>
+            <CardTitle className="text-sm font-medium">Top Clients</CardTitle>
           </CardHeader>
           <CardContent className="pt-0">
-            <div className="space-y-3">
+            <div className="space-y-2">
               {topClients.length === 0 ? (
-                <p className="text-center text-muted-foreground py-8 text-sm">No data yet</p>
+                <p className="text-center text-muted-foreground py-6 text-xs">No data yet</p>
               ) : (
                 topClients.map((client, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center justify-between p-2 rounded-lg hover:bg-muted/50 cursor-pointer"
+                    className="flex items-center justify-between py-1.5 cursor-pointer hover:bg-muted/50 -mx-1 px-1 rounded"
                     onClick={() => navigate('/clients')}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded bg-muted flex items-center justify-center text-[10px] font-medium">
                         {client.name.charAt(0).toUpperCase()}
                       </div>
-                      <span className="text-sm font-medium truncate max-w-[120px]">{client.name}</span>
+                      <span className="text-xs font-medium truncate max-w-[100px]">{client.name}</span>
                     </div>
-                    <Badge variant="default" className="bg-primary text-xs">
+                    <span className="text-xs font-medium text-success">
                       KES {client.totalSpent.toLocaleString()}
-                    </Badge>
+                    </span>
                   </div>
                 ))
               )}
@@ -493,17 +460,17 @@ export default function Dashboard() {
       </div>
 
       {/* Yearly Collection Chart */}
-      <Card className="shadow-lg">
+      <Card>
         <CardHeader className="pb-2">
-          <CardTitle className="text-base sm:text-lg font-semibold">Collection Across the Year</CardTitle>
+          <CardTitle className="text-sm font-medium">Collection Across the Year</CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
-          <ResponsiveContainer width="100%" height={250}>
-            <AreaChart data={yearlyCollection} margin={{ top: 20, right: 10, left: -10, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height={200}>
+            <AreaChart data={yearlyCollection} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(142, 70%, 49%)" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="hsl(142, 70%, 49%)" stopOpacity={0.1}/>
+                  <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2}/>
+                  <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0}/>
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
@@ -511,12 +478,12 @@ export default function Dashboard() {
                 dataKey="month" 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} 
+                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }} 
               />
               <YAxis 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                 tickFormatter={(value) => `${value / 1000}k`}
               />
               <Tooltip 
@@ -524,16 +491,17 @@ export default function Dashboard() {
                 contentStyle={{ 
                   backgroundColor: 'hsl(var(--card))', 
                   border: '1px solid hsl(var(--border))',
-                  borderRadius: '8px'
+                  borderRadius: '4px',
+                  fontSize: '12px'
                 }}
               />
               <Area 
                 type="monotone" 
                 dataKey="amount" 
-                stroke="hsl(142, 70%, 49%)" 
+                stroke="hsl(var(--foreground))" 
                 fillOpacity={1} 
                 fill="url(#colorAmount)" 
-                strokeWidth={2}
+                strokeWidth={1.5}
               />
             </AreaChart>
           </ResponsiveContainer>
