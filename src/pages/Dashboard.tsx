@@ -231,15 +231,15 @@ export default function Dashboard() {
       <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
         {/* Total Revenue - Green Card */}
         <Card 
-          className="cursor-pointer bg-primary border-0 hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
+          className="cursor-pointer bg-primary border-0 hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/payments')}
         >
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3 text-primary-foreground/80 text-sm mb-2">
-              <div className="w-3 h-3 rounded-full bg-primary-foreground/60" />
+          <CardContent className="p-4 md:p-6">
+            <div className="flex items-center gap-2 text-primary-foreground/80 text-xs md:text-sm mb-1 md:mb-2">
+              <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-primary-foreground/60" />
               Total Revenue
             </div>
-            <div className="text-3xl md:text-4xl font-bold text-primary-foreground tracking-tight">
+            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary-foreground tracking-tight truncate">
               KES {stats.totalRevenue.toLocaleString()}
             </div>
           </CardContent>
@@ -247,15 +247,15 @@ export default function Dashboard() {
 
         {/* Pending Payments - Red Card */}
         <Card 
-          className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
+          className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3 text-destructive-foreground/80 text-sm mb-2">
-              <div className="w-3 h-3 rounded-full bg-destructive-foreground/60" />
+          <CardContent className="p-4 md:p-6">
+            <div className="flex items-center gap-2 text-destructive-foreground/80 text-xs md:text-sm mb-1 md:mb-2">
+              <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-destructive-foreground/60" />
               Pending Payments
             </div>
-            <div className="text-3xl md:text-4xl font-bold text-destructive-foreground tracking-tight">
+            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-destructive-foreground tracking-tight truncate">
               KES {stats.pendingAmount.toLocaleString()}
             </div>
           </CardContent>
@@ -263,63 +263,63 @@ export default function Dashboard() {
 
         {/* Active Clients - White Card */}
         <Card 
-          className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
+          className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/clients')}
         >
-          <CardContent className="p-6 flex justify-between items-start h-full">
+          <CardContent className="p-4 md:p-6 flex justify-between items-start">
             <div>
-              <div className="text-sm text-muted-foreground mb-2">Active Clients</div>
-              <div className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+              <div className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">Active Clients</div>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground tracking-tight">
                 {stats.totalClients}
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Users className="h-6 w-6 text-primary" />
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Users className="h-5 w-5 md:h-6 md:w-6 text-primary" />
             </div>
           </CardContent>
         </Card>
 
         {/* Unpaid Invoices - White Card */}
         <Card 
-          className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all min-h-[140px]"
+          className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-6 flex justify-between items-start h-full">
+          <CardContent className="p-4 md:p-6 flex justify-between items-start">
             <div>
-              <div className="text-sm text-muted-foreground mb-2">Unpaid Invoices</div>
-              <div className="text-3xl md:text-4xl font-bold text-destructive tracking-tight">
+              <div className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">Unpaid Invoices</div>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-destructive tracking-tight">
                 {stats.unpaidInvoices}
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
-              <Clock className="h-6 w-6 text-destructive" />
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
+              <Clock className="h-5 w-5 md:h-6 md:w-6 text-destructive" />
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Charts Row */}
-      <div className="grid gap-3 lg:grid-cols-3">
+      <div className="grid gap-3 grid-cols-1 lg:grid-cols-3">
         {/* Payment Records Bar Chart */}
         <Card className="lg:col-span-2">
           <CardHeader className="pb-2">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <CardTitle className="text-sm font-medium">Payment Records</CardTitle>
               <div className="flex gap-3 text-[10px]">
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-sm bg-foreground" />
+                  <div className="w-2 h-2 rounded-sm bg-primary" />
                   <span className="text-muted-foreground">This Week</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-sm bg-muted-foreground" />
+                  <div className="w-2 h-2 rounded-sm bg-primary/40" />
                   <span className="text-muted-foreground">Last Week</span>
                 </div>
               </div>
             </div>
           </CardHeader>
           <CardContent className="pt-0">
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={weeklyPayments} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={weeklyPayments} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
                 <XAxis 
                   dataKey="day" 
@@ -332,18 +332,19 @@ export default function Dashboard() {
                   tickLine={false} 
                   tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                   tickFormatter={(value) => `${value / 1000}k`}
+                  width={40}
                 />
                 <Tooltip 
                   formatter={(value: number) => formatCurrency(value)}
                   contentStyle={{ 
                     backgroundColor: 'hsl(var(--card))', 
                     border: '1px solid hsl(var(--border))',
-                    borderRadius: '4px',
+                    borderRadius: '8px',
                     fontSize: '12px'
                   }}
                 />
-                <Bar dataKey="thisWeek" fill="hsl(var(--foreground))" radius={[2, 2, 0, 0]} name="This Week" />
-                <Bar dataKey="lastWeek" fill="hsl(var(--muted-foreground))" radius={[2, 2, 0, 0]} name="Last Week" />
+                <Bar dataKey="thisWeek" fill="hsl(142, 70%, 40%)" radius={[4, 4, 0, 0]} name="This Week" />
+                <Bar dataKey="lastWeek" fill="hsl(142, 70%, 75%)" radius={[4, 4, 0, 0]} name="Last Week" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -397,7 +398,7 @@ export default function Dashboard() {
       </div>
 
       {/* Invoices and Top Clients Row */}
-      <div className="grid gap-3 lg:grid-cols-3">
+      <div className="grid gap-3 grid-cols-1 lg:grid-cols-3">
         {/* Latest Invoices Table */}
         <Card className="lg:col-span-2">
           <CardHeader className="pb-2">
@@ -407,11 +408,11 @@ export default function Dashboard() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-[10px]">Invoice #</TableHead>
-                  <TableHead className="text-[10px]">Amount</TableHead>
-                  <TableHead className="text-[10px]">Client</TableHead>
-                  <TableHead className="text-[10px]">Date</TableHead>
-                  <TableHead className="text-[10px]">Status</TableHead>
+                  <TableHead className="text-xs">Invoice #</TableHead>
+                  <TableHead className="text-xs">Amount</TableHead>
+                  <TableHead className="text-xs hidden sm:table-cell">Client</TableHead>
+                  <TableHead className="text-xs hidden md:table-cell">Date</TableHead>
+                  <TableHead className="text-xs">Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -425,13 +426,13 @@ export default function Dashboard() {
                   latestInvoices.map((invoice) => (
                     <TableRow key={invoice.id} className="cursor-pointer" onClick={() => navigate('/invoices')}>
                       <TableCell className="text-xs font-medium">{invoice.invoice_number}</TableCell>
-                      <TableCell className="text-xs">KES {invoice.amount.toLocaleString()}</TableCell>
-                      <TableCell className="text-xs">{invoice.clientName}</TableCell>
-                      <TableCell className="text-xs text-muted-foreground">
+                      <TableCell className="text-xs font-semibold text-primary">KES {invoice.amount.toLocaleString()}</TableCell>
+                      <TableCell className="text-xs hidden sm:table-cell">{invoice.clientName}</TableCell>
+                      <TableCell className="text-xs text-muted-foreground hidden md:table-cell">
                         {new Date(invoice.created_at).toLocaleDateString('en-GB')}
                       </TableCell>
                       <TableCell>
-                        <span className={`text-xs font-medium ${invoice.status === "paid" ? "text-success" : "text-destructive"}`}>
+                        <span className={`text-xs font-medium px-2 py-1 rounded-full ${invoice.status === "paid" ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"}`}>
                           {invoice.status === "paid" ? "Paid" : "Unpaid"}
                         </span>
                       </TableCell>
