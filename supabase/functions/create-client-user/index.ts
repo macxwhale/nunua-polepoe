@@ -313,13 +313,22 @@ serve(async (req) => {
           body: JSON.stringify(smsPayload),
         });
 
-        const smsResult = await smsResponse.json();
-        console.log("SMS API response:", JSON.stringify(smsResult));
+        const responseText = await smsResponse.text();
+        console.log("SMS API raw response:", responseText);
 
-        if (smsResult.SMSMessageData?.Recipients?.[0]?.status === "Success") {
-          console.log("SMS sent successfully to:", formattedPhone);
+        if (!smsResponse.ok) {
+          console.error("SMS API error:", smsResponse.status, responseText);
         } else {
-          console.error("SMS sending failed:", smsResult);
+          try {
+            const smsResult = JSON.parse(responseText);
+            if (smsResult.SMSMessageData?.Recipients?.[0]?.status === "Success") {
+              console.log("SMS sent successfully to:", formattedPhone);
+            } else {
+              console.error("SMS sending failed:", smsResult);
+            }
+          } catch {
+            console.error("Failed to parse SMS response:", responseText);
+          }
         }
       } else {
         console.warn("Africa's Talking credentials not configured (AT_SMS_API_KEY, AT_SMS_USERNAME), skipping SMS notification");
