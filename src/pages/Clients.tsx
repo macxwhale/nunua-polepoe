@@ -41,21 +41,21 @@ export default function Clients() {
 
   if (loading) {
     return (
-      <div className="space-y-6 animate-fade-in">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="space-y-2 w-full sm:w-auto">
-            <div className="h-9 w-40 bg-muted animate-shimmer rounded-xl" />
-            <div className="h-4 w-72 bg-muted animate-shimmer rounded-lg" />
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div className="space-y-1">
+            <div className="h-6 w-32 bg-muted animate-shimmer rounded" />
+            <div className="h-4 w-48 bg-muted animate-shimmer rounded" />
           </div>
-          <div className="h-11 w-full sm:w-36 bg-muted animate-shimmer rounded-xl" />
+          <div className="h-9 w-28 bg-muted animate-shimmer rounded" />
         </div>
-        <div className="h-11 w-full bg-muted animate-shimmer rounded-xl" />
-        <div className="rounded-xl border border-border/40 overflow-hidden">
-          <div className="bg-muted/50 h-12 w-full" />
+        <div className="h-9 w-full bg-muted animate-shimmer rounded" />
+        <div className="rounded-md border border-border overflow-hidden">
+          <div className="bg-muted h-10 w-full" />
           {[1, 2, 3].map((i) => (
-            <div key={i} className="border-t border-border/30 p-5 space-y-3">
+            <div key={i} className="border-t border-border p-3 space-y-2">
               <div className="h-4 bg-muted animate-shimmer rounded w-1/3" />
-              <div className="h-4 bg-muted animate-shimmer rounded w-1/2" />
+              <div className="h-3 bg-muted animate-shimmer rounded w-1/2" />
             </div>
           ))}
         </div>
@@ -64,21 +64,18 @@ export default function Clients() {
   }
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-4">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-foreground">
+          <h1 className="text-lg font-display font-bold text-foreground">
             Clients
           </h1>
-          <p className="text-muted-foreground mt-1 text-sm">
-            Manage your customer relationships and accounts
+          <p className="text-muted-foreground text-xs">
+            Manage customer relationships and accounts
           </p>
         </div>
-        <Button 
-          onClick={() => setDialogOpen(true)} 
-          className="gap-2 w-full sm:w-auto shadow-md hover:shadow-glow"
-        >
+        <Button onClick={() => setDialogOpen(true)} size="sm" className="gap-1.5">
           <Plus className="h-4 w-4" />
           Add Client
         </Button>
@@ -87,12 +84,12 @@ export default function Clients() {
       {/* Search Bar */}
       {clients.length > 0 && (
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search by name, phone, or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-11 h-11 bg-muted/40 border-border/50 focus-visible:ring-primary/50 rounded-xl"
+            className="pl-8 h-9"
           />
         </div>
       )}
@@ -102,16 +99,16 @@ export default function Clients() {
         <EmptyState
           icon={Users}
           title="No clients yet"
-          description="Take your time. Start building lasting relationships by adding your first client—there's no rush."
+          description="Start building lasting relationships by adding your first client."
           action={{
             label: "Add Client",
             onClick: () => setDialogOpen(true),
           }}
         />
       ) : filteredClients.length === 0 ? (
-        <div className="text-center py-16 text-muted-foreground rounded-xl border border-dashed border-border/50 bg-muted/20">
-          <Search className="h-10 w-10 mx-auto mb-3 opacity-40" />
-          <p>No clients found matching "<span className="font-medium text-foreground">{searchQuery}</span>"</p>
+        <div className="text-center py-12 text-muted-foreground rounded-md border border-dashed border-border">
+          <Search className="h-8 w-8 mx-auto mb-2 opacity-40" />
+          <p className="text-sm">No clients found matching "<span className="font-medium text-foreground">{searchQuery}</span>"</p>
         </div>
       ) : (
         <ClientsTable clients={filteredClients} onEdit={handleEdit} onRefresh={() => refetch()} />
