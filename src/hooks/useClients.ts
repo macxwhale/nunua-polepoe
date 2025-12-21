@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { queryKeys } from '@/lib/queryClient';
 import * as clientsApi from '@/api/clients.api';
+import type { ClientWithDetails } from '@/api/clients.api';
 import type { TablesInsert, TablesUpdate } from '@/integrations/supabase/types';
 
 /**
@@ -26,7 +27,7 @@ export const useClient = (id: string) => {
 };
 
 /**
- * Create a new client
+ * Create a new client with optimistic update
  */
 export const useCreateClient = () => {
   const queryClient = useQueryClient();
@@ -34,17 +35,49 @@ export const useCreateClient = () => {
   return useMutation({
     mutationFn: (data: Omit<TablesInsert<'clients'>, 'tenant_id'>) =>
       clientsApi.createClient(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: queryKeys.clients });
+    onMutate: async (newClient) => {
+      // Cancel outgoing refetches
+      await queryClient.cancelQueries({ queryKey: queryKeys.clients });
+
+      // Snapshot previous value
+      const previousClients = queryClient.getQueryData(queryKeys.clients);
+
+      // Optimistically add the new client
+      queryClient.setQueryData(queryKeys.clients, (old: ClientWithDetails[] | undefined) => {
+        if (!old) return old;
+        const optimisticClient: ClientWithDetails = {
+          id: `temp-${Date.now()}`,
+          name: newClient.name || null,
+          phone_number: newClient.phone_number,
+          email: newClient.email || null,
+          status: 'active',
+          total_balance: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          tenant_id: '',
+          totalInvoiced: 0,
+          totalPaid: 0,
+        };
+        return [optimisticClient, ...old];
+      });
+
+      return { previousClients };
     },
-    onError: (error: Error) => {
+    onError: (error: Error, _, context) => {
+      // Rollback on error
+      if (context?.previousClients) {
+        queryClient.setQueryData(queryKeys.clients, context.previousClients);
+      }
       console.error('Create client error:', error);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.clients });
     },
   });
 };
 
 /**
- * Update an existing client
+ * Update an existing client with optimistic update
  */
 export const useUpdateClient = () => {
   const queryClient = useQueryClient();
@@ -52,12 +85,32 @@ export const useUpdateClient = () => {
   return useMutation({
     mutationFn: ({ id, updates }: { id: string; updates: TablesUpdate<'clients'> }) =>
       clientsApi.updateClient(id, updates),
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: queryKeys.clients });
-      queryClient.invalidateQueries({ queryKey: queryKeys.clientById(data.id) });
+    onMutate: async ({ id, updates }) => {
+      await queryClient.cancelQueries({ queryKey: queryKeys.clients });
+
+      const previousClients = queryClient.getQueryData(queryKeys.clients);
+
+      // Optimistically update the client
+      queryClient.setQueryData(queryKeys.clients, (old: ClientWithDetails[] | undefined) => {
+        if (!old) return old;
+        return old.map((client) =>
+          client.id === id ? { ...client, ...updates, updated_at: new Date().toISOString() } : client
+        );
+      });
+
+      return { previousClients };
     },
-    onError: (error: Error) => {
+    onError: (error: Error, _, context) => {
+      if (context?.previousClients) {
+        queryClient.setQueryData(queryKeys.clients, context.previousClients);
+      }
       console.error('Update client error:', error);
+    },
+    onSettled: (data) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.clients });
+      if (data) {
+        queryClient.invalidateQueries({ queryKey: queryKeys.clientById(data.id) });
+      }
     },
   });
 };
@@ -78,9 +131,9 @@ export const useDeleteClient = () => {
       const previousClients = queryClient.getQueryData(queryKeys.clients);
 
       // Optimistically update
-      queryClient.setQueryData(queryKeys.clients, (old: any) => {
+      queryClient.setQueryData(queryKeys.clients, (old: ClientWithDetails[] | undefined) => {
         if (!old) return old;
-        return old.filter((client: any) => client.id !== clientId);
+        return old.filter((client) => client.id !== clientId);
       });
 
       return { previousClients };

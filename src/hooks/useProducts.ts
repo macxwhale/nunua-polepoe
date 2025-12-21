@@ -2,7 +2,9 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { queryKeys } from '@/lib/queryClient';
 import * as productsApi from '@/api/products.api';
-import type { TablesInsert, TablesUpdate } from '@/integrations/supabase/types';
+import type { TablesInsert, TablesUpdate, Tables } from '@/integrations/supabase/types';
+
+type Product = Tables<'products'>;
 
 /**
  * Get all products
@@ -38,7 +40,7 @@ export const useSearchProducts = (query: string) => {
 };
 
 /**
- * Create a new product
+ * Create a new product with optimistic update
  */
 export const useCreateProduct = () => {
   const queryClient = useQueryClient();
@@ -46,19 +48,46 @@ export const useCreateProduct = () => {
   return useMutation({
     mutationFn: (data: Omit<TablesInsert<'products'>, 'tenant_id'>) =>
       productsApi.createProduct(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: queryKeys.products });
-      toast.success('Product created successfully');
+    onMutate: async (newProduct) => {
+      await queryClient.cancelQueries({ queryKey: queryKeys.products });
+
+      const previousProducts = queryClient.getQueryData(queryKeys.products);
+
+      // Optimistically add the new product
+      queryClient.setQueryData(queryKeys.products, (old: Product[] | undefined) => {
+        if (!old) return old;
+        const optimisticProduct: Product = {
+          id: `temp-${Date.now()}`,
+          name: newProduct.name,
+          description: newProduct.description || null,
+          price: newProduct.price,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          tenant_id: '',
+        };
+        return [optimisticProduct, ...old];
+      });
+
+      return { previousProducts };
     },
-    onError: (error: Error) => {
+    onError: (error: Error, _, context) => {
+      if (context?.previousProducts) {
+        queryClient.setQueryData(queryKeys.products, context.previousProducts);
+      }
       toast.error(`Failed to create product: ${error.message}`);
       console.error('Create product error:', error);
+    },
+    onSuccess: () => {
+      toast.success('Product created successfully');
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.products });
     },
   });
 };
 
 /**
- * Update an existing product
+ * Update an existing product with optimistic update
  */
 export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
@@ -66,14 +95,36 @@ export const useUpdateProduct = () => {
   return useMutation({
     mutationFn: ({ id, updates }: { id: string; updates: TablesUpdate<'products'> }) =>
       productsApi.updateProduct(id, updates),
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: queryKeys.products });
-      queryClient.invalidateQueries({ queryKey: queryKeys.productById(data.id) });
-      toast.success('Product updated successfully');
+    onMutate: async ({ id, updates }) => {
+      await queryClient.cancelQueries({ queryKey: queryKeys.products });
+
+      const previousProducts = queryClient.getQueryData(queryKeys.products);
+
+      // Optimistically update the product
+      queryClient.setQueryData(queryKeys.products, (old: Product[] | undefined) => {
+        if (!old) return old;
+        return old.map((product) =>
+          product.id === id ? { ...product, ...updates, updated_at: new Date().toISOString() } : product
+        );
+      });
+
+      return { previousProducts };
     },
-    onError: (error: Error) => {
+    onError: (error: Error, _, context) => {
+      if (context?.previousProducts) {
+        queryClient.setQueryData(queryKeys.products, context.previousProducts);
+      }
       toast.error(`Failed to update product: ${error.message}`);
       console.error('Update product error:', error);
+    },
+    onSuccess: () => {
+      toast.success('Product updated successfully');
+    },
+    onSettled: (data) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.products });
+      if (data) {
+        queryClient.invalidateQueries({ queryKey: queryKeys.productById(data.id) });
+      }
     },
   });
 };
@@ -90,9 +141,9 @@ export const useDeleteProduct = () => {
       await queryClient.cancelQueries({ queryKey: queryKeys.products });
       const previousProducts = queryClient.getQueryData(queryKeys.products);
 
-      queryClient.setQueryData(queryKeys.products, (old: any) => {
+      queryClient.setQueryData(queryKeys.products, (old: Product[] | undefined) => {
         if (!old) return old;
-        return old.filter((product: any) => product.id !== productId);
+        return old.filter((product) => product.id !== productId);
       });
 
       return { previousProducts };

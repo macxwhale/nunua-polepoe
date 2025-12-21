@@ -25,7 +25,6 @@ export default function Clients() {
   const handleDialogClose = () => {
     setDialogOpen(false);
     setEditingClient(null);
-    refetch();
   };
 
   const filteredClients = useMemo(() => {
