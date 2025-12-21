@@ -144,7 +144,7 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
                 <TableCell className="text-muted-foreground py-4 max-w-xs truncate">
                   {product.description || "—"}
                 </TableCell>
-                <TableCell className="font-display font-bold text-base py-4">
+                <TableCell className="font-display font-bold text-base py-4 text-primary">
                   {formatCurrency(product.price)}
                 </TableCell>
                 <TableCell className="py-4">
