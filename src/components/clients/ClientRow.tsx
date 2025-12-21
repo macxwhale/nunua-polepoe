@@ -41,20 +41,20 @@ export function ClientRow({ client, onEdit, onRefresh, mobileActions, rowIndex =
         </div>
       </TableCell>
       <TableCell className="py-4">
-        <div className="flex items-center gap-4">
-          <div className="text-center">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">Invoiced</div>
-            <div className="font-display font-bold text-sm text-foreground">{formatCurrency(client.totalInvoiced)}</div>
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground w-14">Invoiced</span>
+            <span className="font-display font-semibold text-sm text-foreground">{formatCurrency(client.totalInvoiced)}</span>
           </div>
-          <div className="text-center">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">Paid</div>
-            <div className="font-display font-bold text-sm text-primary">{formatCurrency(client.totalPaid)}</div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground w-14">Paid</span>
+            <span className="font-display font-semibold text-sm text-primary">{formatCurrency(client.totalPaid)}</span>
           </div>
-          <div className="text-center">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">Balance</div>
-            <div className={`font-display font-bold text-sm ${isPositiveBalance ? 'text-destructive' : 'text-primary'}`}>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground w-14">Balance</span>
+            <span className={`font-display font-bold text-sm ${isPositiveBalance ? 'text-destructive' : 'text-primary'}`}>
               {formatCurrency(balance)}
-            </div>
+            </span>
           </div>
         </div>
       </TableCell>
