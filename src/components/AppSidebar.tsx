@@ -10,35 +10,68 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
-const menuGroups = [
+type IconColor = "green" | "red";
+
+interface MenuItem {
+  title: string;
+  url: string;
+  icon: React.ComponentType<{ className?: string }>;
+  iconColor: IconColor;
+}
+
+interface MenuGroup {
+  label: string;
+  items: MenuItem[];
+}
+
+const menuGroups: MenuGroup[] = [
   {
     label: "DASHBOARDS",
     items: [
-      { title: "Overview", url: "/", icon: LayoutDashboard, iconColor: "text-primary" },
+      { title: "Overview", url: "/", icon: LayoutDashboard, iconColor: "green" },
     ]
   },
   {
     label: "CLIENT & SALES",
     items: [
-      { title: "Clients", url: "/clients", icon: Users, iconColor: "text-muted-foreground" },
-      { title: "Invoices", url: "/invoices", icon: FileText, iconColor: "text-muted-foreground" },
-      { title: "Products", url: "/products", icon: Package, iconColor: "text-muted-foreground" },
+      { title: "Clients", url: "/clients", icon: Users, iconColor: "green" },
+      { title: "Invoices", url: "/invoices", icon: FileText, iconColor: "red" },
+      { title: "Products", url: "/products", icon: Package, iconColor: "green" },
     ]
   },
   {
     label: "SETTINGS",
     items: [
-      { title: "Payments", url: "/payments", icon: Smartphone, iconColor: "text-muted-foreground" },
+      { title: "Payments", url: "/payments", icon: Smartphone, iconColor: "green" },
     ]
   }
 ];
+
+// Get icon color class based on type
+const getIconColorClass = (color: IconColor, isActive: boolean): string => {
+  if (isActive) return "text-white";
+  return color === "green" ? "text-primary" : "text-destructive";
+};
+
+// Get hover background class based on icon color
+const getHoverClass = (color: IconColor): string => {
+  return color === "green" 
+    ? "hover:bg-[hsl(142,60%,92%)]" 
+    : "hover:bg-[hsl(0,86%,97%)]";
+};
+
+// Get active background class based on icon color
+const getActiveClass = (color: IconColor): string => {
+  return color === "green" 
+    ? "bg-primary text-white" 
+    : "bg-destructive text-white";
+};
 
 export function AppSidebar() {
   const { state, openMobile, setOpenMobile } = useSidebar();
@@ -86,18 +119,18 @@ export function AppSidebar() {
         )}
       </div>
 
-      <SidebarContent className="px-3 py-4">
+      <SidebarContent className="px-3 py-5">
         {menuGroups.map((group) => (
           <Collapsible
             key={group.label}
             open={openGroups.includes(group.label)}
             onOpenChange={() => toggleGroup(group.label)}
-            className="mb-3"
+            className="mb-4"
           >
             <SidebarGroup>
               <CollapsibleTrigger className="w-full group/collapsible">
                 <SidebarGroupLabel className={cn(
-                  "text-[11px] font-semibold text-sidebar-foreground/50 uppercase tracking-widest px-3 py-2 flex items-center justify-between hover:text-sidebar-foreground/80 cursor-pointer transition-colors duration-200",
+                  "text-[11px] font-semibold text-gray-500 uppercase tracking-widest px-3 py-2 mb-2 flex items-center justify-between hover:text-gray-700 cursor-pointer transition-colors duration-200",
                   !showText && "justify-center"
                 )}>
                   <span>{showText ? group.label : ""}</span>
@@ -111,7 +144,7 @@ export function AppSidebar() {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarGroupContent>
-                  <SidebarMenu className="space-y-1 mt-1">
+                  <SidebarMenu className="space-y-2">
                     {/* Add Client Quick Action */}
                     {group.label === "CLIENT & SALES" && (
                       <SidebarMenuItem>
@@ -121,13 +154,17 @@ export function AppSidebar() {
                             handleMobileMenuClick();
                           }}
                           className={cn(
-                            "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium w-full transition-all duration-200",
-                            "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-sm active:scale-[0.98]",
-                            "min-h-[44px]", // Accessibility: minimum touch target
+                            "flex items-center gap-3 px-4 py-3 text-sm font-medium w-full",
+                            "min-h-[48px]", // WCAG touch target
+                            "rounded-xl",
+                            "bg-primary text-white",
+                            "hover:bg-primary/90 hover:shadow-md",
+                            "active:scale-[0.98]",
+                            "transition-all duration-200 ease-out",
                             !showText && "justify-center px-3"
                           )}
                         >
-                          <Plus className="h-4.5 w-4.5 flex-shrink-0" />
+                          <Plus className="h-5 w-5 flex-shrink-0" />
                           {showText && <span>Add Client</span>}
                         </button>
                       </SidebarMenuItem>
@@ -135,40 +172,43 @@ export function AppSidebar() {
                     
                     {group.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild>
-                          <NavLink
-                            to={item.url}
-                            end
-                            onClick={handleMobileMenuClick}
-                            className={({ isActive }) =>
-                              cn(
-                                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
-                                "min-h-[44px]", // Accessibility: minimum touch target
-                                isActive
-                                  ? "bg-primary text-primary-foreground font-semibold shadow-sm"
-                                  : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground hover:translate-x-0.5",
-                                !showText && "justify-center px-3"
-                              )
-                            }
-                          >
-                            {({ isActive }) => (
-                              <>
-                                <item.icon className={cn(
-                                  "h-[18px] w-[18px] flex-shrink-0 transition-transform duration-200",
-                                  isActive ? "text-primary-foreground" : item.iconColor
-                                )} />
-                                {showText && (
-                                  <span className={cn(
-                                    "transition-all duration-200",
-                                    isActive && "tracking-wide"
-                                  )}>
-                                    {item.title}
-                                  </span>
-                                )}
-                              </>
-                            )}
-                          </NavLink>
-                        </SidebarMenuButton>
+                        <NavLink
+                          to={item.url}
+                          end
+                          onClick={handleMobileMenuClick}
+                          className={({ isActive }) =>
+                            cn(
+                              // Base styles - Industry standard
+                              "flex items-center gap-3 px-4 py-3 text-sm font-medium w-full",
+                              "min-h-[48px]", // WCAG touch target (48px)
+                              "rounded-xl", // Rounded corners
+                              "transition-all duration-200 ease-out",
+                              
+                              isActive
+                                // Active: Semantic background, white text
+                                ? cn(getActiveClass(item.iconColor), "font-semibold shadow-sm")
+                                // Inactive: Dark readable text, semantic hover
+                                : cn(
+                                    "text-gray-700", // Solid dark text - ALWAYS readable
+                                    getHoverClass(item.iconColor),
+                                    "hover:text-gray-900"
+                                  ),
+                              !showText && "justify-center px-3"
+                            )
+                          }
+                        >
+                          {({ isActive }) => (
+                            <>
+                              <item.icon className={cn(
+                                "h-5 w-5 flex-shrink-0",
+                                getIconColorClass(item.iconColor, isActive)
+                              )} />
+                              {showText && (
+                                <span>{item.title}</span>
+                              )}
+                            </>
+                          )}
+                        </NavLink>
                       </SidebarMenuItem>
                     ))}
                   </SidebarMenu>
