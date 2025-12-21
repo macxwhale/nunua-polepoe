@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Input } from "@/components/ui/input";
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, User } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
@@ -48,36 +48,34 @@ export function Layout({ children }: LayoutProps) {
         <AppSidebar />
         <main className="flex-1 flex flex-col">
           {/* Header */}
-          <header className="sticky top-0 z-10 h-12 border-b border-border bg-background flex items-center justify-between px-4">
-            <div className="flex items-center gap-2 flex-1 max-w-md">
+          <header className="sticky top-0 z-10 h-14 border-b border-border bg-background flex items-center justify-between px-4 md:px-6">
+            <div className="flex items-center gap-3 flex-1 max-w-md">
               <SidebarTrigger className="hover:bg-accent rounded-md" />
               <div className="relative flex-1">
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input 
                   placeholder="Search..." 
-                  className="pl-8 h-8 bg-background border-border cursor-pointer"
+                  className="pl-9 h-9 bg-background border-border cursor-pointer"
                   onClick={() => setSearchOpen(true)}
                   readOnly
                 />
-                <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium sm:flex">
+                <kbd className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium sm:flex">
                   ⌘K
                 </kbd>
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2 md:gap-3">
               <NotificationDropdown />
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="gap-2 h-8 px-2">
-                    <Avatar className="h-6 w-6">
-                      <AvatarFallback className="bg-foreground text-background text-xs font-medium">
-                        {getInitials()}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span className="text-sm hidden md:inline-block">{getUserName()}</span>
-                    <ChevronDown className="h-3 w-3 text-muted-foreground hidden md:block" />
+                  <Button variant="ghost" className="gap-2 h-9 px-2 md:px-3">
+                    <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                      <User className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm font-medium hidden md:inline-block">{getUserName()}</span>
+                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground hidden md:block" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
