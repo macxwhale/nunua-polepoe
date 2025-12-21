@@ -278,8 +278,9 @@ serve(async (req) => {
     // Send SMS notification via Africa's Talking
     try {
       console.log("Sending SMS notification via Africa's Talking...");
-      const atApiKey = Deno.env.get("AT_API_KEY");
-      const atUsername = Deno.env.get("AT_USERNAME");
+      const atApiKey = Deno.env.get("AT_SMS_API_KEY");
+      const atUsername = Deno.env.get("AT_SMS_USERNAME");
+      const atSenderId = Deno.env.get("AT_SMS_SENDER_ID");
 
       if (atApiKey && atUsername) {
         // Format phone number for Africa's Talking (needs +254 format)
@@ -289,31 +290,39 @@ serve(async (req) => {
 
         const smsMessage = `Lipia Pole Pole:\nUsername: ${phoneNumber}\nPassword: ${password}\nLogin: https://lipapolepole.com\nChange your password after first login.`;
 
-        const smsBody = new URLSearchParams({
+        const smsPayload: Record<string, unknown> = {
           username: atUsername,
-          to: formattedPhone,
           message: smsMessage,
-        });
+          phoneNumbers: [formattedPhone],
+        };
 
-        const smsResponse = await fetch("https://api.africastalking.com/version1/messaging", {
+        // Add senderId if configured
+        if (atSenderId) {
+          smsPayload.senderId = atSenderId;
+        }
+
+        console.log("SMS payload:", JSON.stringify(smsPayload));
+
+        const smsResponse = await fetch("https://api.africastalking.com/version1/messaging/bulk", {
           method: "POST",
           headers: {
             "Accept": "application/json",
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
             "apiKey": atApiKey,
           },
-          body: smsBody.toString(),
+          body: JSON.stringify(smsPayload),
         });
 
-        if (smsResponse.ok) {
-          const smsResult = await smsResponse.json();
-          console.log("SMS sent successfully:", smsResult);
+        const smsResult = await smsResponse.json();
+        console.log("SMS API response:", JSON.stringify(smsResult));
+
+        if (smsResult.SMSMessageData?.Recipients?.[0]?.status === "Success") {
+          console.log("SMS sent successfully to:", formattedPhone);
         } else {
-          const smsError = await smsResponse.text();
-          console.error("Failed to send SMS:", smsError);
+          console.error("SMS sending failed:", smsResult);
         }
       } else {
-        console.warn("Africa's Talking credentials not configured, skipping SMS notification");
+        console.warn("Africa's Talking credentials not configured (AT_SMS_API_KEY, AT_SMS_USERNAME), skipping SMS notification");
       }
     } catch (smsError) {
       // Don't fail the request if SMS fails
