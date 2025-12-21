@@ -21,21 +21,21 @@ const menuGroups = [
   {
     label: "Dashboards",
     items: [
-      { title: "Overview", url: "/", icon: LayoutDashboard },
+      { title: "Overview", url: "/", icon: LayoutDashboard, iconColor: "text-primary" },
     ]
   },
   {
     label: "Client & Sales",
     items: [
-      { title: "Clients", url: "/clients", icon: Users },
-      { title: "Invoices", url: "/invoices", icon: FileText },
-      { title: "Products", url: "/products", icon: Package },
+      { title: "Clients", url: "/clients", icon: Users, iconColor: "text-primary" },
+      { title: "Invoices", url: "/invoices", icon: FileText, iconColor: "text-destructive" },
+      { title: "Products", url: "/products", icon: Package, iconColor: "text-primary" },
     ]
   },
   {
     label: "Settings",
     items: [
-      { title: "Payments", url: "/payments", icon: Smartphone },
+      { title: "Payments", url: "/payments", icon: Smartphone, iconColor: "text-primary" },
     ]
   }
 ];
@@ -134,16 +134,20 @@ export function AppSidebar() {
                             onClick={handleMobileMenuClick}
                             className={({ isActive }) =>
                               cn(
-                                "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium",
+                                "flex items-center gap-2 rounded-full px-2 py-1.5 text-xs font-medium",
                                 isActive
                                   ? "bg-primary text-primary-foreground"
-                                  : "text-sidebar-foreground/70 hover:bg-sidebar-muted hover:text-sidebar-foreground",
+                                  : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground",
                                 !showText && "justify-center px-2"
                               )
                             }
                           >
-                            <item.icon className="h-4 w-4" />
-                            {showText && <span>{item.title}</span>}
+                            {({ isActive }) => (
+                              <>
+                                <item.icon className={cn("h-4 w-4", isActive ? "text-primary-foreground" : item.iconColor)} />
+                                {showText && <span>{item.title}</span>}
+                              </>
+                            )}
                           </NavLink>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
