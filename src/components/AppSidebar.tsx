@@ -86,24 +86,24 @@ export function AppSidebar() {
         )}
       </div>
 
-      <SidebarContent className="px-2 py-3">
+      <SidebarContent className="px-3 py-4">
         {menuGroups.map((group) => (
           <Collapsible
             key={group.label}
             open={openGroups.includes(group.label)}
             onOpenChange={() => toggleGroup(group.label)}
-            className="mb-1"
+            className="mb-3"
           >
             <SidebarGroup>
               <CollapsibleTrigger className="w-full group/collapsible">
                 <SidebarGroupLabel className={cn(
-                  "text-[10px] font-medium text-sidebar-foreground/50 uppercase tracking-wider px-2 py-1.5 flex items-center justify-between hover:text-sidebar-foreground/70 cursor-pointer",
+                  "text-[11px] font-semibold text-sidebar-foreground/50 uppercase tracking-widest px-3 py-2 flex items-center justify-between hover:text-sidebar-foreground/80 cursor-pointer transition-colors duration-200",
                   !showText && "justify-center"
                 )}>
                   <span>{showText ? group.label : ""}</span>
                   {showText && (
                     <ChevronDown className={cn(
-                      "h-3 w-3 transition-transform duration-150",
+                      "h-3.5 w-3.5 transition-transform duration-200 ease-out",
                       !openGroups.includes(group.label) && "-rotate-90"
                     )} />
                   )}
@@ -111,7 +111,7 @@ export function AppSidebar() {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarGroupContent>
-                  <SidebarMenu className="space-y-0.5">
+                  <SidebarMenu className="space-y-1 mt-1">
                     {/* Add Client Quick Action */}
                     {group.label === "CLIENT & SALES" && (
                       <SidebarMenuItem>
@@ -121,12 +121,13 @@ export function AppSidebar() {
                             handleMobileMenuClick();
                           }}
                           className={cn(
-                            "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium w-full",
-                            "bg-primary text-primary-foreground hover:bg-primary/90",
-                            !showText && "justify-center px-2"
+                            "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium w-full transition-all duration-200",
+                            "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-sm active:scale-[0.98]",
+                            "min-h-[44px]", // Accessibility: minimum touch target
+                            !showText && "justify-center px-3"
                           )}
                         >
-                          <Plus className="h-4 w-4" />
+                          <Plus className="h-4.5 w-4.5 flex-shrink-0" />
                           {showText && <span>Add Client</span>}
                         </button>
                       </SidebarMenuItem>
@@ -141,18 +142,29 @@ export function AppSidebar() {
                             onClick={handleMobileMenuClick}
                             className={({ isActive }) =>
                               cn(
-                                "flex items-center gap-2 rounded-full px-2 py-1.5 text-xs font-medium",
+                                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                                "min-h-[44px]", // Accessibility: minimum touch target
                                 isActive
-                                  ? "bg-primary text-primary-foreground"
-                                  : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground",
-                                !showText && "justify-center px-2"
+                                  ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                                  : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground hover:translate-x-0.5",
+                                !showText && "justify-center px-3"
                               )
                             }
                           >
                             {({ isActive }) => (
                               <>
-                                <item.icon className={cn("h-4 w-4", isActive ? "text-primary-foreground" : item.iconColor)} />
-                                {showText && <span>{item.title}</span>}
+                                <item.icon className={cn(
+                                  "h-[18px] w-[18px] flex-shrink-0 transition-transform duration-200",
+                                  isActive ? "text-primary-foreground" : item.iconColor
+                                )} />
+                                {showText && (
+                                  <span className={cn(
+                                    "transition-all duration-200",
+                                    isActive && "tracking-wide"
+                                  )}>
+                                    {item.title}
+                                  </span>
+                                )}
                               </>
                             )}
                           </NavLink>
