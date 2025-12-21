@@ -234,12 +234,12 @@ export default function Dashboard() {
           className="cursor-pointer bg-primary border-0 hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/payments')}
         >
-          <CardContent className="p-4 md:p-6">
-            <div className="flex items-center gap-2 text-primary-foreground/80 text-xs md:text-sm mb-1 md:mb-2">
-              <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-primary-foreground/60" />
+          <CardContent className="p-4 md:p-5">
+            <div className="flex items-center gap-2 text-primary-foreground/80 text-xs mb-1">
+              <div className="w-2 h-2 rounded-full bg-primary-foreground/60" />
               Total Revenue
             </div>
-            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary-foreground tracking-tight truncate">
+            <div className="text-lg sm:text-xl md:text-2xl font-bold text-primary-foreground tracking-tight">
               KES {stats.totalRevenue.toLocaleString()}
             </div>
           </CardContent>
@@ -250,12 +250,12 @@ export default function Dashboard() {
           className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4 md:p-6">
-            <div className="flex items-center gap-2 text-destructive-foreground/80 text-xs md:text-sm mb-1 md:mb-2">
-              <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-destructive-foreground/60" />
+          <CardContent className="p-4 md:p-5">
+            <div className="flex items-center gap-2 text-destructive-foreground/80 text-xs mb-1">
+              <div className="w-2 h-2 rounded-full bg-destructive-foreground/60" />
               Pending Payments
             </div>
-            <div className="text-xl md:text-2xl lg:text-3xl font-bold text-destructive-foreground tracking-tight truncate">
+            <div className="text-lg sm:text-xl md:text-2xl font-bold text-destructive-foreground tracking-tight">
               KES {stats.pendingAmount.toLocaleString()}
             </div>
           </CardContent>
@@ -266,15 +266,15 @@ export default function Dashboard() {
           className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/clients')}
         >
-          <CardContent className="p-4 md:p-6 flex justify-between items-start">
+          <CardContent className="p-4 md:p-5 flex justify-between items-start">
             <div>
-              <div className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">Active Clients</div>
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground tracking-tight">
+              <div className="text-xs text-muted-foreground mb-1">Active Clients</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-foreground tracking-tight">
                 {stats.totalClients}
               </div>
             </div>
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Users className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+            <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             </div>
           </CardContent>
         </Card>
@@ -284,15 +284,15 @@ export default function Dashboard() {
           className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4 md:p-6 flex justify-between items-start">
+          <CardContent className="p-4 md:p-5 flex justify-between items-start">
             <div>
-              <div className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">Unpaid Invoices</div>
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-destructive tracking-tight">
+              <div className="text-xs text-muted-foreground mb-1">Unpaid Invoices</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-destructive tracking-tight">
                 {stats.unpaidInvoices}
               </div>
             </div>
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
-              <Clock className="h-5 w-5 md:h-6 md:w-6 text-destructive" />
+            <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-destructive/10 flex items-center justify-center flex-shrink-0">
+              <Clock className="h-4 w-4 md:h-5 md:w-5 text-destructive" />
             </div>
           </CardContent>
         </Card>
