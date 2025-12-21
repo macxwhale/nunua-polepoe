@@ -7,13 +7,23 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
-import { Loader2, Eye, EyeOff } from 'lucide-react';
+import { Loader2, Eye, EyeOff, Phone, Lock, Building2, User } from 'lucide-react';
 
 const signUpSchema = z.object({
-  businessName: z.string().min(2, 'Business name must be at least 2 characters'),
-  fullName: z.string().min(2, 'Full name must be at least 2 characters'),
-  phoneNumber: z.string().regex(/^0\d{9}$/, 'Phone must be 10 digits starting with 0'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  businessName: z.string()
+    .trim()
+    .min(2, 'Business name must be at least 2 characters')
+    .max(100, 'Business name must be less than 100 characters'),
+  fullName: z.string()
+    .trim()
+    .min(2, 'Full name must be at least 2 characters')
+    .max(100, 'Full name must be less than 100 characters'),
+  phoneNumber: z.string()
+    .trim()
+    .regex(/^0\d{9}$/, 'Enter a valid 10-digit phone number starting with 0'),
+  password: z.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(128, 'Password must be less than 128 characters'),
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
@@ -78,18 +88,32 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
         if (setupError) throw setupError;
 
         toast.success('Account created successfully!');
-        toast.info(`Password: ${data.password}`, {
+        toast.info(`Your password: ${data.password}`, {
           duration: 10000,
-          description: 'Save this password - it will be used to login',
+          description: 'Save this password securely - you\'ll need it to log in',
         });
         onSuccess();
       }
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to create account');
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Failed to create account';
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
   };
+
+  // Password strength indicator
+  const password = form.watch('password');
+  const getPasswordStrength = (pwd: string) => {
+    if (!pwd) return { label: '', color: '', width: '0%' };
+    if (pwd.length < 6) return { label: 'Too short', color: 'bg-destructive', width: '25%' };
+    if (pwd.length < 8) return { label: 'Weak', color: 'bg-warning', width: '50%' };
+    if (pwd.length >= 8 && /[A-Z]/.test(pwd) && /[0-9]/.test(pwd)) {
+      return { label: 'Strong', color: 'bg-primary', width: '100%' };
+    }
+    return { label: 'Medium', color: 'bg-warning', width: '75%' };
+  };
+  const strength = getPasswordStrength(password);
 
   return (
     <Form {...form}>
@@ -99,9 +123,17 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
           name="businessName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Business Name</FormLabel>
+              <FormLabel className="text-sm font-medium">Business Name</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your business name" {...field} />
+                <div className="relative">
+                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input 
+                    placeholder="Your business name" 
+                    className="pl-10 h-11"
+                    autoComplete="organization"
+                    {...field} 
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -113,9 +145,17 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
           name="fullName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel className="text-sm font-medium">Full Name</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your full name" {...field} />
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input 
+                    placeholder="Your full name" 
+                    className="pl-10 h-11"
+                    autoComplete="name"
+                    {...field} 
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -127,14 +167,19 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
           name="phoneNumber"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number</FormLabel>
+              <FormLabel className="text-sm font-medium">Phone Number</FormLabel>
               <FormControl>
-                <Input 
-                  type="tel"
-                  placeholder="0712345678" 
-                  maxLength={10}
-                  {...field} 
-                />
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input 
+                    type="tel"
+                    placeholder="0712345678" 
+                    maxLength={10}
+                    className="pl-10 h-11"
+                    autoComplete="tel"
+                    {...field} 
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -146,19 +191,39 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel className="text-sm font-medium">Password</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Input type={showPassword ? "text" : "password"} placeholder="Enter your password" {...field} />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input 
+                    type={showPassword ? "text" : "password"} 
+                    placeholder="Create a secure password" 
+                    className="pl-10 pr-10 h-11"
+                    autoComplete="new-password"
+                    {...field} 
+                  />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                    tabIndex={-1}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
               </FormControl>
+              {password && (
+                <div className="space-y-1.5">
+                  <div className="h-1 w-full bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full ${strength.color} transition-all duration-300`}
+                      style={{ width: strength.width }}
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground">{strength.label}</p>
+                </div>
+              )}
               <FormMessage />
             </FormItem>
           )}
@@ -169,14 +234,23 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
+              <FormLabel className="text-sm font-medium">Confirm Password</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Input type={showConfirmPassword ? "text" : "password"} placeholder="Confirm your password" {...field} />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input 
+                    type={showConfirmPassword ? "text" : "password"} 
+                    placeholder="Confirm your password" 
+                    className="pl-10 pr-10 h-11"
+                    autoComplete="new-password"
+                    {...field} 
+                  />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                    tabIndex={-1}
+                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                   >
                     {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -187,16 +261,20 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
           )}
         />
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button type="submit" className="w-full h-11 text-sm font-medium" disabled={isLoading}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Creating Account...
             </>
           ) : (
-            'Sign Up'
+            'Create Account'
           )}
         </Button>
+
+        <p className="text-xs text-center text-muted-foreground">
+          By signing up, you agree to our Terms of Service and Privacy Policy
+        </p>
       </form>
     </Form>
   );

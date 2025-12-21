@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SignUpForm } from '@/components/auth/SignUpForm';
 import { UnifiedLoginForm } from '@/components/auth/UnifiedLoginForm';
 import { useAuth } from '@/hooks/useAuth';
+import { Shield, CreditCard, Users } from 'lucide-react';
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -22,39 +23,149 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <div className="w-full max-w-sm">
-        <Card>
-          <CardHeader className="pb-4">
-            <CardTitle className="text-lg font-display font-bold">
+    <div className="min-h-screen flex bg-background">
+      {/* Left Panel - Branding & Features (Hidden on mobile) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-12 flex-col justify-between relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="relative z-10">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+              <CreditCard className="w-5 h-5 text-primary" />
+            </div>
+            <h1 className="text-2xl font-display font-bold text-foreground">
               Lipia Pole Pole
-            </CardTitle>
-            <CardDescription className="text-xs">
-              Credit management system
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pt-0">
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid w-full grid-cols-2 h-9">
-                <TabsTrigger value="login" className="text-xs">
-                  Login
-                </TabsTrigger>
-                <TabsTrigger value="signup" className="text-xs">
-                  Sign Up
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="login" className="mt-4">
-                <UnifiedLoginForm onSuccess={handleSuccess} />
-              </TabsContent>
-              <TabsContent value="signup" className="mt-4">
-                <SignUpForm onSuccess={handleSuccess} />
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
+            </h1>
+          </div>
+          <p className="text-muted-foreground text-sm ml-[52px]">
+            Credit Management System
+          </p>
+        </div>
+
+        <div className="relative z-10 space-y-8">
+          <div>
+            <h2 className="text-3xl font-display font-bold text-foreground leading-tight mb-4">
+              Streamline your<br />
+              credit operations
+            </h2>
+            <p className="text-muted-foreground max-w-md">
+              Manage clients, track invoices, and monitor payments all in one secure platform designed for Kenyan businesses.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <FeatureItem 
+              icon={<Users className="w-4 h-4" />}
+              title="Client Management"
+              description="Track balances and payment history for all your customers"
+            />
+            <FeatureItem 
+              icon={<CreditCard className="w-4 h-4" />}
+              title="Invoice Tracking"
+              description="Create and monitor invoices with automatic status updates"
+            />
+            <FeatureItem 
+              icon={<Shield className="w-4 h-4" />}
+              title="Secure & Reliable"
+              description="Your financial data protected with enterprise-grade security"
+            />
+          </div>
+        </div>
+
+        <div className="relative z-10 text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Lipia Pole Pole. All rights reserved.
+        </div>
+      </div>
+
+      {/* Right Panel - Auth Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12">
+        <div className="w-full max-w-[400px]">
+          {/* Mobile Logo */}
+          <div className="lg:hidden text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                <CreditCard className="w-5 h-5 text-primary" />
+              </div>
+              <h1 className="text-xl font-display font-bold text-foreground">
+                Lipia Pole Pole
+              </h1>
+            </div>
+            <p className="text-muted-foreground text-sm">
+              Credit Management System
+            </p>
+          </div>
+
+          <Card className="border-border/50 shadow-lg shadow-black/5">
+            <CardHeader className="pb-2 text-center">
+              <CardTitle className="text-xl font-display font-bold">
+                {activeTab === 'login' ? 'Welcome back' : 'Create an account'}
+              </CardTitle>
+              <CardDescription className="text-sm">
+                {activeTab === 'login' 
+                  ? 'Enter your credentials to access your account' 
+                  : 'Get started with your free account today'}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-2">
+              <Tabs value={activeTab} onValueChange={setActiveTab}>
+                <TabsList className="grid w-full grid-cols-2 h-10 mb-6 bg-muted/50">
+                  <TabsTrigger 
+                    value="login" 
+                    className="text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                  >
+                    Log In
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="signup" 
+                    className="text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                  >
+                    Sign Up
+                  </TabsTrigger>
+                </TabsList>
+                <TabsContent value="login" className="mt-0">
+                  <UnifiedLoginForm onSuccess={handleSuccess} />
+                </TabsContent>
+                <TabsContent value="signup" className="mt-0">
+                  <SignUpForm onSuccess={handleSuccess} />
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
+
+          {/* Trust indicators */}
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
+            <Shield className="w-3.5 h-3.5" />
+            <span>Secured with end-to-end encryption</span>
+          </div>
+
+          {/* Mobile footer */}
+          <div className="lg:hidden mt-8 text-center text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Lipia Pole Pole. All rights reserved.
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+interface FeatureItemProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const FeatureItem = ({ icon, title, description }: FeatureItemProps) => (
+  <div className="flex items-start gap-4">
+    <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary">
+      {icon}
+    </div>
+    <div>
+      <h3 className="font-semibold text-foreground text-sm mb-0.5">{title}</h3>
+      <p className="text-muted-foreground text-sm">{description}</p>
+    </div>
+  </div>
+);
 
 export default Auth;

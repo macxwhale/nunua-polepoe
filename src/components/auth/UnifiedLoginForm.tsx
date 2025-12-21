@@ -7,16 +7,23 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
-import { Loader2, Eye, EyeOff } from 'lucide-react';
+import { Loader2, Eye, EyeOff, Phone, Lock } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const loginSchema = z.object({
-  phone_number: z.string().regex(/^0\d{9}$/, 'Phone must be 10 digits starting with 0'),
-  password: z.string().min(1, 'Password/PIN is required'),
+  phone_number: z.string()
+    .trim()
+    .regex(/^0\d{9}$/, 'Enter a valid 10-digit phone number starting with 0')
+    .max(10, 'Phone number must be exactly 10 digits'),
+  password: z.string()
+    .min(1, 'Password is required')
+    .max(128, 'Password is too long'),
 });
 
 const resetSchema = z.object({
-  phone_number: z.string().regex(/^0\d{9}$/, 'Phone must be 10 digits starting with 0'),
+  phone_number: z.string()
+    .trim()
+    .regex(/^0\d{9}$/, 'Enter a valid 10-digit phone number starting with 0'),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -72,14 +79,14 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
       }
 
       // Try to log in with each email until one succeeds
-      let lastError: any = null;
+      let lastError: Error | null = null;
       for (const email of emails) {
         const { error } = await supabase.auth.signInWithPassword({
           email,
           password: data.password,
         });
         if (!error) {
-          toast.success('Logged in successfully!');
+          toast.success('Welcome back!');
           onSuccess();
           return;
         }
@@ -87,8 +94,8 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
       }
 
       throw lastError || new Error('Login failed');
-    } catch (error: any) {
-      toast.error('Invalid phone number or password/PIN');
+    } catch {
+      toast.error('Invalid phone number or password');
     } finally {
       setIsLoading(false);
     }
@@ -107,7 +114,7 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         throw new Error(errorMessage);
       }
 
-      const { pin, accountCount, message } = response.data;
+      const { pin, accountCount } = response.data;
 
       toast.success(`Your new PIN is: ${pin}`, {
         duration: 10000,
@@ -118,8 +125,9 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
 
       setIsResetOpen(false);
       resetForm.reset();
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to reset password. Please contact support.');
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Failed to reset password. Please contact support.';
+      toast.error(message);
     } finally {
       setIsResetting(false);
     }
@@ -128,15 +136,25 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
             name="phone_number"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel className="text-sm font-medium">Phone Number</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="0712345678" {...field} />
+                  <div className="relative">
+                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input 
+                      type="tel" 
+                      placeholder="0712345678" 
+                      maxLength={10}
+                      className="pl-10 h-11"
+                      autoComplete="tel"
+                      {...field} 
+                    />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -148,14 +166,80 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password/PIN</FormLabel>
+                <div className="flex items-center justify-between">
+                  <FormLabel className="text-sm font-medium">Password / PIN</FormLabel>
+                  <Dialog open={isResetOpen} onOpenChange={setIsResetOpen}>
+                    <DialogTrigger asChild>
+                      <Button 
+                        type="button" 
+                        variant="link" 
+                        className="px-0 h-auto py-0 text-xs text-muted-foreground hover:text-primary"
+                      >
+                        Forgot password?
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle>Reset Password</DialogTitle>
+                        <DialogDescription>
+                          Enter your phone number to generate a new 6-digit PIN.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <Form {...resetForm}>
+                        <form onSubmit={resetForm.handleSubmit(onReset)} className="space-y-4">
+                          <FormField
+                            control={resetForm.control}
+                            name="phone_number"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number</FormLabel>
+                                <FormControl>
+                                  <div className="relative">
+                                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                    <Input 
+                                      type="tel" 
+                                      placeholder="0712345678" 
+                                      maxLength={10}
+                                      className="pl-10 h-11"
+                                      {...field} 
+                                    />
+                                  </div>
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <Button type="submit" className="w-full h-11" disabled={isResetting}>
+                            {isResetting ? (
+                              <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Generating PIN...
+                              </>
+                            ) : (
+                              'Generate New PIN'
+                            )}
+                          </Button>
+                        </form>
+                      </Form>
+                    </DialogContent>
+                  </Dialog>
+                </div>
                 <FormControl>
                   <div className="relative">
-                    <Input type={showPassword ? "text" : "password"} placeholder="Enter your password or PIN" {...field} />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input 
+                      type={showPassword ? "text" : "password"} 
+                      placeholder="Enter your password or PIN" 
+                      className="pl-10 pr-10 h-11"
+                      autoComplete="current-password"
+                      {...field} 
+                    />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                      tabIndex={-1}
+                      aria-label={showPassword ? "Hide password" : "Show password"}
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
@@ -166,52 +250,7 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
             )}
           />
 
-          <div className="flex justify-end">
-            <Dialog open={isResetOpen} onOpenChange={setIsResetOpen}>
-              <DialogTrigger asChild>
-                <Button type="button" variant="link" className="px-0 text-sm">
-                  Forgot password?
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Reset Password</DialogTitle>
-                  <DialogDescription>
-                    Enter your phone number to generate a new 6-digit PIN.
-                  </DialogDescription>
-                </DialogHeader>
-                <Form {...resetForm}>
-                  <form onSubmit={resetForm.handleSubmit(onReset)} className="space-y-4">
-                    <FormField
-                      control={resetForm.control}
-                      name="phone_number"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
-                          <FormControl>
-                            <Input type="tel" placeholder="0712345678" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit" className="w-full" disabled={isResetting}>
-                      {isResetting ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Generating PIN...
-                        </>
-                      ) : (
-                        'Generate New PIN'
-                      )}
-                    </Button>
-                  </form>
-                </Form>
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button type="submit" className="w-full h-11 text-sm font-medium" disabled={isLoading}>
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
