@@ -5,24 +5,27 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold font-display transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-google hover:shadow-google-md hover:bg-primary/90 active:scale-[0.98]",
-        destructive: "bg-destructive text-destructive-foreground shadow-google hover:shadow-google-md hover:bg-destructive/90 active:scale-[0.98]",
-        outline: "border border-input bg-background hover:bg-accent/50 hover:border-accent active:scale-[0.98]",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 active:scale-[0.98]",
-        ghost: "hover:bg-accent/10 active:bg-accent/20",
-        link: "text-primary underline-offset-4 hover:underline",
-        success: "bg-success text-success-foreground shadow-google hover:shadow-google-md hover:bg-success/90 active:scale-[0.98]",
-        warning: "bg-warning text-warning-foreground shadow-google hover:shadow-google-md hover:bg-warning/90 active:scale-[0.98]",
-        info: "bg-info text-info-foreground shadow-google hover:shadow-google-md hover:bg-info/90 active:scale-[0.98]",
+        default: "bg-primary text-primary-foreground shadow-md hover:shadow-glow hover:bg-primary/90 active:scale-[0.97]",
+        destructive: "bg-destructive text-destructive-foreground shadow-md hover:shadow-glow-secondary hover:bg-destructive/90 active:scale-[0.97]",
+        outline: "border-2 border-border bg-background hover:bg-accent hover:border-primary/30 hover:text-accent-foreground active:scale-[0.97]",
+        secondary: "bg-secondary text-secondary-foreground shadow-md hover:shadow-glow-secondary hover:bg-secondary/90 active:scale-[0.97]",
+        ghost: "hover:bg-accent hover:text-accent-foreground active:bg-accent/80",
+        link: "text-primary underline-offset-4 hover:underline font-medium",
+        success: "bg-success text-success-foreground shadow-md hover:shadow-glow hover:bg-success/90 active:scale-[0.97]",
+        warning: "bg-warning text-warning-foreground shadow-md hover:bg-warning/90 active:scale-[0.97]",
+        info: "bg-info text-info-foreground shadow-md hover:bg-info/90 active:scale-[0.97]",
+        // Brand gradient button
+        gradient: "gradient-brand text-white shadow-lg hover:shadow-glow active:scale-[0.97]",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        default: "h-10 px-5 py-2",
+        sm: "h-9 rounded-md px-4 text-xs",
+        lg: "h-12 rounded-xl px-8 text-base",
+        xl: "h-14 rounded-xl px-10 text-lg",
         icon: "h-10 w-10",
       },
     },
