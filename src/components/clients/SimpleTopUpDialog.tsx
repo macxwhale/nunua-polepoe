@@ -9,12 +9,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CalendarIcon, Coins, TrendingUp, Banknote, FileText } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
 import type { ClientWithDetails } from "@/api/clients.api";
 import { useInvoicesByClient } from "@/hooks/useInvoices";
+import { useCreatePayment, useInvoicePaidAmount } from "@/hooks/useTransactions";
 import type { Tables } from "@/integrations/supabase/types";
-import { useCreateNotification } from "@/hooks/useNotifications";
 
 interface SimpleTopUpDialogProps {
   open: boolean;
@@ -25,15 +23,20 @@ interface SimpleTopUpDialogProps {
 export function SimpleTopUpDialog({ open, onClose, client }: SimpleTopUpDialogProps) {
   const [date, setDate] = useState<Date>(new Date());
   const [amount, setAmount] = useState("");
-  const [loading, setLoading] = useState(false);
   const [selectedInvoiceId, setSelectedInvoiceId] = useState<string>("");
   const [selectedInvoice, setSelectedInvoice] = useState<Tables<"invoices"> | null>(null);
-  const createNotification = useCreateNotification();
 
   const { data: invoices = [], refetch: refetchInvoices } = useInvoicesByClient(client?.id || "");
+  const createPayment = useCreatePayment();
+  
+  // Get paid amount for selected invoice
+  const { data: paidAmount = 0 } = useInvoicePaidAmount(selectedInvoiceId);
 
   // Filter unpaid and partially paid invoices
   const unpaidInvoices = invoices.filter((inv) => inv.status !== "paid");
+
+  // Calculate outstanding balance for selected invoice
+  const invoiceBalance = selectedInvoice ? Number(selectedInvoice.amount) - paidAmount : 0;
 
   // Update selected invoice when selection changes
   useEffect(() => {
@@ -45,117 +48,42 @@ export function SimpleTopUpDialog({ open, onClose, client }: SimpleTopUpDialogPr
     }
   }, [selectedInvoiceId, unpaidInvoices]);
 
-  // Calculate outstanding balance for selected invoice
-  const getInvoiceBalance = async (invoiceId: string, invoiceAmount: number) => {
-    const { data: payments } = await supabase
-      .from("transactions")
-      .select("amount")
-      .eq("invoice_id", invoiceId)
-      .eq("type", "payment");
-
-    const totalPaid = payments?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
-    return invoiceAmount - totalPaid;
-  };
-
-  const [invoiceBalance, setInvoiceBalance] = useState<number>(0);
-
+  // Reset form when dialog closes
   useEffect(() => {
-    if (selectedInvoice) {
-      getInvoiceBalance(selectedInvoice.id, Number(selectedInvoice.amount)).then(setInvoiceBalance);
-    } else {
-      setInvoiceBalance(0);
-    }
-  }, [selectedInvoice]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!client || !amount) {
-      toast.error("Please enter an amount");
-      return;
-    }
-
-    if (!selectedInvoiceId) {
-      toast.error("Please select an invoice to pay");
-      return;
-    }
-
-    const paymentAmount = Number(amount);
-    if (paymentAmount <= 0) {
-      toast.error("Payment amount must be greater than zero");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) throw new Error("Not authenticated");
-
-      const { data: profile } = await supabase.from("profiles").select("tenant_id").eq("user_id", user.id).single();
-
-      if (!profile) throw new Error("Profile not found");
-
-      // Create a payment transaction linked to the invoice
-      const { error: transactionError } = await supabase.from("transactions").insert({
-        client_id: client.id,
-        tenant_id: profile.tenant_id,
-        invoice_id: selectedInvoiceId,
-        amount: paymentAmount,
-        type: "payment",
-        date: date.toISOString(),
-        notes: `Payment for Invoice ${selectedInvoice?.invoice_number}`,
-      });
-
-      if (transactionError) throw transactionError;
-
-      // Calculate total paid for this invoice
-      const { data: allPayments } = await supabase
-        .from("transactions")
-        .select("amount")
-        .eq("invoice_id", selectedInvoiceId)
-        .eq("type", "payment");
-
-      const totalPaid = allPayments?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
-      const invoiceAmount = Number(selectedInvoice?.amount || 0);
-
-      // Update invoice status based on payment
-      let newStatus = "pending";
-      if (totalPaid >= invoiceAmount) {
-        newStatus = "paid";
-      } else if (totalPaid > 0) {
-        newStatus = "partial";
-      }
-
-      const { error: invoiceUpdateError } = await supabase
-        .from("invoices")
-        .update({ status: newStatus })
-        .eq("id", selectedInvoiceId);
-
-      if (invoiceUpdateError) throw invoiceUpdateError;
-
-      // Create notification for payment
-      createNotification.mutate({
-        title: "Payment Received",
-        message: `Payment of ksh ${paymentAmount.toLocaleString()} received from ${client.name} for Invoice ${selectedInvoice?.invoice_number}`,
-        type: "payment",
-        link: "/clients",
-        read: false,
-      });
-
-      toast.success(`Payment of ksh ${paymentAmount.toLocaleString()} recorded successfully`);
+    if (!open) {
       setAmount("");
       setDate(new Date());
       setSelectedInvoiceId("");
       setSelectedInvoice(null);
-      refetchInvoices();
-      onClose();
-    } catch (error) {
-      console.error("Error processing payment:", error);
-      toast.error("Failed to process payment");
-    } finally {
-      setLoading(false);
     }
+  }, [open]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!client || !amount || !selectedInvoiceId) return;
+
+    const paymentAmount = Number(amount);
+    if (paymentAmount <= 0) return;
+
+    createPayment.mutate(
+      {
+        clientId: client.id,
+        invoiceId: selectedInvoiceId,
+        amount: paymentAmount,
+        date,
+        notes: `Payment for Invoice ${selectedInvoice?.invoice_number}`,
+      },
+      {
+        onSuccess: () => {
+          setAmount("");
+          setDate(new Date());
+          setSelectedInvoiceId("");
+          setSelectedInvoice(null);
+          refetchInvoices();
+          onClose();
+        },
+      }
+    );
   };
 
   if (!client) return null;
@@ -285,9 +213,9 @@ export function SimpleTopUpDialog({ open, onClose, client }: SimpleTopUpDialogPr
             <Button
               type="submit"
               className="flex-1 bg-success hover:bg-success/90 text-success-foreground h-11 sm:h-10 text-base sm:text-sm"
-              disabled={loading || !selectedInvoiceId}
+              disabled={createPayment.isPending || !selectedInvoiceId}
             >
-              {loading ? "Processing..." : "Record Payment"}
+              {createPayment.isPending ? "Processing..." : "Record Payment"}
             </Button>
             <Button
               type="button"

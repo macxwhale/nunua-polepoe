@@ -7,9 +7,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SimpleTopUpDialog } from "@/components/clients/SimpleTopUpDialog";
-import { ClientSalesDialog } from "@/components/clients/ClientSalesDialog";
-import { ClientTransactionsDialog } from "@/components/clients/ClientTransactionsDialog";
+import { SimpleTopUpDialog } from "./SimpleTopUpDialog";
+import { ClientSalesDialog } from "./ClientSalesDialog";
+import { ClientTransactionsDialog } from "./ClientTransactionsDialog";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { useDeleteClient } from "@/hooks/useClients";
 import type { ClientWithDetails } from "@/api/clients.api";

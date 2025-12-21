@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, UserRound } from "lucide-react";
 import { TableCell, TableRow } from "@/components/ui/table";
-import { ClientActions } from "./ClientActions";
+import { ClientActions } from "@/components/clients/ClientActions";
 import { formatDate, formatCurrency } from "@/shared/utils";
 import type { ClientWithDetails } from "@/api/clients.api";
 

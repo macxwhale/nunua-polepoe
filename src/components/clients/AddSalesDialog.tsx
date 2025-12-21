@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
 import { ShoppingCart, Plus, Package } from "lucide-react";
 import type { ClientWithDetails } from "@/api/clients.api";
-import { useProducts } from "@/hooks/useProducts";
+import { useProducts, useCreateProduct } from "@/hooks/useProducts";
+import { useCreateInvoice, useGenerateInvoiceNumber } from "@/hooks/useInvoices";
+import { useCreateSale } from "@/hooks/useTransactions";
 
 interface AddSalesDialogProps {
   open: boolean;
@@ -22,10 +22,15 @@ export function AddSalesDialog({ open, onClose, client }: AddSalesDialogProps) {
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [loading, setLoading] = useState(false);
   const [isCreatingNew, setIsCreatingNew] = useState(false);
 
   const { data: products = [], refetch: refetchProducts } = useProducts();
+  const { data: invoiceNumber } = useGenerateInvoiceNumber();
+  const createProduct = useCreateProduct();
+  const createInvoice = useCreateInvoice();
+  const createSale = useCreateSale();
+
+  const isLoading = createProduct.isPending || createInvoice.isPending || createSale.isPending;
 
   // Reset form when dialog opens/closes
   useEffect(() => {
@@ -58,89 +63,45 @@ export function AddSalesDialog({ open, onClose, client }: AddSalesDialogProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!client) return;
 
-    setLoading(true);
     try {
-      // Get user and tenant info
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error("Not authenticated");
-
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("tenant_id")
-        .eq("user_id", user.id)
-        .single();
-
-      if (!profile) throw new Error("Profile not found");
-
       let productId = selectedProduct !== "create_new" ? selectedProduct : null;
 
       // If creating a new product, create it first
       if (isCreatingNew) {
-        const { data: newProduct, error: productError } = await supabase
-          .from("products")
-          .insert({
-            tenant_id: profile.tenant_id,
-            name: productName,
-            description: productDescription,
-            price: parseFloat(price)
-          })
-          .select()
-          .single();
-
-        if (productError) throw productError;
+        const newProduct = await createProduct.mutateAsync({
+          name: productName,
+          description: productDescription,
+          price: parseFloat(price),
+        });
         productId = newProduct.id;
-        refetchProducts(); // Refresh products list
+        refetchProducts();
       }
-
-      // Generate invoice number
-      const invoiceNumber = `INV-${Date.now()}`;
 
       // Create invoice
-      const { data: newInvoice, error: invoiceError } = await supabase
-        .from("invoices")
-        .insert({
-          tenant_id: profile.tenant_id,
-          client_id: client.id,
-          invoice_number: invoiceNumber,
-          amount: parseFloat(price),
-          product_id: productId,
-          notes: isCreatingNew ? productDescription : undefined,
-          status: "pending"
-        })
-        .select()
-        .single();
-
-      if (invoiceError) throw invoiceError;
+      const invoice = await createInvoice.mutateAsync({
+        client_id: client.id,
+        invoice_number: invoiceNumber || `INV-${Date.now()}`,
+        amount: parseFloat(price),
+        product_id: productId,
+        notes: isCreatingNew ? productDescription : undefined,
+        status: "pending",
+      });
 
       // Create corresponding sale transaction
-      if (newInvoice) {
-        const { error: transactionError } = await supabase
-          .from("transactions")
-          .insert({
-            tenant_id: profile.tenant_id,
-            client_id: client.id,
-            invoice_id: newInvoice.id,
-            amount: parseFloat(price),
-            type: "sale",
-            date: new Date().toISOString(),
-            notes: `Sale: ${productName}`,
-          });
-
-        if (transactionError) {
-          console.error("Error creating sale transaction:", transactionError);
-        }
+      if (invoice) {
+        await createSale.mutateAsync({
+          clientId: client.id,
+          invoiceId: invoice.id,
+          amount: parseFloat(price),
+          notes: `Sale: ${productName}`,
+        });
       }
 
-      toast.success(isCreatingNew ? "Product created and sale added successfully" : "Sale added successfully");
       onClose();
     } catch (error) {
       console.error("Error adding sale:", error);
-      toast.error("Failed to add sale");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -243,9 +204,9 @@ export function AddSalesDialog({ open, onClose, client }: AddSalesDialogProps) {
           <Button
             type="submit"
             className="w-full bg-success hover:bg-success/90 text-success-foreground h-11 sm:h-10 text-base sm:text-sm"
-            disabled={loading || !selectedProduct}
+            disabled={isLoading || !selectedProduct}
           >
-            {loading ? "Processing..." : isCreatingNew ? "Create Product & Add Sale" : "Add Sale"}
+            {isLoading ? "Processing..." : isCreatingNew ? "Create Product & Add Sale" : "Add Sale"}
           </Button>
         </form>
       </DialogContent>

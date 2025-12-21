@@ -1,5 +1,5 @@
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { ClientRow } from "@/features/clients/components/ClientRow";
+import { ClientRow } from "./ClientRow";
 import type { ClientWithDetails } from "@/api/clients.api";
 import { formatCurrency } from "@/shared/utils";
 import { UserRound } from "lucide-react";
