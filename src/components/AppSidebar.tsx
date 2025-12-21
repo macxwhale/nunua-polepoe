@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayoutDashboard, Users, FileText, Package, ChevronDown, Plus, Smartphone, Sparkles } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Package, ChevronDown, Plus, Smartphone } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { ClientDialog } from "@/components/clients/ClientDialog";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -104,8 +104,8 @@ export function AppSidebar() {
       )}>
         {showText ? (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-md">
-              <Sparkles className="h-5 w-5 text-white" />
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <LayoutDashboard className="h-5 w-5 text-primary" />
             </div>
             <div>
               <h1 className="text-sm font-display font-bold text-primary">Lipia Pole Pole</h1>
@@ -113,8 +113,8 @@ export function AppSidebar() {
             </div>
           </div>
         ) : (
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center">
-            <Sparkles className="h-4 w-4 text-white" />
+          <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+            <LayoutDashboard className="h-4 w-4 text-primary" />
           </div>
         )}
       </div>
