@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash } from "lucide-react";
+import { Edit, Trash, Package } from "lucide-react";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { useDeleteProduct } from "@/hooks/useProducts";
 import { formatCurrency } from "@/shared/utils";
@@ -26,15 +26,6 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
   const deleteProduct = useDeleteProduct();
-  
-  const rainbowGradients = [
-    "from-emerald-500/90 via-teal-500/90 to-cyan-500/90",
-    "from-orange-500/90 via-amber-500/90 to-yellow-500/90",
-    "from-rose-500/90 via-pink-500/90 to-fuchsia-500/90",
-    "from-blue-500/90 via-indigo-500/90 to-violet-500/90",
-    "from-lime-500/90 via-green-500/90 to-emerald-500/90",
-    "from-red-500/90 via-orange-500/90 to-amber-500/90",
-  ];
 
   const handleDeleteClick = (product: Product) => {
     setProductToDelete(product);
@@ -54,37 +45,46 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
       {/* Mobile Card View */}
       <div className="md:hidden space-y-3">
         {products.map((product, index) => {
-          const gradientClass = rainbowGradients[index % rainbowGradients.length];
+          const isEven = index % 2 === 0;
           
           return (
             <div 
               key={product.id} 
-              className={`group rounded-xl overflow-hidden bg-gradient-to-br ${gradientClass} hover:scale-[1.02] text-white transition-all duration-300 shadow-lg hover:shadow-2xl border-0 p-5 space-y-4`}
+              className={`rounded-xl border border-border/40 bg-card shadow-sm p-4 space-y-3 transition-all duration-200 hover:shadow-md ${
+                isEven ? 'border-l-4 border-l-primary' : 'border-l-4 border-l-secondary'
+              }`}
             >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="font-bold text-base">
-                    {product.name}
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-3 flex-1">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                    isEven ? 'bg-primary/10' : 'bg-secondary/10'
+                  }`}>
+                    <Package className={`h-5 w-5 ${isEven ? 'text-primary' : 'text-secondary'}`} />
                   </div>
-                  {product.description && (
-                    <div className="text-sm text-white/90 mt-2 bg-black/10 rounded-lg p-3 backdrop-blur-sm">
-                      {product.description}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-display font-bold text-sm text-foreground truncate">
+                      {product.name}
                     </div>
-                  )}
-                </div>
-                <div className="text-right ml-4">
-                  <div className="font-bold text-white text-2xl">
-                    {formatCurrency(product.price)}
+                    {product.description && (
+                      <div className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
+                        {product.description}
+                      </div>
+                    )}
                   </div>
+                </div>
+                <div className={`font-display font-bold text-lg flex-shrink-0 ${
+                  isEven ? 'text-primary' : 'text-secondary'
+                }`}>
+                  {formatCurrency(product.price)}
                 </div>
               </div>
               
-              <div className="flex gap-2 pt-3 border-t border-white/20">
+              <div className="flex gap-2 pt-3 border-t border-border/30">
                 <Button 
-                  variant="ghost" 
+                  variant="outline" 
                   size="sm"
                   onClick={() => onEdit(product)}
-                  className="flex-1 h-9 bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-sm font-medium"
+                  className="flex-1 h-8 text-xs"
                 >
                   <Edit className="h-3.5 w-3.5 mr-1.5" />
                   Edit
@@ -93,7 +93,7 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
                   variant="ghost"
                   size="sm"
                   onClick={() => handleDeleteClick(product)}
-                  className="h-9 px-4 bg-red-500/30 hover:bg-red-500/50 text-white border-0 backdrop-blur-sm font-medium"
+                  className="h-8 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
                 >
                   <Trash className="h-3.5 w-3.5 mr-1.5" />
                   Delete
@@ -105,78 +105,72 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
       </div>
 
       {/* Desktop Table View */}
-      <div className="hidden md:block rounded-xl border border-border/40 overflow-hidden bg-card shadow-lg">
+      <div className="hidden md:block rounded-xl border border-border/40 overflow-hidden bg-card shadow-sm">
         <Table>
           <TableHeader>
-            <TableRow className="bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 hover:from-emerald-500/30 hover:via-teal-500/30 hover:to-cyan-500/30 border-b border-border/30">
-              <TableHead className="text-foreground font-semibold text-sm tracking-wider h-12">
-                NAME
+            <TableRow className="bg-muted/50 hover:bg-muted/60 border-b border-border/50">
+              <TableHead className="font-display font-bold text-xs uppercase tracking-wider h-12 text-muted-foreground">
+                Product
               </TableHead>
-              <TableHead className="text-foreground font-semibold text-sm tracking-wider h-12">
-                DESCRIPTION
+              <TableHead className="font-display font-bold text-xs uppercase tracking-wider h-12 text-muted-foreground">
+                Description
               </TableHead>
-              <TableHead className="text-foreground font-semibold text-sm tracking-wider h-12">
-                PRICE
+              <TableHead className="font-display font-bold text-xs uppercase tracking-wider h-12 text-muted-foreground">
+                Price
               </TableHead>
-              <TableHead className="text-foreground font-semibold text-sm tracking-wider h-12 text-right">
-                ACTIONS
+              <TableHead className="font-display font-bold text-xs uppercase tracking-wider h-12 text-right text-muted-foreground">
+                Actions
               </TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody className="bg-card">
-            {products.map((product, index) => {
-              const rowGradient = rainbowGradients[index % rainbowGradients.length];
-              
-              return (
-                <TableRow 
-                  key={product.id} 
-                  className="relative hover:text-white transition-all duration-200 border-b border-border/30 group overflow-hidden"
-                  style={{
-                    background: 'transparent'
-                  }}
-                  onMouseEnter={(e) => {
-                    const gradients = {
-                      0: 'linear-gradient(to right, rgb(16 185 129 / 0.9), rgb(20 184 166 / 0.9), rgb(6 182 212 / 0.9))',
-                      1: 'linear-gradient(to right, rgb(249 115 22 / 0.9), rgb(245 158 11 / 0.9), rgb(234 179 8 / 0.9))',
-                      2: 'linear-gradient(to right, rgb(244 63 94 / 0.9), rgb(236 72 153 / 0.9), rgb(217 70 239 / 0.9))',
-                      3: 'linear-gradient(to right, rgb(59 130 246 / 0.9), rgb(99 102 241 / 0.9), rgb(139 92 246 / 0.9))',
-                      4: 'linear-gradient(to right, rgb(132 204 22 / 0.9), rgb(34 197 94 / 0.9), rgb(16 185 129 / 0.9))',
-                      5: 'linear-gradient(to right, rgb(239 68 68 / 0.9), rgb(249 115 22 / 0.9), rgb(245 158 11 / 0.9))',
-                    };
-                    e.currentTarget.style.background = gradients[index % 6];
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent';
-                  }}
-                >
-                  <TableCell className="font-semibold py-5 group-hover:text-white">{product.name}</TableCell>
-                  <TableCell className="py-5 group-hover:text-white/90">{product.description || "-"}</TableCell>
-                  <TableCell className="font-bold py-5 text-lg group-hover:text-white">{formatCurrency(product.price)}</TableCell>
-                  <TableCell className="py-5">
-                    <div className="flex justify-end gap-1">
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        onClick={() => onEdit(product)}
-                        title="Edit"
-                        className="h-9 w-9 hover:bg-white/20 group-hover:text-white group-hover:hover:bg-white/30"
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleDeleteClick(product)}
-                        title="Delete"
-                        className="h-9 w-9 hover:bg-red-500/30 group-hover:text-white group-hover:hover:bg-red-500/50"
-                      >
-                        <Trash className="h-4 w-4" />
-                      </Button>
+          <TableBody>
+            {products.map((product, index) => (
+              <TableRow 
+                key={product.id} 
+                className="hover:bg-muted/30 transition-colors border-b border-border/30"
+              >
+                <TableCell className="py-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${
+                      index % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10'
+                    }`}>
+                      <Package className={`h-4 w-4 ${
+                        index % 2 === 0 ? 'text-primary' : 'text-secondary'
+                      }`} />
                     </div>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+                    <span className="font-medium">{product.name}</span>
+                  </div>
+                </TableCell>
+                <TableCell className="text-muted-foreground py-4 max-w-xs truncate">
+                  {product.description || "—"}
+                </TableCell>
+                <TableCell className="font-display font-bold text-base py-4">
+                  {formatCurrency(product.price)}
+                </TableCell>
+                <TableCell className="py-4">
+                  <div className="flex justify-end gap-1">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      onClick={() => onEdit(product)}
+                      title="Edit"
+                      className="h-8 w-8"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleDeleteClick(product)}
+                      title="Delete"
+                      className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                    >
+                      <Trash className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

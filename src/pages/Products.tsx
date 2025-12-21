@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, Package } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ProductsTable } from "@/components/products/ProductsTable";
 import { ProductDialog } from "@/components/products/ProductDialog";
 import { useProducts } from "@/hooks/useProducts";
@@ -28,43 +27,49 @@ export default function Products() {
 
   if (loading) {
     return (
-      <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-500">
+      <div className="space-y-6 animate-fade-in">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="space-y-2 w-full sm:w-auto">
-            <Skeleton className="h-8 sm:h-10 w-40 sm:w-44 rounded-lg" />
-            <Skeleton className="h-4 w-full sm:w-96 max-w-[300px] sm:max-w-none rounded-lg" />
+            <div className="h-9 w-40 bg-muted animate-shimmer rounded-xl" />
+            <div className="h-4 w-72 bg-muted animate-shimmer rounded-lg" />
           </div>
-          <Skeleton className="h-11 w-full sm:w-36 rounded-lg" />
+          <div className="h-11 w-full sm:w-36 bg-muted animate-shimmer rounded-xl" />
         </div>
-        <div className="border border-border/50 rounded-lg overflow-hidden shadow-google">
-          <Skeleton className="h-14 w-full" />
-          <Skeleton className="h-20 w-full mt-2" />
-          <Skeleton className="h-20 w-full mt-2" />
-          <Skeleton className="h-20 w-full mt-2" />
+        <div className="rounded-xl border border-border/40 overflow-hidden">
+          <div className="bg-muted/50 h-12 w-full" />
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="border-t border-border/30 p-5 space-y-3">
+              <div className="h-4 bg-muted animate-shimmer rounded w-1/3" />
+              <div className="h-4 bg-muted animate-shimmer rounded w-1/2" />
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 animate-fade-in">
+      {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-foreground">
             Products
           </h1>
-          <p className="text-sm sm:text-base text-muted-foreground mt-1.5 sm:mt-2">Manage your product catalog and inventory</p>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Manage your product catalog and inventory
+          </p>
         </div>
         <Button 
           onClick={() => setDialogOpen(true)} 
-          size="lg" 
-          className="gap-2 w-full sm:w-auto h-11 text-base bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-200"
+          className="gap-2 w-full sm:w-auto shadow-md hover:shadow-glow"
         >
-          <Plus className="h-5 w-5" />
+          <Plus className="h-4 w-4" />
           Add Product
         </Button>
       </div>
 
+      {/* Content */}
       {products.length === 0 ? (
         <EmptyState
           icon={Package}
@@ -78,6 +83,7 @@ export default function Products() {
       ) : (
         <ProductsTable products={products} onEdit={handleEdit} onRefresh={() => refetch()} />
       )}
+      
       <ProductDialog
         open={dialogOpen}
         onClose={handleDialogClose}

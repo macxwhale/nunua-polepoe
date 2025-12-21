@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus, FileText } from "lucide-react";
+import { Plus, FileText, Search } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Skeleton } from "@/components/ui/skeleton";
 import { InvoicesTable } from "@/components/invoices/InvoicesTable";
 import { InvoiceDialog } from "@/components/invoices/InvoiceDialog";
 import { useInvoices } from "@/hooks/useInvoices";
@@ -28,43 +27,50 @@ export default function Invoices() {
 
   if (loading) {
     return (
-      <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-500">
+      <div className="space-y-6 animate-fade-in">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="space-y-2 w-full sm:w-auto">
-            <Skeleton className="h-8 sm:h-10 w-40 sm:w-48 rounded-lg" />
-            <Skeleton className="h-4 w-full sm:w-96 max-w-[300px] sm:max-w-none rounded-lg" />
+            <div className="h-9 w-40 bg-muted animate-shimmer rounded-xl" />
+            <div className="h-4 w-64 bg-muted animate-shimmer rounded-lg" />
           </div>
-          <Skeleton className="h-11 w-full sm:w-40 rounded-lg" />
+          <div className="h-11 w-full sm:w-40 bg-muted animate-shimmer rounded-xl" />
         </div>
-        <div className="border border-border/50 rounded-lg overflow-hidden shadow-google">
-          <Skeleton className="h-14 w-full" />
-          <Skeleton className="h-20 w-full mt-2" />
-          <Skeleton className="h-20 w-full mt-2" />
-          <Skeleton className="h-20 w-full mt-2" />
+        <div className="rounded-xl border border-border/40 overflow-hidden">
+          <div className="bg-muted/50 h-12 w-full" />
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="border-t border-border/30 p-5 space-y-3">
+              <div className="h-4 bg-muted animate-shimmer rounded w-1/4" />
+              <div className="h-4 bg-muted animate-shimmer rounded w-1/2" />
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 animate-fade-in">
+      {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-foreground">
             Invoices
           </h1>
-          <p className="text-sm sm:text-base text-muted-foreground mt-1.5 sm:mt-2">Create and manage customer invoices</p>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Create and manage customer invoices
+          </p>
         </div>
         <Button 
           onClick={() => setDialogOpen(true)} 
-          size="lg" 
-          className="gap-2 w-full sm:w-auto h-11 text-base bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 hover:from-violet-600 hover:via-purple-600 hover:to-fuchsia-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-200"
+          variant="secondary"
+          className="gap-2 w-full sm:w-auto shadow-md hover:shadow-glow-secondary"
         >
-          <Plus className="h-5 w-5" />
+          <Plus className="h-4 w-4" />
           Create Invoice
         </Button>
       </div>
 
+      {/* Content */}
       {invoices.length === 0 ? (
         <EmptyState
           icon={FileText}
@@ -78,6 +84,7 @@ export default function Invoices() {
       ) : (
         <InvoicesTable invoices={invoices} onEdit={handleEdit} onRefresh={() => refetch()} />
       )}
+      
       <InvoiceDialog
         open={dialogOpen}
         onClose={handleDialogClose}
