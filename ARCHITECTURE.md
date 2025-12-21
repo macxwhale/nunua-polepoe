@@ -275,26 +275,29 @@ src/
 ├── api/                    # Data access layer
 │   ├── clients.api.ts      # Client CRUD operations
 │   ├── invoices.api.ts     # Invoice CRUD operations
+│   ├── transactions.api.ts # Transaction operations (payments/sales)
 │   ├── payments.api.ts     # Payment details operations
 │   ├── products.api.ts     # Product CRUD operations
 │   ├── notifications.api.ts # Notification operations
 │   └── tenant.api.ts       # Tenant context utilities
 │
-├── components/             # Shared UI components
+├── components/             # All UI components (consolidated)
 │   ├── ui/                 # Shadcn/Radix primitives
 │   ├── auth/               # Authentication forms
 │   ├── clients/            # Client-specific components
+│   │   ├── ClientActions.tsx
+│   │   ├── ClientRow.tsx
+│   │   ├── ClientsTable.tsx
+│   │   ├── SimpleTopUpDialog.tsx
+│   │   └── AddSalesDialog.tsx
 │   ├── invoices/           # Invoice-specific components
 │   └── products/           # Product-specific components
-│
-├── features/               # Feature modules (domain-specific)
-│   └── clients/
-│       └── components/     # Client feature components
 │
 ├── hooks/                  # React Query hooks & utilities
 │   ├── useAuth.tsx         # Authentication state
 │   ├── useClients.ts       # Client data hooks
 │   ├── useInvoices.ts      # Invoice data hooks
+│   ├── useTransactions.ts  # Transaction data hooks (NEW)
 │   ├── useProducts.ts      # Product data hooks
 │   ├── usePayments.ts      # Payment details hooks
 │   └── useUserRole.ts      # Role-based access
@@ -306,7 +309,7 @@ src/
 │
 ├── lib/                    # Utilities & helpers
 │   ├── pdfGenerator.ts     # Invoice PDF generation
-│   ├── queryClient.ts      # React Query configuration
+│   ├── queryClient.ts      # React Query configuration + query keys
 │   ├── utils.ts            # General utilities
 │   └── whatsapp.ts         # WhatsApp integration
 │
@@ -323,9 +326,6 @@ src/
     ├── components/         # Shared UI patterns
     ├── hooks/              # Shared hooks
     └── utils/              # Shared utilities
-        ├── currency.ts     # Money formatting
-        ├── date.ts         # Date formatting
-        └── index.ts        # Barrel exports
 
 supabase/
 ├── config.toml             # Supabase configuration
@@ -335,6 +335,15 @@ supabase/
     ├── reset-password/     # Password reset flow
     ├── resolve-login-email/# Email resolution
     └── setup-tenant/       # Tenant provisioning
+
+## Database Triggers (State Machines & Domain Events)
+
+| Trigger | Table | Function | Purpose |
+|---------|-------|----------|---------|
+| trigger_update_invoice_status | transactions | update_invoice_status_on_payment() | Auto-updates invoice status (pending→partial→paid) |
+| trigger_payment_notification | transactions | create_payment_notification() | Creates notification on payment |
+| trigger_invoice_notification | invoices | create_invoice_notification() | Creates notification on invoice creation |
+| trigger_update_client_status | transactions | update_client_status() | Updates client open/closed status |
 ```
 
 ### Architecture Pattern
