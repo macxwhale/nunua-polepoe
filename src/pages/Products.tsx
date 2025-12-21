@@ -22,7 +22,6 @@ export default function Products() {
   const handleDialogClose = () => {
     setDialogOpen(false);
     setEditingProduct(null);
-    refetch();
   };
 
   if (loading) {

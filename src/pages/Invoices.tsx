@@ -22,7 +22,6 @@ export default function Invoices() {
   const handleDialogClose = () => {
     setDialogOpen(false);
     setEditingInvoice(null);
-    refetch();
   };
 
   if (loading) {

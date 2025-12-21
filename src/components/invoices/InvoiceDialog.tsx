@@ -324,8 +324,12 @@ export function InvoiceDialog({ open, onClose, invoice }: InvoiceDialogProps) {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full h-11 sm:h-10 text-base sm:text-sm">
-                {invoice ? "Update" : "Create"}
+              <Button 
+                type="submit" 
+                disabled={createInvoice.isPending || updateInvoice.isPending}
+                className="w-full h-11 sm:h-10 text-base sm:text-sm"
+              >
+                {createInvoice.isPending || updateInvoice.isPending ? "Saving..." : invoice ? "Update" : "Create"}
               </Button>
             </form>
           </Form>
