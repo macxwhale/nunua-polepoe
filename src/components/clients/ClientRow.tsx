@@ -13,47 +13,18 @@ interface ClientRowProps {
   rowIndex?: number;
 }
 
-const rainbowGradients = [
-  "from-red-500/10 to-orange-500/10 hover:from-red-500/20 hover:to-orange-500/20 border-l-4 border-l-red-500",
-  "from-orange-500/10 to-yellow-500/10 hover:from-orange-500/20 hover:to-yellow-500/20 border-l-4 border-l-orange-500",
-  "from-yellow-500/10 to-green-500/10 hover:from-yellow-500/20 hover:to-green-500/20 border-l-4 border-l-yellow-500",
-  "from-green-500/10 to-emerald-500/10 hover:from-green-500/20 hover:to-emerald-500/20 border-l-4 border-l-green-500",
-  "from-emerald-500/10 to-cyan-500/10 hover:from-emerald-500/20 hover:to-cyan-500/20 border-l-4 border-l-emerald-500",
-  "from-cyan-500/10 to-blue-500/10 hover:from-cyan-500/20 hover:to-blue-500/20 border-l-4 border-l-cyan-500",
-  "from-blue-500/10 to-indigo-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 border-l-4 border-l-blue-500",
-  "from-indigo-500/10 to-purple-500/10 hover:from-indigo-500/20 hover:to-purple-500/20 border-l-4 border-l-indigo-500",
-  "from-purple-500/10 to-pink-500/10 hover:from-purple-500/20 hover:to-pink-500/20 border-l-4 border-l-purple-500",
-  "from-pink-500/10 to-rose-500/10 hover:from-pink-500/20 hover:to-rose-500/20 border-l-4 border-l-pink-500",
-];
-
-const rainbowIconColors = [
-  "text-red-500",
-  "text-orange-500",
-  "text-yellow-500",
-  "text-green-500",
-  "text-emerald-500",
-  "text-cyan-500",
-  "text-blue-500",
-  "text-indigo-500",
-  "text-purple-500",
-  "text-pink-500",
-];
-
-export function ClientRow({ client, onEdit, onRefresh, mobileActions, rowIndex = 0 }: ClientRowProps) {
+export function ClientRow({ client, onEdit, onRefresh, mobileActions }: ClientRowProps) {
   if (mobileActions) {
     return <ClientActions client={client} onEdit={onEdit} onRefresh={onRefresh} />;
   }
 
-  const gradientClass = rainbowGradients[rowIndex % rainbowGradients.length];
-  const iconColor = rainbowIconColors[rowIndex % rainbowIconColors.length];
-
   return (
-    <TableRow className={`group bg-gradient-to-r transition-all duration-300 border-b border-border/30 ${gradientClass}`}>
+    <TableRow className="group transition-all duration-300 border-b border-border/30 hover:bg-muted/50">
       <TableCell className="py-4">
         <div>
           <div className="flex items-center gap-2">
-            <UserRound className={`h-5 w-5 ${iconColor}`} />
-            <span className={`font-bold text-base ${iconColor} tracking-wide`}>
+            <UserRound className="h-5 w-5 text-primary" />
+            <span className="font-bold text-base text-foreground tracking-wide">
               {client.phone_number || client.name}
             </span>
           </div>

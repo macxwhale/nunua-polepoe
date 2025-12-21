@@ -56,16 +56,16 @@
     /* === RADIUS (compact) === */
     --radius: 0.375rem;
 
-    /* === SIDEBAR (white with green accents) === */
+    /* === SIDEBAR (white with light green hover) === */
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 13% 18%;
     --sidebar-primary: 142 70% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 142 70% 40%;
-    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-accent: 142 70% 95%;
+    --sidebar-accent-foreground: 220 13% 18%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 142 70% 40%;
-    --sidebar-muted: 220 14% 96%;
+    --sidebar-muted: 142 70% 95%;
   }
 }
 

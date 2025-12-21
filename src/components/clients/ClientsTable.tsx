@@ -2,6 +2,7 @@ import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components
 import { ClientRow } from "./ClientRow";
 import type { ClientWithDetails } from "@/api/clients.api";
 import { formatCurrency } from "@/shared/utils";
+import { UserRound } from "lucide-react";
 
 interface ClientsTableProps {
   clients: ClientWithDetails[];
@@ -23,13 +24,16 @@ export function ClientsTable({ clients, onEdit, onRefresh }: ClientsTableProps) 
               className="rounded-md border border-border bg-card p-3 space-y-2"
             >
               <div className="flex items-start justify-between">
-                <div className="flex-1 min-w-0">
-                  <span className="font-medium text-sm text-foreground block truncate">
-                    {client.name || client.phone_number}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {client.phone_number}
-                  </span>
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <UserRound className="h-5 w-5 text-primary flex-shrink-0" />
+                  <div>
+                    <span className="font-medium text-sm text-foreground block truncate">
+                      {client.name || client.phone_number}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {client.phone_number}
+                    </span>
+                  </div>
                 </div>
                 <ClientRow key={client.id} client={client} onEdit={onEdit} onRefresh={onRefresh} mobileActions />
               </div>
