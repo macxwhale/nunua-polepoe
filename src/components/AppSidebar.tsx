@@ -115,7 +115,7 @@ export function AppSidebar() {
                           }}
                           className={cn(
                             "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium w-full",
-                            "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground",
+                            "bg-primary text-primary-foreground hover:bg-primary/90",
                             !showText && "justify-center px-2"
                           )}
                         >
@@ -136,7 +136,7 @@ export function AppSidebar() {
                               cn(
                                 "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium",
                                 isActive
-                                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                  ? "bg-primary text-primary-foreground"
                                   : "text-sidebar-foreground/70 hover:bg-sidebar-muted hover:text-sidebar-foreground",
                                 !showText && "justify-center px-2"
                               )

@@ -26,6 +26,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Users, Clock } from "lucide-react";
 
 interface Invoice {
   id: string;
@@ -228,55 +229,67 @@ export default function Dashboard() {
 
       {/* Stats Cards Row */}
       <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
-        {/* Total Revenue */}
+        {/* Total Revenue - Green Card */}
         <Card 
-          className="cursor-pointer hover:bg-muted/50"
+          className="cursor-pointer bg-primary border-0 hover:bg-primary/90"
           onClick={() => navigate('/payments')}
         >
-          <CardContent className="p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Total Revenue</div>
-            <div className="text-lg font-bold text-success">
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2 text-primary-foreground/80 text-xs mb-1">
+              <div className="w-2 h-2 rounded-full bg-primary-foreground/60" />
+              Total Revenue
+            </div>
+            <div className="text-xl font-bold text-primary-foreground">
               KES {stats.totalRevenue.toLocaleString()}
             </div>
           </CardContent>
         </Card>
 
-        {/* Pending Payments */}
+        {/* Pending Payments - Red Card */}
         <Card 
-          className="cursor-pointer hover:bg-muted/50"
+          className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Pending</div>
-            <div className="text-lg font-bold text-destructive">
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2 text-destructive-foreground/80 text-xs mb-1">
+              <div className="w-2 h-2 rounded-full bg-destructive-foreground/60" />
+              Pending Payments
+            </div>
+            <div className="text-xl font-bold text-destructive-foreground">
               KES {stats.pendingAmount.toLocaleString()}
             </div>
           </CardContent>
         </Card>
 
-        {/* Active Clients */}
+        {/* Active Clients - White Card */}
         <Card 
           className="cursor-pointer hover:bg-muted/50"
           onClick={() => navigate('/clients')}
         >
-          <CardContent className="p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Clients</div>
-            <div className="text-lg font-bold text-foreground">
-              {stats.totalClients}
+          <CardContent className="p-4 flex justify-between items-start">
+            <div>
+              <div className="text-xs text-muted-foreground mb-1">Active Clients</div>
+              <div className="text-xl font-bold text-foreground">
+                {stats.totalClients}
+              </div>
             </div>
+            <Users className="h-5 w-5 text-muted-foreground" />
           </CardContent>
         </Card>
 
-        {/* Unpaid Invoices */}
+        {/* Unpaid Invoices - White Card */}
         <Card 
           className="cursor-pointer hover:bg-muted/50"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Unpaid Invoices</div>
-            <div className="text-lg font-bold text-foreground">
-              {stats.unpaidInvoices}
+          <CardContent className="p-4 flex justify-between items-start">
+            <div>
+              <div className="text-xs text-muted-foreground mb-1">Unpaid Invoices</div>
+              <div className="text-xl font-bold text-foreground">
+                {stats.unpaidInvoices}
+              </div>
             </div>
+            <Clock className="h-5 w-5 text-muted-foreground" />
           </CardContent>
         </Card>
       </div>
@@ -390,7 +403,7 @@ export default function Dashboard() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-[10px]">Invoice</TableHead>
+                  <TableHead className="text-[10px]">Invoice #</TableHead>
                   <TableHead className="text-[10px]">Amount</TableHead>
                   <TableHead className="text-[10px]">Client</TableHead>
                   <TableHead className="text-[10px]">Date</TableHead>
@@ -429,7 +442,7 @@ export default function Dashboard() {
         {/* Best Performing Clients */}
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Top Clients</CardTitle>
+            <CardTitle className="text-sm font-medium">Best Performing Clients</CardTitle>
           </CardHeader>
           <CardContent className="pt-0">
             <div className="space-y-2">
