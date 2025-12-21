@@ -41,20 +41,21 @@ export default function Clients() {
 
   if (loading) {
     return (
-      <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-500">
+      <div className="space-y-6 animate-fade-in">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="space-y-2 w-full sm:w-auto">
-            <div className="h-8 sm:h-10 w-40 sm:w-48 bg-muted animate-pulse rounded-lg" />
-            <div className="h-4 w-full sm:w-96 max-w-[300px] sm:max-w-none bg-muted animate-pulse rounded-lg" />
+            <div className="h-9 w-40 bg-muted animate-shimmer rounded-xl" />
+            <div className="h-4 w-72 bg-muted animate-shimmer rounded-lg" />
           </div>
-          <div className="h-11 w-full sm:w-36 bg-muted animate-pulse rounded-lg" />
+          <div className="h-11 w-full sm:w-36 bg-muted animate-shimmer rounded-xl" />
         </div>
-        <div className="border border-border/50 rounded-lg overflow-hidden shadow-google">
-          <div className="bg-muted/30 h-14 w-full" />
+        <div className="h-11 w-full bg-muted animate-shimmer rounded-xl" />
+        <div className="rounded-xl border border-border/40 overflow-hidden">
+          <div className="bg-muted/50 h-12 w-full" />
           {[1, 2, 3].map((i) => (
-            <div key={i} className="border-t border-border/50 p-4 sm:p-5 space-y-3">
-              <div className="h-4 bg-muted animate-pulse rounded w-1/4" />
-              <div className="h-4 bg-muted animate-pulse rounded w-1/2" />
+            <div key={i} className="border-t border-border/30 p-5 space-y-3">
+              <div className="h-4 bg-muted animate-shimmer rounded w-1/3" />
+              <div className="h-4 bg-muted animate-shimmer rounded w-1/2" />
             </div>
           ))}
         </div>
@@ -63,30 +64,40 @@ export default function Clients() {
   }
 
   return (
-    <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 animate-fade-in">
+      {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Clients</h1>
-          <p className="text-muted-foreground mt-1 text-xs sm:text-sm">Manage your customer relationships and accounts</p>
+          <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-foreground">
+            Clients
+          </h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Manage your customer relationships and accounts
+          </p>
         </div>
-        <Button onClick={() => setDialogOpen(true)} size="default" className="gap-2 shadow-sm w-full sm:w-auto h-11 text-base sm:text-sm">
+        <Button 
+          onClick={() => setDialogOpen(true)} 
+          className="gap-2 w-full sm:w-auto shadow-md hover:shadow-glow"
+        >
           <Plus className="h-4 w-4" />
           Add Client
         </Button>
       </div>
 
+      {/* Search Bar */}
       {clients.length > 0 && (
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search by name, phone, or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 h-11"
+            className="pl-11 h-11 bg-muted/40 border-border/50 focus-visible:ring-primary/50 rounded-xl"
           />
         </div>
       )}
 
+      {/* Content */}
       {clients.length === 0 ? (
         <EmptyState
           icon={Users}
@@ -98,12 +109,14 @@ export default function Clients() {
           }}
         />
       ) : filteredClients.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">
-          No clients found matching "{searchQuery}"
+        <div className="text-center py-16 text-muted-foreground rounded-xl border border-dashed border-border/50 bg-muted/20">
+          <Search className="h-10 w-10 mx-auto mb-3 opacity-40" />
+          <p>No clients found matching "<span className="font-medium text-foreground">{searchQuery}</span>"</p>
         </div>
       ) : (
         <ClientsTable clients={filteredClients} onEdit={handleEdit} onRefresh={() => refetch()} />
       )}
+      
       <ClientDialog
         open={dialogOpen}
         onClose={handleDialogClose}
