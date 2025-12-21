@@ -275,6 +275,51 @@ serve(async (req) => {
       console.error("Error sending notification:", notificationError);
     }
 
+    // Send SMS notification via Africa's Talking
+    try {
+      console.log("Sending SMS notification via Africa's Talking...");
+      const atApiKey = Deno.env.get("AT_API_KEY");
+      const atUsername = Deno.env.get("AT_USERNAME");
+
+      if (atApiKey && atUsername) {
+        // Format phone number for Africa's Talking (needs +254 format)
+        const formattedPhone = phoneNumber.startsWith("0") 
+          ? `+254${phoneNumber.substring(1)}` 
+          : phoneNumber;
+
+        const smsMessage = `Lipia Pole Pole:\nUsername: ${phoneNumber}\nPassword: ${password}\nLogin: https://lipapolepole.com\nChange your password after first login.`;
+
+        const smsBody = new URLSearchParams({
+          username: atUsername,
+          to: formattedPhone,
+          message: smsMessage,
+        });
+
+        const smsResponse = await fetch("https://api.africastalking.com/version1/messaging", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "apiKey": atApiKey,
+          },
+          body: smsBody.toString(),
+        });
+
+        if (smsResponse.ok) {
+          const smsResult = await smsResponse.json();
+          console.log("SMS sent successfully:", smsResult);
+        } else {
+          const smsError = await smsResponse.text();
+          console.error("Failed to send SMS:", smsError);
+        }
+      } else {
+        console.warn("Africa's Talking credentials not configured, skipping SMS notification");
+      }
+    } catch (smsError) {
+      // Don't fail the request if SMS fails
+      console.error("Error sending SMS:", smsError);
+    }
+
     return new Response(
       JSON.stringify({ userId: data.user?.id, email: data.user?.email }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 200 }
