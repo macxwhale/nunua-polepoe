@@ -62,6 +62,18 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         body: { phone_number: data.phone_number },
       });
 
+      // Check if account not found - show specific error
+      if (resolved.error || resolved.data?.error) {
+        const errorMessage = resolved.data?.error || resolved.error?.message;
+        if (errorMessage?.includes('No account found')) {
+          toast.error('Account Not Found', {
+            description: 'No account is associated with this phone number. Please contact the business owner.',
+          });
+          return;
+        }
+        throw new Error(errorMessage || 'Failed to resolve account');
+      }
+
       const emails: string[] = [];
       
       // Handle multiple accounts or single account
@@ -71,14 +83,15 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         emails.push(resolved.data.email);
       }
       
-      // Fallbacks (deduped) in case resolution fails
-      const legacyClientEmail = `${data.phone_number}@client.internal`;
-      const ownerEmail = `${data.phone_number}@owner.internal`;
-      for (const e of [legacyClientEmail, ownerEmail]) {
-        if (!emails.includes(e)) emails.push(e);
+      // If no emails resolved, account doesn't exist
+      if (emails.length === 0) {
+        toast.error('Account Not Found', {
+          description: 'No account is associated with this phone number. Please contact the business owner.',
+        });
+        return;
       }
 
-      // Try to log in with each email until one succeeds
+      // Try to log in with each resolved email
       let lastError: Error | null = null;
       for (const email of emails) {
         const { error } = await supabase.auth.signInWithPassword({
@@ -95,7 +108,9 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
 
       throw lastError || new Error('Login failed');
     } catch {
-      toast.error('Invalid phone number or password');
+      toast.error('Invalid password', {
+        description: 'Please check your password and try again.',
+      });
     } finally {
       setIsLoading(false);
     }
