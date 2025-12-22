@@ -25,11 +25,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Check, ChevronsUpDown } from "lucide-react";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 import type { Tables } from "@/integrations/supabase/types";
 import { useClients } from "@/hooks/useClients";
 import { useProducts } from "@/hooks/useProducts";
@@ -63,6 +77,8 @@ export function InvoiceDialog({ open, onClose, invoice }: InvoiceDialogProps) {
   const [selectedProductId, setSelectedProductId] = useState<string | undefined>(
     invoice?.product_id || undefined
   );
+  const [clientPopoverOpen, setClientPopoverOpen] = useState(false);
+  const [productPopoverOpen, setProductPopoverOpen] = useState(false);
 
   const form = useForm<InvoiceFormData>({
     resolver: zodResolver(invoiceSchema),
@@ -191,28 +207,56 @@ export function InvoiceDialog({ open, onClose, invoice }: InvoiceDialogProps) {
                 control={form.control}
                 name="client_id"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="flex flex-col">
                     <FormLabel className="text-sm sm:text-base">Client</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="h-11 sm:h-10 text-base">
-                          <SelectValue placeholder="Select client" />
-                        </SelectTrigger>
-                      </FormControl>
-                       <SelectContent position="popper" sideOffset={4} className="max-h-[200px] bg-popover z-50">
-                        {availableClients.length === 0 ? (
-                          <div className="px-2 py-6 text-center text-sm text-muted-foreground">
-                            No clients found. Add a client first.
-                          </div>
-                        ) : (
-                          availableClients.map((client) => (
-                            <SelectItem key={client.id} value={client.id}>
-                              {client.name}
-                            </SelectItem>
-                          ))
-                        )}
-                      </SelectContent>
-                    </Select>
+                    <Popover open={clientPopoverOpen} onOpenChange={setClientPopoverOpen}>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant="outline"
+                            role="combobox"
+                            aria-expanded={clientPopoverOpen}
+                            className={cn(
+                              "w-full justify-between h-11 sm:h-10 text-base",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value
+                              ? availableClients.find((client) => client.id === field.value)?.name
+                              : "Search client..."}
+                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-full p-0 bg-popover z-50" align="start">
+                        <Command>
+                          <CommandInput placeholder="Search client..." />
+                          <CommandList>
+                            <CommandEmpty>No client found.</CommandEmpty>
+                            <CommandGroup>
+                              {availableClients.map((client) => (
+                                <CommandItem
+                                  key={client.id}
+                                  value={client.name || client.phone_number}
+                                  onSelect={() => {
+                                    field.onChange(client.id);
+                                    setClientPopoverOpen(false);
+                                  }}
+                                >
+                                  <Check
+                                    className={cn(
+                                      "mr-2 h-4 w-4",
+                                      field.value === client.id ? "opacity-100" : "opacity-0"
+                                    )}
+                                  />
+                                  {client.name || client.phone_number}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -222,37 +266,60 @@ export function InvoiceDialog({ open, onClose, invoice }: InvoiceDialogProps) {
                 control={form.control}
                 name="product_id"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="flex flex-col">
                     <FormLabel className="text-sm sm:text-base">Product (Optional)</FormLabel>
                     <div className="flex gap-2">
-                      <Select
-                        value={field.value}
-                        onValueChange={(value) => {
-                          field.onChange(value);
-                          handleProductChange(value);
-                        }}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="flex-1 h-11 sm:h-10 text-base">
-                            <SelectValue placeholder="Select a product" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent position="popper" sideOffset={4} className="max-h-[200px] bg-popover z-50">
-                          {products.length === 0 ? (
-                            <div className="px-2 py-6 text-center text-sm text-muted-foreground">
-                              No products found. Add a product.
-                            </div>
-                          ) : (
-                            products
-                              .filter((product) => product.price)
-                              .map((product) => (
-                                <SelectItem key={product.id} value={product.id}>
-                                  {product.name} - KES {product.price.toLocaleString()}
-                                </SelectItem>
-                              ))
-                          )}
-                        </SelectContent>
-                      </Select>
+                      <Popover open={productPopoverOpen} onOpenChange={setProductPopoverOpen}>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant="outline"
+                              role="combobox"
+                              aria-expanded={productPopoverOpen}
+                              className={cn(
+                                "flex-1 justify-between h-11 sm:h-10 text-base",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value
+                                ? products.find((product) => product.id === field.value)?.name
+                                : "Search product..."}
+                              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-full p-0 bg-popover z-50" align="start">
+                          <Command>
+                            <CommandInput placeholder="Search product..." />
+                            <CommandList>
+                              <CommandEmpty>No product found.</CommandEmpty>
+                              <CommandGroup>
+                                {products
+                                  .filter((product) => product.price)
+                                  .map((product) => (
+                                    <CommandItem
+                                      key={product.id}
+                                      value={product.name}
+                                      onSelect={() => {
+                                        field.onChange(product.id);
+                                        handleProductChange(product.id);
+                                        setProductPopoverOpen(false);
+                                      }}
+                                    >
+                                      <Check
+                                        className={cn(
+                                          "mr-2 h-4 w-4",
+                                          field.value === product.id ? "opacity-100" : "opacity-0"
+                                        )}
+                                      />
+                                      {product.name} - KES {product.price.toLocaleString()}
+                                    </CommandItem>
+                                  ))}
+                              </CommandGroup>
+                            </CommandList>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
                       <Button
                         type="button"
                         variant="outline"
