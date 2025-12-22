@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MoreVertical, ArrowUpCircle, Receipt, ArrowLeftRight, XCircle } from "lucide-react";
+import { MoreVertical, ArrowUpCircle, Receipt, ArrowLeftRight, XCircle, Pencil, Power } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SimpleTopUpDialog } from "./SimpleTopUpDialog";
 import { ClientSalesDialog } from "./ClientSalesDialog";
 import { ClientTransactionsDialog } from "./ClientTransactionsDialog";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
-import { useDeleteClient } from "@/hooks/useClients";
+import { useDeleteClient, useUpdateClient } from "@/hooks/useClients";
 import type { ClientWithDetails } from "@/api/clients.api";
 import { toast } from "@/hooks/use-toast";
 
@@ -28,11 +29,33 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const deleteClient = useDeleteClient();
+  const updateClient = useUpdateClient();
 
   const handleDelete = async () => {
     await deleteClient.mutateAsync(client.id);
     setDeleteDialogOpen(false);
     onRefresh();
+  };
+
+  const handleToggleStatus = async () => {
+    const newStatus = client.status === "open" ? "closed" : "open";
+    try {
+      await updateClient.mutateAsync({
+        id: client.id,
+        updates: { status: newStatus },
+      });
+      toast({
+        title: "Status Updated",
+        description: `Client status changed to ${newStatus === "open" ? "Active" : "Closed"}.`,
+      });
+      onRefresh();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to update client status.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleTopUpClick = () => {
@@ -46,6 +69,8 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
       setTopUpDialogOpen(true);
     }
   };
+
+  const isOpen = client.status === "open";
 
   return (
     <>
@@ -61,29 +86,44 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48 bg-popover z-50">
           <DropdownMenuItem
-            className="text-accent cursor-pointer hover:bg-accent/5"
+            className="cursor-pointer"
+            onClick={() => onEdit(client)}
+          >
+            <Pencil className="h-4 w-4 mr-2" />
+            Edit Client
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className="cursor-pointer"
             onClick={handleTopUpClick}
           >
             <ArrowUpCircle className="h-4 w-4 mr-2" />
             Top Up
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="text-success cursor-pointer hover:bg-success/5"
+            className="cursor-pointer"
             onClick={() => setSalesDialogOpen(true)}
           >
             <Receipt className="h-4 w-4 mr-2" />
             View Sales
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="text-info cursor-pointer hover:bg-info/5"
+            className="cursor-pointer"
             onClick={() => setTransactionsDialogOpen(true)}
           >
             <ArrowLeftRight className="h-4 w-4 mr-2" />
             View Transactions
           </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={handleToggleStatus}
+          >
+            <Power className="h-4 w-4 mr-2" />
+            {isOpen ? "Close Account" : "Reopen Account"}
+          </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => setDeleteDialogOpen(true)}
-            className="text-destructive cursor-pointer hover:bg-destructive/5"
+            className="text-destructive cursor-pointer focus:text-destructive"
           >
             <XCircle className="h-4 w-4 mr-2" />
             Drop Invoice Account
