@@ -92,13 +92,22 @@ const ClientDashboard = () => {
     try {
       setLoading(true);
 
-      // Get phone number from user's email
-      const phoneNumber = user?.email?.replace('@client.internal', '');
+      if (!user) return;
 
-      if (!phoneNumber) {
-        toast.error('Invalid user data');
+      // Get phone number from the authenticated user's profile (more reliable than parsing email)
+      const { data: profile, error: profileError } = await supabase
+        .from('profiles')
+        .select('phone_number')
+        .eq('user_id', user.id)
+        .single();
+
+      if (profileError || !profile?.phone_number) {
+        console.error('Error fetching profile:', profileError);
+        toast.error('Failed to load account information');
         return;
       }
+
+      const phoneNumber = profile.phone_number;
 
       // Fetch client data
       const { data: clientInfo, error: clientError } = await supabase
