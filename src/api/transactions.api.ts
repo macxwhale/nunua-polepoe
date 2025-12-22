@@ -21,6 +21,34 @@ export interface CreateSaleData {
 }
 
 /**
+ * Send SMS notification for a transaction
+ */
+const sendTransactionSms = async (data: {
+  clientId: string;
+  type: 'sale' | 'payment';
+  amount: number;
+  invoiceNumber?: string;
+  productName?: string;
+  newBalance?: number;
+}) => {
+  try {
+    console.log("Sending transaction SMS:", data);
+    const { data: result, error } = await supabase.functions.invoke('send-transaction-sms', {
+      body: data,
+    });
+    
+    if (error) {
+      console.error("SMS function error:", error);
+    } else {
+      console.log("SMS function result:", result);
+    }
+  } catch (err) {
+    // Don't fail the transaction if SMS fails
+    console.error("Failed to send transaction SMS:", err);
+  }
+};
+
+/**
  * Fetch all transactions for the current tenant
  */
 export const getTransactions = async (): Promise<Transaction[]> => {
@@ -88,7 +116,7 @@ export const getInvoicePaidAmount = async (invoiceId: string): Promise<number> =
 };
 
 /**
- * Create a payment transaction
+ * Create a payment transaction and send SMS
  */
 export const createPaymentTransaction = async (data: CreatePaymentData): Promise<Transaction> => {
   const tenantId = await getCurrentTenantId();
@@ -108,11 +136,32 @@ export const createPaymentTransaction = async (data: CreatePaymentData): Promise
     .single();
 
   if (error) throw error;
+
+  // Fetch invoice details for SMS
+  const { data: invoice } = await supabase
+    .from("invoices")
+    .select("invoice_number, amount")
+    .eq("id", data.invoiceId)
+    .single();
+
+  // Get total paid for this invoice to calculate remaining balance
+  const paidAmount = await getInvoicePaidAmount(data.invoiceId);
+  const remainingBalance = invoice ? Number(invoice.amount) - paidAmount : undefined;
+
+  // Send SMS notification (non-blocking)
+  sendTransactionSms({
+    clientId: data.clientId,
+    type: 'payment',
+    amount: data.amount,
+    invoiceNumber: invoice?.invoice_number,
+    newBalance: remainingBalance,
+  });
+
   return transaction;
 };
 
 /**
- * Create a sale transaction
+ * Create a sale transaction and send SMS
  */
 export const createSaleTransaction = async (data: CreateSaleData): Promise<Transaction> => {
   const tenantId = await getCurrentTenantId();
@@ -132,5 +181,24 @@ export const createSaleTransaction = async (data: CreateSaleData): Promise<Trans
     .single();
 
   if (error) throw error;
+
+  // Fetch invoice and product details for SMS
+  const { data: invoice } = await supabase
+    .from("invoices")
+    .select("invoice_number, product_id, products(name)")
+    .eq("id", data.invoiceId)
+    .single();
+
+  const productName = (invoice as any)?.products?.name;
+
+  // Send SMS notification (non-blocking)
+  sendTransactionSms({
+    clientId: data.clientId,
+    type: 'sale',
+    amount: data.amount,
+    invoiceNumber: invoice?.invoice_number,
+    productName,
+  });
+
   return transaction;
 };
