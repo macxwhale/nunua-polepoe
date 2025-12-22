@@ -281,6 +281,29 @@ serve(async (req) => {
       const atApiKey = Deno.env.get("AT_SMS_API_KEY");
       const atUsername = Deno.env.get("AT_SMS_USERNAME");
       const atSenderId = Deno.env.get("AT_SMS_SENDER_ID");
+      const atAllowlist = Deno.env.get("AT_SMS_ALLOWLIST");
+
+      // Helper function to check if phone is in allowlist
+      const isPhoneAllowed = (phone: string, allowlist: string | undefined): boolean => {
+        if (!allowlist || allowlist.trim() === '') {
+          console.log("SMS allowlist not configured, skipping SMS");
+          return false; // Safe default: no SMS if not configured
+        }
+        if (allowlist.trim() === '*') {
+          console.log("SMS allowlist set to *, sending to all");
+          return true; // Wildcard: allow all
+        }
+        // Check if phone is in comma-separated list (support both 0xxx and +254xxx formats)
+        const allowedNumbers = allowlist.split(',').map(n => n.trim());
+        const phoneVariants = [
+          phone,
+          phone.startsWith("0") ? `+254${phone.substring(1)}` : phone,
+          phone.startsWith("+254") ? `0${phone.substring(4)}` : phone,
+        ];
+        const isAllowed = phoneVariants.some(variant => allowedNumbers.includes(variant));
+        console.log(`Phone ${phone} allowlist check: ${isAllowed ? 'ALLOWED' : 'NOT ALLOWED'}`);
+        return isAllowed;
+      };
 
       if (atApiKey && atUsername) {
         // Format phone number for Africa's Talking (needs +254 format)
@@ -288,46 +311,51 @@ serve(async (req) => {
           ? `+254${phoneNumber.substring(1)}` 
           : phoneNumber;
 
-        const smsMessage = `Lipia Pole Pole:\nUsername: ${phoneNumber}\nPassword: ${password}\nLogin: https://lipapolepole.com\nChange your password after first login.`;
-
-        const smsPayload: Record<string, unknown> = {
-          username: atUsername,
-          message: smsMessage,
-          phoneNumbers: [formattedPhone],
-        };
-
-        // Add senderId if configured
-        if (atSenderId) {
-          smsPayload.senderId = atSenderId;
-        }
-
-        console.log("SMS payload:", JSON.stringify(smsPayload));
-
-        const smsResponse = await fetch("https://api.africastalking.com/version1/messaging/bulk", {
-          method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "apiKey": atApiKey,
-          },
-          body: JSON.stringify(smsPayload),
-        });
-
-        const responseText = await smsResponse.text();
-        console.log("SMS API raw response:", responseText);
-
-        if (!smsResponse.ok) {
-          console.error("SMS API error:", smsResponse.status, responseText);
+        // Check allowlist before sending
+        if (!isPhoneAllowed(phoneNumber, atAllowlist)) {
+          console.log(`SMS skipped: ${phoneNumber} not in allowlist`);
         } else {
-          try {
-            const smsResult = JSON.parse(responseText);
-            if (smsResult.SMSMessageData?.Recipients?.[0]?.status === "Success") {
-              console.log("SMS sent successfully to:", formattedPhone);
-            } else {
-              console.error("SMS sending failed:", smsResult);
+          const smsMessage = `Lipia Pole Pole:\nUsername: ${phoneNumber}\nPassword: ${password}\nLogin: https://lipapolepole.com\nChange your password after first login.`;
+
+          const smsPayload: Record<string, unknown> = {
+            username: atUsername,
+            message: smsMessage,
+            phoneNumbers: [formattedPhone],
+          };
+
+          // Add senderId if configured
+          if (atSenderId) {
+            smsPayload.senderId = atSenderId;
+          }
+
+          console.log("SMS payload:", JSON.stringify(smsPayload));
+
+          const smsResponse = await fetch("https://api.africastalking.com/version1/messaging/bulk", {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "apiKey": atApiKey,
+            },
+            body: JSON.stringify(smsPayload),
+          });
+
+          const responseText = await smsResponse.text();
+          console.log("SMS API raw response:", responseText);
+
+          if (!smsResponse.ok) {
+            console.error("SMS API error:", smsResponse.status, responseText);
+          } else {
+            try {
+              const smsResult = JSON.parse(responseText);
+              if (smsResult.SMSMessageData?.Recipients?.[0]?.status === "Success") {
+                console.log("SMS sent successfully to:", formattedPhone);
+              } else {
+                console.error("SMS sending failed:", smsResult);
+              }
+            } catch {
+              console.error("Failed to parse SMS response:", responseText);
             }
-          } catch {
-            console.error("Failed to parse SMS response:", responseText);
           }
         }
       } else {
