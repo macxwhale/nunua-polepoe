@@ -59,9 +59,6 @@ export function Layout({ children }: LayoutProps) {
                   onClick={() => setSearchOpen(true)}
                   readOnly
                 />
-                <kbd className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium sm:flex">
-                  ⌘K
-                </kbd>
               </div>
             </div>
 
