@@ -10,6 +10,7 @@ import Invoices from "./pages/Invoices";
 import Products from "./pages/Products";
 import Payments from "./pages/Payments";
 import Auth from "./pages/Auth";
+import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import ClientDashboard from "./pages/ClientDashboard";
 import { useAuth } from "./hooks/useAuth";
@@ -75,9 +76,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="/auth" element={<Auth />} />
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <DashboardRouter />

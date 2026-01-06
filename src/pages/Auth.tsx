@@ -14,12 +14,12 @@ const Auth = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/', { replace: true });
+      navigate('/dashboard', { replace: true });
     }
   }, [user, navigate]);
 
   const handleSuccess = () => {
-    navigate('/', { replace: true });
+    navigate('/dashboard', { replace: true });
   };
 
   return (
