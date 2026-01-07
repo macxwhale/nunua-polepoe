@@ -84,22 +84,25 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
         });
         toast.success("Client updated successfully");
       } else {
-        // Create new client with PIN
+        // Create new client with PIN - run client creation first for faster feedback
         const pin = generatePIN();
         
-        // Create auth account for client
-        await createClientUser.mutateAsync({
-          phoneNumber: data.phone_number,
-          pin,
-        });
-
-        // Create client record
+        // Create client record first (fast)
         await createClient.mutateAsync({
           phone_number: data.phone_number,
-          name: data.phone_number, // Use phone as name for now
+          name: data.phone_number,
         });
 
-        toast.success("Client created successfully! PIN has been securely generated.", {
+        // Create auth account in background (slow - sends SMS)
+        createClientUser.mutateAsync({
+          phoneNumber: data.phone_number,
+          pin,
+        }).catch((error) => {
+          console.error("Failed to create client user account:", error);
+          // Non-blocking - client record is already created
+        });
+
+        toast.success("Client created successfully! PIN will be sent via SMS.", {
           duration: 5000,
         });
       }
