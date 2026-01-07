@@ -91,9 +91,15 @@ export default function Dashboard() {
 
       const totalClients = clients.length;
       const totalInvoices = invoices.length;
-      const pendingInvoices = invoices.filter((inv) => inv.status === "pending");
+      const unpaidInvoices = invoices.filter((inv) => inv.status === "pending" || inv.status === "partial");
       const paidInvoices = invoices.filter((inv) => inv.status === "paid");
-      const pendingAmount = pendingInvoices.reduce((sum, inv) => sum + Number(inv.amount), 0);
+      
+      // Calculate pending amount: sum of invoice amounts minus payments received
+      const totalInvoiced = unpaidInvoices.reduce((sum, inv) => sum + Number(inv.amount), 0);
+      const paymentsOnUnpaid = transactions
+        .filter((txn) => txn.type === "payment" && unpaidInvoices.some(inv => inv.id === txn.invoice_id))
+        .reduce((sum, txn) => sum + Number(txn.amount), 0);
+      const pendingAmount = totalInvoiced - paymentsOnUnpaid;
       const totalRevenue = transactions
         .filter((txn) => txn.type === "payment")
         .reduce((sum, txn) => sum + Number(txn.amount), 0);
@@ -103,12 +109,12 @@ export default function Dashboard() {
         totalInvoices,
         pendingAmount,
         totalRevenue,
-        unpaidInvoices: pendingInvoices.length,
+        unpaidInvoices: unpaidInvoices.length,
       });
 
       setPaymentDistribution({
         paid: paidInvoices.length,
-        unpaid: pendingInvoices.length,
+        unpaid: unpaidInvoices.length,
       });
 
       const clientMap = new Map(clients.map((c) => [c.id, c.name || "Unknown"]));
