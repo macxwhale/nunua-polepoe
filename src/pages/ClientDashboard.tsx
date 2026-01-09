@@ -13,24 +13,24 @@ import { format } from 'date-fns';
 import { ClientTopUpDialog } from '@/components/clients/ClientTopUpDialog';
 import type { ClientWithDetails } from '@/api/clients.api';
 
-// Rainbow gradients for invoice cards
-const rainbowGradients = [
-  'from-pink-500/90 via-purple-500/90 to-indigo-500/90',
-  'from-blue-500/90 via-cyan-500/90 to-teal-500/90',
-  'from-green-500/90 via-emerald-500/90 to-lime-500/90',
-  'from-yellow-500/90 via-orange-500/90 to-red-500/90',
-  'from-rose-500/90 via-pink-500/90 to-fuchsia-500/90',
-  'from-violet-500/90 via-purple-500/90 to-pink-500/90',
+// Brand color gradients for invoice cards (red and green themed)
+const brandGradients = [
+  'from-emerald-600/90 via-green-500/90 to-teal-500/90',
+  'from-red-600/90 via-rose-500/90 to-pink-500/90',
+  'from-green-600/90 via-emerald-500/90 to-lime-500/90',
+  'from-rose-600/90 via-red-500/90 to-orange-500/90',
+  'from-teal-600/90 via-green-500/90 to-emerald-500/90',
+  'from-pink-600/90 via-rose-500/90 to-red-500/90',
 ];
 
-// Rainbow colors for stat boxes
-const rainbowStatColors = [
-  'bg-pink-500/20 border-pink-400/40',
-  'bg-blue-500/20 border-blue-400/40',
+// Brand colors for stat boxes
+const brandStatColors = [
+  'bg-emerald-500/20 border-emerald-400/40',
+  'bg-red-500/20 border-red-400/40',
   'bg-green-500/20 border-green-400/40',
-  'bg-yellow-500/20 border-yellow-400/40',
   'bg-rose-500/20 border-rose-400/40',
-  'bg-violet-500/20 border-violet-400/40',
+  'bg-teal-500/20 border-teal-400/40',
+  'bg-pink-500/20 border-pink-400/40',
 ];
 
 interface ClientData {
@@ -210,11 +210,12 @@ const ClientDashboard = () => {
     );
   }
 
-  const calculateInvoiceBalance = (invoice: Invoice) => {
-    const paid = transactions
+  // Calculate pending amount: Total Amount - Paid Amount
+  const calculatePendingAmount = (invoice: Invoice) => {
+    const paidAmount = transactions
       .filter(t => t.invoice_id === invoice.id && t.type === 'payment')
       .reduce((sum, t) => sum + Number(t.amount), 0);
-    return Number(invoice.amount) - paid;
+    return Number(invoice.amount) - paidAmount;
   };
 
   return (
@@ -271,11 +272,12 @@ const ClientDashboard = () => {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">{
           invoices.map((invoice, index) => {
-            const balance = calculateInvoiceBalance(invoice);
-            const gradientClass = rainbowGradients[index % rainbowGradients.length];
-            const statColorClass = rainbowStatColors[index % rainbowStatColors.length];
+            const pendingAmount = calculatePendingAmount(invoice);
+            const paidAmount = Number(invoice.amount) - pendingAmount;
+            const gradientClass = brandGradients[index % brandGradients.length];
+            const statColorClass = brandStatColors[index % brandStatColors.length];
             const percentagePaid = invoice.amount > 0 
-              ? ((invoice.amount - balance) / invoice.amount * 100).toFixed(0)
+              ? ((paidAmount / invoice.amount) * 100).toFixed(0)
               : 0;
             
             return (
@@ -310,9 +312,9 @@ const ClientDashboard = () => {
                     </div>
 
                     <div className={`${statColorClass} backdrop-blur-sm rounded-xl p-4 border transition-all hover:scale-105`}>
-                      <p className="text-xs font-medium opacity-90 mb-2">Remaining</p>
+                      <p className="text-xs font-medium opacity-90 mb-2">Pending</p>
                       <p className="text-2xl font-bold tracking-tight">
-                        {balance.toLocaleString()} <span className="text-base">Ksh</span>
+                        {pendingAmount.toLocaleString()} <span className="text-base">Ksh</span>
                       </p>
                     </div>
                   </div>
@@ -421,7 +423,7 @@ const ClientDashboard = () => {
                       Balance Due
                     </div>
                     <p className="text-2xl font-bold text-destructive">
-                      Ksh {selectedInvoice && calculateInvoiceBalance(selectedInvoice).toLocaleString()}
+                      Ksh {selectedInvoice && calculatePendingAmount(selectedInvoice).toLocaleString()}
                     </p>
                   </CardContent>
                 </Card>
