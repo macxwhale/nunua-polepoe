@@ -13,6 +13,7 @@ import Auth from "./pages/Auth";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import ClientDashboard from "./pages/ClientDashboard";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { useAuth } from "./hooks/useAuth";
 import { useUserRole } from "./hooks/useUserRole";
 import { Navigate, useLocation } from "react-router-dom";
@@ -74,6 +75,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <WhatsAppButton />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />

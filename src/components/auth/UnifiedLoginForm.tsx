@@ -129,13 +129,13 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
         throw new Error(errorMessage);
       }
 
-      const { pin, accountCount } = response.data;
+      const { accountCount } = response.data;
 
-      toast.success(`Your new PIN is: ${pin}`, {
-        duration: 10000,
+      toast.success('PIN Reset Successful', {
+        duration: 5000,
         description: accountCount > 1 
-          ? `Password reset for ${accountCount} accounts. You can now log in with this PIN.`
-          : 'Please save this PIN. You can now log in with it.',
+          ? `A new PIN has been sent to your phone via SMS for ${accountCount} accounts.`
+          : 'A new PIN has been sent to your phone via SMS.',
       });
 
       setIsResetOpen(false);

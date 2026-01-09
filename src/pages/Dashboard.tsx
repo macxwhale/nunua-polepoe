@@ -304,7 +304,87 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Charts Row */}
+      {/* Latest Invoices and Best Performing Clients Row - MOVED UP */}
+      <div className="grid gap-3 grid-cols-1 lg:grid-cols-3">
+        {/* Latest Invoices Table */}
+        <Card className="lg:col-span-2">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Latest Invoices</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-xs">Invoice #</TableHead>
+                  <TableHead className="text-xs">Amount</TableHead>
+                  <TableHead className="text-xs hidden sm:table-cell">Client</TableHead>
+                  <TableHead className="text-xs hidden md:table-cell">Date</TableHead>
+                  <TableHead className="text-xs">Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {latestInvoices.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={5} className="text-center text-muted-foreground py-6 text-xs">
+                      No invoices yet
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  latestInvoices.map((invoice) => (
+                    <TableRow key={invoice.id} className="cursor-pointer" onClick={() => navigate('/invoices')}>
+                      <TableCell className="text-xs font-medium">{invoice.invoice_number}</TableCell>
+                      <TableCell className="text-xs font-semibold text-primary">KES {invoice.amount.toLocaleString()}</TableCell>
+                      <TableCell className="text-xs hidden sm:table-cell">{invoice.clientName}</TableCell>
+                      <TableCell className="text-xs text-muted-foreground hidden md:table-cell">
+                        {new Date(invoice.created_at).toLocaleDateString('en-GB')}
+                      </TableCell>
+                      <TableCell>
+                        <span className={`text-xs font-medium px-2 py-1 rounded-full ${invoice.status === "paid" ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"}`}>
+                          {invoice.status === "paid" ? "Paid" : "Unpaid"}
+                        </span>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+
+        {/* Best Performing Clients */}
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Best Performing Clients</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <div className="space-y-2">
+              {topClients.length === 0 ? (
+                <p className="text-center text-muted-foreground py-6 text-xs">No data yet</p>
+              ) : (
+                topClients.map((client, index) => (
+                  <div 
+                    key={index} 
+                    className="flex items-center justify-between py-1.5 cursor-pointer hover:bg-muted/50 -mx-1 px-1 rounded"
+                    onClick={() => navigate('/clients')}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded bg-muted flex items-center justify-center text-[10px] font-medium">
+                        {client.name.charAt(0).toUpperCase()}
+                      </div>
+                      <span className="text-xs font-medium truncate max-w-[100px]">{client.name}</span>
+                    </div>
+                    <span className="text-xs font-medium text-success">
+                      KES {client.totalSpent.toLocaleString()}
+                    </span>
+                  </div>
+                ))
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts Row - Payment Records and Distribution */}
       <div className="grid gap-3 grid-cols-1 lg:grid-cols-3">
         {/* Payment Records Bar Chart */}
         <Card className="lg:col-span-2">
@@ -398,86 +478,6 @@ export default function Dashboard() {
                 </div>
                 <span className="font-medium">{unpaidPercentage}%</span>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Invoices and Top Clients Row */}
-      <div className="grid gap-3 grid-cols-1 lg:grid-cols-3">
-        {/* Latest Invoices Table */}
-        <Card className="lg:col-span-2">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Latest Invoices</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-xs">Invoice #</TableHead>
-                  <TableHead className="text-xs">Amount</TableHead>
-                  <TableHead className="text-xs hidden sm:table-cell">Client</TableHead>
-                  <TableHead className="text-xs hidden md:table-cell">Date</TableHead>
-                  <TableHead className="text-xs">Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {latestInvoices.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={5} className="text-center text-muted-foreground py-6 text-xs">
-                      No invoices yet
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  latestInvoices.map((invoice) => (
-                    <TableRow key={invoice.id} className="cursor-pointer" onClick={() => navigate('/invoices')}>
-                      <TableCell className="text-xs font-medium">{invoice.invoice_number}</TableCell>
-                      <TableCell className="text-xs font-semibold text-primary">KES {invoice.amount.toLocaleString()}</TableCell>
-                      <TableCell className="text-xs hidden sm:table-cell">{invoice.clientName}</TableCell>
-                      <TableCell className="text-xs text-muted-foreground hidden md:table-cell">
-                        {new Date(invoice.created_at).toLocaleDateString('en-GB')}
-                      </TableCell>
-                      <TableCell>
-                        <span className={`text-xs font-medium px-2 py-1 rounded-full ${invoice.status === "paid" ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"}`}>
-                          {invoice.status === "paid" ? "Paid" : "Unpaid"}
-                        </span>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-
-        {/* Best Performing Clients */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Best Performing Clients</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-0">
-            <div className="space-y-2">
-              {topClients.length === 0 ? (
-                <p className="text-center text-muted-foreground py-6 text-xs">No data yet</p>
-              ) : (
-                topClients.map((client, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-center justify-between py-1.5 cursor-pointer hover:bg-muted/50 -mx-1 px-1 rounded"
-                    onClick={() => navigate('/clients')}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded bg-muted flex items-center justify-center text-[10px] font-medium">
-                        {client.name.charAt(0).toUpperCase()}
-                      </div>
-                      <span className="text-xs font-medium truncate max-w-[100px]">{client.name}</span>
-                    </div>
-                    <span className="text-xs font-medium text-success">
-                      KES {client.totalSpent.toLocaleString()}
-                    </span>
-                  </div>
-                ))
-              )}
             </div>
           </CardContent>
         </Card>
