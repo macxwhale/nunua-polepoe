@@ -70,6 +70,9 @@ interface InvoiceItem {
   };
 }
 
+// Map of invoice_id to paid amount for quick lookup
+type InvoicePaidAmounts = Record<string, number>;
+
 const ClientDashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -77,7 +80,8 @@ const ClientDashboard = () => {
   const [clientData, setClientData] = useState<ClientData | null>(null);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [invoicePaidAmounts, setInvoicePaidAmounts] = useState<InvoicePaidAmounts>({});
+  const [selectedInvoiceTransactions, setSelectedInvoiceTransactions] = useState<Transaction[]>([]);
   const [invoiceItems, setInvoiceItems] = useState<InvoiceItem[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [topUpDialogOpen, setTopUpDialogOpen] = useState(false);
@@ -138,6 +142,29 @@ const ClientDashboard = () => {
       }
 
       setInvoices(invoiceData || []);
+
+      // Fetch all payment transactions for this client's invoices to calculate pending amounts
+      if (invoiceData && invoiceData.length > 0) {
+        const invoiceIds = invoiceData.map(inv => inv.id);
+        const { data: txData, error: txError } = await supabase
+          .from('transactions')
+          .select('invoice_id, amount, type')
+          .in('invoice_id', invoiceIds)
+          .eq('type', 'payment');
+
+        if (txError) {
+          console.error('Error fetching transactions:', txError);
+        } else {
+          // Build a map of invoice_id -> total paid amount
+          const paidAmounts: InvoicePaidAmounts = {};
+          (txData || []).forEach(tx => {
+            if (tx.invoice_id) {
+              paidAmounts[tx.invoice_id] = (paidAmounts[tx.invoice_id] || 0) + Number(tx.amount);
+            }
+          });
+          setInvoicePaidAmounts(paidAmounts);
+        }
+      }
     } catch (error) {
       console.error('Error:', error);
       toast.error('An error occurred');
@@ -148,15 +175,16 @@ const ClientDashboard = () => {
 
   const fetchInvoiceDetails = async (invoice: Invoice) => {
     try {
-      // Fetch transactions for this invoice
+      // Fetch only payment transactions for this specific invoice
       const { data: txData, error: txError } = await supabase
         .from('transactions')
         .select('*')
         .eq('invoice_id', invoice.id)
+        .eq('type', 'payment')
         .order('date', { ascending: false });
 
       if (txError) throw txError;
-      setTransactions(txData || []);
+      setSelectedInvoiceTransactions(txData || []);
 
       // In a real implementation, you'd have an invoice_items table
       // For now, we'll use placeholder data
@@ -210,12 +238,17 @@ const ClientDashboard = () => {
     );
   }
 
-  // Calculate pending amount: Total Amount - Paid Amount
+  // Calculate pending amount: Total Amount - Paid Amount (using pre-fetched data)
   const calculatePendingAmount = (invoice: Invoice) => {
-    const paidAmount = transactions
-      .filter(t => t.invoice_id === invoice.id && t.type === 'payment')
-      .reduce((sum, t) => sum + Number(t.amount), 0);
+    const paidAmount = invoicePaidAmounts[invoice.id] || 0;
     return Number(invoice.amount) - paidAmount;
+  };
+
+  // Calculate pending for selected invoice in dialog (uses dialog-specific transactions)
+  const getSelectedInvoicePending = () => {
+    if (!selectedInvoice) return 0;
+    const paidAmount = selectedInvoiceTransactions.reduce((sum, t) => sum + Number(t.amount), 0);
+    return Number(selectedInvoice.amount) - paidAmount;
   };
 
   return (
@@ -420,31 +453,31 @@ const ClientDashboard = () => {
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                       <ArrowUpCircle className="h-4 w-4" />
-                      Balance Due
+                      Pending
                     </div>
                     <p className="text-2xl font-bold text-destructive">
-                      Ksh {selectedInvoice && calculatePendingAmount(selectedInvoice).toLocaleString()}
+                      Ksh {getSelectedInvoicePending().toLocaleString()}
                     </p>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* Transactions List */}
-              {transactions.length === 0 ? (
+              {/* Transactions List - Payments Only */}
+              {selectedInvoiceTransactions.length === 0 ? (
                 <Card className="border-dashed">
                   <CardContent className="flex flex-col items-center justify-center py-12">
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted mb-4">
                       <Receipt className="h-8 w-8 text-muted-foreground" />
                     </div>
                     <p className="text-center text-muted-foreground">
-                      No transactions recorded yet
+                      No payments recorded yet
                     </p>
                   </CardContent>
                 </Card>
               ) : (
                 <div className="space-y-3">
                   <h4 className="font-semibold text-sm text-muted-foreground">Payment History</h4>
-                  {transactions.map((transaction, index) => (
+                  {selectedInvoiceTransactions.map((transaction, index) => (
                     <Card key={transaction.id} className="overflow-hidden">
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between">
