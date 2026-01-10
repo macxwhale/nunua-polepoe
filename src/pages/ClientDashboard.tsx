@@ -423,19 +423,7 @@ const ClientDashboard = () => {
             )}
           </DialogHeader>
 
-          <Tabs defaultValue="transactions" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="transactions" className="gap-2">
-                <Receipt className="h-4 w-4" />
-                Transactions
-              </TabsTrigger>
-              <TabsTrigger value="items" className="gap-2">
-                <Tag className="h-4 w-4" />
-                Items
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="transactions" className="space-y-6 mt-6">
+          <div className="space-y-6 mt-6">
               {/* Summary Cards */}
               <div className="grid grid-cols-2 gap-4">
                 <Card className="border-primary/20 bg-primary/5">
@@ -508,43 +496,7 @@ const ClientDashboard = () => {
                   ))}
                 </div>
               )}
-            </TabsContent>
-
-            <TabsContent value="items" className="space-y-4 mt-6">
-              {invoiceItems.length === 0 ? (
-                <Card className="border-dashed">
-                  <CardContent className="flex flex-col items-center justify-center py-12">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted mb-4">
-                      <Tag className="h-8 w-8 text-muted-foreground" />
-                    </div>
-                    <p className="text-center text-muted-foreground">
-                      No invoice items available
-                    </p>
-                  </CardContent>
-                </Card>
-              ) : (
-                <div className="space-y-3">
-                  {invoiceItems.map((item) => (
-                    <Card key={item.id}>
-                      <CardContent className="p-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="font-medium">{item.products?.name}</p>
-                            <p className="text-sm text-muted-foreground">
-                              {item.quantity} × Ksh {item.price.toLocaleString()}
-                            </p>
-                          </div>
-                          <p className="text-lg font-bold">
-                            Ksh {(item.quantity * item.price).toLocaleString()}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              )}
-            </TabsContent>
-          </Tabs>
+          </div>
         </DialogContent>
       </Dialog>
 
