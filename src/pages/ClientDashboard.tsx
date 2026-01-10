@@ -141,9 +141,8 @@ const ClientDashboard = () => {
         return;
       }
 
-      setInvoices(invoiceData || []);
-
       // Fetch all payment transactions for this client's invoices to calculate pending amounts
+      let paidAmounts: InvoicePaidAmounts = {};
       if (invoiceData && invoiceData.length > 0) {
         const invoiceIds = invoiceData.map(inv => inv.id);
         const { data: txData, error: txError } = await supabase
@@ -156,15 +155,17 @@ const ClientDashboard = () => {
           console.error('Error fetching transactions:', txError);
         } else {
           // Build a map of invoice_id -> total paid amount
-          const paidAmounts: InvoicePaidAmounts = {};
           (txData || []).forEach(tx => {
             if (tx.invoice_id) {
               paidAmounts[tx.invoice_id] = (paidAmounts[tx.invoice_id] || 0) + Number(tx.amount);
             }
           });
-          setInvoicePaidAmounts(paidAmounts);
         }
       }
+
+      // Set paid amounts BEFORE invoices so pending calculation has data on first render
+      setInvoicePaidAmounts(paidAmounts);
+      setInvoices(invoiceData || []);
     } catch (error) {
       console.error('Error:', error);
       toast.error('An error occurred');
