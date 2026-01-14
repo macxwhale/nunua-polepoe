@@ -255,20 +255,25 @@ serve(async (req) => {
         attach: [""]
       };
 
-      const notificationResponse = await fetch('https://notify-woi3.onrender.com/api/notify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ZbYKwD74cqfPMdmT7ksL9ql3S0cdh5jp'
-        },
-        body: JSON.stringify(notificationBody)
-      });
-
-      if (notificationResponse.ok) {
-        const notificationResult = await notificationResponse.json();
-        console.log("Notification sent successfully:", notificationResult);
+      const telegramNotifyToken = Deno.env.get("TELEGRAM_NOTIFY_TOKEN");
+      if (!telegramNotifyToken) {
+        console.warn("TELEGRAM_NOTIFY_TOKEN not configured, skipping Telegram notification");
       } else {
-        console.error("Failed to send notification:", await notificationResponse.text());
+        const notificationResponse = await fetch('https://notify-woi3.onrender.com/api/notify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${telegramNotifyToken}`
+          },
+          body: JSON.stringify(notificationBody)
+        });
+
+        if (notificationResponse.ok) {
+          const notificationResult = await notificationResponse.json();
+          console.log("Notification sent successfully:", notificationResult);
+        } else {
+          console.error("Failed to send notification:", await notificationResponse.text());
+        }
       }
     } catch (notificationError) {
       // Don't fail the request if notification fails
