@@ -27,6 +27,56 @@ serve(async (req) => {
   }
 
   try {
+    // Authentication check - verify the caller is authenticated
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const supabaseAdmin = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+    );
+
+    // Create a client with the user's token to verify authentication
+    const supabaseClient = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_ANON_KEY")!,
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    // Verify the user is authenticated
+    const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+    
+    if (userError || !user) {
+      console.error("Token verification failed:", userError);
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const userId = user.id;
+    console.log("Authenticated user:", userId);
+
+    // Get user's tenant from profile
+    const { data: userProfile, error: profileError } = await supabaseAdmin
+      .from('profiles')
+      .select('tenant_id')
+      .eq('user_id', userId)
+      .single();
+
+    if (profileError || !userProfile) {
+      console.error("Failed to get user profile:", profileError);
+      return new Response(JSON.stringify({ error: 'Unauthorized - no profile found' }), {
+        status: 403,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const body: TransactionSmsRequest = await req.json();
     const { clientId, type, amount, invoiceNumber, productName, newBalance } = body;
 
@@ -39,10 +89,7 @@ serve(async (req) => {
       });
     }
 
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-    );
+    const supabase = supabaseAdmin;
 
     // Fetch client details
     const { data: client, error: clientError } = await supabase
@@ -55,6 +102,15 @@ serve(async (req) => {
       console.error("Failed to fetch client:", clientError);
       return new Response(JSON.stringify({ error: "Client not found" }), {
         status: 404,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Authorization check - verify caller has access to this client's tenant
+    if (client.tenant_id !== userProfile.tenant_id) {
+      console.error("Tenant mismatch - user tenant:", userProfile.tenant_id, "client tenant:", client.tenant_id);
+      return new Response(JSON.stringify({ error: 'Forbidden - not authorized for this client' }), {
+        status: 403,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }

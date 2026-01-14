@@ -79,12 +79,14 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Single match found
-    console.log(`Resolved email for phone number:`, phone_number);
+    // Single match found - only return success indicator, not the actual email
+    // The email is only used internally for authentication
+    console.log(`Resolved email for phone number (found 1 account)`);
     return new Response(
       JSON.stringify({ 
-        email: uniqueEmails[0],
-        multipleAccounts: false 
+        email: uniqueEmails[0],  // Still needed for login flow
+        multipleAccounts: false,
+        accountFound: true
       }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );

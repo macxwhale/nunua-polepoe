@@ -12,7 +12,11 @@ interface ResetPasswordRequest {
 }
 
 const generatePin = (): string => {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+  // Use cryptographically secure random number generation
+  const array = new Uint32Array(1);
+  crypto.getRandomValues(array);
+  const pin = (array[0] % 900000) + 100000;
+  return pin.toString();
 };
 
 const handler = async (req: Request): Promise<Response> => {
@@ -89,12 +93,15 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     console.log(`Password updated successfully for ${userIds.length} account(s)`);
+    
+    // SECURITY: Do NOT return the PIN in the response - only send via SMS
+    // The PIN should only be delivered through the SMS channel
     return new Response(
       JSON.stringify({ 
-        pin: newPin,
+        success: true,
         message: userIds.length > 1 
-          ? `Password reset for ${userIds.length} accounts with this phone number`
-          : 'Password reset successfully',
+          ? `Password reset for ${userIds.length} accounts with this phone number. Check your SMS.`
+          : 'Password reset successfully. Check your SMS for your new PIN.',
         accountCount: userIds.length
       }),
       {

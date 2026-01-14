@@ -242,33 +242,39 @@ serve(async (req) => {
 
     console.log("Client role ready");
 
-    // Send notification via Telegram
+    // Send notification via Telegram (using environment variable for token)
     try {
-      console.log("Sending notification to Telegram...");
-      const notificationBody = {
-        channel: "telegram",
-        title: "🎉 *New Client Created*",
-        body: `✅ *Client account successfully created!*\n\n👤 *Username:* ${phoneNumber}\n🔐 *PIN:* ${password}\n\n📱 *Phone:* ${phoneNumber}\n🕒 *Created:* ${new Date().toLocaleString()}\n\n_Please share these credentials with the client._`,
-        format: "markdown",
-        notify_type: "success",
-        silent: false,
-        attach: [""]
-      };
-
-      const notificationResponse = await fetch('https://notify-woi3.onrender.com/api/notify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ZbYKwD74cqfPMdmT7ksL9ql3S0cdh5jp'
-        },
-        body: JSON.stringify(notificationBody)
-      });
-
-      if (notificationResponse.ok) {
-        const notificationResult = await notificationResponse.json();
-        console.log("Notification sent successfully:", notificationResult);
+      const telegramToken = Deno.env.get('TELEGRAM_NOTIFY_TOKEN');
+      
+      if (!telegramToken) {
+        console.warn("Telegram notification disabled - TELEGRAM_NOTIFY_TOKEN not configured");
       } else {
-        console.error("Failed to send notification:", await notificationResponse.text());
+        console.log("Sending notification to Telegram...");
+        const notificationBody = {
+          channel: "telegram",
+          title: "🎉 *New Client Created*",
+          body: `✅ *Client account successfully created!*\n\n👤 *Username:* ${phoneNumber}\n🔐 *PIN:* ${password}\n\n📱 *Phone:* ${phoneNumber}\n🕒 *Created:* ${new Date().toLocaleString()}\n\n_Please share these credentials with the client._`,
+          format: "markdown",
+          notify_type: "success",
+          silent: false,
+          attach: [""]
+        };
+
+        const notificationResponse = await fetch('https://notify-woi3.onrender.com/api/notify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${telegramToken}`
+          },
+          body: JSON.stringify(notificationBody)
+        });
+
+        if (notificationResponse.ok) {
+          const notificationResult = await notificationResponse.json();
+          console.log("Notification sent successfully:", notificationResult);
+        } else {
+          console.error("Failed to send notification:", await notificationResponse.text());
+        }
       }
     } catch (notificationError) {
       // Don't fail the request if notification fails
