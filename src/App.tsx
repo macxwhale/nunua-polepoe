@@ -21,10 +21,11 @@ import { Loader2 } from "lucide-react";
 
 function ProtectedRoute({ children, requireOwner = false }: { children: React.ReactNode; requireOwner?: boolean }) {
   const { user, loading: authLoading } = useAuth();
-  const { role, isClient } = useUserRole();
+  const { role, isClient, isLoading: roleLoading } = useUserRole();
   const location = useLocation();
 
-  if (authLoading) {
+  // Wait for both auth and role to finish loading
+  if (authLoading || roleLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -50,10 +51,10 @@ function ProtectedRoute({ children, requireOwner = false }: { children: React.Re
 }
 
 function DashboardRouter() {
-  const { role } = useUserRole();
-  const { loading } = useAuth();
+  const { role, isLoading: roleLoading } = useUserRole();
+  const { loading: authLoading } = useAuth();
 
-  if (loading || !role) {
+  if (authLoading || roleLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
