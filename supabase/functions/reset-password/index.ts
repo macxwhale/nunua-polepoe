@@ -94,15 +94,111 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log(`Password updated successfully for ${userIds.length} account(s)`);
     
-    // SECURITY: Do NOT return the PIN in the response - only send via SMS
-    // The PIN should only be delivered through the SMS channel
+    // Send SMS with new PIN via Africa's Talking
+    let smsSent = false;
+    try {
+      console.log("Sending password reset SMS via Africa's Talking...");
+      const atApiKey = Deno.env.get("AT_SMS_API_KEY");
+      const atUsername = Deno.env.get("AT_SMS_USERNAME");
+      const atSenderId = Deno.env.get("AT_SMS_SENDER_ID");
+      const atAllowlist = Deno.env.get("AT_SMS_ALLOWLIST");
+
+      // Helper function to check if phone is in allowlist
+      const isPhoneAllowed = (phone: string, allowlist: string | undefined): boolean => {
+        if (!allowlist || allowlist.trim() === '') {
+          console.log("SMS allowlist not configured, skipping SMS");
+          return false;
+        }
+        if (allowlist.trim() === '*') {
+          console.log("SMS allowlist set to *, sending to all");
+          return true;
+        }
+        const allowedNumbers = allowlist.split(',').map(n => n.trim());
+        const phoneVariants = [
+          phone,
+          phone.startsWith("0") ? `+254${phone.substring(1)}` : phone,
+          phone.startsWith("+254") ? `0${phone.substring(4)}` : phone,
+        ];
+        const isAllowed = phoneVariants.some(variant => allowedNumbers.includes(variant));
+        console.log(`Phone ${phone} allowlist check: ${isAllowed ? 'ALLOWED' : 'NOT ALLOWED'}`);
+        return isAllowed;
+      };
+
+      if (atApiKey && atUsername) {
+        // Format phone number for Africa's Talking (needs +254 format)
+        const formattedPhone = phone_number.startsWith("0") 
+          ? `+254${phone_number.substring(1)}` 
+          : phone_number;
+
+        // Check allowlist before sending
+        if (!isPhoneAllowed(phone_number, atAllowlist)) {
+          console.log(`SMS skipped: ${phone_number} not in allowlist`);
+        } else {
+          const smsMessage = `Lipia Pole Pole: Your password has been reset.\nNew PIN: ${newPin}\nLogin: https://lipapolepole.com\nKeep this PIN secure.`;
+
+          const smsPayload: Record<string, unknown> = {
+            username: atUsername,
+            message: smsMessage,
+            phoneNumbers: [formattedPhone],
+          };
+
+          if (atSenderId) {
+            smsPayload.senderId = atSenderId;
+          }
+
+          console.log("SMS payload:", JSON.stringify({ ...smsPayload, message: "[REDACTED]" }));
+
+          const smsResponse = await fetch("https://api.africastalking.com/version1/messaging/bulk", {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "apiKey": atApiKey,
+            },
+            body: JSON.stringify(smsPayload),
+          });
+
+          const responseText = await smsResponse.text();
+          console.log("SMS API raw response:", responseText);
+
+          if (!smsResponse.ok) {
+            console.error("SMS API error:", smsResponse.status, responseText);
+          } else {
+            try {
+              const smsResult = JSON.parse(responseText);
+              if (smsResult.SMSMessageData?.Recipients?.[0]?.status === "Success") {
+                console.log("SMS sent successfully to:", formattedPhone);
+                smsSent = true;
+              } else {
+                console.error("SMS sending failed:", smsResult);
+              }
+            } catch {
+              console.error("Failed to parse SMS response:", responseText);
+            }
+          }
+        }
+      } else {
+        console.warn("Africa's Talking credentials not configured (AT_SMS_API_KEY, AT_SMS_USERNAME), skipping SMS notification");
+      }
+    } catch (smsError) {
+      console.error("Error sending SMS:", smsError);
+    }
+
+    // Return appropriate response based on SMS status
+    const baseMessage = userIds.length > 1 
+      ? `Password reset for ${userIds.length} accounts with this phone number.`
+      : 'Password reset successfully.';
+    
+    const smsStatus = smsSent 
+      ? ' Check your SMS for your new PIN.'
+      : ' SMS delivery may be delayed. If you don\'t receive it, contact support.';
+
     return new Response(
       JSON.stringify({ 
         success: true,
-        message: userIds.length > 1 
-          ? `Password reset for ${userIds.length} accounts with this phone number. Check your SMS.`
-          : 'Password reset successfully. Check your SMS for your new PIN.',
-        accountCount: userIds.length
+        message: baseMessage + smsStatus,
+        accountCount: userIds.length,
+        smsSent
       }),
       {
         status: 200,
