@@ -12,7 +12,10 @@ interface ResetPasswordRequest {
 }
 
 const generatePin = (): string => {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+  const array = new Uint32Array(1);
+  crypto.getRandomValues(array);
+  const pin = (array[0] % 900000) + 100000;
+  return pin.toString();
 };
 
 const handler = async (req: Request): Promise<Response> => {
