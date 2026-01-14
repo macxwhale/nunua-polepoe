@@ -76,7 +76,19 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
       if (signUpError) throw signUpError;
 
       if (authData.user) {
-        // Call edge function to create tenant and profile
+        // After signup with auto-confirm, we need to sign in to get a valid session
+        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password: data.password,
+        });
+
+        if (signInError) throw signInError;
+
+        if (!signInData.session) {
+          throw new Error('Failed to establish session after signup');
+        }
+
+        // Now call edge function with valid session token
         const { error: setupError } = await supabase.functions.invoke('setup-tenant', {
           body: {
             business_name: data.businessName,
