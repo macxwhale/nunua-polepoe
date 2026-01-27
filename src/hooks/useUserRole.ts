@@ -2,57 +2,64 @@ import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { useAuth } from './useAuth';
 
-export type UserRole = 'superadmin' | 'owner' | 'client' | null;
+export type UserRole = 'superadmin' | 'owner' | 'staff' | 'client' | null;
 
 export const useUserRole = () => {
   const { user } = useAuth();
   const [role, setRole] = useState<UserRole>(null);
+  const [capabilities, setCapabilities] = useState({
+    isSuperAdmin: false,
+    isOwner: false,
+    isStaff: false,
+    isClient: false
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!user) {
       setRole(null);
+      setCapabilities({ isSuperAdmin: false, isOwner: false, isStaff: false, isClient: false });
       setIsLoading(false);
       return;
     }
 
-    // Query the database for actual role instead of parsing email
     const fetchRole = async () => {
       setIsLoading(true);
       try {
-        const { data, error } = await supabase
+        const { data: rolesData, error } = await supabase
           .from('user_roles')
           .select('role')
-          .eq('user_id', user.id)
-          .maybeSingle();
+          .eq('user_id', user.id);
 
         if (error) {
-          console.error('Error fetching user role:', error);
+          console.error('Error fetching user roles:', error);
           setRole(null);
           return;
         }
 
-        if (!data) {
-          // No role found in database - fallback to null
-          setRole(null);
-          return;
-        }
+        const roles = rolesData?.map(r => r.role as string) || [];
 
-        // Map database roles to frontend roles
-        // Database has: 'superadmin' | 'admin' | 'user' | 'client'
-        // Frontend uses: 'superadmin' | 'owner' | 'client'
-        if (data.role === 'superadmin' as any) {
-          setRole('superadmin');
-        } else if (data.role === 'admin' || data.role === 'user') {
-          setRole('owner');
-        } else if (data.role === 'client') {
-          setRole('client');
-        } else {
-          setRole(null);
-        }
+        const hasSuperAdmin = roles.includes('superadmin');
+        const hasAdmin = roles.includes('admin');
+        const hasUser = roles.includes('user');
+        const hasClient = roles.includes('client');
+
+        setCapabilities({
+          isSuperAdmin: hasSuperAdmin,
+          isOwner: hasAdmin || hasSuperAdmin,
+          isStaff: hasUser,
+          isClient: hasClient
+        });
+
+        // Set primary role for UI strings
+        if (hasSuperAdmin) setRole('superadmin');
+        else if (hasAdmin) setRole('owner');
+        else if (hasUser) setRole('staff');
+        else if (hasClient) setRole('client');
+        else setRole(null);
+
       } catch (err) {
         console.error('Unexpected error fetching role:', err);
-        setRole(null);
       } finally {
         setIsLoading(false);
       }
@@ -63,9 +70,7 @@ export const useUserRole = () => {
 
   return {
     role,
-    isSuperAdmin: role === 'superadmin',
-    isOwner: role === 'owner',
-    isClient: role === 'client',
+    ...capabilities,
     isLoading
   };
 };

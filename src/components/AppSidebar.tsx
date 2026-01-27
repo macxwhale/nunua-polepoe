@@ -13,7 +13,7 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useUserRole } from "@/hooks/useUserRole";
 import { cn } from "@/lib/utils";
-import { ChevronDown, FileText, LayoutDashboard, Package, Plus, ShieldCheck, Smartphone, Users } from "lucide-react";
+import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -76,20 +76,20 @@ const getActiveClass = (color: IconColor): string => {
 
 export function AppSidebar() {
   const { state, openMobile, setOpenMobile } = useSidebar();
-  const { isSuperAdmin } = useUserRole();
+  const { isStaff } = useUserRole();
   const isMobile = useIsMobile();
-  const [openGroups, setOpenGroups] = useState<string[]>(["DASHBOARDS", "CLIENT & SALES", "SETTINGS", "SUPER ADMIN"]);
+  const [openGroups, setOpenGroups] = useState<string[]>(["DASHBOARDS", "CLIENT & SALES", "SETTINGS"]);
   const [clientDialogOpen, setClientDialogOpen] = useState(false);
 
-  const dynamicMenuGroups = [...menuGroups];
-  if (isSuperAdmin) {
-    dynamicMenuGroups.push({
-      label: "SUPER ADMIN",
-      items: [
-        { title: "Tenants", url: "/superadmin", icon: ShieldCheck, iconColor: "green" },
-      ]
-    });
-  }
+  // Filter menu groups based on role
+  const dynamicMenuGroups = menuGroups.filter(group => {
+    // Staff can see Dashboards and Client & Sales
+    if (isStaff) {
+      return group.label === "DASHBOARDS" || group.label === "CLIENT & SALES";
+    }
+    // Owners can see everything in menuGroups
+    return true;
+  });
 
   const showText = state === "expanded" || (isMobile && openMobile);
 

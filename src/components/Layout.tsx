@@ -1,17 +1,17 @@
-import { ReactNode, useState } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
-import { Input } from "@/components/ui/input";
-import { Search, ChevronDown, User } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/hooks/useAuth";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { NotificationDropdown } from "@/components/NotificationDropdown";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { useAuth } from "@/hooks/useAuth";
+import { useUserRole } from "@/hooks/useUserRole";
+import { supabase } from "@/integrations/supabase/client";
+import { ChevronDown, Search, User } from "lucide-react";
+import { ReactNode, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,6 +19,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const { user } = useAuth();
+  const { isSuperAdmin } = useUserRole();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -53,8 +54,8 @@ export function Layout({ children }: LayoutProps) {
               <SidebarTrigger className="hover:bg-accent rounded-md" />
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  placeholder="Search..." 
+                <Input
+                  placeholder="Search..."
                   className="pl-9 h-9 bg-background border-border cursor-pointer"
                   onClick={() => setSearchOpen(true)}
                   readOnly
@@ -78,11 +79,19 @@ export function Layout({ children }: LayoutProps) {
                 <DropdownMenuContent align="end" className="w-48">
                   <DropdownMenuLabel className="text-xs text-muted-foreground">My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {isSuperAdmin && (
+                    <DropdownMenuItem
+                      className="cursor-pointer text-sm font-bold text-primary"
+                      onClick={() => navigate('/superadmin')}
+                    >
+                      Switch to Super Admin
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem className="cursor-pointer text-sm">Profile</DropdownMenuItem>
                   <DropdownMenuItem className="cursor-pointer text-sm">Settings</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem 
-                    onClick={handleLogout} 
+                  <DropdownMenuItem
+                    onClick={handleLogout}
                     className="text-destructive focus:text-destructive cursor-pointer text-sm"
                   >
                     Log out
@@ -91,7 +100,7 @@ export function Layout({ children }: LayoutProps) {
               </DropdownMenu>
             </div>
           </header>
-          
+
           {/* Main Content */}
           <div className="flex-1 p-4 md:p-6">
             {children}

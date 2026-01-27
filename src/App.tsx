@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { SuperAdminLayout } from "./components/SuperAdminLayout";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { useAuth } from "./hooks/useAuth";
 import { useUserRole } from "./hooks/useUserRole";
@@ -43,14 +44,18 @@ function ProtectedRoute({ children, requireOwner = false, requireSuperAdmin = fa
   }
 
   // Redirect clients to their dashboard if they try to access owner pages
-  if (requireOwner && (isClient || isSuperAdmin) && location.pathname !== '/client-dashboard') {
-    if (isSuperAdmin) return <>{children}</>; // Superadmins can access everything
+  if (requireOwner && isClient && location.pathname !== '/client-dashboard') {
     return <Navigate to="/client-dashboard" replace />;
   }
 
   // Don't wrap client dashboard in Layout
   if (location.pathname === '/client-dashboard') {
     return <>{children}</>;
+  }
+
+  // Special layout for superadmin pages
+  if (location.pathname.startsWith('/superadmin')) {
+    return <SuperAdminLayout>{children}</SuperAdminLayout>;
   }
 
   return <Layout>{children}</Layout>;

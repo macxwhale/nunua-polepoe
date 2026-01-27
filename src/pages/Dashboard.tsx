@@ -1,23 +1,5 @@
-import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  AreaChart,
-  Area,
-} from "recharts";
 import {
   Table,
   TableBody,
@@ -26,7 +8,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Users, Clock } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { Clock, CreditCard, Users } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 interface Invoice {
   id: string;
@@ -93,7 +93,7 @@ export default function Dashboard() {
       const totalInvoices = invoices.length;
       const unpaidInvoices = invoices.filter((inv) => inv.status === "pending" || inv.status === "partial");
       const paidInvoices = invoices.filter((inv) => inv.status === "paid");
-      
+
       // Calculate pending amount: sum of invoice amounts minus payments received
       const totalInvoiced = unpaidInvoices.reduce((sum, inv) => sum + Number(inv.amount), 0);
       const paymentsOnUnpaid = transactions
@@ -236,7 +236,7 @@ export default function Dashboard() {
       {/* Stats Cards Row */}
       <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
         {/* Total Revenue - Green Card */}
-        <Card 
+        <Card
           className="cursor-pointer bg-primary border-0 hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/payments')}
         >
@@ -252,23 +252,27 @@ export default function Dashboard() {
         </Card>
 
         {/* Pending Payments - Red Card */}
-        <Card 
-          className="cursor-pointer bg-destructive border-0 hover:bg-destructive/90 shadow-lg hover:shadow-xl transition-all"
+        <Card
+          className="cursor-pointer bg-white border-destructive/20 hover:border-destructive shadow-lg hover:shadow-xl transition-all group overflow-hidden"
           onClick={() => navigate('/invoices')}
         >
-          <CardContent className="p-4 md:p-5">
-            <div className="flex items-center gap-2 text-destructive-foreground/80 text-xs mb-1">
-              <div className="w-2 h-2 rounded-full bg-destructive-foreground/60" />
-              Pending Payments
+          <CardContent className="p-4 md:p-5 relative">
+            <div className="flex items-center gap-2 text-muted-foreground text-xs mb-1 font-bold">
+              <div className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
+              Total Debt
             </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-bold text-destructive-foreground tracking-tight">
+            <div className="text-lg sm:text-xl md:text-2xl font-black text-destructive tracking-tight">
               KES {stats.pendingAmount.toLocaleString()}
+            </div>
+            <p className="text-[10px] text-muted-foreground font-medium mt-1">From {stats.unpaidInvoices} outstanding invoices</p>
+            <div className="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-opacity">
+              <CreditCard className="h-20 w-20 -mr-4 -mb-4 rotate-12" />
             </div>
           </CardContent>
         </Card>
 
         {/* Active Clients - White Card */}
-        <Card 
+        <Card
           className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/clients')}
         >
@@ -286,7 +290,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Unpaid Invoices - White Card */}
-        <Card 
+        <Card
           className="cursor-pointer hover:bg-muted/50 shadow-lg hover:shadow-xl transition-all"
           onClick={() => navigate('/invoices')}
         >
@@ -362,8 +366,8 @@ export default function Dashboard() {
                 <p className="text-center text-muted-foreground py-6 text-xs">No data yet</p>
               ) : (
                 topClients.map((client, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="flex items-center justify-between py-1.5 cursor-pointer hover:bg-muted/50 -mx-1 px-1 rounded"
                     onClick={() => navigate('/clients')}
                   >
@@ -407,23 +411,23 @@ export default function Dashboard() {
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={weeklyPayments} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
-                <XAxis 
-                  dataKey="day" 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }} 
+                <XAxis
+                  dataKey="day"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                 />
-                <YAxis 
-                  axisLine={false} 
-                  tickLine={false} 
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
                   tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                   tickFormatter={(value) => `${value / 1000}k`}
                   width={40}
                 />
-                <Tooltip 
+                <Tooltip
                   formatter={(value: number) => formatCurrency(value)}
-                  contentStyle={{ 
-                    backgroundColor: 'hsl(var(--card))', 
+                  contentStyle={{
+                    backgroundColor: 'hsl(var(--card))',
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
                     fontSize: '12px'
@@ -493,38 +497,38 @@ export default function Dashboard() {
             <AreaChart data={yearlyCollection} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2}/>
-                  <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
-              <XAxis 
-                dataKey="month" 
-                axisLine={false} 
-                tickLine={false} 
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }} 
+              <XAxis
+                dataKey="month"
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
               />
-              <YAxis 
-                axisLine={false} 
-                tickLine={false} 
+              <YAxis
+                axisLine={false}
+                tickLine={false}
                 tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                 tickFormatter={(value) => `${value / 1000}k`}
               />
-              <Tooltip 
+              <Tooltip
                 formatter={(value: number) => formatCurrency(value)}
-                contentStyle={{ 
-                  backgroundColor: 'hsl(var(--card))', 
+                contentStyle={{
+                  backgroundColor: 'hsl(var(--card))',
                   border: '1px solid hsl(var(--border))',
                   borderRadius: '4px',
                   fontSize: '12px'
                 }}
               />
-              <Area 
-                type="monotone" 
-                dataKey="amount" 
-                stroke="hsl(var(--foreground))" 
-                fillOpacity={1} 
-                fill="url(#colorAmount)" 
+              <Area
+                type="monotone"
+                dataKey="amount"
+                stroke="hsl(var(--foreground))"
+                fillOpacity={1}
+                fill="url(#colorAmount)"
                 strokeWidth={1.5}
               />
             </AreaChart>
