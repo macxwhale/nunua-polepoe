@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/useAuth";
 import {
   ArrowRight,
@@ -7,6 +14,7 @@ import {
   Bell,
   CheckCircle2,
   FileText,
+  Menu,
   Package,
   Shield,
   Users,
@@ -24,6 +32,36 @@ const Landing = () => {
       navigate("/dashboard");
     }
   }, [user, navigate]);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const NavLinks = ({ mobile = false, onClick = () => { } }: { mobile?: boolean; onClick?: () => void }) => (
+    <div className={mobile ? "flex flex-col gap-4 mt-8" : "hidden md:flex items-center gap-8 mr-8"}>
+      <button
+        onClick={() => { scrollToSection('features'); onClick(); }}
+        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors text-left"
+      >
+        Features
+      </button>
+      <button
+        onClick={() => { scrollToSection('pricing'); onClick(); }}
+        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors text-left"
+      >
+        Pricing
+      </button>
+      <button
+        onClick={() => { scrollToSection('benefits'); onClick(); }}
+        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors text-left"
+      >
+        Benefits
+      </button>
+    </div>
+  );
 
   const features = [
     {
@@ -76,21 +114,53 @@ const Landing = () => {
             <div className="flex items-center">
               <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-12 w-auto" />
             </div>
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" onClick={() => navigate("/auth")}>
-                Sign In
-              </Button>
-              <Button onClick={() => navigate("/auth")}>
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+
+            <div className="flex items-center gap-2">
+              <NavLinks />
+              <div className="hidden md:flex items-center gap-3">
+                <Button variant="ghost" onClick={() => navigate("/auth")}>
+                  Sign In
+                </Button>
+                <Button onClick={() => navigate("/auth")}>
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Mobile Menu */}
+              <div className="md:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Menu className="h-6 w-6" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                    <SheetHeader className="text-left">
+                      <SheetTitle>
+                        <img src="/logo.png" alt="Logo" className="h-10 w-auto mb-4" />
+                      </SheetTitle>
+                    </SheetHeader>
+                    <NavLinks mobile onClick={() => { }} />
+                    <div className="flex flex-col gap-3 mt-8 pt-8 border-t">
+                      <Button variant="outline" className="w-full justify-start" onClick={() => navigate("/auth")}>
+                        Sign In
+                      </Button>
+                      <Button className="w-full justify-start" onClick={() => navigate("/auth")}>
+                        Get Started
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section id="hero" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Shield className="h-4 w-4" />
@@ -118,7 +188,7 @@ const Landing = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -148,7 +218,7 @@ const Landing = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="benefits" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -192,7 +262,7 @@ const Landing = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -331,7 +401,7 @@ const Landing = () => {
               <div className="text-primary-foreground/80">Invoices Generated</div>
             </div>
             <div>
-              <div className="text-4xl sm:text-5xl font-bold mb-2">KES 200M+</div>
+              <div className="text-4xl sm:text-5xl font-bold mb-2">KES 1M+</div>
               <div className="text-primary-foreground/80">Credit Tracked</div>
             </div>
             <div>
