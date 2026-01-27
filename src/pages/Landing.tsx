@@ -191,6 +191,133 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Choose the plan that best fits your business needs. All plans include
+              full access to all features.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Monthly Tier */}
+            <Card className="relative overflow-hidden border-border/50 bg-card hover:shadow-xl transition-all duration-300 flex flex-col">
+              <CardContent className="p-8 flex-1 flex flex-col">
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-foreground mb-2">Monthly</h3>
+                  <p className="text-muted-foreground text-sm">Best for small businesses starting out.</p>
+                </div>
+                <div className="mb-8">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold text-primary">KES 1,700</span>
+                    <span className="text-muted-foreground">/mo</span>
+                  </div>
+                  <div className="mt-2 text-sm">
+                    <span className="text-muted-foreground line-through">KES 2,500</span>
+                    <span className="ml-2 text-green-600 font-medium">Save 32%</span>
+                  </div>
+                </div>
+                <ul className="space-y-4 mb-8 flex-1">
+                  {[
+                    "Unlimited Clients",
+                    "Smart Invoicing",
+                    "Real-time Notifications",
+                    "Mobile App Access"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full" variant="outline" onClick={() => navigate("/auth")}>
+                  Select Monthly
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* 6 Months Tier */}
+            <Card className="relative overflow-hidden border-primary bg-card shadow-lg hover:shadow-xl transition-all duration-300 transform md:-translate-y-2 flex flex-col scale-105 z-10">
+              <div className="bg-primary text-primary-foreground text-center py-1.5 text-sm font-bold">
+                MOST POPULAR
+              </div>
+              <CardContent className="p-8 flex-1 flex flex-col">
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-foreground mb-2">6 Months</h3>
+                  <p className="text-muted-foreground text-sm">Perfect for growing enterprises.</p>
+                </div>
+                <div className="mb-8">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold text-primary">KES 9,600</span>
+                  </div>
+                  <div className="mt-2 text-sm">
+                    <span className="text-muted-foreground line-through">KES 12,000</span>
+                    <span className="ml-2 text-green-600 font-medium">Save 20%</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Equivalent to KES 1,600/mo</p>
+                </div>
+                <ul className="space-y-4 mb-8 flex-1">
+                  {[
+                    "Priority Support",
+                    "Business Insights",
+                    "PDF Report Export",
+                    "Everything in Monthly"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full shadow-md" onClick={() => navigate("/auth")}>
+                  Select 6 Months
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* 12 Months Tier */}
+            <Card className="relative overflow-hidden border-border/50 bg-card hover:shadow-xl transition-all duration-300 flex flex-col">
+              <CardContent className="p-8 flex-1 flex flex-col">
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-foreground mb-2">12 Months</h3>
+                  <p className="text-muted-foreground text-sm">Best value for long-term partners.</p>
+                </div>
+                <div className="mb-8">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold text-primary">KES 17,000</span>
+                  </div>
+                  <div className="mt-2 text-sm">
+                    <span className="text-muted-foreground line-through">KES 19,600</span>
+                    <span className="ml-2 text-green-600 font-medium">Save 13%</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Equivalent to KES 1,417/mo</p>
+                </div>
+                <ul className="space-y-4 mb-8 flex-1">
+                  {[
+                    "Dedicated Account Manager",
+                    "Custom Branding",
+                    "Bulk Data Operations",
+                    "Everything in 6 Months"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full" variant="outline" onClick={() => navigate("/auth")}>
+                  Select 12 Months
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto">

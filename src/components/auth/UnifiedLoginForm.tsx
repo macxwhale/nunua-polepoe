@@ -1,14 +1,14 @@
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { supabase } from '@/integrations/supabase/client';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Eye, EyeOff, Loader2, Lock, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { supabase } from '@/integrations/supabase/client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
-import { Loader2, Eye, EyeOff, Phone, Lock } from 'lucide-react';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { z } from 'zod';
 
 const loginSchema = z.object({
   phone_number: z.string()
@@ -75,14 +75,14 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
       }
 
       const emails: string[] = [];
-      
+
       // Handle multiple accounts or single account
       if (resolved.data?.multipleAccounts && resolved.data?.emails) {
         emails.push(...resolved.data.emails);
       } else if (resolved.data?.email) {
         emails.push(resolved.data.email);
       }
-      
+
       // If no emails resolved, account doesn't exist
       if (emails.length === 0) {
         toast.error('Account Not Found', {
@@ -133,7 +133,7 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
 
       toast.success('PIN Reset Successful', {
         duration: 5000,
-        description: accountCount > 1 
+        description: accountCount > 1
           ? `A new PIN has been sent to your phone via SMS for ${accountCount} accounts.`
           : 'A new PIN has been sent to your phone via SMS.',
       });
@@ -151,13 +151,11 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
   return (
     <>
       <div className="flex flex-col items-center justify-center mb-8">
-        <img 
-          src="/logo.png" 
-          alt="LipiaPolePole Logo" 
-          className="h-20 w-auto object-contain mb-2"
+        <img
+          src="/logo.png"
+          alt="LipiaPolePole Logo"
+          className="h-20 w-auto object-contain"
         />
-        <h2 className="text-xl font-display font-bold text-primary">LipiaPolePole</h2>
-        <p className="text-sm text-muted-foreground">Credit Management System</p>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -170,13 +168,13 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
                 <FormControl>
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input 
-                      type="tel" 
-                      placeholder="0712345678" 
+                    <Input
+                      type="tel"
+                      placeholder="0712345678"
                       maxLength={10}
                       className="pl-10 h-11"
                       autoComplete="tel"
-                      {...field} 
+                      {...field}
                     />
                   </div>
                 </FormControl>
@@ -194,9 +192,9 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
                   <FormLabel className="text-sm font-medium">Password / PIN</FormLabel>
                   <Dialog open={isResetOpen} onOpenChange={setIsResetOpen}>
                     <DialogTrigger asChild>
-                      <Button 
-                        type="button" 
-                        variant="link" 
+                      <Button
+                        type="button"
+                        variant="link"
                         className="px-0 h-auto py-0 text-xs text-muted-foreground hover:text-primary"
                       >
                         Forgot password?
@@ -220,12 +218,12 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
                                 <FormControl>
                                   <div className="relative">
                                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                    <Input 
-                                      type="tel" 
-                                      placeholder="0712345678" 
+                                    <Input
+                                      type="tel"
+                                      placeholder="0712345678"
                                       maxLength={10}
                                       className="pl-10 h-11"
-                                      {...field} 
+                                      {...field}
                                     />
                                   </div>
                                 </FormControl>
@@ -251,12 +249,12 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
                 <FormControl>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input 
-                      type={showPassword ? "text" : "password"} 
-                      placeholder="Enter your password or PIN" 
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter your password or PIN"
                       className="pl-10 pr-10 h-11"
                       autoComplete="current-password"
-                      {...field} 
+                      {...field}
                     />
                     <button
                       type="button"

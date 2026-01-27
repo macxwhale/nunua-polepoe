@@ -31,7 +31,7 @@ const Auth = () => {
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         <div className="relative z-10">
-          <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-16 w-auto" />
+          <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-20 w-auto" />
         </div>
 
         <div className="relative z-10 space-y-8">
@@ -74,7 +74,7 @@ const Auth = () => {
         <div className="w-full max-w-[400px]">
           {/* Mobile Logo */}
           <div className="lg:hidden flex justify-center mb-8">
-            <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-12 w-auto" />
+            <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-14 w-auto" />
           </div>
 
           <Card className="border-border/50 shadow-lg shadow-black/5">
