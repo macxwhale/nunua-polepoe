@@ -11,8 +11,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useUserRole } from "@/hooks/useUserRole";
 import { cn } from "@/lib/utils";
-import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users } from "lucide-react";
+import { ChevronDown, FileText, LayoutDashboard, Package, Plus, ShieldCheck, Smartphone, Users } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -75,9 +76,20 @@ const getActiveClass = (color: IconColor): string => {
 
 export function AppSidebar() {
   const { state, openMobile, setOpenMobile } = useSidebar();
+  const { isSuperAdmin } = useUserRole();
   const isMobile = useIsMobile();
-  const [openGroups, setOpenGroups] = useState<string[]>(["DASHBOARDS", "CLIENT & SALES", "SETTINGS"]);
+  const [openGroups, setOpenGroups] = useState<string[]>(["DASHBOARDS", "CLIENT & SALES", "SETTINGS", "SUPER ADMIN"]);
   const [clientDialogOpen, setClientDialogOpen] = useState(false);
+
+  const dynamicMenuGroups = [...menuGroups];
+  if (isSuperAdmin) {
+    dynamicMenuGroups.push({
+      label: "SUPER ADMIN",
+      items: [
+        { title: "Tenants", url: "/superadmin", icon: ShieldCheck, iconColor: "green" },
+      ]
+    });
+  }
 
   const showText = state === "expanded" || (isMobile && openMobile);
 
@@ -112,7 +124,7 @@ export function AppSidebar() {
       </div>
 
       <SidebarContent className="px-3 py-5">
-        {menuGroups.map((group) => (
+        {dynamicMenuGroups.map((group) => (
           <SidebarGroup key={group.label} className="mb-4">
             {/* Only show collapsible header when expanded */}
             {showText && (

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from './useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import { useEffect, useState } from 'react';
+import { useAuth } from './useAuth';
 
-export type UserRole = 'owner' | 'client' | null;
+export type UserRole = 'superadmin' | 'owner' | 'client' | null;
 
 export const useUserRole = () => {
   const { user } = useAuth();
@@ -39,9 +39,11 @@ export const useUserRole = () => {
         }
 
         // Map database roles to frontend roles
-        // Database has: 'admin' | 'user' | 'client'
-        // Frontend uses: 'owner' | 'client'
-        if (data.role === 'admin' || data.role === 'user') {
+        // Database has: 'superadmin' | 'admin' | 'user' | 'client'
+        // Frontend uses: 'superadmin' | 'owner' | 'client'
+        if (data.role === 'superadmin' as any) {
+          setRole('superadmin');
+        } else if (data.role === 'admin' || data.role === 'user') {
           setRole('owner');
         } else if (data.role === 'client') {
           setRole('client');
@@ -59,10 +61,11 @@ export const useUserRole = () => {
     fetchRole();
   }, [user]);
 
-  return { 
-    role, 
-    isOwner: role === 'owner', 
+  return {
+    role,
+    isSuperAdmin: role === 'superadmin',
+    isOwner: role === 'owner',
     isClient: role === 'client',
-    isLoading 
+    isLoading
   };
 };

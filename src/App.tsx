@@ -1,27 +1,27 @@
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Loader2 } from "lucide-react";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import Dashboard from "./pages/Dashboard";
-import Clients from "./pages/Clients";
-import Invoices from "./pages/Invoices";
-import Products from "./pages/Products";
-import Payments from "./pages/Payments";
-import Auth from "./pages/Auth";
-import Landing from "./pages/Landing";
-import NotFound from "./pages/NotFound";
-import ClientDashboard from "./pages/ClientDashboard";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { useAuth } from "./hooks/useAuth";
 import { useUserRole } from "./hooks/useUserRole";
-import { Navigate, useLocation } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import Auth from "./pages/Auth";
+import ClientDashboard from "./pages/ClientDashboard";
+import Clients from "./pages/Clients";
+import Dashboard from "./pages/Dashboard";
+import Invoices from "./pages/Invoices";
+import Landing from "./pages/Landing";
+import NotFound from "./pages/NotFound";
+import Payments from "./pages/Payments";
+import Products from "./pages/Products";
+import SuperAdmin from "./pages/SuperAdmin";
 
-function ProtectedRoute({ children, requireOwner = false }: { children: React.ReactNode; requireOwner?: boolean }) {
+function ProtectedRoute({ children, requireOwner = false, requireSuperAdmin = false }: { children: React.ReactNode; requireOwner?: boolean; requireSuperAdmin?: boolean }) {
   const { user, loading: authLoading } = useAuth();
-  const { role, isClient, isLoading: roleLoading } = useUserRole();
+  const { role, isClient, isSuperAdmin, isLoading: roleLoading } = useUserRole();
   const location = useLocation();
 
   // Wait for both auth and role to finish loading
@@ -37,8 +37,14 @@ function ProtectedRoute({ children, requireOwner = false }: { children: React.Re
     return <Navigate to="/auth" replace />;
   }
 
+  // Redirect if superadmin is required but user is not superadmin
+  if (requireSuperAdmin && !isSuperAdmin) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
   // Redirect clients to their dashboard if they try to access owner pages
-  if (requireOwner && isClient && location.pathname !== '/client-dashboard') {
+  if (requireOwner && (isClient || isSuperAdmin) && location.pathname !== '/client-dashboard') {
+    if (isSuperAdmin) return <>{children}</>; // Superadmins can access everything
     return <Navigate to="/client-dashboard" replace />;
   }
 
@@ -86,6 +92,14 @@ const App = () => (
             element={
               <ProtectedRoute>
                 <DashboardRouter />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/superadmin"
+            element={
+              <ProtectedRoute requireSuperAdmin>
+                <SuperAdmin />
               </ProtectedRoute>
             }
           />
