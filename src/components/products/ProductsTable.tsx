@@ -1,9 +1,4 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash, Package } from "lucide-react";
-import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
-import { useDeleteProduct } from "@/hooks/useProducts";
-import { formatCurrency } from "@/shared/utils";
 import {
   Table,
   TableBody,
@@ -12,7 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useDeleteProduct } from "@/hooks/useProducts";
 import type { Tables } from "@/integrations/supabase/types";
+import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
+import { formatCurrency } from "@/shared/utils";
+import { Edit, Package, Trash } from "lucide-react";
+import { useState } from "react";
 
 type Product = Tables<"products">;
 
@@ -46,19 +46,17 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
       <div className="md:hidden space-y-3">
         {products.map((product, index) => {
           const isEven = index % 2 === 0;
-          
+
           return (
-            <div 
-              key={product.id} 
-              className={`rounded-xl border border-border/40 bg-card shadow-sm p-4 space-y-3 transition-all duration-200 hover:shadow-md ${
-                isEven ? 'border-l-4 border-l-primary' : 'border-l-4 border-l-secondary'
-              }`}
+            <div
+              key={product.id}
+              className={`rounded-xl border border-border/40 bg-card shadow-sm p-4 space-y-3 transition-all duration-200 hover:shadow-md ${isEven ? 'border-l-4 border-l-primary' : 'border-l-4 border-l-secondary'
+                }`}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3 flex-1">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    isEven ? 'bg-primary/10' : 'bg-secondary/10'
-                  }`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${isEven ? 'bg-primary/10' : 'bg-secondary/10'
+                    }`}>
                     <Package className={`h-5 w-5 ${isEven ? 'text-primary' : 'text-secondary'}`} />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -72,19 +70,18 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
                     )}
                   </div>
                 </div>
-                <div className={`font-display font-bold text-lg flex-shrink-0 ${
-                  isEven ? 'text-primary' : 'text-secondary'
-                }`}>
+                <div className={`font-display font-bold text-lg flex-shrink-0 ${isEven ? 'text-primary' : 'text-secondary'
+                  }`}>
                   {formatCurrency(product.price)}
                 </div>
               </div>
-              
+
               <div className="flex gap-2 pt-3 border-t border-border/30">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   onClick={() => onEdit(product)}
-                  className="flex-1 h-8 text-xs"
+                  className="flex-1 h-9 text-xs"
                 >
                   <Edit className="h-3.5 w-3.5 mr-1.5" />
                   Edit
@@ -93,7 +90,7 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
                   variant="ghost"
                   size="sm"
                   onClick={() => handleDeleteClick(product)}
-                  className="h-8 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
+                  className="h-9 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
                 >
                   <Trash className="h-3.5 w-3.5 mr-1.5" />
                   Delete
@@ -125,18 +122,16 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
           </TableHeader>
           <TableBody>
             {products.map((product, index) => (
-              <TableRow 
-                key={product.id} 
+              <TableRow
+                key={product.id}
                 className="hover:bg-muted/30 transition-colors border-b border-border/30"
               >
                 <TableCell className="py-4">
                   <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-                      index % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10'
-                    }`}>
-                      <Package className={`h-4 w-4 ${
-                        index % 2 === 0 ? 'text-primary' : 'text-secondary'
-                      }`} />
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${index % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10'
+                      }`}>
+                      <Package className={`h-4 w-4 ${index % 2 === 0 ? 'text-primary' : 'text-secondary'
+                        }`} />
                     </div>
                     <span className="font-medium">{product.name}</span>
                   </div>
@@ -149,9 +144,9 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
                 </TableCell>
                 <TableCell className="py-4">
                   <div className="flex justify-end gap-1">
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       onClick={() => onEdit(product)}
                       title="Edit"
                       className="h-8 w-8"

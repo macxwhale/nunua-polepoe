@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateProduct, useUpdateProduct } from "@/hooks/useProducts";
 import type { Tables } from "@/integrations/supabase/types";
+import { useEffect, useState } from "react";
 
 type Product = Tables<"products">;
 
@@ -76,7 +76,7 @@ export function ProductDialog({ open, onClose, product }: ProductDialogProps) {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
-              className="h-11 sm:h-10 text-base mt-1.5"
+              className="h-11 sm:h-10 text-base mt-2"
             />
           </div>
           <div>
@@ -97,14 +97,14 @@ export function ProductDialog({ open, onClose, product }: ProductDialogProps) {
               value={formData.price}
               onChange={(e) => setFormData({ ...formData, price: e.target.value })}
               required
-              className="h-11 sm:h-10 text-base mt-1.5"
+              className="h-11 sm:h-10 text-base mt-2"
             />
           </div>
           <div className="flex flex-col sm:flex-row justify-end gap-3 pt-2">
-            <Button type="button" variant="secondary" className="flex-1 sm:flex-initial h-11 sm:h-10 text-base sm:text-sm" onClick={onClose}>
+            <Button type="button" variant="secondary" className="flex-1 h-11 text-base sm:text-sm" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading} className="flex-1 sm:flex-initial h-11 sm:h-10 text-base sm:text-sm">
+            <Button type="submit" disabled={isLoading} className="flex-1 h-11 text-base sm:text-sm">
               {isLoading ? "Saving..." : "Save"}
             </Button>
           </div>

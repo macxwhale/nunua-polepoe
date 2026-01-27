@@ -1,14 +1,5 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Edit, Trash, Download, Printer, MessageSquare, FileText } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { downloadInvoicePDF, printInvoicePDF } from "@/lib/pdfGenerator";
-import { sendWhatsAppInvoice } from "@/lib/whatsapp";
-import { toast } from "sonner";
-import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
-import { useDeleteInvoice } from "@/hooks/useInvoices";
-import { formatCurrency, formatDateShort } from "@/shared/utils";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -17,7 +8,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useDeleteInvoice } from "@/hooks/useInvoices";
+import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
+import { downloadInvoicePDF, printInvoicePDF } from "@/lib/pdfGenerator";
+import { sendWhatsAppInvoice } from "@/lib/whatsapp";
+import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
+import { formatCurrency, formatDateShort } from "@/shared/utils";
+import { Download, Edit, FileText, MessageSquare, Printer, Trash } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 type Invoice = Tables<"invoices">;
 
@@ -39,14 +39,14 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
         .select("name, email, phone_number")
         .eq("id", invoice.client_id)
         .single();
-      
+
       const { data: { user } } = await supabase.auth.getUser();
       const { data: profile } = await supabase
         .from("profiles")
         .select("tenant_id")
         .eq("user_id", user?.id)
         .single();
-      
+
       const { data: tenant } = await supabase
         .from("tenants")
         .select("business_name, phone_number")
@@ -60,7 +60,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
           .select("name, description, price")
           .eq("id", invoice.product_id)
           .single();
-        
+
         if (product) {
           productData = {
             name: product.name,
@@ -69,12 +69,12 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
           };
         }
       }
-      
-      downloadInvoicePDF({ 
-        ...invoice, 
+
+      downloadInvoicePDF({
+        ...invoice,
         product: productData,
-        client: client || undefined, 
-        tenant: tenant || undefined 
+        client: client || undefined,
+        tenant: tenant || undefined
       });
       toast.success("Invoice downloaded");
     } catch (error) {
@@ -90,14 +90,14 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
         .select("name, email, phone_number")
         .eq("id", invoice.client_id)
         .single();
-      
+
       const { data: { user } } = await supabase.auth.getUser();
       const { data: profile } = await supabase
         .from("profiles")
         .select("tenant_id")
         .eq("user_id", user?.id)
         .single();
-      
+
       const { data: tenant } = await supabase
         .from("tenants")
         .select("business_name, phone_number")
@@ -111,7 +111,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
           .select("name, description, price")
           .eq("id", invoice.product_id)
           .single();
-        
+
         if (product) {
           productData = {
             name: product.name,
@@ -120,12 +120,12 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
           };
         }
       }
-      
-      printInvoicePDF({ 
-        ...invoice, 
+
+      printInvoicePDF({
+        ...invoice,
         product: productData,
-        client: client || undefined, 
-        tenant: tenant || undefined 
+        client: client || undefined,
+        tenant: tenant || undefined
       });
     } catch (error) {
       console.error("Error printing invoice:", error);
@@ -140,7 +140,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
         .select("phone_number")
         .eq("id", invoice.client_id)
         .single();
-      
+
       if (!client?.phone_number) {
         toast.error("Client phone number not found");
         return;
@@ -155,7 +155,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
           .single();
         productName = product?.name;
       }
-      
+
       sendWhatsAppInvoice(client.phone_number, invoice.invoice_number, Number(invoice.amount), productName);
       toast.success("Opening WhatsApp...");
     } catch (error) {
@@ -194,19 +194,17 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
       <div className="md:hidden space-y-3">
         {invoices.map((invoice, index) => {
           const isPaid = invoice.status === "paid";
-          
+
           return (
-            <div 
-              key={invoice.id} 
-              className={`rounded-xl border bg-card shadow-sm p-4 space-y-3 transition-all duration-200 hover:shadow-md ${
-                isPaid ? 'border-l-4 border-l-primary border-border/40' : 'border-l-4 border-l-secondary border-border/40'
-              }`}
+            <div
+              key={invoice.id}
+              className={`rounded-xl border bg-card shadow-sm p-4 space-y-3 transition-all duration-200 hover:shadow-md ${isPaid ? 'border-l-4 border-l-primary border-border/40' : 'border-l-4 border-l-secondary border-border/40'
+                }`}
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                    isPaid ? 'bg-primary/10' : 'bg-secondary/10'
-                  }`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isPaid ? 'bg-primary/10' : 'bg-secondary/10'
+                    }`}>
                     <FileText className={`h-5 w-5 ${isPaid ? 'text-primary' : 'text-secondary'}`} />
                   </div>
                   <div>
@@ -222,7 +220,7 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                   {invoice.status}
                 </Badge>
               </div>
-              
+
               <div className="flex items-center justify-between pt-3 border-t border-border/30">
                 <span className="text-sm text-muted-foreground">Amount</span>
                 <span className={`font-display font-bold text-lg ${isPaid ? 'text-primary' : 'text-secondary'}`}>
@@ -235,40 +233,40 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                   {invoice.notes}
                 </div>
               )}
-              
-              <div className="flex flex-wrap gap-2 pt-3 border-t border-border/30">
-                <Button 
-                  variant="outline" 
+
+              <div className="grid grid-cols-2 gap-2 pt-3 border-t border-border/30">
+                <Button
+                  variant="outline"
                   size="sm"
-                  onClick={() => handleDownloadPDF(invoice)} 
-                  className="h-8 px-3 text-xs"
+                  onClick={() => handleDownloadPDF(invoice)}
+                  className="h-9 px-3 text-xs"
                 >
                   <Download className="h-3.5 w-3.5 mr-1.5" />
                   PDF
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
-                  onClick={() => handlePrintPDF(invoice)} 
-                  className="h-8 px-3 text-xs"
+                  onClick={() => handlePrintPDF(invoice)}
+                  className="h-9 px-3 text-xs"
                 >
                   <Printer className="h-3.5 w-3.5 mr-1.5" />
                   Print
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
-                  onClick={() => handleSendWhatsApp(invoice)} 
-                  className="h-8 px-3 text-xs"
+                  onClick={() => handleSendWhatsApp(invoice)}
+                  className="h-9 px-3 text-xs"
                 >
                   <MessageSquare className="h-3.5 w-3.5 mr-1.5" />
-                  Send
+                  WhatsApp
                 </Button>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="sm"
                   onClick={() => onEdit(invoice)}
-                  className="h-8 px-3 text-xs"
+                  className="h-9 px-3 text-xs"
                 >
                   <Edit className="h-3.5 w-3.5 mr-1.5" />
                   Edit
@@ -277,10 +275,10 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                   variant="ghost"
                   size="sm"
                   onClick={() => handleDeleteClick(invoice)}
-                  className="h-8 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
+                  className="h-9 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10 col-span-2"
                 >
                   <Trash className="h-3.5 w-3.5 mr-1.5" />
-                  Delete
+                  Delete Invoice
                 </Button>
               </div>
             </div>
@@ -312,18 +310,16 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
           </TableHeader>
           <TableBody>
             {invoices.map((invoice, index) => (
-              <TableRow 
-                key={invoice.id} 
+              <TableRow
+                key={invoice.id}
                 className="hover:bg-muted/30 transition-colors border-b border-border/30"
               >
                 <TableCell className="py-4">
                   <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-                      invoice.status === 'paid' ? 'bg-primary/10' : 'bg-secondary/10'
-                    }`}>
-                      <FileText className={`h-4 w-4 ${
-                        invoice.status === 'paid' ? 'text-primary' : 'text-secondary'
-                      }`} />
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${invoice.status === 'paid' ? 'bg-primary/10' : 'bg-secondary/10'
+                      }`}>
+                      <FileText className={`h-4 w-4 ${invoice.status === 'paid' ? 'text-primary' : 'text-secondary'
+                        }`} />
                     </div>
                     <span className="font-medium">{(invoice as any).products?.name || invoice.invoice_number}</span>
                   </div>
@@ -341,36 +337,36 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                 </TableCell>
                 <TableCell className="py-4">
                   <div className="flex justify-end gap-1">
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      onClick={() => handleDownloadPDF(invoice)} 
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleDownloadPDF(invoice)}
                       title="Download PDF"
                       className="h-8 w-8"
                     >
                       <Download className="h-4 w-4" />
                     </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      onClick={() => handlePrintPDF(invoice)} 
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handlePrintPDF(invoice)}
                       title="Print"
                       className="h-8 w-8"
                     >
                       <Printer className="h-4 w-4" />
                     </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      onClick={() => handleSendWhatsApp(invoice)} 
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleSendWhatsApp(invoice)}
                       title="Send via WhatsApp"
                       className="h-8 w-8"
                     >
                       <MessageSquare className="h-4 w-4" />
                     </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       onClick={() => onEdit(invoice)}
                       title="Edit"
                       className="h-8 w-8"

@@ -1,13 +1,10 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -18,10 +15,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { useCreateClient, useCreateClientUser, useUpdateClient } from "@/hooks/useClients";
 import type { Tables } from "@/integrations/supabase/types";
-import { useCreateClient, useUpdateClient, useCreateClientUser } from "@/hooks/useClients";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const clientSchema = z.object({
   phone_number: z
@@ -86,7 +86,7 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
       } else {
         // Create new client with PIN - run client creation first for faster feedback
         const pin = generatePIN();
-        
+
         // Create client record first (fast)
         await createClient.mutateAsync({
           phone_number: data.phone_number,
@@ -133,10 +133,10 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
                 <FormItem>
                   <FormLabel className="text-sm sm:text-base">Phone Number</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="0712345678" 
-                      className="h-11 sm:h-10 text-base" 
-                      {...field} 
+                    <Input
+                      placeholder="0712345678"
+                      className="h-11 text-base"
+                      {...field}
                       disabled={!!client || isLoading}
                     />
                   </FormControl>
@@ -145,10 +145,10 @@ export function ClientDialog({ open, onClose, client }: ClientDialogProps) {
               )}
             />
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button type="submit" className="flex-1 h-11 sm:h-10 text-base sm:text-sm" disabled={isLoading}>
+              <Button type="submit" className="flex-1 h-11 text-base sm:text-sm" disabled={isLoading}>
                 {isLoading ? "Processing..." : client ? "Update Client" : "Create Client"}
               </Button>
-              <Button type="button" variant="secondary" className="flex-1 h-11 sm:h-10 text-base sm:text-sm" onClick={onClose} disabled={isLoading}>
+              <Button type="button" variant="secondary" className="flex-1 h-11 text-base sm:text-sm" onClick={onClose} disabled={isLoading}>
                 Cancel
               </Button>
             </div>
