@@ -23,106 +23,121 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-background">
-      {/* Left Panel - Branding & Features (Hidden on mobile) */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-12 flex-col justify-between relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+    <div className="min-h-screen flex bg-[#fbfcfd] dark:bg-[#0a0a0a] overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/15 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
 
-        <div className="relative z-10">
-          <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-20 w-auto" />
+      {/* Left Panel - Branding & Features (Hidden on mobile) */}
+      <div className="hidden lg:flex lg:w-1/2 p-12 flex-col justify-between relative z-10 border-r border-border/40 bg-white/40 dark:bg-black/20 backdrop-blur-sm">
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-8 animate-in fade-in slide-in-from-bottom-2 duration-700">
+            <Shield className="w-3 h-3" />
+            <span>Trusted by Kenyan Businesses</span>
+          </div>
+          <div className="animate-in fade-in slide-in-from-left-4 duration-700 delay-100">
+            <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-16 w-auto" />
+          </div>
         </div>
 
-        <div className="relative z-10 space-y-8">
-          <div>
-            <h2 className="text-3xl font-display font-bold text-foreground leading-tight mb-4">
-              Streamline your<br />
-              credit operations
+        <div className="space-y-12 max-w-lg">
+          <div className="animate-in fade-in slide-in-from-left-4 duration-700 delay-200">
+            <h2 className="text-4xl font-display font-bold text-foreground tracking-tight leading-[1.1] mb-6">
+              Empower your business with <span className="text-primary italic">flexible</span> credit management
             </h2>
-            <p className="text-muted-foreground max-w-md">
-              Manage clients, track invoices, and monitor payments all in one secure platform designed for Kenyan businesses.
+            <p className="text-lg text-muted-foreground/80 leading-relaxed uppercase tracking-wider text-xs font-semibold">
+              The complete toolkit for credit operations
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid gap-6 animate-in fade-in slide-in-from-left-4 duration-700 delay-300">
             <FeatureItem
-              icon={<Users className="w-4 h-4" />}
-              title="Client Management"
-              description="Track balances and payment history for all your customers"
+              icon={<Users className="w-5 h-5" />}
+              title="Smart Client CRM"
+              description="Automated balance tracking and comprehensive payment history"
             />
             <FeatureItem
-              icon={<CreditCard className="w-4 h-4" />}
-              title="Invoice Tracking"
-              description="Create and monitor invoices with automatic status updates"
+              icon={<CreditCard className="w-5 h-5" />}
+              title="Dynamic Invoicing"
+              description="Pro-grade invoices with real-time status monitoring"
             />
             <FeatureItem
-              icon={<Shield className="w-4 h-4" />}
-              title="Secure & Reliable"
-              description="Your financial data protected with enterprise-grade security"
+              icon={<Shield className="w-5 h-5" />}
+              title="Enterprise Security"
+              description="Your financial data protected by military-grade encryption"
             />
           </div>
         </div>
 
-        <div className="relative z-10 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Lipia Pole Pole. All rights reserved.
+        <div className="text-xs text-muted-foreground/60 font-medium tracking-wide">
+          © {new Date().getFullYear()} LIPIA POLE POLE • FINTECH SOLUTIONS
         </div>
       </div>
 
       {/* Right Panel - Auth Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12">
-        <div className="w-full max-w-[400px]">
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-8 lg:p-12 relative z-10">
+        <div className="w-full max-w-[440px] animate-in fade-in zoom-in-95 duration-1000">
           {/* Mobile Logo */}
-          <div className="lg:hidden flex justify-center mb-8">
+          <div className="lg:hidden flex justify-center mb-10">
             <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-14 w-auto" />
           </div>
 
-          <Card className="border-border/50 shadow-lg shadow-black/5">
-            <CardHeader className="pb-2 text-center">
-              <CardTitle className="text-xl font-display font-bold">
-                {activeTab === 'login' ? 'Welcome back' : 'Create an account'}
-              </CardTitle>
-              <CardDescription className="text-sm">
-                {activeTab === 'login'
-                  ? 'Enter your credentials to access your account'
-                  : 'Get started with your free account today'}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="pt-2">
-              <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList className="grid w-full grid-cols-2 h-10 mb-6 bg-muted/50">
-                  <TabsTrigger
-                    value="login"
-                    className="text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                  >
-                    Log In
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="signup"
-                    className="text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                  >
-                    Sign Up
-                  </TabsTrigger>
-                </TabsList>
-                <TabsContent value="login" className="mt-0">
-                  <UnifiedLoginForm onSuccess={handleSuccess} />
-                </TabsContent>
-                <TabsContent value="signup" className="mt-0">
-                  <SignUpForm onSuccess={handleSuccess} />
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-primary/10 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-75 transition duration-1000" />
 
-          {/* Trust indicators */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Shield className="w-3.5 h-3.5" />
-            <span>Secured with end-to-end encryption</span>
+            <Card className="relative border-border/40 bg-white/70 dark:bg-black/40 backdrop-blur-2xl shadow-2xl rounded-[1.5rem] overflow-hidden">
+              <CardHeader className="pb-4 text-center pt-10">
+                <CardTitle className="text-2xl font-display font-extrabold tracking-tight">
+                  {activeTab === 'login' ? 'Welcome Back' : 'Get Started'}
+                </CardTitle>
+                <CardDescription className="text-sm font-medium text-muted-foreground/70">
+                  {activeTab === 'login'
+                    ? 'Access your unified credit dashboard'
+                    : 'Create your professional account in seconds'}
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="pb-10 px-8">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                  <TabsList className="grid w-full grid-cols-2 h-11 mb-8 bg-muted/30 p-1 rounded-xl">
+                    <TabsTrigger
+                      value="login"
+                      className="text-xs font-bold transition-all data-[state=active]:bg-background data-[state=active]:shadow-lg rounded-lg"
+                    >
+                      LOG IN
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="signup"
+                      className="text-xs font-bold transition-all data-[state=active]:bg-background data-[state=active]:shadow-lg rounded-lg"
+                    >
+                      SIGN UP
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <div className="relative">
+                    <TabsContent value="login" className="mt-0 focus-visible:outline-none">
+                      <UnifiedLoginForm onSuccess={handleSuccess} />
+                    </TabsContent>
+                    <TabsContent value="signup" className="mt-0 focus-visible:outline-none">
+                      <SignUpForm onSuccess={handleSuccess} />
+                    </TabsContent>
+                  </div>
+                </Tabs>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Secure indicator */}
+          <div className="mt-8 flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-primary/5 w-fit mx-auto border border-primary/10">
+            <Shield className="w-3.5 h-3.5 text-primary" />
+            <span className="text-[10px] font-bold tracking-widest uppercase text-primary/80">End-to-end encrypted</span>
           </div>
 
           {/* Mobile footer */}
-          <div className="lg:hidden mt-8 text-center text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Lipia Pole Pole. All rights reserved.
+          <div className="lg:hidden mt-10 text-center text-xs text-muted-foreground/60 font-medium">
+            © {new Date().getFullYear()} LIPIA POLE POLE
           </div>
         </div>
       </div>
@@ -137,13 +152,13 @@ interface FeatureItemProps {
 }
 
 const FeatureItem = ({ icon, title, description }: FeatureItemProps) => (
-  <div className="flex items-start gap-4">
-    <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary">
+  <div className="flex items-start gap-5 p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors duration-300 group">
+    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 text-primary group-hover:scale-110 transition-transform duration-300">
       {icon}
     </div>
-    <div>
-      <h3 className="font-semibold text-foreground text-sm mb-0.5">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
+    <div className="space-y-1">
+      <h3 className="font-bold text-foreground text-base tracking-tight">{title}</h3>
+      <p className="text-muted-foreground/70 text-sm leading-snug">{description}</p>
     </div>
   </div>
 );

@@ -150,12 +150,9 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center mb-8">
-        <img
-          src="/logo.png"
-          alt="LipiaPolePole Logo"
-          className="h-20 w-auto object-contain"
-        />
+      <div className="space-y-1 mb-8">
+        <h1 className="text-xl font-bold tracking-tight text-foreground/90">Sign in to your account</h1>
+        <p className="text-sm text-muted-foreground">Welcome back! Please enter your details.</p>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -172,7 +169,7 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
                       type="tel"
                       placeholder="0712345678"
                       maxLength={10}
-                      className="pl-10 h-11"
+                      className="pl-10 h-12 bg-background/50 border-border/40 focus:ring-2 focus:ring-primary/20 transition-all rounded-xl"
                       autoComplete="tel"
                       {...field}
                     />
@@ -222,7 +219,7 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
                                       type="tel"
                                       placeholder="0712345678"
                                       maxLength={10}
-                                      className="pl-10 h-11"
+                                      className="pl-10 h-12 bg-background/50 border-border/40 focus:ring-2 focus:ring-primary/20 transition-all rounded-xl"
                                       {...field}
                                     />
                                   </div>

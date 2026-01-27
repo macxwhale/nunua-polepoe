@@ -1,13 +1,13 @@
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { supabase } from '@/integrations/supabase/client';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Building2, Eye, EyeOff, Loader2, Lock, Phone, User } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { supabase } from '@/integrations/supabase/client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
-import { Loader2, Eye, EyeOff, Phone, Lock, Building2, User } from 'lucide-react';
+import { z } from 'zod';
 
 const signUpSchema = z.object({
   businessName: z.string()
@@ -56,7 +56,7 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
     setIsLoading(true);
     try {
       const redirectUrl = `${window.location.origin}/`;
-      
+
       // Convert phone number to email format for owner accounts
       const email = `${data.phoneNumber}@owner.internal`;
 
@@ -130,6 +130,10 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-1 mb-6">
+          <h1 className="text-xl font-bold tracking-tight text-foreground/90">Create a new account</h1>
+          <p className="text-sm text-muted-foreground">Join us to manage your credit operations seamlessly.</p>
+        </div>
         <FormField
           control={form.control}
           name="businessName"
@@ -139,11 +143,11 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
               <FormControl>
                 <div className="relative">
                   <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input 
-                    placeholder="Your business name" 
-                    className="pl-10 h-11"
+                  <Input
+                    placeholder="Your business name"
+                    className="pl-10 h-12 bg-background/50 border-border/40 focus:ring-2 focus:ring-primary/20 transition-all rounded-xl"
                     autoComplete="organization"
-                    {...field} 
+                    {...field}
                   />
                 </div>
               </FormControl>
@@ -161,11 +165,11 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
               <FormControl>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input 
-                    placeholder="Your full name" 
-                    className="pl-10 h-11"
+                  <Input
+                    placeholder="Your full name"
+                    className="pl-10 h-12 bg-background/50 border-border/40 focus:ring-2 focus:ring-primary/20 transition-all rounded-xl"
                     autoComplete="name"
-                    {...field} 
+                    {...field}
                   />
                 </div>
               </FormControl>
@@ -183,13 +187,13 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
               <FormControl>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input 
+                  <Input
                     type="tel"
-                    placeholder="0712345678" 
+                    placeholder="0712345678"
                     maxLength={10}
-                    className="pl-10 h-11"
+                    className="pl-10 h-12 bg-background/50 border-border/40 focus:ring-2 focus:ring-primary/20 transition-all rounded-xl"
                     autoComplete="tel"
-                    {...field} 
+                    {...field}
                   />
                 </div>
               </FormControl>
@@ -207,12 +211,12 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
               <FormControl>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input 
-                    type={showPassword ? "text" : "password"} 
-                    placeholder="Create a secure password" 
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Create a secure password"
                     className="pl-10 pr-10 h-11"
                     autoComplete="new-password"
-                    {...field} 
+                    {...field}
                   />
                   <button
                     type="button"
@@ -228,7 +232,7 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
               {password && (
                 <div className="space-y-1.5">
                   <div className="h-1 w-full bg-muted rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className={`h-full ${strength.color} transition-all duration-300`}
                       style={{ width: strength.width }}
                     />
@@ -250,12 +254,12 @@ export const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
               <FormControl>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input 
-                    type={showConfirmPassword ? "text" : "password"} 
-                    placeholder="Confirm your password" 
+                  <Input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirm your password"
                     className="pl-10 pr-10 h-11"
                     autoComplete="new-password"
-                    {...field} 
+                    {...field}
                   />
                   <button
                     type="button"
