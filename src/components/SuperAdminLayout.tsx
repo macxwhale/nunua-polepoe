@@ -37,33 +37,33 @@ export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
         <SidebarProvider>
             <div className="min-h-screen flex w-full bg-slate-50">
                 <SuperAdminSidebar />
-                <main className="flex-1 flex flex-col">
+                <main className="flex-1 flex flex-col bg-white">
                     {/* Header */}
-                    <header className="sticky top-0 z-10 h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md flex items-center justify-between px-6">
+                    <header className="sticky top-0 z-10 h-16 border-b border-sidebar-border bg-white/95 backdrop-blur-sm flex items-center justify-between px-8">
                         <div className="flex items-center gap-4">
-                            <div className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full border border-primary/20">
-                                Platform Control Central
+                            <div className="px-3 py-1 bg-primary/10 text-primary text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-primary/20">
+                                Infrastructure Console
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-4">
-                            <Button variant="ghost" size="icon" className="text-slate-500 hover:text-primary transition-colors">
-                                <Bell className="h-5 w-5" />
+                        <div className="flex items-center gap-6">
+                            <Button variant="ghost" size="icon" className="text-slate-400 hover:text-primary transition-all">
+                                <Bell className="h-4 w-4" />
                             </Button>
 
-                            <div className="h-8 w-[1px] bg-slate-200" />
+                            <div className="h-6 w-[1px] bg-slate-100" />
 
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="gap-3 hover:bg-slate-100 transition-all px-2">
-                                        <Avatar className="h-8 w-8 border border-slate-200 shadow-sm">
-                                            <AvatarFallback className="bg-primary text-white text-xs font-bold">SA</AvatarFallback>
+                                    <Button variant="ghost" className="gap-3 hover:bg-slate-50 transition-all px-2 h-10 rounded-xl border border-transparent hover:border-slate-100">
+                                        <Avatar className="h-8 w-8 border-2 border-primary/20 shadow-sm ring-2 ring-white">
+                                            <AvatarFallback className="bg-primary text-white text-[10px] font-black uppercase">SA</AvatarFallback>
                                         </Avatar>
-                                        <div className="flex flex-col items-start leading-none group">
-                                            <span className="text-sm font-bold text-slate-700">{getUserName()}</span>
-                                            <span className="text-[10px] text-slate-400 font-semibold group-hover:text-primary transition-colors">Platform Owner</span>
+                                        <div className="flex flex-col items-start leading-tight">
+                                            <span className="text-sm font-black text-slate-900 tracking-tight">{getUserName()}</span>
+                                            <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Platform Admin</span>
                                         </div>
-                                        <ChevronDown className="h-3.5 w-3.5 text-slate-400" />
+                                        <ChevronDown className="h-3 w-3 text-slate-300" />
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" className="w-56">
