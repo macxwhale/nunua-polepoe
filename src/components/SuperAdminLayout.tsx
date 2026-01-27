@@ -1,96 +1,101 @@
-import { SuperAdminSidebar } from "@/components/SuperAdminSidebar";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SuperAdminSidebar } from "./SuperAdminSidebar";
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/integrations/supabase/client";
-import { Bell, ChevronDown } from "lucide-react";
-import { ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
+import { 
+    Bell, 
+    Search, 
+    User,
+    ShieldCheck,
+    LogOut,
+    Settings
+} from "lucide-react";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 interface SuperAdminLayoutProps {
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
-    const { user } = useAuth();
-    const navigate = useNavigate();
-
-    const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) {
-            toast.error('Failed to log out');
-        } else {
-            toast.success('Logged out successfully');
-            navigate('/auth', { replace: true });
-        }
-    };
-
+    const { user, signOut } = useAuth();
+    
     const getUserName = () => {
-        if (!user) return "Super Admin";
-        return user.user_metadata?.full_name || user.email?.split('@')[0] || "Super Admin";
+        if (!user) return "SuperAdmin";
+        return user.user_metadata?.full_name || user.email?.split('@')[0] || "SuperAdmin";
     };
 
     return (
         <SidebarProvider>
-            <div className="min-h-screen flex w-full bg-slate-50">
+            <div className="flex min-h-screen w-full bg-neutral-50/30">
                 <SuperAdminSidebar />
-                <main className="flex-1 flex flex-col bg-white">
+                <div className="flex flex-col flex-1 overflow-hidden">
                     {/* Header */}
-                    <header className="sticky top-0 z-10 h-16 border-b border-sidebar-border bg-white/95 backdrop-blur-sm flex items-center justify-between px-8">
+                    <header className="h-16 border-b border-border bg-white flex items-center justify-between px-6 sticky top-0 z-10">
                         <div className="flex items-center gap-4">
-                            <div className="px-3 py-1 bg-primary/10 text-primary text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-primary/20">
-                                Infrastructure Console
+                            <SidebarTrigger className="text-neutral-500 hover:text-primary transition-colors" />
+                            <div className="h-4 w-px bg-border hidden md:block" />
+                            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-neutral-50 rounded-lg text-[10px] font-bold text-neutral-400 uppercase tracking-widest border border-border">
+                                <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+                                Secured Infrastructure
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-6">
-                            <Button variant="ghost" size="icon" className="text-slate-400 hover:text-primary transition-all">
-                                <Bell className="h-4 w-4" />
+                        <div className="flex items-center gap-3">
+                            <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-primary rounded-xl">
+                                <Search className="h-5 w-5" />
                             </Button>
-
-                            <div className="h-6 w-[1px] bg-slate-100" />
+                            <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-primary rounded-xl relative">
+                                <Bell className="h-5 w-5" />
+                                <span className="absolute top-2 right-2 w-2 h-2 bg-destructive rounded-full border-2 border-white" />
+                            </Button>
+                            
+                            <div className="w-px h-6 bg-border mx-1" />
 
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="gap-3 hover:bg-slate-50 transition-all px-2 h-10 rounded-xl border border-transparent hover:border-slate-100">
-                                        <Avatar className="h-8 w-8 border-2 border-primary/20 shadow-sm ring-2 ring-white">
-                                            <AvatarFallback className="bg-primary text-white text-[10px] font-black uppercase">SA</AvatarFallback>
-                                        </Avatar>
-                                        <div className="flex flex-col items-start leading-tight">
-                                            <span className="text-sm font-black text-slate-900 tracking-tight">{getUserName()}</span>
-                                            <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Platform Admin</span>
+                                    <Button variant="ghost" className="pl-2 pr-4 h-10 gap-3 hover:bg-neutral-50 rounded-xl transition-all">
+                                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-xs border border-primary/20">
+                                            {getUserName().charAt(0).toUpperCase()}
                                         </div>
-                                        <ChevronDown className="h-3 w-3 text-slate-300" />
+                                        <div className="flex flex-col items-start">
+                                            <span className="text-xs font-bold text-neutral-800 leading-none">{getUserName()}</span>
+                                            <span className="text-[9px] font-bold text-primary uppercase tracking-tighter mt-0.5">Global Admin</span>
+                                        </div>
                                     </Button>
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="w-56">
-                                    <DropdownMenuLabel>Global Account</DropdownMenuLabel>
+                                <DropdownMenuContent align="end" className="w-56 rounded-xl border-border shadow-2xl p-2">
+                                    <DropdownMenuLabel className="font-bold text-xs text-neutral-400 uppercase tracking-widest p-3">Account Systems</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/dashboard')}>
-                                        Switch to Business App
+                                    <DropdownMenuItem className="rounded-lg gap-2 font-bold text-xs py-2.5 cursor-pointer">
+                                        <User className="h-4 w-4 text-primary" /> Profile Node
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem className="cursor-pointer">System Logs</DropdownMenuItem>
-                                    <DropdownMenuItem className="cursor-pointer">Security Settings</DropdownMenuItem>
+                                    <DropdownMenuItem className="rounded-lg gap-2 font-bold text-xs py-2.5 cursor-pointer">
+                                        <Settings className="h-4 w-4 text-primary" /> Platform Settings
+                                    </DropdownMenuItem>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem
-                                        onClick={handleLogout}
-                                        className="text-destructive focus:text-destructive cursor-pointer"
+                                    <DropdownMenuItem 
+                                        className="rounded-lg gap-2 font-bold text-xs py-2.5 text-destructive cursor-pointer hover:bg-destructive/5"
+                                        onClick={() => signOut()}
                                     >
-                                        Log out
+                                        <LogOut className="h-4 w-4" /> Terminate Session
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </div>
                     </header>
 
-                    {/* Main Content */}
-                    <div className="flex-1 p-8">
+                    {/* Content */}
+                    <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 md:p-8">
                         {children}
-                    </div>
-                </main>
+                    </main>
+                </div>
             </div>
         </SidebarProvider>
     );

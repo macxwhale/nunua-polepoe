@@ -19,17 +19,11 @@ export function SuperAdminSidebar() {
 
     const showText = state === "expanded" || (isMobile && openMobile);
 
-    const handleMobileMenuClick = () => {
-        if (isMobile) {
-            setOpenMobile(false);
-        }
-    };
-
     return (
-        <Sidebar collapsible="icon" className="border-r border-sidebar-border bg-white text-slate-900">
+        <Sidebar collapsible="icon" className="border-r border-border bg-white text-foreground">
             {/* Platform Header */}
             <div className={cn(
-                "p-4 border-b border-sidebar-border",
+                "p-4 border-b border-border",
                 !showText && "flex justify-center p-2"
             )}>
                 {showText ? (
@@ -44,7 +38,7 @@ export function SuperAdminSidebar() {
 
             <SidebarContent className="px-3 py-6 bg-white">
                 <SidebarGroup>
-                    <SidebarGroupLabel className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-3 mb-4">
+                    <SidebarGroupLabel className="text-[10px] font-black text-neutral-400 uppercase tracking-widest px-3 mb-4">
                         Strategic Management
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
@@ -58,7 +52,7 @@ export function SuperAdminSidebar() {
                                             "flex items-center gap-3 px-4 py-3 text-sm font-bold w-full rounded-xl transition-all",
                                             isActive
                                                 ? "bg-primary text-white shadow-md shadow-primary/20"
-                                                : "text-slate-500 hover:text-primary hover:bg-primary/5"
+                                                : "text-neutral-500 hover:text-primary hover:bg-primary/5"
                                         )
                                     }
                                 >
@@ -75,7 +69,7 @@ export function SuperAdminSidebar() {
                                             "flex items-center gap-3 px-4 py-3 text-sm font-bold w-full rounded-xl transition-all",
                                             isActive
                                                 ? "bg-primary text-white shadow-md shadow-primary/20"
-                                                : "text-slate-500 hover:text-primary hover:bg-primary/5"
+                                                : "text-neutral-500 hover:text-primary hover:bg-primary/5"
                                         )
                                     }
                                 >
@@ -90,7 +84,7 @@ export function SuperAdminSidebar() {
                 <div className="mt-auto pt-10 px-3 pb-4">
                     <NavLink
                         to="/dashboard"
-                        className="flex items-center gap-3 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-primary transition-all group"
+                        className="flex items-center gap-3 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-neutral-400 hover:text-primary transition-all group"
                     >
                         <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                         {showText && <span>Return to App</span>}

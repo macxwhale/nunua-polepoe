@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import Payments from "./pages/Payments";
 import Products from "./pages/Products";
 import SuperAdmin from "./pages/SuperAdmin";
+import SuperAdminTenants from "./pages/SuperAdminTenants";
 
 function ProtectedRoute({ children, requireOwner = false, requireSuperAdmin = false }: { children: React.ReactNode; requireOwner?: boolean; requireSuperAdmin?: boolean }) {
   const { user, loading: authLoading } = useAuth();
@@ -105,6 +106,14 @@ const App = () => (
             element={
               <ProtectedRoute requireSuperAdmin>
                 <SuperAdmin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/superadmin/tenants"
+            element={
+              <ProtectedRoute requireSuperAdmin>
+                <SuperAdminTenants />
               </ProtectedRoute>
             }
           />
