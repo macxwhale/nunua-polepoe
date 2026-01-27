@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SignUpForm } from '@/components/auth/SignUpForm';
 import { UnifiedLoginForm } from '@/components/auth/UnifiedLoginForm';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
-import { Shield, CreditCard, Users } from 'lucide-react';
+import { CreditCard, Shield, Users } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -29,19 +29,9 @@ const Auth = () => {
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-        
+
         <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-              <CreditCard className="w-5 h-5 text-primary" />
-            </div>
-            <h1 className="text-2xl font-display font-bold text-foreground">
-              Lipia Pole Pole
-            </h1>
-          </div>
-          <p className="text-muted-foreground text-sm ml-[52px]">
-            Credit Management System
-          </p>
+          <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-16 w-auto" />
         </div>
 
         <div className="relative z-10 space-y-8">
@@ -56,17 +46,17 @@ const Auth = () => {
           </div>
 
           <div className="space-y-4">
-            <FeatureItem 
+            <FeatureItem
               icon={<Users className="w-4 h-4" />}
               title="Client Management"
               description="Track balances and payment history for all your customers"
             />
-            <FeatureItem 
+            <FeatureItem
               icon={<CreditCard className="w-4 h-4" />}
               title="Invoice Tracking"
               description="Create and monitor invoices with automatic status updates"
             />
-            <FeatureItem 
+            <FeatureItem
               icon={<Shield className="w-4 h-4" />}
               title="Secure & Reliable"
               description="Your financial data protected with enterprise-grade security"
@@ -83,18 +73,8 @@ const Auth = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12">
         <div className="w-full max-w-[400px]">
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
-            <div className="flex items-center justify-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                <CreditCard className="w-5 h-5 text-primary" />
-              </div>
-              <h1 className="text-xl font-display font-bold text-foreground">
-                Lipia Pole Pole
-              </h1>
-            </div>
-            <p className="text-muted-foreground text-sm">
-              Credit Management System
-            </p>
+          <div className="lg:hidden flex justify-center mb-8">
+            <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-12 w-auto" />
           </div>
 
           <Card className="border-border/50 shadow-lg shadow-black/5">
@@ -103,22 +83,22 @@ const Auth = () => {
                 {activeTab === 'login' ? 'Welcome back' : 'Create an account'}
               </CardTitle>
               <CardDescription className="text-sm">
-                {activeTab === 'login' 
-                  ? 'Enter your credentials to access your account' 
+                {activeTab === 'login'
+                  ? 'Enter your credentials to access your account'
                   : 'Get started with your free account today'}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-2">
               <Tabs value={activeTab} onValueChange={setActiveTab}>
                 <TabsList className="grid w-full grid-cols-2 h-10 mb-6 bg-muted/50">
-                  <TabsTrigger 
-                    value="login" 
+                  <TabsTrigger
+                    value="login"
                     className="text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm"
                   >
                     Log In
                   </TabsTrigger>
-                  <TabsTrigger 
-                    value="signup" 
+                  <TabsTrigger
+                    value="signup"
                     className="text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm"
                   >
                     Sign Up

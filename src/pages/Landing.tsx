@@ -1,20 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Users, 
-  FileText, 
-  CreditCard, 
-  Package, 
-  ArrowRight, 
-  CheckCircle2, 
-  Shield,
+import { useAuth } from "@/hooks/useAuth";
+import {
+  ArrowRight,
   BarChart3,
   Bell,
+  CheckCircle2,
+  FileText,
+  Package,
+  Shield,
+  Users,
   Wallet
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -74,11 +73,8 @@ const Landing = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                <CreditCard className="h-5 w-5 text-primary" />
-              </div>
-              <span className="text-xl font-bold text-foreground">Lipia Pole Pole</span>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-12 w-auto" />
             </div>
             <div className="flex items-center gap-4">
               <Button variant="ghost" onClick={() => navigate("/auth")}>
@@ -106,7 +102,7 @@ const Landing = () => {
             <span className="text-primary">With Confidence</span>
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            The all-in-one credit management system for Kenyan businesses. Track client balances, 
+            The all-in-one credit management system for Kenyan businesses. Track client balances,
             create invoices, and monitor payments effortlessly.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -134,8 +130,8 @@ const Landing = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card"
               >
                 <CardContent className="p-6">
@@ -160,7 +156,7 @@ const Landing = () => {
                 Built for Kenyan Businesses
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Whether you're a shop owner, distributor, or growing enterprise, 
+                Whether you're a shop owner, distributor, or growing enterprise,
                 Lipia Pole Pole scales with your needs.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -226,7 +222,7 @@ const Landing = () => {
             Ready to Simplify Your Credit Management?
           </h2>
           <p className="text-lg text-muted-foreground mb-10">
-            Join hundreds of Kenyan businesses already using Lipia Pole Pole to manage their 
+            Join hundreds of Kenyan businesses already using Lipia Pole Pole to manage their
             credit sales and customer balances.
           </p>
           <Button size="lg" className="text-lg px-10 py-6" onClick={() => navigate("/auth")}>
@@ -243,11 +239,8 @@ const Landing = () => {
       <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border bg-muted/20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                <CreditCard className="h-5 w-5 text-primary" />
-              </div>
-              <span className="text-lg font-bold text-foreground">Lipia Pole Pole</span>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Lipia Pole Pole Logo" className="h-10 w-auto" />
             </div>
             <p className="text-muted-foreground text-sm">
               © {new Date().getFullYear()} Lipia Pole Pole. All rights reserved.

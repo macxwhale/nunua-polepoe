@@ -150,6 +150,15 @@ export const UnifiedLoginForm = ({ onSuccess }: UnifiedLoginFormProps) => {
 
   return (
     <>
+      <div className="flex flex-col items-center justify-center mb-8">
+        <img 
+          src="/logo.png" 
+          alt="LipiaPolePole Logo" 
+          className="h-20 w-auto object-contain mb-2"
+        />
+        <h2 className="text-xl font-display font-bold text-primary">LipiaPolePole</h2>
+        <p className="text-sm text-muted-foreground">Credit Management System</p>
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField

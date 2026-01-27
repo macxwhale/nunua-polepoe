@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { LayoutDashboard, Users, FileText, Package, ChevronDown, Plus, Smartphone } from "lucide-react";
-import { NavLink } from "react-router-dom";
 import { ClientDialog } from "@/components/clients/ClientDialog";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -13,8 +10,11 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users } from "lucide-react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 type IconColor = "green" | "red";
 
@@ -61,15 +61,15 @@ const getIconColorClass = (color: IconColor, isActive: boolean): string => {
 
 // Get hover background class based on icon color
 const getHoverClass = (color: IconColor): string => {
-  return color === "green" 
-    ? "hover:bg-[hsl(142,60%,92%)]" 
+  return color === "green"
+    ? "hover:bg-[hsl(142,60%,92%)]"
     : "hover:bg-[hsl(0,86%,97%)]";
 };
 
 // Get active background class based on icon color
 const getActiveClass = (color: IconColor): string => {
-  return color === "green" 
-    ? "bg-primary text-white" 
+  return color === "green"
+    ? "bg-primary text-white"
     : "bg-destructive text-white";
 };
 
@@ -78,7 +78,7 @@ export function AppSidebar() {
   const isMobile = useIsMobile();
   const [openGroups, setOpenGroups] = useState<string[]>(["DASHBOARDS", "CLIENT & SALES", "SETTINGS"]);
   const [clientDialogOpen, setClientDialogOpen] = useState(false);
-  
+
   const showText = state === "expanded" || (isMobile && openMobile);
 
   const handleMobileMenuClick = () => {
@@ -88,8 +88,8 @@ export function AppSidebar() {
   };
 
   const toggleGroup = (label: string) => {
-    setOpenGroups(prev => 
-      prev.includes(label) 
+    setOpenGroups(prev =>
+      prev.includes(label)
         ? prev.filter(g => g !== label)
         : [...prev, label]
     );
@@ -100,22 +100,14 @@ export function AppSidebar() {
       {/* Brand Header */}
       <div className={cn(
         "p-4 border-b border-sidebar-border",
-        !showText && "flex justify-center p-3"
+        !showText && "flex justify-center p-2"
       )}>
         {showText ? (
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-              <LayoutDashboard className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <h1 className="text-sm font-display font-bold text-primary">Lipia Pole Pole</h1>
-              <p className="text-xs text-muted-foreground">Credit Management</p>
-            </div>
+          <div className="flex flex-col gap-2">
+            <img src="/logo.png" alt="LipiaPolePole" className="h-12 w-auto object-contain self-start" />
           </div>
         ) : (
-          <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
-            <LayoutDashboard className="h-4 w-4 text-primary" />
-          </div>
+          <img src="/logo.png" alt="LPP" className="h-8 w-8 object-contain" />
         )}
       </div>
 
@@ -155,7 +147,7 @@ export function AppSidebar() {
                           </button>
                         </SidebarMenuItem>
                       )}
-                      
+
                       {group.items.map((item) => (
                         <SidebarMenuItem key={item.title}>
                           <NavLink
@@ -205,7 +197,7 @@ export function AppSidebar() {
                       </button>
                     </SidebarMenuItem>
                   )}
-                  
+
                   {group.items.map((item) => (
                     <SidebarMenuItem key={item.title} className="w-full flex justify-center">
                       <NavLink
