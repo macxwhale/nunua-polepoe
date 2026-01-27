@@ -160,29 +160,142 @@ const Landing = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Shield className="h-4 w-4" />
-            Trusted by Kenyan businesses
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Manage Credit Sales
-            <br />
-            <span className="text-primary">With Confidence</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            The all-in-one credit management system for Kenyan businesses. Track client balances,
-            create invoices, and monitor payments effortlessly.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="text-lg px-8 py-6" onClick={() => navigate("/auth")}>
-              Start Free Trial
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-              Watch Demo
-            </Button>
+      <section id="hero" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[10%] left-[5%] w-[30%] h-[30%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[10%] right-[5%] w-[35%] h-[35%] bg-primary/10 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '3s' }} />
+          <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[40%] h-[40%] bg-primary/5 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+            {/* Left Content */}
+            <div className="flex-1 text-center lg:text-left space-y-8 max-w-2xl mx-auto lg:mx-0">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <Shield className="h-4 w-4" />
+                Trusted by 500+ Kenyan businesses
+              </div>
+
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black text-foreground leading-[1.05] tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+                Manage Credit Sales <br />
+                <span className="text-primary italic relative">
+                  With Confidence
+                  <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/10 -z-10 rounded-full" />
+                </span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+                The most intuitive credit management system for Kenyan growth.
+                Track balances, automate invoicing, and monitor collections in one
+                <span className="text-foreground font-semibold"> secure, high-speed</span> platform.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+                <Button size="lg" className="text-base px-8 py-7 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all duration-300 hover:scale-[1.02]" onClick={() => navigate("/auth")}>
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button size="lg" variant="outline" className="text-base px-8 py-7 rounded-2xl border-2 hover:bg-primary/5 transition-all duration-300">
+                  Watch Product Tour
+                </Button>
+              </div>
+
+              <div className="flex items-center justify-center lg:justify-start gap-6 pt-6 animate-in fade-in duration-1000 delay-500">
+                <div className="flex -space-x-3">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-muted flex items-center justify-center overflow-hidden">
+                      <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
+                    </div>
+                  ))}
+                </div>
+                <div className="text-sm text-muted-foreground font-medium">
+                  <span className="text-foreground font-bold italic">Excellent</span> 4.9/5 from 200+ reviews
+                </div>
+              </div>
+            </div>
+
+            {/* Right Visual Showcase */}
+            <div className="flex-1 w-full max-w-[600px] relative animate-in fade-in zoom-in-95 duration-1000 delay-300">
+              <div className="relative group">
+                {/* Decorative glow */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-primary/10 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000" />
+
+                <Card className="relative border-border/40 bg-card/70 backdrop-blur-xl shadow-2xl rounded-[2rem] overflow-hidden border-2">
+                  <CardContent className="p-0">
+                    <div className="bg-muted/30 border-b border-border/40 p-4 flex items-center justify-between">
+                      <div className="flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-destructive/60" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                        <div className="w-3 h-3 rounded-full bg-green-500/60" />
+                      </div>
+                      <div className="bg-background/80 px-3 py-1 rounded-full text-[10px] font-bold text-muted-foreground tracking-widest uppercase">
+                        Real-time Dashboard
+                      </div>
+                    </div>
+
+                    <div className="p-8 space-y-6">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-primary/5 p-4 rounded-2xl border border-primary/10 space-y-1">
+                          <p className="text-[10px] font-bold text-primary tracking-wider uppercase">Active Invoices</p>
+                          <p className="text-2xl font-black text-foreground">1,280</p>
+                        </div>
+                        <div className="bg-green-500/5 p-4 rounded-2xl border border-green-500/10 space-y-1">
+                          <p className="text-[10px] font-bold text-green-600 tracking-wider uppercase">Total Recieved</p>
+                          <p className="text-2xl font-black text-foreground">KSh 4.2M</p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        <div className="h-4 bg-muted/40 rounded-full w-3/4" />
+                        <div className="h-32 bg-muted/20 rounded-2xl relative overflow-hidden flex items-end px-4 gap-2 py-4">
+                          {/* Simple bar chart mockup */}
+                          {[40, 70, 45, 90, 65, 80, 50, 85, 60, 95].map((h, i) => (
+                            <div key={i} className="flex-1 bg-primary/20 rounded-t-md transition-all duration-700 hover:bg-primary/40 cursor-default" style={{ height: `${h}%` }} />
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4 pt-2">
+                        <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                          <BarChart3 className="h-5 w-5 text-primary" />
+                        </div>
+                        <div className="flex-1 space-y-1">
+                          <div className="h-2.5 bg-muted rounded-full w-1/2" />
+                          <div className="h-2 bg-muted/50 rounded-full w-1/3" />
+                        </div>
+                        <div className="text-xs font-bold text-green-600">+12.5%</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Floating elements */}
+                <div className="absolute -top-6 -right-6 bg-white dark:bg-black p-4 rounded-2xl shadow-xl border border-border/40 animate-bounce-subtle hidden sm:block">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
+                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase leading-none">New Payment</p>
+                      <p className="text-xs font-black text-foreground">KSh 15,000</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute -bottom-4 -left-6 bg-white dark:bg-black p-4 rounded-2xl shadow-xl border border-border/40 animate-float hidden sm:block delay-700">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Users className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase leading-none">New Clients</p>
+                      <p className="text-xs font-black text-foreground">+42 this week</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
