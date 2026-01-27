@@ -3,6 +3,7 @@
 ## Project info
 
 **URL**: https://lovable.dev/projects/c8e8788f-5916-40c1-9b38-1cda28fdcd8b
+**Developer Documentation**: [DEVELOPER.md](file:///c:/Users/Max/OneDrive/Documents/GitHub/nunua-polepoe/DEVELOPER.md)
 
 ## How can I edit this code?
 
