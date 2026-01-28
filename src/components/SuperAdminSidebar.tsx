@@ -77,6 +77,23 @@ export function SuperAdminSidebar() {
                                     {showText && <span>Business Directory</span>}
                                 </NavLink>
                             </SidebarMenuItem>
+
+                            <SidebarMenuItem>
+                                <NavLink
+                                    to="/superadmin/users"
+                                    className={({ isActive }) =>
+                                        cn(
+                                            "flex items-center gap-3 px-4 py-3 text-sm font-bold w-full rounded-xl transition-all",
+                                            isActive
+                                                ? "bg-primary text-white shadow-md shadow-primary/20"
+                                                : "text-neutral-500 hover:text-primary hover:bg-primary/5"
+                                        )
+                                    }
+                                >
+                                    <ShieldCheck className="h-5 w-5" />
+                                    {showText && <span>User Management</span>}
+                                </NavLink>
+                            </SidebarMenuItem>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
