@@ -2,8 +2,10 @@
 
 A robust multi-tenant platform for business directory management, strategic auditing, and global administrative governance.
 
-## Developer Documentation
-- [DEVELOPER.md](./DEVELOPER.md)
+## Documentation
+- [Developer Guide](./docs/DEVELOPER.md)
+- [Architecture Overview](./docs/ARCHITECTURE.md)
+- [Roles & Permissions](./docs/ROLES.md)
 
 ## Core Features
 
