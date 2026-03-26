@@ -19,12 +19,12 @@ const SuperAdmin = () => {
         queryKey: ["global-platform-stats"],
         queryFn: async () => {
             const [tenants, txs, clients] = await Promise.all([
-                supabase.from("tenants").select("id, is_active"),
+                supabase.from("tenants").select("id, status"),
                 supabase.from("transactions").select("amount, type").eq("type", "payment"),
                 supabase.from("clients").select("id", { count: 'exact', head: true })
             ]);
 
-            const activeTenants = tenants.data?.filter(t => t.is_active).length || 0;
+            const activeTenants = tenants.data?.filter(t => t.status === 'active').length || 0;
             const totalRevenue = txs.data?.reduce((acc, tx) => acc + Number(tx.amount), 0) || 0;
 
             return {
