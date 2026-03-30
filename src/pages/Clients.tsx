@@ -1,7 +1,16 @@
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Plus, Users, Search } from "lucide-react";
+import { Plus, Users, Search, ChevronDown, Download, Trash2, Mail } from "lucide-react";
+import { FeatureGate } from "@/components/FeatureGate";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ClientsTable } from "@/components/clients/ClientsTable";
 import { ClientDialog } from "@/components/clients/ClientDialog";
@@ -74,10 +83,36 @@ export default function Clients() {
             Manage customer relationships and accounts
           </p>
         </div>
-        <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
-          <Plus className="h-4 w-4" />
-          Add Client
-        </Button>
+        <div className="flex items-center gap-2">
+          <FeatureGate feature="bulkOps" fallback="lock" upgradeMessage="Unlock bulk importing and email campaigns with an Elite plan.">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="lg" className="gap-2 border-dashed">
+                  Bulk Actions <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>Advanced Operations</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="gap-2 cursor-pointer">
+                  <Download className="h-4 w-4" /> Export All to CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem className="gap-2 cursor-pointer">
+                  <Mail className="h-4 w-4" /> Send Bulk Notification
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="gap-2 cursor-pointer text-destructive focus:text-destructive">
+                  <Trash2 className="h-4 w-4" /> Archive Selected
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </FeatureGate>
+
+          <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
+            <Plus className="h-4 w-4" />
+            Add Client
+          </Button>
+        </div>
       </div>
 
       {/* Search Bar */}

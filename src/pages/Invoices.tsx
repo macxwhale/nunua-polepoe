@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus, FileText } from "lucide-react";
+import { Plus, FileText, ChevronDown, Download, Trash2, Mail } from "lucide-react";
+import { FeatureGate } from "@/components/FeatureGate";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { EmptyState } from "@/components/ui/empty-state";
 import { InvoicesTable } from "@/components/invoices/InvoicesTable";
 import { InvoiceDialog } from "@/components/invoices/InvoiceDialog";
@@ -59,10 +68,36 @@ export default function Invoices() {
             Create and manage customer invoices
           </p>
         </div>
-        <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
-          <Plus className="h-4 w-4" />
-          Create Invoice
-        </Button>
+        <div className="flex items-center gap-2">
+          <FeatureGate feature="bulkOps" fallback="lock" upgradeMessage="Unlock bulk invoicing and automated payment reminders with an Elite plan.">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="lg" className="gap-2 border-dashed">
+                  Bulk Actions <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>Advanced Operations</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="gap-2 cursor-pointer">
+                  <Download className="h-4 w-4" /> Export All to PDF
+                </DropdownMenuItem>
+                <DropdownMenuItem className="gap-2 cursor-pointer">
+                  <Mail className="h-4 w-4" /> Send Payment Reminders
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="gap-2 cursor-pointer text-destructive focus:text-destructive">
+                  <Trash2 className="h-4 w-4" /> Delete Drafts
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </FeatureGate>
+
+          <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
+            <Plus className="h-4 w-4" />
+            Create Invoice
+          </Button>
+        </div>
       </div>
 
       {/* Content */}

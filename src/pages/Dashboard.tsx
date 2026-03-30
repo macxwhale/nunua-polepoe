@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Clock, CreditCard, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FeatureGate } from "@/components/FeatureGate";
 import {
   Area,
   AreaChart,
@@ -391,53 +392,59 @@ export default function Dashboard() {
       {/* Charts Row - Payment Records and Distribution */}
       <div className="grid gap-3 grid-cols-1 lg:grid-cols-3">
         {/* Payment Records Bar Chart */}
-        <Card className="lg:col-span-2">
-          <CardHeader className="pb-2">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <CardTitle className="text-sm font-medium">Payment Records</CardTitle>
-              <div className="flex gap-3 text-[10px]">
-                <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-sm bg-primary" />
-                  <span className="text-muted-foreground">This Week</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-sm bg-primary/40" />
-                  <span className="text-muted-foreground">Last Week</span>
+        <Card className="lg:col-span-2 overflow-hidden">
+          <FeatureGate 
+            feature="reports" 
+            fallback="lock"
+            upgradeMessage="Unlock detailed payment insights and weekly comparisons with a Professional plan."
+          >
+            <CardHeader className="pb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <CardTitle className="text-sm font-medium">Payment Records</CardTitle>
+                <div className="flex gap-3 text-[10px]">
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-sm bg-primary" />
+                    <span className="text-muted-foreground">This Week</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-sm bg-primary/40" />
+                    <span className="text-muted-foreground">Last Week</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </CardHeader>
-          <CardContent className="pt-0">
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart data={weeklyPayments} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
-                <XAxis
-                  dataKey="day"
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
-                />
-                <YAxis
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
-                  tickFormatter={(value) => `${value / 1000}k`}
-                  width={40}
-                />
-                <Tooltip
-                  formatter={(value: number) => formatCurrency(value)}
-                  contentStyle={{
-                    backgroundColor: 'hsl(var(--card))',
-                    border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px',
-                    fontSize: '12px'
-                  }}
-                />
-                <Bar dataKey="thisWeek" fill="hsl(142, 70%, 40%)" radius={[4, 4, 0, 0]} name="This Week" />
-                <Bar dataKey="lastWeek" fill="hsl(142, 70%, 75%)" radius={[4, 4, 0, 0]} name="Last Week" />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart data={weeklyPayments} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                  <XAxis
+                    dataKey="day"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
+                  />
+                  <YAxis
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
+                    tickFormatter={(value) => `${value / 1000}k`}
+                    width={40}
+                  />
+                  <Tooltip
+                    formatter={(value: number) => formatCurrency(value)}
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--card))',
+                      border: '1px solid hsl(var(--border))',
+                      borderRadius: '8px',
+                      fontSize: '12px'
+                    }}
+                  />
+                  <Bar dataKey="thisWeek" fill="hsl(142, 70%, 40%)" radius={[4, 4, 0, 0]} name="This Week" />
+                  <Bar dataKey="lastWeek" fill="hsl(142, 70%, 75%)" radius={[4, 4, 0, 0]} name="Last Week" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </FeatureGate>
         </Card>
 
         {/* Payment Distribution Pie Chart */}
@@ -488,52 +495,58 @@ export default function Dashboard() {
       </div>
 
       {/* Yearly Collection Chart */}
-      <Card>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Collection Across the Year</CardTitle>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={yearlyCollection} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
-              <XAxis
-                dataKey="month"
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
-              />
-              <YAxis
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
-                tickFormatter={(value) => `${value / 1000}k`}
-              />
-              <Tooltip
-                formatter={(value: number) => formatCurrency(value)}
-                contentStyle={{
-                  backgroundColor: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
-                  borderRadius: '4px',
-                  fontSize: '12px'
-                }}
-              />
-              <Area
-                type="monotone"
-                dataKey="amount"
-                stroke="hsl(var(--foreground))"
-                fillOpacity={1}
-                fill="url(#colorAmount)"
-                strokeWidth={1.5}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </CardContent>
+      <Card className="overflow-hidden">
+        <FeatureGate 
+          feature="reports" 
+          fallback="lock"
+          upgradeMessage="Get the full picture of your annual business performance with a Professional plan."
+        >
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Collection Across the Year</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <ResponsiveContainer width="100%" height={200}>
+              <AreaChart data={yearlyCollection} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
+                />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
+                  tickFormatter={(value) => `${value / 1000}k`}
+                />
+                <Tooltip
+                  formatter={(value: number) => formatCurrency(value)}
+                  contentStyle={{
+                    backgroundColor: 'hsl(var(--card))',
+                    border: '1px solid hsl(var(--border))',
+                    borderRadius: '4px',
+                    fontSize: '12px'
+                  }}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="amount"
+                  stroke="hsl(var(--foreground))"
+                  fillOpacity={1}
+                  fill="url(#colorAmount)"
+                  strokeWidth={1.5}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </FeatureGate>
       </Card>
     </div>
   );

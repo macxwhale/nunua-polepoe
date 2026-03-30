@@ -3,7 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Mail, User, Phone, Save, Loader2, ShieldCheck, Clock, CheckCircle2, CreditCard, Zap, AlertCircle } from 'lucide-react';
+import { Mail, User, Phone, Save, Loader2, ShieldCheck, Clock, CheckCircle2, CreditCard, Zap, AlertCircle, Paintbrush, Plus } from 'lucide-react';
+import { FeatureGate } from '@/components/FeatureGate';
 import { useSubscription } from '@/hooks/useSubscription';
 import { paystackConfig } from '@/lib/paystackConfig';
 import { toast } from 'sonner';
@@ -200,6 +201,56 @@ const Settings = () => {
                 </div>
               </form>
             </CardContent>
+          </Card>
+
+          <Card className="border-border/40 shadow-lg overflow-hidden">
+            <FeatureGate 
+              feature="customBranding" 
+              fallback="lock"
+              upgradeMessage="Unlock custom logos and brand themes on invoices with an Elite plan."
+            >
+              <CardHeader className="border-b border-border/10 bg-muted/30 pb-4">
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Paintbrush className="h-5 w-5 text-primary" />
+                  Branding & Identity
+                </CardTitle>
+                <CardDescription>
+                  Customize how your business appears to clients on invoices and reports.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6 space-y-6">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>Business Logo</Label>
+                    <div className="border-2 border-dashed border-border rounded-xl p-8 flex flex-col items-center justify-center gap-2 bg-muted/20">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Plus className="h-5 w-5 text-primary" />
+                      </div>
+                      <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">Upload PNG or JPEG</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="grid gap-2">
+                      <Label>Primary Brand Color</Label>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary shadow-sm ring-2 ring-primary/20" />
+                        <Input value="#22c55e" readOnly className="h-10 font-mono text-xs max-w-[120px]" />
+                      </div>
+                    </div>
+                    <div className="grid gap-2">
+                      <Label>Accent Color</Label>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-amber-500 shadow-sm ring-2 ring-amber-500/20" />
+                        <Input value="#f59e0b" readOnly className="h-10 font-mono text-xs max-w-[120px]" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-end italic text-[10px] text-muted-foreground">
+                  Branding changes will automatically apply to all PDF exports.
+                </div>
+              </CardContent>
+            </FeatureGate>
           </Card>
 
           <Card className="border-border/40 shadow-lg overflow-hidden">
