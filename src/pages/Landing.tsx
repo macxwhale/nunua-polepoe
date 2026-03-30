@@ -387,11 +387,11 @@ const Landing = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Monthly Tier */}
+            {/* Essential Tier */}
             <Card className="relative overflow-hidden border-border/50 bg-card hover:shadow-xl transition-all duration-300 flex flex-col">
               <CardContent className="p-8 flex-1 flex flex-col">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">Monthly</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Essential</h3>
                   <p className="text-muted-foreground text-sm">Best for small businesses starting out.</p>
                 </div>
                 <div className="mb-8">
@@ -406,10 +406,11 @@ const Landing = () => {
                 </div>
                 <ul className="space-y-4 mb-8 flex-1">
                   {[
-                    "Unlimited Clients",
-                    "Smart Invoicing",
-                    "Real-time Notifications",
-                    "Mobile App Access"
+                    "5 User Seats",
+                    "50 Clients / 20 Products",
+                    "100 Invoices per month",
+                    "Core Invoicing Modules",
+                    "Real-time Notifications"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
@@ -418,19 +419,19 @@ const Landing = () => {
                   ))}
                 </ul>
                 <Button className="w-full" variant="outline" onClick={() => navigate("/auth")}>
-                  Select Monthly
+                  Select Essential
                 </Button>
               </CardContent>
             </Card>
 
-            {/* 6 Months Tier */}
+            {/* Professional Tier */}
             <Card className="relative overflow-hidden border-primary bg-card shadow-lg hover:shadow-xl transition-all duration-300 transform md:-translate-y-2 flex flex-col scale-105 z-10">
               <div className="bg-primary text-primary-foreground text-center py-1.5 text-sm font-bold">
                 MOST POPULAR
               </div>
               <CardContent className="p-8 flex-1 flex flex-col">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">6 Months</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Professional</h3>
                   <p className="text-muted-foreground text-sm">Perfect for growing enterprises.</p>
                 </div>
                 <div className="mb-8">
@@ -441,14 +442,16 @@ const Landing = () => {
                     <span className="text-muted-foreground line-through">KES 12,000</span>
                     <span className="ml-2 text-green-600 font-medium">Save 20%</span>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Equivalent to KES 1,600/mo</p>
+                  <p className="text-xs text-muted-foreground mt-1">KES 1,600/mo</p>
                 </div>
                 <ul className="space-y-4 mb-8 flex-1">
                   {[
+                    "15 User Seats",
+                    "500 Clients / 100 Products",
+                    "1,000 Invoices per month",
+                    "Business Insights (PDF)",
                     "Priority Support",
-                    "Business Insights",
-                    "PDF Report Export",
-                    "Everything in Monthly"
+                    "Everything in Essential"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
@@ -457,16 +460,16 @@ const Landing = () => {
                   ))}
                 </ul>
                 <Button className="w-full shadow-md" onClick={() => navigate("/auth")}>
-                  Select 6 Months
+                  Select Professional
                 </Button>
               </CardContent>
             </Card>
 
-            {/* 12 Months Tier */}
+            {/* Elite Tier */}
             <Card className="relative overflow-hidden border-border/50 bg-card hover:shadow-xl transition-all duration-300 flex flex-col">
               <CardContent className="p-8 flex-1 flex flex-col">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">12 Months</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Elite</h3>
                   <p className="text-muted-foreground text-sm">Best value for long-term partners.</p>
                 </div>
                 <div className="mb-8">
@@ -477,14 +480,16 @@ const Landing = () => {
                     <span className="text-muted-foreground line-through">KES 19,600</span>
                     <span className="ml-2 text-green-600 font-medium">Save 13%</span>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Equivalent to KES 1,417/mo</p>
+                  <p className="text-xs text-muted-foreground mt-1">KES 1,417/mo</p>
                 </div>
                 <ul className="space-y-4 mb-8 flex-1">
                   {[
+                    "Unlimited Users & Clients",
+                    "Unlimited Invoices",
+                    "Bulk Data Operations",
                     "Dedicated Account Manager",
                     "Custom Branding",
-                    "Bulk Data Operations",
-                    "Everything in 6 Months"
+                    "Everything in Professional"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
@@ -493,7 +498,7 @@ const Landing = () => {
                   ))}
                 </ul>
                 <Button className="w-full" variant="outline" onClick={() => navigate("/auth")}>
-                  Select 12 Months
+                  Select Elite
                 </Button>
               </CardContent>
             </Card>

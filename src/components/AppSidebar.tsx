@@ -13,7 +13,7 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useUserRole } from "@/hooks/useUserRole";
 import { cn } from "@/lib/utils";
-import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users } from "lucide-react";
+import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users, Settings } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -50,6 +50,7 @@ const menuGroups: MenuGroup[] = [
     label: "SETTINGS",
     items: [
       { title: "Payments", url: "/payments", icon: Smartphone, iconColor: "green" },
+      { title: "Settings", url: "/settings", icon: Settings, iconColor: "green" },
     ]
   }
 ];

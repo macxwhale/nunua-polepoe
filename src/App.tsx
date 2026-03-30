@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { SubscriptionGuard } from "./components/SubscriptionGuard";
 import { SuperAdminLayout } from "./components/SuperAdminLayout";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { useAuth } from "./hooks/useAuth";
@@ -18,9 +19,11 @@ import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import Payments from "./pages/Payments";
 import Products from "./pages/Products";
+import Subscription from "./pages/Subscription";
 import SuperAdmin from "./pages/SuperAdmin";
 import SuperAdminTenants from "./pages/SuperAdminTenants";
 import SuperAdminUsers from "./pages/SuperAdminUsers";
+import Settings from "./pages/Settings";
 
 function ProtectedRoute({ children, requireOwner = false, requireSuperAdmin = false }: { children: React.ReactNode; requireOwner?: boolean; requireSuperAdmin?: boolean }) {
   const { user, loading: authLoading } = useAuth();
@@ -95,10 +98,20 @@ const App = () => (
           <Route path="/" element={<Landing />} />
           <Route path="/auth" element={<Auth />} />
           <Route
+            path="/subscription"
+            element={
+              <ProtectedRoute requireOwner>
+                <Subscription />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
-                <DashboardRouter />
+                <SubscriptionGuard>
+                  <DashboardRouter />
+                </SubscriptionGuard>
               </ProtectedRoute>
             }
           />
@@ -138,7 +151,9 @@ const App = () => (
             path="/clients"
             element={
               <ProtectedRoute requireOwner>
-                <Clients />
+                <SubscriptionGuard>
+                  <Clients />
+                </SubscriptionGuard>
               </ProtectedRoute>
             }
           />
@@ -146,7 +161,9 @@ const App = () => (
             path="/invoices"
             element={
               <ProtectedRoute requireOwner>
-                <Invoices />
+                <SubscriptionGuard>
+                  <Invoices />
+                </SubscriptionGuard>
               </ProtectedRoute>
             }
           />
@@ -154,7 +171,9 @@ const App = () => (
             path="/products"
             element={
               <ProtectedRoute requireOwner>
-                <Products />
+                <SubscriptionGuard>
+                  <Products />
+                </SubscriptionGuard>
               </ProtectedRoute>
             }
           />
@@ -162,7 +181,17 @@ const App = () => (
             path="/payments"
             element={
               <ProtectedRoute requireOwner>
-                <Payments />
+                <SubscriptionGuard>
+                  <Payments />
+                </SubscriptionGuard>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute requireOwner>
+                <Settings />
               </ProtectedRoute>
             }
           />

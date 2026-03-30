@@ -1,3 +1,4 @@
+import { TrialBanner } from "@/components/TrialBanner";
 import { AppSidebar } from "@/components/AppSidebar";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { NotificationDropdown } from "@/components/NotificationDropdown";
@@ -8,7 +9,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { useAuth } from "@/hooks/useAuth";
 import { useUserRole } from "@/hooks/useUserRole";
 import { supabase } from "@/integrations/supabase/client";
-import { ChevronDown, Search, User } from "lucide-react";
+import { ChevronDown, Search, User, CreditCard, Settings as SettingsIcon } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -87,8 +88,24 @@ export function Layout({ children }: LayoutProps) {
                       Switch to Super Admin
                     </DropdownMenuItem>
                   )}
-                  <DropdownMenuItem className="cursor-pointer text-sm">Profile</DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer text-sm">Settings</DropdownMenuItem>
+                  <DropdownMenuItem 
+                    className="cursor-pointer text-sm"
+                    onClick={() => navigate('/settings')}
+                  >
+                    <User className="mr-2 h-4 w-4 opacity-70" /> Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    className="cursor-pointer text-sm"
+                    onClick={() => navigate('/subscription')}
+                  >
+                    <CreditCard className="mr-2 h-4 w-4 opacity-70" /> Subscription
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    className="cursor-pointer text-sm"
+                    onClick={() => navigate('/settings')}
+                  >
+                    <SettingsIcon className="mr-2 h-4 w-4 opacity-70" /> Settings
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={handleLogout}
@@ -100,6 +117,9 @@ export function Layout({ children }: LayoutProps) {
               </DropdownMenu>
             </div>
           </header>
+
+          {/* Trial Banner */}
+          <TrialBanner />
 
           {/* Main Content */}
           <div className="flex-1 p-4 md:p-6">
