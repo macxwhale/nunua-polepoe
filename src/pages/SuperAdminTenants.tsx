@@ -43,8 +43,11 @@ import {
     Search,
     ShieldAlert,
     TrendingUp,
-    Users
+    Users,
+    Trash2,
+    AlertTriangle
 } from "lucide-react";
+import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -52,6 +55,8 @@ const SuperAdminTenants = () => {
     const queryClient = useQueryClient();
     const [selectedTenantId, setSelectedTenantId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
+    const [isPurgeDialogOpen, setIsPurgeDialogOpen] = useState(false);
+    const [purgeLoading, setPurgeLoading] = useState(false);
 
     const { data: tenants, isLoading: tenantsLoading, error: tenantsError } = useQuery({
         queryKey: ["tenants-all"],
@@ -120,6 +125,29 @@ const SuperAdminTenants = () => {
         },
         onError: (error: any) => toast.error(`Update failed: ${error.message}`)
     });
+
+    const handlePurgeTenant = async () => {
+        if (!selectedTenantId) return;
+        
+        setPurgeLoading(true);
+        try {
+            const { data, error } = await supabase.functions.invoke('delete-tenant', {
+                body: { tenant_id: selectedTenantId },
+            });
+
+            if (error) throw error;
+
+            toast.success("Tenant and all associated data purged successfully");
+            setIsPurgeDialogOpen(false);
+            setSelectedTenantId(null);
+            queryClient.invalidateQueries({ queryKey: ["tenants-all"] });
+        } catch (error: any) {
+            console.error("Purge Error:", error);
+            toast.error(error.message || "Failed to purge tenant");
+        } finally {
+            setPurgeLoading(false);
+        }
+    };
 
     if (tenantsLoading) {
         return (
@@ -373,7 +401,6 @@ const SuperAdminTenants = () => {
                                     </TabsList>
 
                                     <TabsContent value="personnel" className="mt-0">
-                                        {/* Desktop View Table */}
                                         <div className="hidden md:block">
                                             <Table>
                                                 <TableHeader className="bg-neutral-50/50">
@@ -400,7 +427,6 @@ const SuperAdminTenants = () => {
                                                 </TableBody>
                                             </Table>
                                         </div>
-                                        {/* Mobile View List */}
                                         <div className="md:hidden divide-y divide-border border-t border-border mt-2">
                                             {detailsLoading ? (
                                                 <div className="py-10 text-center"><Loader2 className="h-6 w-6 animate-spin mx-auto text-primary opacity-30" /></div>
@@ -419,7 +445,6 @@ const SuperAdminTenants = () => {
                                     </TabsContent>
 
                                     <TabsContent value="clients" className="mt-0">
-                                        {/* Desktop View Table */}
                                         <div className="hidden md:block">
                                             <Table>
                                                 <TableHeader className="bg-neutral-50/50">
@@ -442,7 +467,6 @@ const SuperAdminTenants = () => {
                                                 </TableBody>
                                             </Table>
                                         </div>
-                                        {/* Mobile View List */}
                                         <div className="md:hidden divide-y divide-border border-t border-border mt-2">
                                             {detailsLoading ? (
                                                 <div className="py-10 text-center"><Loader2 className="h-6 w-6 animate-spin mx-auto text-primary opacity-30" /></div>
@@ -461,6 +485,36 @@ const SuperAdminTenants = () => {
                                         </div>
                                     </TabsContent>
                                 </Tabs>
+
+                                {/* Danger Zone */}
+                                <div className="pt-10 border-t border-border/50">
+                                    <div className="rounded-2xl border-2 border-destructive/20 bg-destructive/5 overflow-hidden">
+                                        <div className="p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                                            <div className="space-y-4 max-w-xl">
+                                                <div className="flex items-center gap-3 text-destructive">
+                                                    <AlertTriangle className="h-6 w-6" />
+                                                    <h3 className="text-xl font-bold uppercase tracking-tight">Danger Zone</h3>
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <p className="text-sm font-bold text-destructive/80 leading-relaxed uppercase tracking-wide">Permanent Data Purge (DPA Compliance)</p>
+                                                    <p className="text-xs text-muted-foreground leading-relaxed">
+                                                        This operation will permanently delete this tenant, all linked client records, invoices, products, and transactions. 
+                                                        It will also <span className="font-bold underline text-destructive/70">permanently delete all staff accounts</span> associated with this business from the authentication system. 
+                                                        This action cannot be undone.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <Button 
+                                                variant="destructive" 
+                                                className="w-full md:w-auto h-12 px-8 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-destructive/20 hover:scale-[1.02] active:scale-95 transition-all"
+                                                onClick={() => setIsPurgeDialogOpen(true)}
+                                            >
+                                                <Trash2 className="h-4 w-4 mr-2" />
+                                                Purge Tenant
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </ScrollArea>
                     </div>
@@ -470,6 +524,17 @@ const SuperAdminTenants = () => {
                     </div>
                 </DialogContent>
             </Dialog>
+
+            <DeleteConfirmDialog
+                open={isPurgeDialogOpen}
+                onClose={() => setIsPurgeDialogOpen(false)}
+                onConfirm={handlePurgeTenant}
+                isLoading={purgeLoading}
+                title="System-Wide Data Purge"
+                description="You are about to irreversibly delete all business data, client records, and staff authentication accounts for this business unit. This is a high-level administrative operation for DPA compliance."
+                confirmValue={tenants?.find(t => t.id === selectedTenantId)?.business_name}
+                confirmText="Type the business name to authorized purge:"
+            />
         </div>
     );
 };

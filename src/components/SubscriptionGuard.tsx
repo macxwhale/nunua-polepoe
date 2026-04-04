@@ -29,11 +29,11 @@ export const SubscriptionGuard: React.FC<Props> = ({ children }) => {
     return <>{children}</>;
   }
 
-  // Allow access during trial or with active subscription
-  if (status === 'trial' || status === 'active') {
+  // Allow access during trial, active subscription, or expired (for read-only view)
+  if (status === 'trial' || status === 'active' || status === 'expired') {
     return <>{children}</>;
   }
 
-  // Expired or cancelled → redirect to subscription page with message
+  // Only redirect if there is an unknown error or cancelled state without a plan
   return <Navigate to="/subscription" state={{ from: location }} replace />;
 };

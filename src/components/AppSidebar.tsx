@@ -13,7 +13,9 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useUserRole } from "@/hooks/useUserRole";
 import { cn } from "@/lib/utils";
+import { PLAN_FEATURES, PlanFeatures } from "@/lib/featureFlags";
 import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users, Settings } from "lucide-react";
+import { FeatureGate } from "./FeatureGate";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -148,43 +150,69 @@ export function AppSidebar() {
                       {/* Add Client Quick Action */}
                       {group.label === "CLIENT & SALES" && (
                         <SidebarMenuItem>
-                          <button
-                            onClick={() => {
-                              setClientDialogOpen(true);
-                              handleMobileMenuClick();
-                            }}
-                            className="flex items-center gap-3 px-4 py-3 text-sm font-medium w-full min-h-[48px] rounded-xl bg-primary text-white hover:bg-primary/90 hover:shadow-md active:scale-[0.98] transition-all duration-200 ease-out"
+                          <FeatureGate 
+                            feature="clients" 
+                            fallback="lock"
+                            upgradeMessage="Your trial has expired. Upgrade your plan to continue adding new clients."
                           >
-                            <Plus className="h-5 w-5 flex-shrink-0" />
-                            <span>Add Client</span>
-                          </button>
+                            <button
+                              onClick={() => {
+                                setClientDialogOpen(true);
+                                handleMobileMenuClick();
+                              }}
+                              className="flex items-center gap-3 px-4 py-3 text-sm font-medium w-full min-h-[48px] rounded-xl bg-primary text-white hover:bg-primary/90 hover:shadow-md active:scale-[0.98] transition-all duration-200 ease-out"
+                            >
+                              <Plus className="h-5 w-5 flex-shrink-0" />
+                              <span>Add Client</span>
+                            </button>
+                          </FeatureGate>
                         </SidebarMenuItem>
                       )}
 
-                      {group.items.map((item) => (
-                        <SidebarMenuItem key={item.title}>
-                          <NavLink
-                            to={item.url}
-                            end
-                            onClick={handleMobileMenuClick}
-                            className={({ isActive }) =>
-                              cn(
-                                "flex items-center gap-3 px-4 py-3 text-sm font-medium w-full min-h-[48px] rounded-xl transition-all duration-200 ease-out",
-                                isActive
-                                  ? cn(getActiveClass(item.iconColor), "font-semibold shadow-sm")
-                                  : cn("text-gray-700", getHoverClass(item.iconColor), "hover:text-gray-900")
-                              )
-                            }
-                          >
-                            {({ isActive }) => (
-                              <>
-                                <item.icon className={cn("h-5 w-5 flex-shrink-0", getIconColorClass(item.iconColor, isActive))} />
-                                <span>{item.title}</span>
-                              </>
-                            )}
-                          </NavLink>
-                        </SidebarMenuItem>
-                      ))}
+                      {group.items.map((item) => {
+                        const featureMap: Record<string, keyof PlanFeatures> = {
+                          "Clients": "clients",
+                          "Invoices": "invoicing",
+                          "Products": "products",
+                          "Payments": "payments",
+                        };
+                        const feature = featureMap[item.title];
+
+                        const linkContent = (
+                          <SidebarMenuItem key={item.title}>
+                            <NavLink
+                              to={item.url}
+                              end
+                              onClick={handleMobileMenuClick}
+                              className={({ isActive }) =>
+                                cn(
+                                  "flex items-center gap-3 px-4 py-3 text-sm font-medium w-full min-h-[48px] rounded-xl transition-all duration-200 ease-out",
+                                  isActive
+                                    ? cn(getActiveClass(item.iconColor), "font-semibold shadow-sm")
+                                    : cn("text-gray-700", getHoverClass(item.iconColor), "hover:text-gray-900")
+                                )
+                              }
+                            >
+                              {({ isActive }) => (
+                                <>
+                                  <item.icon className={cn("h-5 w-5 flex-shrink-0", getIconColorClass(item.iconColor, isActive))} />
+                                  <span>{item.title}</span>
+                                </>
+                              )}
+                            </NavLink>
+                          </SidebarMenuItem>
+                        );
+
+                        if (feature) {
+                          return (
+                            <FeatureGate key={item.title} feature={feature} fallback="lock" upgradeMessage={`Upgrade your plan to access the ${item.title} module.`}>
+                              {linkContent}
+                            </FeatureGate>
+                          );
+                        }
+
+                        return linkContent;
+                      })}
                     </SidebarMenu>
                   </SidebarGroupContent>
                 </CollapsibleContent>
@@ -198,41 +226,67 @@ export function AppSidebar() {
                   {/* Add Client Quick Action */}
                   {group.label === "CLIENT & SALES" && (
                     <SidebarMenuItem className="w-full flex justify-center">
-                      <button
-                        onClick={() => {
-                          setClientDialogOpen(true);
-                          handleMobileMenuClick();
-                        }}
-                        className="w-10 h-10 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center transition-all duration-200"
-                        title="Add Client"
+                      <FeatureGate 
+                        feature="clients" 
+                        fallback="lock"
+                        upgradeMessage="Your trial has expired. Upgrade your plan to continue adding new clients."
                       >
-                        <Plus className="h-5 w-5" />
-                      </button>
+                        <button
+                          onClick={() => {
+                            setClientDialogOpen(true);
+                            handleMobileMenuClick();
+                          }}
+                          className="w-10 h-10 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center transition-all duration-200"
+                          title="Add Client"
+                        >
+                          <Plus className="h-5 w-5" />
+                        </button>
+                      </FeatureGate>
                     </SidebarMenuItem>
                   )}
 
-                  {group.items.map((item) => (
-                    <SidebarMenuItem key={item.title} className="w-full flex justify-center">
-                      <NavLink
-                        to={item.url}
-                        end
-                        onClick={handleMobileMenuClick}
-                        title={item.title}
-                        className={({ isActive }) =>
-                          cn(
-                            "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200",
-                            isActive
-                              ? cn(getActiveClass(item.iconColor), "shadow-sm")
-                              : cn("text-gray-700 hover:bg-muted")
-                          )
-                        }
-                      >
-                        {({ isActive }) => (
-                          <item.icon className={cn("h-5 w-5", getIconColorClass(item.iconColor, isActive))} />
-                        )}
-                      </NavLink>
-                    </SidebarMenuItem>
-                  ))}
+                   {group.items.map((item) => {
+                     const featureMap: Record<string, keyof PlanFeatures> = {
+                       "Clients": "clients",
+                       "Invoices": "invoicing",
+                       "Products": "products",
+                       "Payments": "payments",
+                     };
+                     const feature = featureMap[item.title];
+
+                     const iconContent = (
+                       <SidebarMenuItem key={item.title} className="w-full flex justify-center">
+                         <NavLink
+                           to={item.url}
+                           end
+                           onClick={handleMobileMenuClick}
+                           title={item.title}
+                           className={({ isActive }) =>
+                             cn(
+                               "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200",
+                               isActive
+                                 ? cn(getActiveClass(item.iconColor), "shadow-sm")
+                                 : cn("text-gray-700 hover:bg-muted")
+                             )
+                           }
+                         >
+                           {({ isActive }) => (
+                             <item.icon className={cn("h-5 w-5", getIconColorClass(item.iconColor, isActive))} />
+                           )}
+                         </NavLink>
+                       </SidebarMenuItem>
+                     );
+
+                     if (feature) {
+                       return (
+                         <FeatureGate key={item.title} feature={feature} fallback="lock">
+                           {iconContent}
+                         </FeatureGate>
+                       );
+                     }
+
+                     return iconContent;
+                   })}
                 </SidebarMenu>
               </SidebarGroupContent>
             )}

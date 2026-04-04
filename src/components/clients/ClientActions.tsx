@@ -15,6 +15,7 @@ import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { useDeleteClient, useUpdateClient } from "@/hooks/useClients";
 import type { ClientWithDetails } from "@/api/clients.api";
 import { toast } from "@/hooks/use-toast";
+import { useSubscription } from "@/hooks/useSubscription";
 
 interface ClientActionsProps {
   client: ClientWithDetails;
@@ -30,6 +31,8 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
 
   const deleteClient = useDeleteClient();
   const updateClient = useUpdateClient();
+  const { isFeatureEnabled } = useSubscription();
+  const canModify = isFeatureEnabled('clients');
 
   const handleDelete = async () => {
     await deleteClient.mutateAsync(client.id);
@@ -87,14 +90,16 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
         <DropdownMenuContent align="end" className="w-48 bg-popover z-50">
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() => onEdit(client)}
+            onClick={() => canModify && onEdit(client)}
+            disabled={!canModify}
           >
             <Pencil className="h-4 w-4 mr-2" />
             Edit Client
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={handleTopUpClick}
+            onClick={() => canModify && handleTopUpClick()}
+            disabled={!canModify}
           >
             <ArrowUpCircle className="h-4 w-4 mr-2" />
             Top Up
@@ -116,13 +121,15 @@ export function ClientActions({ client, onEdit, onRefresh }: ClientActionsProps)
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={handleToggleStatus}
+            onClick={() => canModify && handleToggleStatus()}
+            disabled={!canModify}
           >
             <Power className="h-4 w-4 mr-2" />
             {isOpen ? "Close Account" : "Reopen Account"}
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => setDeleteDialogOpen(true)}
+            onClick={() => canModify && setDeleteDialogOpen(true)}
+            disabled={!canModify}
             className="text-destructive cursor-pointer focus:text-destructive"
           >
             <XCircle className="h-4 w-4 mr-2" />

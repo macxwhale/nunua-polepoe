@@ -93,10 +93,16 @@ export default function Invoices() {
             </DropdownMenu>
           </FeatureGate>
 
-          <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
-            <Plus className="h-4 w-4" />
-            Create Invoice
-          </Button>
+          <FeatureGate 
+            feature="invoicing" 
+            fallback="lock"
+            upgradeMessage="Your trials has expired. Upgrade your plan to continue creating new invoices."
+          >
+            <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
+              <Plus className="h-4 w-4" />
+              Create Invoice
+            </Button>
+          </FeatureGate>
         </div>
       </div>
 
@@ -105,7 +111,8 @@ export default function Invoices() {
         <EmptyState
           icon={FileText}
           title="No invoices yet"
-          description="Create your first invoice when you're ready."
+          description="Create and manage customer invoices"
+          feature="invoicing"
           action={{
             label: "Create Invoice",
             onClick: () => setDialogOpen(true),

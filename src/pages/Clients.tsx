@@ -108,10 +108,16 @@ export default function Clients() {
             </DropdownMenu>
           </FeatureGate>
 
-          <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
-            <Plus className="h-4 w-4" />
-            Add Client
-          </Button>
+          <FeatureGate 
+            feature="clients" 
+            fallback="lock"
+            upgradeMessage="Your trials has expired. Upgrade your plan to continue adding new clients."
+          >
+            <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
+              <Plus className="h-4 w-4" />
+              Add Client
+            </Button>
+          </FeatureGate>
         </div>
       </div>
 
@@ -134,6 +140,7 @@ export default function Clients() {
           icon={Users}
           title="No clients yet"
           description="Start building lasting relationships by adding your first client."
+          feature="clients"
           action={{
             label: "Add Client",
             onClick: () => setDialogOpen(true),

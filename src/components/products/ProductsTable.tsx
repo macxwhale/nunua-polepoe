@@ -12,6 +12,7 @@ import type { Tables } from "@/integrations/supabase/types";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { formatCurrency } from "@/shared/utils";
 import { Edit, Package, Trash } from "lucide-react";
+import { FeatureGate } from "@/components/FeatureGate";
 import { useState } from "react";
 
 type Product = Tables<"products">;
@@ -77,24 +78,28 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
               </div>
 
               <div className="flex gap-2 pt-3 border-t border-border/30">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => onEdit(product)}
-                  className="flex-1 h-9 text-xs"
-                >
-                  <Edit className="h-3.5 w-3.5 mr-1.5" />
-                  Edit
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleDeleteClick(product)}
-                  className="h-9 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
-                >
-                  <Trash className="h-3.5 w-3.5 mr-1.5" />
-                  Delete
-                </Button>
+                <FeatureGate feature="products" fallback="lock">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onEdit(product)}
+                    className="flex-1 h-9 text-xs"
+                  >
+                    <Edit className="h-3.5 w-3.5 mr-1.5" />
+                    Edit
+                  </Button>
+                </FeatureGate>
+                <FeatureGate feature="products" fallback="lock">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDeleteClick(product)}
+                    className="h-9 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10"
+                  >
+                    <Trash className="h-3.5 w-3.5 mr-1.5" />
+                    Delete
+                  </Button>
+                </FeatureGate>
               </div>
             </div>
           );
@@ -144,24 +149,28 @@ export function ProductsTable({ products, onEdit, onRefresh }: ProductsTableProp
                 </TableCell>
                 <TableCell className="py-4">
                   <div className="flex justify-end gap-1">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => onEdit(product)}
-                      title="Edit"
-                      className="h-8 w-8"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => handleDeleteClick(product)}
-                      title="Delete"
-                      className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
-                    >
-                      <Trash className="h-4 w-4" />
-                    </Button>
+                    <FeatureGate feature="products" fallback="lock">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => onEdit(product)}
+                        title="Edit"
+                        className="h-8 w-8"
+                      >
+                        <Edit className="h-4 w-4" />
+                      </Button>
+                    </FeatureGate>
+                    <FeatureGate feature="products" fallback="lock">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleDeleteClick(product)}
+                        title="Delete"
+                        className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                      >
+                        <Trash className="h-4 w-4" />
+                      </Button>
+                    </FeatureGate>
                   </div>
                 </TableCell>
               </TableRow>

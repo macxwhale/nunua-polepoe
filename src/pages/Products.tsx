@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, Package } from "lucide-react";
+import { FeatureGate } from "@/components/FeatureGate";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ProductsTable } from "@/components/products/ProductsTable";
 import { ProductDialog } from "@/components/products/ProductDialog";
@@ -59,10 +60,16 @@ export default function Products() {
             Manage your product catalog
           </p>
         </div>
-        <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
-          <Plus className="h-4 w-4" />
-          Add Product
-        </Button>
+        <FeatureGate 
+          feature="products" 
+          fallback="lock"
+          upgradeMessage="Your trial has expired. Upgrade your plan to continue adding products."
+        >
+          <Button onClick={() => setDialogOpen(true)} size="lg" className="gap-2">
+            <Plus className="h-4 w-4" />
+            Add Product
+          </Button>
+        </FeatureGate>
       </div>
 
       {/* Content */}
@@ -71,6 +78,7 @@ export default function Products() {
           icon={Package}
           title="No products yet"
           description="Build your catalog by adding products."
+          feature="products"
           action={{
             label: "Add Product",
             onClick: () => setDialogOpen(true),

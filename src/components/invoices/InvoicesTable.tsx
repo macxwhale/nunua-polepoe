@@ -16,6 +16,7 @@ import { sendWhatsAppInvoice } from "@/lib/whatsapp";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { formatCurrency, formatDateShort } from "@/shared/utils";
 import { Download, Edit, FileText, MessageSquare, Printer, Trash } from "lucide-react";
+import { FeatureGate } from "@/components/FeatureGate";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -262,24 +263,28 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                   <MessageSquare className="h-3.5 w-3.5 mr-1.5" />
                   WhatsApp
                 </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => onEdit(invoice)}
-                  className="h-9 px-3 text-xs"
-                >
-                  <Edit className="h-3.5 w-3.5 mr-1.5" />
-                  Edit
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleDeleteClick(invoice)}
-                  className="h-9 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10 col-span-2"
-                >
-                  <Trash className="h-3.5 w-3.5 mr-1.5" />
-                  Delete Invoice
-                </Button>
+                <FeatureGate feature="invoicing" fallback="lock">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => onEdit(invoice)}
+                    className="h-9 px-3 text-xs"
+                  >
+                    <Edit className="h-3.5 w-3.5 mr-1.5" />
+                    Edit
+                  </Button>
+                </FeatureGate>
+                <FeatureGate feature="invoicing" fallback="lock">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDeleteClick(invoice)}
+                    className="h-9 px-3 text-xs text-destructive hover:text-destructive hover:bg-destructive/10 col-span-2"
+                  >
+                    <Trash className="h-3.5 w-3.5 mr-1.5" />
+                    Delete Invoice
+                  </Button>
+                </FeatureGate>
               </div>
             </div>
           );
@@ -364,24 +369,28 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                     >
                       <MessageSquare className="h-4 w-4" />
                     </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => onEdit(invoice)}
-                      title="Edit"
-                      className="h-8 w-8"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => handleDeleteClick(invoice)}
-                      title="Delete"
-                      className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
-                    >
-                      <Trash className="h-4 w-4" />
-                    </Button>
+                    <FeatureGate feature="invoicing" fallback="lock">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => onEdit(invoice)}
+                        title="Edit"
+                        className="h-8 w-8"
+                      >
+                        <Edit className="h-4 w-4" />
+                      </Button>
+                    </FeatureGate>
+                    <FeatureGate feature="invoicing" fallback="lock">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleDeleteClick(invoice)}
+                        title="Delete"
+                        className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                      >
+                        <Trash className="h-4 w-4" />
+                      </Button>
+                    </FeatureGate>
                   </div>
                 </TableCell>
               </TableRow>

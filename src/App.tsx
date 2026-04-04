@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { SubscriptionGuard } from "./components/SubscriptionGuard";
+import { SubscriptionProvider } from "./components/providers/SubscriptionProvider";
 import { SuperAdminLayout } from "./components/SuperAdminLayout";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { useAuth } from "./hooks/useAuth";
@@ -90,115 +91,117 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <WhatsAppButton />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route
-            path="/subscription"
-            element={
-              <ProtectedRoute requireOwner>
-                <Subscription />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <SubscriptionGuard>
-                  <DashboardRouter />
-                </SubscriptionGuard>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/superadmin"
-            element={
-              <ProtectedRoute requireSuperAdmin>
-                <SuperAdmin />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/superadmin/tenants"
-            element={
-              <ProtectedRoute requireSuperAdmin>
-                <SuperAdminTenants />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/superadmin/users"
-            element={
-              <ProtectedRoute requireSuperAdmin>
-                <SuperAdminUsers />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/client-dashboard"
-            element={
-              <ProtectedRoute>
-                <ClientDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/clients"
-            element={
-              <ProtectedRoute requireOwner>
-                <SubscriptionGuard>
-                  <Clients />
-                </SubscriptionGuard>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/invoices"
-            element={
-              <ProtectedRoute requireOwner>
-                <SubscriptionGuard>
-                  <Invoices />
-                </SubscriptionGuard>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/products"
-            element={
-              <ProtectedRoute requireOwner>
-                <SubscriptionGuard>
-                  <Products />
-                </SubscriptionGuard>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/payments"
-            element={
-              <ProtectedRoute requireOwner>
-                <SubscriptionGuard>
-                  <Payments />
-                </SubscriptionGuard>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/settings"
-            element={
-              <ProtectedRoute requireOwner>
-                <Settings />
-              </ProtectedRoute>
-            }
-          />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <SubscriptionProvider>
+        <Toaster />
+        <Sonner />
+        <WhatsAppButton />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/subscription"
+              element={
+                <ProtectedRoute requireOwner>
+                  <Subscription />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <SubscriptionGuard>
+                    <DashboardRouter />
+                  </SubscriptionGuard>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/superadmin"
+              element={
+                <ProtectedRoute requireSuperAdmin>
+                  <SuperAdmin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/superadmin/tenants"
+              element={
+                <ProtectedRoute requireSuperAdmin>
+                  <SuperAdminTenants />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/superadmin/users"
+              element={
+                <ProtectedRoute requireSuperAdmin>
+                  <SuperAdminUsers />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/client-dashboard"
+              element={
+                <ProtectedRoute>
+                  <ClientDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/clients"
+              element={
+                <ProtectedRoute requireOwner>
+                  <SubscriptionGuard>
+                    <Clients />
+                  </SubscriptionGuard>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/invoices"
+              element={
+                <ProtectedRoute requireOwner>
+                  <SubscriptionGuard>
+                    <Invoices />
+                  </SubscriptionGuard>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <ProtectedRoute requireOwner>
+                  <SubscriptionGuard>
+                    <Products />
+                  </SubscriptionGuard>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/payments"
+              element={
+                <ProtectedRoute requireOwner>
+                  <SubscriptionGuard>
+                    <Payments />
+                  </SubscriptionGuard>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute requireOwner>
+                  <Settings />
+                </ProtectedRoute>
+              }
+            />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </SubscriptionProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
