@@ -121,17 +121,8 @@ export const cancelSubscription = async (subscriptionCode: string) => {
 /**
  * Fetch the current tenant's billing history from Supabase
  */
-export const getBillingHistory = async (tenantId: string): Promise<BillingHistory[]> => {
-  const { data, error } = await supabase
-    .from('subscription_billing_history')
-    .select('*')
-    .eq('tenant_id', tenantId)
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching billing history:', error);
-    return [];
-  }
-
-  return data as BillingHistory[];
+export const getBillingHistory = async (_tenantId: string): Promise<BillingHistory[]> => {
+  // subscription_billing_history table not yet created - return empty for now
+  console.warn('Billing history table not yet available');
+  return [];
 };
