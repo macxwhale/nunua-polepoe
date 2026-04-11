@@ -113,9 +113,15 @@ export function ClientTransactionsDialog({ open, onClose, client }: ClientTransa
                   className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-success" />
+                    {txn.type === "payment" ? (
+                      <CheckCircle className="h-5 w-5 text-success" />
+                    ) : (
+                      <TrendingUp className="h-5 w-5 text-destructive" />
+                    )}
                     <div>
-                      <div className="font-medium">Payment</div>
+                      <div className="font-medium capitalize">
+                        {txn.type === "sale" ? "Invoice Charge" : txn.type}
+                      </div>
                       <div className="text-sm text-muted-foreground">
                         {new Date(txn.date).toLocaleDateString("en-GB", {
                           day: "2-digit",
@@ -125,7 +131,7 @@ export function ClientTransactionsDialog({ open, onClose, client }: ClientTransa
                       </div>
                     </div>
                   </div>
-                  <Badge variant="success" className="text-base font-semibold px-3 py-1">
+                  <Badge variant={txn.type === "payment" ? "success" : "destructive"} className="text-base font-semibold px-3 py-1">
                     KSH {Number(txn.amount).toLocaleString()}
                   </Badge>
                 </div>
