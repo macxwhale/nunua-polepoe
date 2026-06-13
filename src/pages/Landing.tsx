@@ -560,6 +560,17 @@ const Landing = () => {
             <p className="text-muted-foreground text-sm">
               © {new Date().getFullYear()} Lipia Pole Pole. All rights reserved.
             </p>
+            <p className="text-muted-foreground text-sm">
+              Built by{" "}
+              <a
+                href="https://bunisystems.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-medium"
+              >
+                Buni Systems
+              </a>
+            </p>
           </div>
         </div>
       </footer>

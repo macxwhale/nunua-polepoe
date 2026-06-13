@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dialog';
 
 const WHATSAPP_PHONE = '+254719308600';
-const BUSINESS_NAME = 'Buni Systems';
+const BUSINESS_NAME = 'Lipia Pole Pole';
 
 // WhatsApp SVG Icon component for brand consistency
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -25,7 +25,7 @@ export const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleStartChat = () => {
-    const message = encodeURIComponent('Hello! I would like to get in touch.');
+    const message = encodeURIComponent('Hello! I\'d like to learn more about Lipia Pole Pole.');
     const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE.replace(/\+/g, '')}?text=${message}`;
     window.open(whatsappUrl, '_blank');
     setIsOpen(false);
@@ -47,16 +47,19 @@ export const WhatsAppButton = () => {
         <DialogContent className="sm:max-w-[360px] p-0 overflow-hidden border-0 rounded-2xl shadow-2xl">
           {/* Header */}
           <div className="bg-[#075E54] p-4 flex items-center gap-3">
-            <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center">
-              <WhatsAppIcon className="h-7 w-7 text-white" />
+            <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden flex-shrink-0">
+              <img src="/logo.png" alt={BUSINESS_NAME} className="h-10 w-10 object-contain" />
             </div>
-            <div className="flex-1">
-              <h3 className="text-white font-semibold text-lg">Chat with us</h3>
-              <p className="text-white/80 text-sm">We're online and ready to help!</p>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-white font-semibold text-base leading-tight">{BUSINESS_NAME}</h3>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="h-2 w-2 rounded-full bg-[#25D366]" />
+                <p className="text-white/80 text-xs">Online — ready to help</p>
+              </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-white/80 hover:text-white transition-colors"
+              className="text-white/80 hover:text-white transition-colors flex-shrink-0"
             >
               <X className="h-5 w-5" />
             </button>
@@ -64,36 +67,26 @@ export const WhatsAppButton = () => {
 
           {/* Chat bubble */}
           <div className="p-4 bg-[#ECE5DD]">
-            <div className="bg-white rounded-lg p-4 shadow-sm max-w-[280px]">
-              <p className="text-gray-800">
-                👋 Hello! How can we help you today? Click below to start a conversation with us on WhatsApp.
+            <div className="bg-white rounded-lg rounded-tl-none p-4 shadow-sm max-w-[280px]">
+              <p className="text-gray-800 text-sm leading-relaxed">
+                👋 Hi there! Welcome to <strong>Lipia Pole Pole</strong>. Have a question about managing your credit sales or getting started? We're here to help!
+              </p>
+              <p className="text-[10px] text-gray-400 text-right mt-2">
+                {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </p>
             </div>
-          </div>
-
-          {/* Response time */}
-          <div className="px-4 py-2 bg-white flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#25D366] animate-pulse" />
-            <span className="text-sm text-gray-600">Typically replies within minutes</span>
           </div>
 
           {/* Start chat button */}
           <div className="p-4 bg-white border-t">
             <button
               onClick={handleStartChat}
-              className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors group"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold text-sm transition-colors shadow-sm"
             >
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[#25D366] flex items-center justify-center">
-                  <WhatsAppIcon className="h-5 w-5 text-white" />
-                </div>
-                <div className="text-left">
-                  <p className="font-medium text-gray-900">{BUSINESS_NAME}</p>
-                  <p className="text-sm text-gray-500">Support Team</p>
-                </div>
-              </div>
-              <span className="text-gray-400 group-hover:text-gray-600 transition-colors">›</span>
+              <WhatsAppIcon className="h-5 w-5" />
+              Start Chat on WhatsApp
             </button>
+            <p className="text-center text-xs text-gray-400 mt-2">Typically replies within minutes</p>
           </div>
         </DialogContent>
       </Dialog>
