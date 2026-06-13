@@ -1,0 +1,10 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": "src/components/ui/toast.tsx", "language": "typescript", "sizeLines": 111, "fileCategory": "code"},
+    {"path": "src/components/ui/toaster.tsx", "language": "typescript", "sizeLines": 24, "fileCategory": "code"},
+    {"path": "src/components/ui/use-toast.ts", "language": "typescript", "sizeLines": 3, "fileCategory": "code"},
+    {"path": "src/hooks/use-toast.ts", "language": "typescript", "sizeLines": 186, "fileCategory": "code"}
+  ],
+  "batchImportData": {"src/components/ui/toast.tsx":["src/lib/utils.ts"],"src/components/ui/toaster.tsx":["src/components/ui/toast.tsx","src/hooks/use-toast.ts"],"src/components/ui/use-toast.ts":["src/hooks/use-toast.ts"],"src/hooks/use-toast.ts":["src/components/ui/toast.tsx"]}
+}

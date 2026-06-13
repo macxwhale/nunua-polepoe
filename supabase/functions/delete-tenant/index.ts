@@ -56,13 +56,17 @@ serve(async (req) => {
 
     // 4. Atomic Deletion Sequence (Order matters for FK constraints)
     
+    // Notifications
+    const { error: notifError } = await adminClient.from('notifications').delete().eq('tenant_id', tenant_id)
+    if (notifError) throw notifError
+
+    // Payment details
+    const { error: payError } = await adminClient.from('payment_details').delete().eq('tenant_id', tenant_id)
+    if (payError) throw payError
+
     // Transactions
     const { error: txError } = await adminClient.from('transactions').delete().eq('tenant_id', tenant_id)
     if (txError) throw txError
-
-    // Payments
-    const { error: payError } = await adminClient.from('payments').delete().eq('tenant_id', tenant_id)
-    if (payError) throw payError
 
     // Invoices
     const { error: invError } = await adminClient.from('invoices').delete().eq('tenant_id', tenant_id)

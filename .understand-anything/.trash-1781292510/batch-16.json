@@ -1,0 +1,142 @@
+{
+  "nodes": [
+    {
+      "id": "file:supabase/functions/paystack-webhook/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "supabase/functions/paystack-webhook/index.ts",
+      "summary": "Supabase Edge Function that handles Paystack webhook events for subscription lifecycle management, including charge success, subscription creation, invoice payments, and cancellations. Verifies HMAC-SHA512 signatures, manages plan upgrades/downgrades with proration, logs billing history, and syncs tenant feature flags and usage metrics.",
+      "tags": ["api-handler", "service", "event-handler", "middleware"],
+      "complexity": "complex",
+      "languageNotes": "Deno Edge Function using Paystack HMAC-SHA512 signature verification; handles prorated plan switches by programmatically calling the Paystack REST API to disable old subscriptions and create new ones."
+    },
+    {
+      "id": "function:supabase/functions/paystack-webhook/index.ts:syncTenantData",
+      "type": "function",
+      "name": "syncTenantData",
+      "filePath": "supabase/functions/paystack-webhook/index.ts",
+      "lineRange": [360, 399],
+      "summary": "Master sync function that updates tenant feature flags (reports, priority support, bulk operations, custom branding) and usage metrics in Supabase based on the tenant's current plan code and active status.",
+      "tags": ["service", "data-model", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:supabase/functions/reset-password/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "supabase/functions/reset-password/index.ts",
+      "summary": "Supabase Edge Function that resets user passwords by generating a random 6-digit PIN, looking up user accounts by phone number via the profiles table, updating all matched user accounts, and sending the PIN via Africa's Talking SMS API with allowlist enforcement.",
+      "tags": ["api-handler", "service", "security", "validation"],
+      "complexity": "complex",
+      "languageNotes": "Uses Deno crypto.getRandomValues for cryptographically secure PIN generation; phone number allowlist supports wildcard ('*') for all numbers or comma-separated list with Kenyan phone number variant matching (0xxx / +254xxx)."
+    },
+    {
+      "id": "function:supabase/functions/reset-password/index.ts:generatePin",
+      "type": "function",
+      "name": "generatePin",
+      "filePath": "supabase/functions/reset-password/index.ts",
+      "lineRange": [13, 19],
+      "summary": "Generates a cryptographically secure 6-digit numeric PIN using Deno's crypto.getRandomValues, ensuring the result is zero-padded to 6 digits.",
+      "tags": ["utility", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:supabase/functions/reset-password/index.ts:handler",
+      "type": "function",
+      "name": "handler",
+      "filePath": "supabase/functions/reset-password/index.ts",
+      "lineRange": [21, 204],
+      "summary": "Main request handler for the reset-password edge function; validates the phone number, generates a PIN, updates all user accounts matching that phone, enforces the SMS allowlist, and sends the PIN via Africa's Talking API.",
+      "tags": ["api-handler", "service", "security"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:supabase/functions/resolve-login-email/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "supabase/functions/resolve-login-email/index.ts",
+      "summary": "Supabase Edge Function that resolves a phone number to one or more Supabase Auth email addresses by querying the profiles table and fetching user records via the admin API, enabling phone-based login flows where email is the actual auth credential.",
+      "tags": ["api-handler", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:supabase/functions/resolve-login-email/index.ts:handler",
+      "type": "function",
+      "name": "handler",
+      "filePath": "supabase/functions/resolve-login-email/index.ts",
+      "lineRange": [13, 100],
+      "summary": "Handles incoming requests to resolve a phone number to auth emails; validates the phone format, queries profiles, fetches user records in parallel, deduplicates, and returns the email list.",
+      "tags": ["api-handler", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:supabase/functions/send-transaction-sms/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "supabase/functions/send-transaction-sms/index.ts",
+      "summary": "Supabase Edge Function that sends transactional SMS notifications to clients for sales invoices and payment receipts via Africa's Talking API, enforcing JWT authentication, tenant isolation, phone allowlists, and dynamic message formatting in KSH.",
+      "tags": ["api-handler", "service", "event-handler"],
+      "complexity": "complex",
+      "languageNotes": "Enforces strict tenant boundary checks by comparing the calling user's tenant_id with the target client's tenant_id before sending any SMS, preventing cross-tenant data leakage."
+    },
+    {
+      "id": "file:supabase/functions/setup-tenant/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "supabase/functions/setup-tenant/index.ts",
+      "summary": "Supabase Edge Function that bootstraps a new tenant on first user signup: validates input with Zod, creates or reuses a tenant record, creates the user's profile, and assigns the 'admin' role to the first user of the tenant.",
+      "tags": ["api-handler", "service", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Zod for schema validation of input fields; handles idempotency by checking for existing tenants (by phone number) and existing profiles before inserting, preventing duplicate records on retry."
+    },
+    {
+      "id": "file:tailwind.config.ts",
+      "type": "file",
+      "name": "tailwind.config.ts",
+      "filePath": "tailwind.config.ts",
+      "summary": "Tailwind CSS configuration defining the design system for the application: custom semantic color tokens mapped to CSS variables (supporting dark mode via class), custom font families (Outfit and Plus Jakarta Sans), border radius tokens, and keyframe animations including accordion and floating effects.",
+      "tags": ["configuration", "build-system"],
+      "complexity": "moderate",
+      "languageNotes": "Uses CSS variable-based color tokens (hsl(var(--token))) so the palette can be overridden per theme without recompiling Tailwind; includes shadcn/ui-compatible sidebar color tokens."
+    },
+    {
+      "id": "file:vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "Vite build configuration enabling the React SWC plugin for fast compilation, the Lovable component tagger in development mode, and a path alias mapping '@' to the 'src' directory.",
+      "tags": ["configuration", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:supabase/functions/paystack-webhook/index.ts",
+      "target": "function:supabase/functions/paystack-webhook/index.ts:syncTenantData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:supabase/functions/reset-password/index.ts",
+      "target": "function:supabase/functions/reset-password/index.ts:generatePin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:supabase/functions/reset-password/index.ts",
+      "target": "function:supabase/functions/reset-password/index.ts:handler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:supabase/functions/resolve-login-email/index.ts",
+      "target": "function:supabase/functions/resolve-login-email/index.ts:handler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ]
+}

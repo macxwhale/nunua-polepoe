@@ -1,0 +1,9 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": "supabase/add_subscription_columns.sql", "language": "sql", "sizeLines": 78, "fileCategory": "data"},
+    {"path": "supabase/config.toml", "language": "toml", "sizeLines": 13, "fileCategory": "config"},
+    {"path": "supabase/recreate_database.sql", "language": "sql", "sizeLines": 737, "fileCategory": "data"}
+  ],
+  "batchImportData": {"supabase/add_subscription_columns.sql":[],"supabase/config.toml":[],"supabase/recreate_database.sql":[]}
+}

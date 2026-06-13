@@ -1,0 +1,470 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1074,
+      "nonEmptyLines": 890,
+      "sections": [
+        {
+          "heading": "Lipia Pole Pole - Architecture Documentation",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Table of Contents",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "1. Domain Overview",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "What is Lipia Pole Pole?",
+          "level": 3,
+          "line": 29
+        },
+        {
+          "heading": "Problem Statement",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "Solution",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Target Users",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "2. Ubiquitous Language",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "3. Bounded Contexts",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Context Interactions",
+          "level": 3,
+          "line": 122
+        },
+        {
+          "heading": "4. Entity Relationship Diagram",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Key Relationships",
+          "level": 3,
+          "line": 256
+        },
+        {
+          "heading": "5. Domain Structure",
+          "level": 2,
+          "line": 269
+        },
+        {
+          "heading": "Project Organization",
+          "level": 3,
+          "line": 271
+        },
+        {
+          "heading": "Architecture Pattern",
+          "level": 3,
+          "line": 349
+        },
+        {
+          "heading": "6. State Machines",
+          "level": 2,
+          "line": 374
+        },
+        {
+          "heading": "Invoice Status Flow",
+          "level": 3,
+          "line": 376
+        },
+        {
+          "heading": "Client Status Flow",
+          "level": 3,
+          "line": 405
+        },
+        {
+          "heading": "7. Business Rules & Invariants",
+          "level": 2,
+          "line": 434
+        },
+        {
+          "heading": "Core Business Rules",
+          "level": 3,
+          "line": 436
+        },
+        {
+          "heading": "Aggregate Boundaries",
+          "level": 3,
+          "line": 449
+        },
+        {
+          "heading": "Validation Rules",
+          "level": 3,
+          "line": 457
+        },
+        {
+          "heading": "8. Multi-tenancy Pattern",
+          "level": 2,
+          "line": 486
+        },
+        {
+          "heading": "Tenant Isolation Strategy",
+          "level": 3,
+          "line": 488
+        },
+        {
+          "heading": "Implementation Pattern",
+          "level": 3,
+          "line": 521
+        },
+        {
+          "heading": "Tenant Data Scope",
+          "level": 3,
+          "line": 552
+        },
+        {
+          "heading": "9. Authentication & Authorization",
+          "level": 2,
+          "line": 568
+        },
+        {
+          "heading": "Authentication Flow",
+          "level": 3,
+          "line": 570
+        },
+        {
+          "heading": "Role-Based Access Control (RBAC)",
+          "level": 3,
+          "line": 601
+        },
+        {
+          "heading": "Role Check Implementation",
+          "level": 3,
+          "line": 609
+        },
+        {
+          "heading": "Edge Functions",
+          "level": 3,
+          "line": 634
+        },
+        {
+          "heading": "10. Domain Events",
+          "level": 2,
+          "line": 645
+        },
+        {
+          "heading": "Event Catalog",
+          "level": 3,
+          "line": 647
+        },
+        {
+          "heading": "Event Flow Example: Invoice Payment",
+          "level": 3,
+          "line": 658
+        },
+        {
+          "heading": "11. API Layer Patterns",
+          "level": 2,
+          "line": 688
+        },
+        {
+          "heading": "Naming Conventions",
+          "level": 3,
+          "line": 690
+        },
+        {
+          "heading": "Standard API Function Structure",
+          "level": 3,
+          "line": 702
+        },
+        {
+          "heading": "React Query Hook Pattern",
+          "level": 3,
+          "line": 731
+        },
+        {
+          "heading": "Optimistic Updates Pattern",
+          "level": 3,
+          "line": 764
+        },
+        {
+          "heading": "12. Error Handling Strategy",
+          "level": 2,
+          "line": 795
+        },
+        {
+          "heading": "Error Flow",
+          "level": 3,
+          "line": 797
+        },
+        {
+          "heading": "Error Types & Handling",
+          "level": 3,
+          "line": 824
+        },
+        {
+          "heading": "Toast Notification Pattern",
+          "level": 3,
+          "line": 834
+        },
+        {
+          "heading": "13. Design System",
+          "level": 2,
+          "line": 859
+        },
+        {
+          "heading": "CSS Variables",
+          "level": 3,
+          "line": 861
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 886
+        },
+        {
+          "heading": "Tailwind Configuration",
+          "level": 3,
+          "line": 895
+        },
+        {
+          "heading": "Usage Guidelines",
+          "level": 3,
+          "line": 915
+        },
+        {
+          "heading": "14. Tech Stack",
+          "level": 2,
+          "line": 930
+        },
+        {
+          "heading": "Core Technologies",
+          "level": 3,
+          "line": 932
+        },
+        {
+          "heading": "Data Layer",
+          "level": 3,
+          "line": 943
+        },
+        {
+          "heading": "Key Dependencies",
+          "level": 3,
+          "line": 952
+        },
+        {
+          "heading": "15. Conventions",
+          "level": 2,
+          "line": 968
+        },
+        {
+          "heading": "File Naming",
+          "level": 3,
+          "line": 970
+        },
+        {
+          "heading": "Component Structure",
+          "level": 3,
+          "line": 981
+        },
+        {
+          "heading": "Import Order",
+          "level": 3,
+          "line": 1015
+        },
+        {
+          "heading": "Code Style",
+          "level": 3,
+          "line": 1033
+        },
+        {
+          "heading": "Quick Reference",
+          "level": 2,
+          "line": 1044
+        },
+        {
+          "heading": "Adding a New Feature",
+          "level": 3,
+          "line": 1046
+        },
+        {
+          "heading": "Common Commands",
+          "level": 3,
+          "line": 1055
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 60
+      }
+    },
+    {
+      "path": "docs/DEVELOPER.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 154,
+      "nonEmptyLines": 123,
+      "sections": [
+        {
+          "heading": "Developer Documentation - Nunua Polepoe",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "🏗️ Architecture Design",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Core Principles",
+          "level": 3,
+          "line": 11
+        },
+        {
+          "heading": "🗄️ Database Design",
+          "level": 2,
+          "line": 20
+        },
+        {
+          "heading": "Entity Relationship Diagram (ERD)",
+          "level": 3,
+          "line": 24
+        },
+        {
+          "heading": "Key Tables",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "📁 Project Structure",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "🚀 Adding New Features",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "1. Adding a Database Change",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "2. Adding a New API Endpoint",
+          "level": 3,
+          "line": 124
+        },
+        {
+          "heading": "3. Adding an Edge Function",
+          "level": 3,
+          "line": 142
+        },
+        {
+          "heading": "🛠️ Best Practices",
+          "level": 2,
+          "line": 150
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "docs/ROLES.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 65,
+      "nonEmptyLines": 49,
+      "sections": [
+        {
+          "heading": "User Roles & Permissions",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Role Hierarchy",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Detailed Permissions",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Superadmin",
+          "level": 3,
+          "line": 20
+        },
+        {
+          "heading": "Owner (Admin)",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "Staff (User)",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "Client",
+          "level": 3,
+          "line": 37
+        },
+        {
+          "heading": "Implementation Details",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Database Level (RLS)",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Frontend Level (React)",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Modifying Roles",
+          "level": 2,
+          "line": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,1139 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/api/profile.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "getUserProfile",
+          "startLine": 17,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "updateUserProfile",
+          "startLine": 41,
+          "endLine": 64,
+          "params": [
+            "updates"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getUserProfile",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "updateUserProfile",
+          "line": 41,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getUserProfile",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .select('*')\n    .eq('user_id', user.id)\n    .single",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .select('*')\n    .eq",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .select",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getUserProfile",
+          "callee": "supabase\n    .from",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getUserProfile",
+          "callee": "console.error",
+          "lineNumber": 31
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 42
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "console.log",
+          "lineNumber": 48
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .update(updates)\n    .eq('user_id', user.id)\n    .select()\n    .single",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .update(updates)\n    .eq('user_id', user.id)\n    .select",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .update(updates)\n    .eq",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "supabase\n    .from('profiles')\n    .update",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "supabase\n    .from",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "console.error",
+          "lineNumber": 58
+        },
+        {
+          "caller": "updateUserProfile",
+          "callee": "console.log",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/subscription.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 128,
+      "nonEmptyLines": 112,
+      "functions": [
+        {
+          "name": "getSubscriptionStatus",
+          "startLine": 26,
+          "endLine": 95,
+          "params": [
+            "tenantId"
+          ]
+        },
+        {
+          "name": "initializePaystackPayment",
+          "startLine": 100,
+          "endLine": 107,
+          "params": [
+            "planCode",
+            "email",
+            "tenantId",
+            "amount"
+          ]
+        },
+        {
+          "name": "cancelSubscription",
+          "startLine": 112,
+          "endLine": 119,
+          "params": [
+            "subscriptionCode"
+          ]
+        },
+        {
+          "name": "getBillingHistory",
+          "startLine": 124,
+          "endLine": 128,
+          "params": [
+            "_tenantId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getSubscriptionStatus",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "initializePaystackPayment",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "cancelSubscription",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "getBillingHistory",
+          "line": 124,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from('tenants')\n    .select('trial_ends_at')\n    .eq('id', tenantId)\n    .single",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from('tenants')\n    .select('trial_ends_at')\n    .eq",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from('tenants')\n    .select",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from('tenant_subscriptions')\n    .select('plan, status, next_payment_date, paystack_customer_code, paystack_subscription_code, cancelled_at')\n    .eq('tenant_id', tenantId)\n    .maybeSingle",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from('tenant_subscriptions')\n    .select('plan, status, next_payment_date, paystack_customer_code, paystack_subscription_code, cancelled_at')\n    .eq",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from('tenant_subscriptions')\n    .select",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getSubscriptionStatus",
+          "callee": "supabase\n    .from",
+          "lineNumber": 40
+        },
+        {
+          "caller": "initializePaystackPayment",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 101
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 113
+        },
+        {
+          "caller": "getBillingHistory",
+          "callee": "console.warn",
+          "lineNumber": 126
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/SubscriptionGuard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "SubscriptionGuard",
+          "startLine": 15,
+          "endLine": 39,
+          "params": [
+            "{ children }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SubscriptionGuard",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SubscriptionGuard",
+          "callee": "useSubscription",
+          "lineNumber": 16
+        },
+        {
+          "caller": "SubscriptionGuard",
+          "callee": "useLocation",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/TrialBanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 49,
+      "functions": [
+        {
+          "name": "TrialBanner",
+          "startLine": 6,
+          "endLine": 53,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TrialBanner",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "TrialBanner",
+          "callee": "React.useState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "TrialBanner",
+          "callee": "useSubscription",
+          "lineNumber": 8
+        },
+        {
+          "caller": "TrialBanner",
+          "callee": "setDismissed",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/providers/SubscriptionProvider.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "SubscriptionProvider",
+          "startLine": 10,
+          "endLine": 107,
+          "params": [
+            "{ children }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SubscriptionProvider",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useAuth",
+          "lineNumber": 11
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useState",
+          "lineNumber": 12
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useCallback",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "setIsLoading",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "setError",
+          "lineNumber": 27
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 29
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "getSubscriptionStatus",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "setState",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "console.error",
+          "lineNumber": 33
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "setError",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "setIsLoading",
+          "lineNumber": 36
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useEffect",
+          "lineNumber": 40
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "loadStatus",
+          "lineNumber": 42
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "setIsLoading",
+          "lineNumber": 44
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useMemo",
+          "lineNumber": 48
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useMemo",
+          "lineNumber": 66
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "new Date(state.trialEndsAt).getTime",
+          "lineNumber": 68
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "Date.now",
+          "lineNumber": 68
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "Math.max",
+          "lineNumber": 69
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "Math.ceil",
+          "lineNumber": 69
+        },
+        {
+          "caller": "SubscriptionProvider",
+          "callee": "useCallback",
+          "lineNumber": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/contexts/SubscriptionContext.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 13,
+      "exports": [
+        {
+          "name": "SubscriptionContext",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useSubscription.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 19,
+      "functions": [
+        {
+          "name": "useSubscription",
+          "startLine": 15,
+          "endLine": 23,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useSubscription",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useSubscription",
+          "callee": "useContext",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lib/featureFlags.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 90,
+      "exports": [
+        {
+          "name": "PLAN_FEATURES",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "PLAN_LABELS",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "PLAN_PRICES",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lib/paystackConfig.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 22,
+      "exports": [
+        {
+          "name": "paystackConfig",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Settings.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 439,
+      "nonEmptyLines": 413,
+      "functions": [
+        {
+          "name": "Settings",
+          "startLine": 13,
+          "endLine": 437,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Settings",
+          "callee": "useSubscription",
+          "lineNumber": 14
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 17
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Settings",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Settings",
+          "callee": "useEffect",
+          "lineNumber": 26
+        },
+        {
+          "caller": "Settings",
+          "callee": "fetchProfile",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Settings",
+          "callee": "fetchBillingHistory",
+          "lineNumber": 28
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "setLoading",
+          "lineNumber": 33
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "getUserProfile",
+          "lineNumber": 34
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "setProfile",
+          "lineNumber": 35
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "setFormData",
+          "lineNumber": 36
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "console.error",
+          "lineNumber": 41
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "toast.error",
+          "lineNumber": 42
+        },
+        {
+          "caller": "fetchProfile",
+          "callee": "setLoading",
+          "lineNumber": 44
+        },
+        {
+          "caller": "fetchBillingHistory",
+          "callee": "setLoadingHistory",
+          "lineNumber": 54
+        },
+        {
+          "caller": "fetchBillingHistory",
+          "callee": "getBillingHistory",
+          "lineNumber": 55
+        },
+        {
+          "caller": "fetchBillingHistory",
+          "callee": "setBillingHistory",
+          "lineNumber": 56
+        },
+        {
+          "caller": "fetchBillingHistory",
+          "callee": "console.error",
+          "lineNumber": 58
+        },
+        {
+          "caller": "fetchBillingHistory",
+          "callee": "setLoadingHistory",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Settings",
+          "callee": "useEffect",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Settings",
+          "callee": "fetchBillingHistory",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleSave",
+          "callee": "e.preventDefault",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handleSave",
+          "callee": "setSaving",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handleSave",
+          "callee": "updateUserProfile",
+          "lineNumber": 75
+        },
+        {
+          "caller": "handleSave",
+          "callee": "toast.success",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleSave",
+          "callee": "console.error",
+          "lineNumber": 81
+        },
+        {
+          "caller": "handleSave",
+          "callee": "toast.error",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleSave",
+          "callee": "setSaving",
+          "lineNumber": 84
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "toast.error",
+          "lineNumber": 90
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "window.confirm",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "setCancelling",
+          "lineNumber": 101
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "cancelSubscription",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "toast.success",
+          "lineNumber": 103
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "refetchSub",
+          "lineNumber": 104
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "console.error",
+          "lineNumber": 106
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "toast.error",
+          "lineNumber": 107
+        },
+        {
+          "caller": "handleCancelSubscription",
+          "callee": "setCancelling",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Settings",
+          "callee": "setFormData",
+          "lineNumber": 150
+        },
+        {
+          "caller": "Settings",
+          "callee": "setFormData",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Settings",
+          "callee": "billingHistory.map",
+          "lineNumber": 292
+        },
+        {
+          "caller": "Settings",
+          "callee": "new Date(item.created_at).toLocaleDateString",
+          "lineNumber": 295
+        },
+        {
+          "caller": "Settings",
+          "callee": "item.plan_code.split('_').pop()?.slice",
+          "lineNumber": 298
+        },
+        {
+          "caller": "Settings",
+          "callee": "item.plan_code.split('_').pop",
+          "lineNumber": 298
+        },
+        {
+          "caller": "Settings",
+          "callee": "item.plan_code.split",
+          "lineNumber": 298
+        },
+        {
+          "caller": "Settings",
+          "callee": "item.amount.toLocaleString",
+          "lineNumber": 301
+        },
+        {
+          "caller": "Settings",
+          "callee": "status.charAt(0).toUpperCase",
+          "lineNumber": 374
+        },
+        {
+          "caller": "Settings",
+          "callee": "status.charAt",
+          "lineNumber": 374
+        },
+        {
+          "caller": "Settings",
+          "callee": "status.slice",
+          "lineNumber": 374
+        },
+        {
+          "caller": "Settings",
+          "callee": "new Date(nextPaymentDate).toLocaleDateString",
+          "lineNumber": 382
+        },
+        {
+          "caller": "Settings",
+          "callee": "profile?.tenant_id?.slice",
+          "lineNumber": 422
+        },
+        {
+          "caller": "Settings",
+          "callee": "new Date(profile.created_at).toLocaleDateString",
+          "lineNumber": 428
+        }
+      ],
+      "metrics": {
+        "importCount": 16,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Subscription.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 370,
+      "nonEmptyLines": 343,
+      "functions": [
+        {
+          "name": "Subscription",
+          "startLine": 88,
+          "endLine": 368,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Subscription",
+          "callee": "useAuth",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Subscription",
+          "callee": "useSubscription",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Subscription",
+          "callee": "useSearchParams",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Subscription",
+          "callee": "useNavigate",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Subscription",
+          "callee": "React.useState",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Subscription",
+          "callee": "React.useState",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Subscription",
+          "callee": "useState",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Subscription",
+          "callee": "useState",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Subscription",
+          "callee": "useEffect",
+          "lineNumber": 99
+        },
+        {
+          "caller": "loadProfileEmail",
+          "callee": "getUserProfile",
+          "lineNumber": 102
+        },
+        {
+          "caller": "loadProfileEmail",
+          "callee": "profile.email.endsWith",
+          "lineNumber": 103
+        },
+        {
+          "caller": "loadProfileEmail",
+          "callee": "setPaymentEmail",
+          "lineNumber": 104
+        },
+        {
+          "caller": "loadProfileEmail",
+          "callee": "setHasSavedEmail",
+          "lineNumber": 105
+        },
+        {
+          "caller": "loadProfileEmail",
+          "callee": "console.error",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Subscription",
+          "callee": "loadProfileEmail",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Subscription",
+          "callee": "searchParams.get",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Subscription",
+          "callee": "setShowSuccess",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Subscription",
+          "callee": "toast.success",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Subscription",
+          "callee": "setTimeout",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Subscription",
+          "callee": "navigate",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Subscription",
+          "callee": "clearTimeout",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Subscription",
+          "callee": "user?.email?.endsWith",
+          "lineNumber": 127
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "paymentEmail.includes",
+          "lineNumber": 131
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "toast.error",
+          "lineNumber": 132
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "updateUserProfile",
+          "lineNumber": 136
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "setHasSavedEmail",
+          "lineNumber": 137
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "toast.success",
+          "lineNumber": 138
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "console.error",
+          "lineNumber": 140
+        },
+        {
+          "caller": "handleSaveEmail",
+          "callee": "toast.error",
+          "lineNumber": 141
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "setLoadingPlan",
+          "lineNumber": 147
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 150
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "paymentEmail.includes",
+          "lineNumber": 152
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "alert",
+          "lineNumber": 153
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "initializePaystackPayment",
+          "lineNumber": 157
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "console.error",
+          "lineNumber": 166
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "alert",
+          "lineNumber": 167
+        },
+        {
+          "caller": "handleSelectPlan",
+          "callee": "setLoadingPlan",
+          "lineNumber": 169
+        },
+        {
+          "caller": "statusBadge",
+          "callee": "new Date(trialEndsAt).toLocaleDateString",
+          "lineNumber": 184
+        },
+        {
+          "caller": "statusBadge",
+          "callee": "new Date(nextPaymentDate).toLocaleDateString",
+          "lineNumber": 197
+        },
+        {
+          "caller": "statusBadge",
+          "callee": "setPaymentEmail",
+          "lineNumber": 231
+        },
+        {
+          "caller": "Subscription",
+          "callee": "navigate",
+          "lineNumber": 271
+        },
+        {
+          "caller": "Subscription",
+          "callee": "statusBadge",
+          "lineNumber": 291
+        },
+        {
+          "caller": "Subscription",
+          "callee": "PLANS.map",
+          "lineNumber": 295
+        },
+        {
+          "caller": "Subscription",
+          "callee": "plan.features.map",
+          "lineNumber": 328
+        },
+        {
+          "caller": "Subscription",
+          "callee": "handleSelectPlan",
+          "lineNumber": 344
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

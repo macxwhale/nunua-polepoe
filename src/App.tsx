@@ -19,6 +19,7 @@ import Invoices from "./pages/Invoices";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import Payments from "./pages/Payments";
+import Transactions from "./pages/Transactions";
 import Products from "./pages/Products";
 import Subscription from "./pages/Subscription";
 import SuperAdmin from "./pages/SuperAdmin";
@@ -175,6 +176,16 @@ const App = () => (
                 <ProtectedRoute requireOwner>
                   <SubscriptionGuard>
                     <Products />
+                  </SubscriptionGuard>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/transactions"
+              element={
+                <ProtectedRoute requireOwner>
+                  <SubscriptionGuard>
+                    <Transactions />
                   </SubscriptionGuard>
                 </ProtectedRoute>
               }

@@ -1,0 +1,29 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": "src/components/GlobalSearch.tsx", "language": "typescript", "sizeLines": 133, "fileCategory": "code"},
+    {"path": "src/components/clients/ClientRow.tsx", "language": "typescript", "sizeLines": 78, "fileCategory": "code"},
+    {"path": "src/components/clients/ClientsTable.tsx", "language": "typescript", "sizeLines": 112, "fileCategory": "code"},
+    {"path": "src/components/invoices/InvoicesTable.tsx", "language": "typescript", "sizeLines": 411, "fileCategory": "code"},
+    {"path": "src/components/ui/badge.tsx", "language": "typescript", "sizeLines": 32, "fileCategory": "code"},
+    {"path": "src/components/ui/command.tsx", "language": "typescript", "sizeLines": 132, "fileCategory": "code"},
+    {"path": "src/components/ui/table.tsx", "language": "typescript", "sizeLines": 72, "fileCategory": "code"},
+    {"path": "src/lib/pdfGenerator.ts", "language": "typescript", "sizeLines": 125, "fileCategory": "code"},
+    {"path": "src/lib/whatsapp.ts", "language": "typescript", "sizeLines": 30, "fileCategory": "code"},
+    {"path": "src/pages/SuperAdminUsers.tsx", "language": "typescript", "sizeLines": 311, "fileCategory": "code"},
+    {"path": "src/shared/utils/index.ts", "language": "typescript", "sizeLines": 2, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "src/components/GlobalSearch.tsx": ["src/components/ui/badge.tsx","src/components/ui/command.tsx","src/hooks/useGlobalSearch.ts"],
+    "src/components/clients/ClientRow.tsx": ["src/api/clients.api.ts","src/components/clients/ClientActions.tsx","src/components/ui/badge.tsx","src/components/ui/table.tsx","src/shared/utils/index.ts"],
+    "src/components/clients/ClientsTable.tsx": ["src/api/clients.api.ts","src/components/clients/ClientRow.tsx","src/components/ui/badge.tsx","src/components/ui/table.tsx","src/components/ui/pagination.tsx"],
+    "src/components/invoices/InvoicesTable.tsx": ["src/api/invoices.api.ts","src/components/invoices/InvoiceDialog.tsx","src/components/ui/badge.tsx","src/components/ui/button.tsx","src/components/ui/table.tsx","src/lib/pdfGenerator.ts","src/lib/whatsapp.ts","src/shared/components/DeleteConfirmDialog.tsx"],
+    "src/components/ui/badge.tsx": ["src/lib/utils.ts"],
+    "src/components/ui/command.tsx": ["src/lib/utils.ts","src/components/ui/dialog.tsx"],
+    "src/components/ui/table.tsx": ["src/lib/utils.ts"],
+    "src/lib/pdfGenerator.ts": [],
+    "src/lib/whatsapp.ts": [],
+    "src/pages/SuperAdminUsers.tsx": ["src/integrations/supabase/client.ts","src/components/ui/button.tsx","src/components/ui/card.tsx","src/components/ui/dialog.tsx","src/components/ui/input.tsx","src/components/ui/table.tsx"],
+    "src/shared/utils/index.ts": []
+  }
+}

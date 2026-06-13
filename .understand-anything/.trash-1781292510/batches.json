@@ -1,0 +1,6236 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 198,
+  "totalBatches": 16,
+  "exportsByPath": {
+    ".understand-anything/.understandignore": [],
+    "bun.lockb": [],
+    "eslint.config.js": [],
+    "postcss.config.js": [],
+    "src/api/clients.api.ts": [
+      "getClientsWithDetails",
+      "getClientById",
+      "createClient",
+      "updateClient",
+      "deleteClient",
+      "updateClientBalance",
+      "createClientUser"
+    ],
+    "src/api/invoices.api.ts": [
+      "getInvoices",
+      "getInvoicesByClient",
+      "getInvoiceById",
+      "createInvoice",
+      "updateInvoice",
+      "deleteInvoice",
+      "generateInvoiceNumber"
+    ],
+    "src/api/notifications.api.ts": [
+      "getNotifications",
+      "getUnreadCount",
+      "markAsRead",
+      "markAllAsRead",
+      "deleteNotification",
+      "createNotification"
+    ],
+    "src/api/payments.api.ts": [
+      "getPaymentDetails",
+      "getActivePaymentDetails",
+      "createPaymentDetail",
+      "updatePaymentDetail",
+      "deletePaymentDetail"
+    ],
+    "src/api/products.api.ts": [
+      "getProducts",
+      "getProductById",
+      "createProduct",
+      "updateProduct",
+      "deleteProduct",
+      "searchProducts"
+    ],
+    "src/api/profile.api.ts": [
+      "getUserProfile",
+      "updateUserProfile"
+    ],
+    "src/api/subscription.api.ts": [
+      "getSubscriptionStatus",
+      "initializePaystackPayment",
+      "cancelSubscription",
+      "getBillingHistory"
+    ],
+    "src/api/tenant.api.ts": [
+      "getCurrentTenantId",
+      "getCurrentUser"
+    ],
+    "src/api/transactions.api.ts": [
+      "getTransactions",
+      "getTransactionsByClient",
+      "getTransactionsByInvoice",
+      "getInvoicePaidAmount",
+      "createPaymentTransaction",
+      "createSaleTransaction"
+    ],
+    "src/App.tsx": [],
+    "src/components/AppSidebar.tsx": [
+      "AppSidebar"
+    ],
+    "src/components/auth/SignUpForm.tsx": [
+      "SignUpForm"
+    ],
+    "src/components/auth/UnifiedLoginForm.tsx": [
+      "UnifiedLoginForm"
+    ],
+    "src/components/clients/AddSalesDialog.tsx": [
+      "AddSalesDialog"
+    ],
+    "src/components/clients/ClientActions.tsx": [
+      "ClientActions"
+    ],
+    "src/components/clients/ClientDialog.tsx": [
+      "ClientDialog"
+    ],
+    "src/components/clients/ClientRow.tsx": [
+      "ClientRow"
+    ],
+    "src/components/clients/ClientSalesDialog.tsx": [
+      "ClientSalesDialog"
+    ],
+    "src/components/clients/ClientsTable.tsx": [
+      "ClientsTable"
+    ],
+    "src/components/clients/ClientTopUpDialog.tsx": [
+      "ClientTopUpDialog"
+    ],
+    "src/components/clients/ClientTransactionsDialog.tsx": [
+      "ClientTransactionsDialog"
+    ],
+    "src/components/clients/SimpleTopUpDialog.tsx": [
+      "SimpleTopUpDialog"
+    ],
+    "src/components/FeatureGate.tsx": [
+      "FeatureGate"
+    ],
+    "src/components/GlobalSearch.tsx": [
+      "GlobalSearch"
+    ],
+    "src/components/invoices/InvoiceDialog.tsx": [
+      "InvoiceDialog"
+    ],
+    "src/components/invoices/InvoicesTable.tsx": [
+      "InvoicesTable"
+    ],
+    "src/components/Layout.tsx": [
+      "Layout"
+    ],
+    "src/components/NotificationDropdown.tsx": [
+      "NotificationDropdown"
+    ],
+    "src/components/products/ProductDialog.tsx": [
+      "ProductDialog"
+    ],
+    "src/components/products/ProductsTable.tsx": [
+      "ProductsTable"
+    ],
+    "src/components/providers/SubscriptionProvider.tsx": [
+      "SubscriptionProvider"
+    ],
+    "src/components/SubscriptionGuard.tsx": [
+      "SubscriptionGuard"
+    ],
+    "src/components/SuperAdminLayout.tsx": [
+      "SuperAdminLayout"
+    ],
+    "src/components/SuperAdminSidebar.tsx": [
+      "SuperAdminSidebar"
+    ],
+    "src/components/TrialBanner.tsx": [
+      "TrialBanner"
+    ],
+    "src/components/ui/accordion.tsx": [
+      "Accordion",
+      "AccordionItem",
+      "AccordionTrigger",
+      "AccordionContent"
+    ],
+    "src/components/ui/alert-dialog.tsx": [
+      "AlertDialog",
+      "AlertDialogPortal",
+      "AlertDialogOverlay",
+      "AlertDialogTrigger",
+      "AlertDialogContent",
+      "AlertDialogHeader",
+      "AlertDialogFooter",
+      "AlertDialogTitle",
+      "AlertDialogDescription",
+      "AlertDialogAction",
+      "AlertDialogCancel"
+    ],
+    "src/components/ui/alert.tsx": [
+      "Alert",
+      "AlertTitle",
+      "AlertDescription"
+    ],
+    "src/components/ui/aspect-ratio.tsx": [
+      "AspectRatio"
+    ],
+    "src/components/ui/avatar.tsx": [
+      "Avatar",
+      "AvatarImage",
+      "AvatarFallback"
+    ],
+    "src/components/ui/badge.tsx": [
+      "Badge",
+      "badgeVariants"
+    ],
+    "src/components/ui/breadcrumb.tsx": [
+      "Breadcrumb",
+      "BreadcrumbList",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator",
+      "BreadcrumbEllipsis"
+    ],
+    "src/components/ui/button.tsx": [
+      "Button",
+      "buttonVariants"
+    ],
+    "src/components/ui/calendar.tsx": [
+      "Calendar"
+    ],
+    "src/components/ui/card.tsx": [
+      "Card",
+      "CardHeader",
+      "CardFooter",
+      "CardTitle",
+      "CardDescription",
+      "CardContent"
+    ],
+    "src/components/ui/carousel.tsx": [
+      "CarouselApi",
+      "Carousel",
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselPrevious",
+      "CarouselNext"
+    ],
+    "src/components/ui/chart.tsx": [
+      "ChartContainer",
+      "ChartTooltip",
+      "ChartTooltipContent",
+      "ChartLegend",
+      "ChartLegendContent",
+      "ChartStyle"
+    ],
+    "src/components/ui/checkbox.tsx": [
+      "Checkbox"
+    ],
+    "src/components/ui/collapsible.tsx": [
+      "Collapsible",
+      "CollapsibleTrigger",
+      "CollapsibleContent"
+    ],
+    "src/components/ui/command.tsx": [
+      "Command",
+      "CommandDialog",
+      "CommandInput",
+      "CommandList",
+      "CommandEmpty",
+      "CommandGroup",
+      "CommandItem",
+      "CommandShortcut",
+      "CommandSeparator"
+    ],
+    "src/components/ui/context-menu.tsx": [
+      "ContextMenu",
+      "ContextMenuTrigger",
+      "ContextMenuContent",
+      "ContextMenuItem",
+      "ContextMenuCheckboxItem",
+      "ContextMenuRadioItem",
+      "ContextMenuLabel",
+      "ContextMenuSeparator",
+      "ContextMenuShortcut",
+      "ContextMenuGroup",
+      "ContextMenuPortal",
+      "ContextMenuSub",
+      "ContextMenuSubContent",
+      "ContextMenuSubTrigger",
+      "ContextMenuRadioGroup"
+    ],
+    "src/components/ui/dialog.tsx": [
+      "Dialog",
+      "DialogPortal",
+      "DialogOverlay",
+      "DialogClose",
+      "DialogTrigger",
+      "DialogContent",
+      "DialogHeader",
+      "DialogFooter",
+      "DialogTitle",
+      "DialogDescription"
+    ],
+    "src/components/ui/drawer.tsx": [
+      "Drawer",
+      "DrawerPortal",
+      "DrawerOverlay",
+      "DrawerTrigger",
+      "DrawerClose",
+      "DrawerContent",
+      "DrawerHeader",
+      "DrawerFooter",
+      "DrawerTitle",
+      "DrawerDescription"
+    ],
+    "src/components/ui/dropdown-menu.tsx": [
+      "DropdownMenu",
+      "DropdownMenuTrigger",
+      "DropdownMenuContent",
+      "DropdownMenuItem",
+      "DropdownMenuCheckboxItem",
+      "DropdownMenuRadioItem",
+      "DropdownMenuLabel",
+      "DropdownMenuSeparator",
+      "DropdownMenuShortcut",
+      "DropdownMenuGroup",
+      "DropdownMenuPortal",
+      "DropdownMenuSub",
+      "DropdownMenuSubContent",
+      "DropdownMenuSubTrigger",
+      "DropdownMenuRadioGroup"
+    ],
+    "src/components/ui/empty-state.tsx": [
+      "EmptyState"
+    ],
+    "src/components/ui/form.tsx": [
+      "useFormField",
+      "Form",
+      "FormItem",
+      "FormLabel",
+      "FormControl",
+      "FormDescription",
+      "FormMessage",
+      "FormField"
+    ],
+    "src/components/ui/hover-card.tsx": [
+      "HoverCard",
+      "HoverCardTrigger",
+      "HoverCardContent"
+    ],
+    "src/components/ui/input-otp.tsx": [
+      "InputOTP",
+      "InputOTPGroup",
+      "InputOTPSlot",
+      "InputOTPSeparator"
+    ],
+    "src/components/ui/input.tsx": [
+      "Input"
+    ],
+    "src/components/ui/label.tsx": [
+      "Label"
+    ],
+    "src/components/ui/menubar.tsx": [
+      "Menubar",
+      "MenubarMenu",
+      "MenubarTrigger",
+      "MenubarContent",
+      "MenubarItem",
+      "MenubarSeparator",
+      "MenubarLabel",
+      "MenubarCheckboxItem",
+      "MenubarRadioGroup",
+      "MenubarRadioItem",
+      "MenubarPortal",
+      "MenubarSubContent",
+      "MenubarSubTrigger",
+      "MenubarGroup",
+      "MenubarSub",
+      "MenubarShortcut"
+    ],
+    "src/components/ui/navigation-menu.tsx": [
+      "navigationMenuTriggerStyle",
+      "NavigationMenu",
+      "NavigationMenuList",
+      "NavigationMenuItem",
+      "NavigationMenuContent",
+      "NavigationMenuTrigger",
+      "NavigationMenuLink",
+      "NavigationMenuIndicator",
+      "NavigationMenuViewport"
+    ],
+    "src/components/ui/pagination.tsx": [
+      "Pagination",
+      "PaginationContent",
+      "PaginationEllipsis",
+      "PaginationItem",
+      "PaginationLink",
+      "PaginationNext",
+      "PaginationPrevious"
+    ],
+    "src/components/ui/popover.tsx": [
+      "Popover",
+      "PopoverTrigger",
+      "PopoverContent"
+    ],
+    "src/components/ui/progress.tsx": [
+      "Progress"
+    ],
+    "src/components/ui/radio-group.tsx": [
+      "RadioGroup",
+      "RadioGroupItem"
+    ],
+    "src/components/ui/resizable.tsx": [
+      "ResizablePanelGroup",
+      "ResizablePanel",
+      "ResizableHandle"
+    ],
+    "src/components/ui/scroll-area.tsx": [
+      "ScrollArea",
+      "ScrollBar"
+    ],
+    "src/components/ui/select.tsx": [
+      "Select",
+      "SelectGroup",
+      "SelectValue",
+      "SelectTrigger",
+      "SelectContent",
+      "SelectLabel",
+      "SelectItem",
+      "SelectSeparator",
+      "SelectScrollUpButton",
+      "SelectScrollDownButton"
+    ],
+    "src/components/ui/separator.tsx": [
+      "Separator"
+    ],
+    "src/components/ui/sheet.tsx": [
+      "Sheet",
+      "SheetClose",
+      "SheetContent",
+      "SheetDescription",
+      "SheetFooter",
+      "SheetHeader",
+      "SheetOverlay",
+      "SheetPortal",
+      "SheetTitle",
+      "SheetTrigger"
+    ],
+    "src/components/ui/sidebar.tsx": [
+      "Sidebar",
+      "SidebarContent",
+      "SidebarFooter",
+      "SidebarGroup",
+      "SidebarGroupAction",
+      "SidebarGroupContent",
+      "SidebarGroupLabel",
+      "SidebarHeader",
+      "SidebarInput",
+      "SidebarInset",
+      "SidebarMenu",
+      "SidebarMenuAction",
+      "SidebarMenuBadge",
+      "SidebarMenuButton",
+      "SidebarMenuItem",
+      "SidebarMenuSkeleton",
+      "SidebarMenuSub",
+      "SidebarMenuSubButton",
+      "SidebarMenuSubItem",
+      "SidebarProvider",
+      "SidebarRail",
+      "SidebarSeparator",
+      "SidebarTrigger",
+      "useSidebar"
+    ],
+    "src/components/ui/skeleton.tsx": [
+      "Skeleton"
+    ],
+    "src/components/ui/slider.tsx": [
+      "Slider"
+    ],
+    "src/components/ui/sonner.tsx": [
+      "Toaster",
+      "toast"
+    ],
+    "src/components/ui/switch.tsx": [
+      "Switch"
+    ],
+    "src/components/ui/table.tsx": [
+      "Table",
+      "TableHeader",
+      "TableBody",
+      "TableFooter",
+      "TableHead",
+      "TableRow",
+      "TableCell",
+      "TableCaption"
+    ],
+    "src/components/ui/tabs.tsx": [
+      "Tabs",
+      "TabsList",
+      "TabsTrigger",
+      "TabsContent"
+    ],
+    "src/components/ui/textarea.tsx": [
+      "Textarea"
+    ],
+    "src/components/ui/toast.tsx": [
+      "ToastProps",
+      "ToastActionElement",
+      "ToastProvider",
+      "ToastViewport",
+      "Toast",
+      "ToastTitle",
+      "ToastDescription",
+      "ToastClose",
+      "ToastAction"
+    ],
+    "src/components/ui/toaster.tsx": [
+      "Toaster"
+    ],
+    "src/components/ui/toggle-group.tsx": [
+      "ToggleGroup",
+      "ToggleGroupItem"
+    ],
+    "src/components/ui/toggle.tsx": [
+      "Toggle",
+      "toggleVariants"
+    ],
+    "src/components/ui/tooltip.tsx": [
+      "Tooltip",
+      "TooltipTrigger",
+      "TooltipContent",
+      "TooltipProvider"
+    ],
+    "src/components/ui/use-toast.ts": [
+      "useToast",
+      "toast"
+    ],
+    "src/components/WhatsAppButton.tsx": [
+      "WhatsAppButton"
+    ],
+    "src/contexts/SubscriptionContext.tsx": [
+      "SubscriptionContext"
+    ],
+    "src/hooks/use-mobile.tsx": [
+      "useIsMobile"
+    ],
+    "src/hooks/use-toast.ts": [
+      "reducer",
+      "useToast",
+      "toast"
+    ],
+    "src/hooks/useAuth.tsx": [
+      "useAuth"
+    ],
+    "src/hooks/useClients.ts": [
+      "useClients",
+      "useClient",
+      "useCreateClient",
+      "useUpdateClient",
+      "useDeleteClient",
+      "useUpdateClientBalance",
+      "useCreateClientUser"
+    ],
+    "src/hooks/useGlobalSearch.ts": [
+      "useGlobalSearch"
+    ],
+    "src/hooks/useInvoices.ts": [
+      "useInvoices",
+      "useInvoicesByClient",
+      "useInvoice",
+      "useGenerateInvoiceNumber",
+      "useCreateInvoice",
+      "useUpdateInvoice",
+      "useDeleteInvoice"
+    ],
+    "src/hooks/useNotifications.ts": [
+      "useNotifications",
+      "useUnreadCount",
+      "useMarkAsRead",
+      "useMarkAllAsRead",
+      "useDeleteNotification",
+      "useCreateNotification"
+    ],
+    "src/hooks/usePayments.ts": [
+      "queryKeys",
+      "usePaymentDetails",
+      "useActivePaymentDetails",
+      "useCreatePaymentDetail",
+      "useUpdatePaymentDetail",
+      "useDeletePaymentDetail"
+    ],
+    "src/hooks/useProducts.ts": [
+      "useProducts",
+      "useProduct",
+      "useSearchProducts",
+      "useCreateProduct",
+      "useUpdateProduct",
+      "useDeleteProduct"
+    ],
+    "src/hooks/useSubscription.ts": [
+      "useSubscription"
+    ],
+    "src/hooks/useTransactions.ts": [
+      "useTransactions",
+      "useTransactionsByClient",
+      "useTransactionsByInvoice",
+      "useInvoicePaidAmount",
+      "useCreatePayment",
+      "useCreateSale"
+    ],
+    "src/hooks/useUserRole.ts": [
+      "useUserRole"
+    ],
+    "src/integrations/supabase/client.ts": [
+      "supabase"
+    ],
+    "src/integrations/supabase/types.ts": [
+      "Constants"
+    ],
+    "src/lib/featureFlags.ts": [
+      "PLAN_FEATURES",
+      "PLAN_LABELS",
+      "PLAN_PRICES"
+    ],
+    "src/lib/paystackConfig.ts": [
+      "paystackConfig"
+    ],
+    "src/lib/pdfGenerator.ts": [
+      "generateInvoicePDF",
+      "downloadInvoicePDF",
+      "printInvoicePDF"
+    ],
+    "src/lib/queryClient.ts": [
+      "queryClient",
+      "queryKeys"
+    ],
+    "src/lib/utils.ts": [
+      "cn"
+    ],
+    "src/lib/whatsapp.ts": [
+      "sendWhatsAppInvoice",
+      "sendWhatsAppMessage"
+    ],
+    "src/main.tsx": [],
+    "src/pages/Auth.tsx": [],
+    "src/pages/ClientDashboard.tsx": [],
+    "src/pages/Clients.tsx": [
+      "Clients"
+    ],
+    "src/pages/Dashboard.tsx": [
+      "Dashboard"
+    ],
+    "src/pages/Invoices.tsx": [
+      "Invoices"
+    ],
+    "src/pages/Landing.tsx": [],
+    "src/pages/NotFound.tsx": [],
+    "src/pages/Payments.tsx": [],
+    "src/pages/Products.tsx": [
+      "Products"
+    ],
+    "src/pages/Settings.tsx": [],
+    "src/pages/Subscription.tsx": [],
+    "src/pages/SuperAdmin.tsx": [],
+    "src/pages/SuperAdminTenants.tsx": [],
+    "src/pages/SuperAdminUsers.tsx": [],
+    "src/shared/components/DeleteConfirmDialog.tsx": [
+      "DeleteConfirmDialog"
+    ],
+    "src/shared/hooks/useTenant.ts": [
+      "useTenantId",
+      "useCurrentUser"
+    ],
+    "src/shared/utils/currency.ts": [
+      "formatCurrency",
+      "parseCurrency"
+    ],
+    "src/shared/utils/date.ts": [
+      "formatDate",
+      "formatDateShort",
+      "formatRelativeTime"
+    ],
+    "src/shared/utils/index.ts": [],
+    "src/vite-env.d.ts": [],
+    "supabase/.temp/cli-latest": [],
+    "supabase/.temp/gotrue-version": [],
+    "supabase/.temp/pooler-url": [],
+    "supabase/.temp/postgres-version": [],
+    "supabase/.temp/project-ref": [],
+    "supabase/.temp/rest-version": [],
+    "supabase/.temp/storage-migration": [],
+    "supabase/.temp/storage-version": [],
+    "supabase/fix_sql.py": [],
+    "supabase/functions/create-client-user/index.ts": [],
+    "supabase/functions/delete-tenant/index.ts": [],
+    "supabase/functions/paystack-cancel/index.ts": [],
+    "supabase/functions/paystack-initialize/index.ts": [],
+    "supabase/functions/paystack-webhook/index.ts": [],
+    "supabase/functions/reset-password/index.ts": [],
+    "supabase/functions/resolve-login-email/index.ts": [],
+    "supabase/functions/send-transaction-sms/index.ts": [],
+    "supabase/functions/setup-tenant/index.ts": [],
+    "tailwind.config.ts": [],
+    "vite.config.ts": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "language": "typescript",
+          "sizeLines": 209,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/AppSidebar.tsx",
+          "language": "typescript",
+          "sizeLines": 304,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Layout.tsx",
+          "language": "typescript",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/SuperAdminLayout.tsx",
+          "language": "typescript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/SuperAdminSidebar.tsx",
+          "language": "typescript",
+          "sizeLines": 112,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/WhatsAppButton.tsx",
+          "language": "typescript",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/collapsible.tsx",
+          "language": "typescript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/separator.tsx",
+          "language": "typescript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/sheet.tsx",
+          "language": "typescript",
+          "sizeLines": 107,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/sidebar.tsx",
+          "language": "typescript",
+          "sizeLines": 637,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "language": "typescript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/sonner.tsx",
+          "language": "typescript",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "language": "typescript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/use-mobile.tsx",
+          "language": "typescript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useAuth.tsx",
+          "language": "typescript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useUserRole.ts",
+          "language": "typescript",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Dashboard.tsx",
+          "language": "typescript",
+          "sizeLines": 553,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Landing.tsx",
+          "language": "typescript",
+          "sizeLines": 570,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/NotFound.tsx",
+          "language": "typescript",
+          "sizeLines": 78,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/SuperAdmin.tsx",
+          "language": "typescript",
+          "sizeLines": 187,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/App.tsx": [
+          "src/components/Layout.tsx",
+          "src/components/providers/SubscriptionProvider.tsx",
+          "src/components/SubscriptionGuard.tsx",
+          "src/components/SuperAdminLayout.tsx",
+          "src/components/ui/sonner.tsx",
+          "src/components/ui/toaster.tsx",
+          "src/components/ui/tooltip.tsx",
+          "src/components/WhatsAppButton.tsx",
+          "src/hooks/useAuth.tsx",
+          "src/hooks/useUserRole.ts",
+          "src/pages/Auth.tsx",
+          "src/pages/ClientDashboard.tsx",
+          "src/pages/Clients.tsx",
+          "src/pages/Dashboard.tsx",
+          "src/pages/Invoices.tsx",
+          "src/pages/Landing.tsx",
+          "src/pages/NotFound.tsx",
+          "src/pages/Payments.tsx",
+          "src/pages/Products.tsx",
+          "src/pages/Settings.tsx",
+          "src/pages/Subscription.tsx",
+          "src/pages/SuperAdmin.tsx",
+          "src/pages/SuperAdminTenants.tsx",
+          "src/pages/SuperAdminUsers.tsx"
+        ],
+        "src/components/AppSidebar.tsx": [
+          "src/components/clients/ClientDialog.tsx",
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/collapsible.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/hooks/useUserRole.ts",
+          "src/lib/featureFlags.ts",
+          "src/lib/utils.ts"
+        ],
+        "src/components/Layout.tsx": [
+          "src/components/AppSidebar.tsx",
+          "src/components/GlobalSearch.tsx",
+          "src/components/NotificationDropdown.tsx",
+          "src/components/TrialBanner.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/useAuth.tsx",
+          "src/hooks/useUserRole.ts",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/components/SuperAdminLayout.tsx": [
+          "src/components/SuperAdminSidebar.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/useAuth.tsx"
+        ],
+        "src/components/SuperAdminSidebar.tsx": [
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/WhatsAppButton.tsx": [
+          "src/components/ui/dialog.tsx"
+        ],
+        "src/components/ui/collapsible.tsx": [],
+        "src/components/ui/separator.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/sheet.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/sidebar.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/separator.tsx",
+          "src/components/ui/sheet.tsx",
+          "src/components/ui/skeleton.tsx",
+          "src/components/ui/tooltip.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/skeleton.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/sonner.tsx": [],
+        "src/components/ui/tooltip.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/hooks/use-mobile.tsx": [],
+        "src/hooks/useAuth.tsx": [
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/hooks/useUserRole.ts": [
+          "src/hooks/useAuth.tsx",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/pages/Dashboard.tsx": [
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/skeleton.tsx",
+          "src/components/ui/table.tsx",
+          "src/hooks/useAuth.tsx",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/pages/Landing.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/sheet.tsx",
+          "src/hooks/useAuth.tsx"
+        ],
+        "src/pages/NotFound.tsx": [
+          "src/components/ui/button.tsx"
+        ],
+        "src/pages/SuperAdmin.tsx": [
+          "src/components/ui/badge.tsx",
+          "src/components/ui/card.tsx",
+          "src/integrations/supabase/client.ts"
+        ]
+      },
+      "neighborMap": {
+        "src/App.tsx": [
+          {
+            "path": "src/components/providers/SubscriptionProvider.tsx",
+            "batchIndex": 7,
+            "symbols": [
+              "SubscriptionProvider"
+            ]
+          },
+          {
+            "path": "src/components/SubscriptionGuard.tsx",
+            "batchIndex": 7,
+            "symbols": [
+              "SubscriptionGuard"
+            ]
+          },
+          {
+            "path": "src/components/ui/toaster.tsx",
+            "batchIndex": 9,
+            "symbols": [
+              "Toaster"
+            ]
+          },
+          {
+            "path": "src/pages/Auth.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/ClientDashboard.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          },
+          {
+            "path": "src/pages/Invoices.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Invoices"
+            ]
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Products.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Products"
+            ]
+          },
+          {
+            "path": "src/pages/Settings.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Subscription.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminUsers.tsx",
+            "batchIndex": 8,
+            "symbols": []
+          },
+          {
+            "path": "src/main.tsx",
+            "batchIndex": 3,
+            "symbols": []
+          }
+        ],
+        "src/components/AppSidebar.tsx": [
+          {
+            "path": "src/components/clients/ClientDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ClientDialog"
+            ]
+          },
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          },
+          {
+            "path": "src/lib/featureFlags.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "PLAN_FEATURES",
+              "PLAN_LABELS",
+              "PLAN_PRICES"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/Layout.tsx": [
+          {
+            "path": "src/components/GlobalSearch.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "GlobalSearch"
+            ]
+          },
+          {
+            "path": "src/components/NotificationDropdown.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NotificationDropdown"
+            ]
+          },
+          {
+            "path": "src/components/TrialBanner.tsx",
+            "batchIndex": 7,
+            "symbols": [
+              "TrialBanner"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dropdown-menu.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DropdownMenu",
+              "DropdownMenuTrigger",
+              "DropdownMenuContent",
+              "DropdownMenuItem",
+              "DropdownMenuCheckboxItem",
+              "DropdownMenuRadioItem",
+              "DropdownMenuLabel",
+              "DropdownMenuSeparator",
+              "DropdownMenuShortcut",
+              "DropdownMenuGroup",
+              "DropdownMenuPortal",
+              "DropdownMenuSub",
+              "DropdownMenuSubContent",
+              "DropdownMenuSubTrigger",
+              "DropdownMenuRadioGroup"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ],
+        "src/components/SuperAdminLayout.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dropdown-menu.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DropdownMenu",
+              "DropdownMenuTrigger",
+              "DropdownMenuContent",
+              "DropdownMenuItem",
+              "DropdownMenuCheckboxItem",
+              "DropdownMenuRadioItem",
+              "DropdownMenuLabel",
+              "DropdownMenuSeparator",
+              "DropdownMenuShortcut",
+              "DropdownMenuGroup",
+              "DropdownMenuPortal",
+              "DropdownMenuSub",
+              "DropdownMenuSubContent",
+              "DropdownMenuSubTrigger",
+              "DropdownMenuRadioGroup"
+            ]
+          }
+        ],
+        "src/components/SuperAdminSidebar.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/WhatsAppButton.tsx": [
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          }
+        ],
+        "src/components/ui/separator.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/sheet.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/sidebar.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/skeleton.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTransactionsDialog.tsx",
+            "batchIndex": 5,
+            "symbols": [
+              "ClientTransactionsDialog"
+            ]
+          }
+        ],
+        "src/components/ui/tooltip.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          }
+        ],
+        "src/hooks/useAuth.tsx": [
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/components/providers/SubscriptionProvider.tsx",
+            "batchIndex": 7,
+            "symbols": [
+              "SubscriptionProvider"
+            ]
+          },
+          {
+            "path": "src/pages/Auth.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/ClientDashboard.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Subscription.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          }
+        ],
+        "src/hooks/useUserRole.ts": [
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ],
+        "src/pages/Dashboard.tsx": [
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          },
+          {
+            "path": "src/components/ui/card.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "src/components/ui/table.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ],
+        "src/pages/Landing.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/card.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardDescription",
+              "CardContent"
+            ]
+          }
+        ],
+        "src/pages/NotFound.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          }
+        ],
+        "src/pages/SuperAdmin.tsx": [
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/card.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "src/components/ui/accordion.tsx",
+          "language": "typescript",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/alert.tsx",
+          "language": "typescript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "language": "typescript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/breadcrumb.tsx",
+          "language": "typescript",
+          "sizeLines": 90,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/chart.tsx",
+          "language": "typescript",
+          "sizeLines": 303,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "language": "typescript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/context-menu.tsx",
+          "language": "typescript",
+          "sizeLines": 178,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/drawer.tsx",
+          "language": "typescript",
+          "sizeLines": 87,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/hover-card.tsx",
+          "language": "typescript",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/input-otp.tsx",
+          "language": "typescript",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/menubar.tsx",
+          "language": "typescript",
+          "sizeLines": 207,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/navigation-menu.tsx",
+          "language": "typescript",
+          "sizeLines": 120,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/progress.tsx",
+          "language": "typescript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/radio-group.tsx",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/resizable.tsx",
+          "language": "typescript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/slider.tsx",
+          "language": "typescript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/toggle-group.tsx",
+          "language": "typescript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/toggle.tsx",
+          "language": "typescript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "language": "typescript",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/components/ui/accordion.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/alert.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/avatar.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/breadcrumb.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/chart.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/checkbox.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/context-menu.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/drawer.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/hover-card.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/input-otp.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/menubar.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/navigation-menu.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/progress.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/radio-group.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/resizable.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/slider.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/toggle-group.tsx": [
+          "src/components/ui/toggle.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/toggle.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/lib/utils.ts": []
+      },
+      "neighborMap": {
+        "src/lib/utils.ts": [
+          {
+            "path": "src/components/AppSidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "AppSidebar"
+            ]
+          },
+          {
+            "path": "src/components/clients/SimpleTopUpDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SimpleTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/NotificationDropdown.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NotificationDropdown"
+            ]
+          },
+          {
+            "path": "src/components/SuperAdminSidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "SuperAdminSidebar"
+            ]
+          },
+          {
+            "path": "src/components/ui/alert-dialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "AlertDialog",
+              "AlertDialogPortal",
+              "AlertDialogOverlay",
+              "AlertDialogTrigger",
+              "AlertDialogContent",
+              "AlertDialogHeader",
+              "AlertDialogFooter",
+              "AlertDialogTitle",
+              "AlertDialogDescription",
+              "AlertDialogAction",
+              "AlertDialogCancel"
+            ]
+          },
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/calendar.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Calendar"
+            ]
+          },
+          {
+            "path": "src/components/ui/card.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "src/components/ui/carousel.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "CarouselApi",
+              "Carousel",
+              "CarouselContent",
+              "CarouselItem",
+              "CarouselPrevious",
+              "CarouselNext"
+            ]
+          },
+          {
+            "path": "src/components/ui/command.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Command",
+              "CommandDialog",
+              "CommandInput",
+              "CommandList",
+              "CommandEmpty",
+              "CommandGroup",
+              "CommandItem",
+              "CommandShortcut",
+              "CommandSeparator"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/components/ui/dropdown-menu.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DropdownMenu",
+              "DropdownMenuTrigger",
+              "DropdownMenuContent",
+              "DropdownMenuItem",
+              "DropdownMenuCheckboxItem",
+              "DropdownMenuRadioItem",
+              "DropdownMenuLabel",
+              "DropdownMenuSeparator",
+              "DropdownMenuShortcut",
+              "DropdownMenuGroup",
+              "DropdownMenuPortal",
+              "DropdownMenuSub",
+              "DropdownMenuSubContent",
+              "DropdownMenuSubTrigger",
+              "DropdownMenuRadioGroup"
+            ]
+          },
+          {
+            "path": "src/components/ui/form.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "useFormField",
+              "Form",
+              "FormItem",
+              "FormLabel",
+              "FormControl",
+              "FormDescription",
+              "FormMessage",
+              "FormField"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "src/components/ui/pagination.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Pagination",
+              "PaginationContent",
+              "PaginationEllipsis",
+              "PaginationItem",
+              "PaginationLink",
+              "PaginationNext",
+              "PaginationPrevious"
+            ]
+          },
+          {
+            "path": "src/components/ui/popover.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Popover",
+              "PopoverTrigger",
+              "PopoverContent"
+            ]
+          },
+          {
+            "path": "src/components/ui/scroll-area.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "ScrollArea",
+              "ScrollBar"
+            ]
+          },
+          {
+            "path": "src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectGroup",
+              "SelectValue",
+              "SelectTrigger",
+              "SelectContent",
+              "SelectLabel",
+              "SelectItem",
+              "SelectSeparator",
+              "SelectScrollUpButton",
+              "SelectScrollDownButton"
+            ]
+          },
+          {
+            "path": "src/components/ui/separator.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Separator"
+            ]
+          },
+          {
+            "path": "src/components/ui/sheet.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Sheet",
+              "SheetClose",
+              "SheetContent",
+              "SheetDescription",
+              "SheetFooter",
+              "SheetHeader",
+              "SheetOverlay",
+              "SheetPortal",
+              "SheetTitle",
+              "SheetTrigger"
+            ]
+          },
+          {
+            "path": "src/components/ui/sidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Sidebar",
+              "SidebarContent",
+              "SidebarFooter",
+              "SidebarGroup",
+              "SidebarGroupAction",
+              "SidebarGroupContent",
+              "SidebarGroupLabel",
+              "SidebarHeader",
+              "SidebarInput",
+              "SidebarInset",
+              "SidebarMenu",
+              "SidebarMenuAction",
+              "SidebarMenuBadge",
+              "SidebarMenuButton",
+              "SidebarMenuItem",
+              "SidebarMenuSkeleton",
+              "SidebarMenuSub",
+              "SidebarMenuSubButton",
+              "SidebarMenuSubItem",
+              "SidebarProvider",
+              "SidebarRail",
+              "SidebarSeparator",
+              "SidebarTrigger",
+              "useSidebar"
+            ]
+          },
+          {
+            "path": "src/components/ui/skeleton.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Skeleton"
+            ]
+          },
+          {
+            "path": "src/components/ui/switch.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Switch"
+            ]
+          },
+          {
+            "path": "src/components/ui/table.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "src/components/ui/tabs.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Tabs",
+              "TabsList",
+              "TabsTrigger",
+              "TabsContent"
+            ]
+          },
+          {
+            "path": "src/components/ui/textarea.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Textarea"
+            ]
+          },
+          {
+            "path": "src/components/ui/toast.tsx",
+            "batchIndex": 9,
+            "symbols": [
+              "ToastProps",
+              "ToastActionElement",
+              "ToastProvider",
+              "ToastViewport",
+              "Toast",
+              "ToastTitle",
+              "ToastDescription",
+              "ToastClose",
+              "ToastAction"
+            ]
+          },
+          {
+            "path": "src/components/ui/tooltip.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Tooltip",
+              "TooltipTrigger",
+              "TooltipContent",
+              "TooltipProvider"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "src/components/auth/SignUpForm.tsx",
+          "language": "typescript",
+          "sizeLines": 297,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/AddSalesDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 215,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 160,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/SimpleTopUpDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 233,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/invoices/InvoiceDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 413,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/calendar.tsx",
+          "language": "typescript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/form.tsx",
+          "language": "typescript",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/input.tsx",
+          "language": "typescript",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/label.tsx",
+          "language": "typescript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/popover.tsx",
+          "language": "typescript",
+          "sizeLines": 29,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/select.tsx",
+          "language": "typescript",
+          "sizeLines": 143,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "language": "typescript",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useClients.ts",
+          "language": "typescript",
+          "sizeLines": 186,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useInvoices.ts",
+          "language": "typescript",
+          "sizeLines": 182,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useTransactions.ts",
+          "language": "typescript",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lib/queryClient.ts",
+          "language": "typescript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/main.tsx",
+          "language": "typescript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Clients.tsx",
+          "language": "typescript",
+          "sizeLines": 165,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/components/auth/SignUpForm.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/form.tsx",
+          "src/components/ui/input.tsx",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/components/clients/AddSalesDialog.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/label.tsx",
+          "src/components/ui/select.tsx",
+          "src/components/ui/textarea.tsx",
+          "src/hooks/useInvoices.ts",
+          "src/hooks/useProducts.ts",
+          "src/hooks/useTransactions.ts"
+        ],
+        "src/components/clients/ClientDialog.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/form.tsx",
+          "src/components/ui/input.tsx",
+          "src/hooks/useClients.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/components/clients/SimpleTopUpDialog.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/ui/button.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/label.tsx",
+          "src/components/ui/popover.tsx",
+          "src/components/ui/select.tsx",
+          "src/hooks/useInvoices.ts",
+          "src/hooks/useTransactions.ts",
+          "src/integrations/supabase/types.ts",
+          "src/lib/utils.ts"
+        ],
+        "src/components/invoices/InvoiceDialog.tsx": [
+          "src/components/products/ProductDialog.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/command.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/form.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/popover.tsx",
+          "src/components/ui/select.tsx",
+          "src/components/ui/textarea.tsx",
+          "src/hooks/useClients.ts",
+          "src/hooks/useInvoices.ts",
+          "src/hooks/useNotifications.ts",
+          "src/hooks/useProducts.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/calendar.tsx": [
+          "src/components/ui/button.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/form.tsx": [
+          "src/components/ui/label.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/input.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/label.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/popover.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/select.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/textarea.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/hooks/useClients.ts": [
+          "src/api/clients.api.ts",
+          "src/integrations/supabase/types.ts",
+          "src/lib/queryClient.ts"
+        ],
+        "src/hooks/useInvoices.ts": [
+          "src/api/invoices.api.ts",
+          "src/integrations/supabase/types.ts",
+          "src/lib/queryClient.ts"
+        ],
+        "src/hooks/useTransactions.ts": [
+          "src/api/transactions.api.ts",
+          "src/hooks/use-toast.ts",
+          "src/lib/queryClient.ts"
+        ],
+        "src/lib/queryClient.ts": [],
+        "src/main.tsx": [
+          "src/App.tsx",
+          "src/index.css",
+          "src/lib/queryClient.ts"
+        ],
+        "src/pages/Clients.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/clients/ClientDialog.tsx",
+          "src/components/clients/ClientsTable.tsx",
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/empty-state.tsx",
+          "src/components/ui/input.tsx",
+          "src/hooks/useClients.ts",
+          "src/integrations/supabase/types.ts"
+        ]
+      },
+      "neighborMap": {
+        "src/components/auth/SignUpForm.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/pages/Auth.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "src/components/clients/AddSalesDialog.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/hooks/useProducts.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useProducts",
+              "useProduct",
+              "useSearchProducts",
+              "useCreateProduct",
+              "useUpdateProduct",
+              "useDeleteProduct"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientSalesDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientSalesDialog"
+            ]
+          }
+        ],
+        "src/components/clients/ClientDialog.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/components/AppSidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "AppSidebar"
+            ]
+          }
+        ],
+        "src/components/clients/SimpleTopUpDialog.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          }
+        ],
+        "src/components/invoices/InvoiceDialog.tsx": [
+          {
+            "path": "src/components/products/ProductDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductDialog"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/command.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Command",
+              "CommandDialog",
+              "CommandInput",
+              "CommandList",
+              "CommandEmpty",
+              "CommandGroup",
+              "CommandItem",
+              "CommandShortcut",
+              "CommandSeparator"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/hooks/useNotifications.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "useNotifications",
+              "useUnreadCount",
+              "useMarkAsRead",
+              "useMarkAllAsRead",
+              "useDeleteNotification",
+              "useCreateNotification"
+            ]
+          },
+          {
+            "path": "src/hooks/useProducts.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useProducts",
+              "useProduct",
+              "useSearchProducts",
+              "useCreateProduct",
+              "useUpdateProduct",
+              "useDeleteProduct"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/pages/Invoices.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Invoices"
+            ]
+          }
+        ],
+        "src/components/ui/calendar.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/form.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/auth/UnifiedLoginForm.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "UnifiedLoginForm"
+            ]
+          }
+        ],
+        "src/components/ui/input.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/auth/UnifiedLoginForm.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "UnifiedLoginForm"
+            ]
+          },
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductDialog"
+            ]
+          },
+          {
+            "path": "src/components/ui/sidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Sidebar",
+              "SidebarContent",
+              "SidebarFooter",
+              "SidebarGroup",
+              "SidebarGroupAction",
+              "SidebarGroupContent",
+              "SidebarGroupLabel",
+              "SidebarHeader",
+              "SidebarInput",
+              "SidebarInset",
+              "SidebarMenu",
+              "SidebarMenuAction",
+              "SidebarMenuBadge",
+              "SidebarMenuButton",
+              "SidebarMenuItem",
+              "SidebarMenuSkeleton",
+              "SidebarMenuSub",
+              "SidebarMenuSubButton",
+              "SidebarMenuSubItem",
+              "SidebarProvider",
+              "SidebarRail",
+              "SidebarSeparator",
+              "SidebarTrigger",
+              "useSidebar"
+            ]
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Settings.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminUsers.tsx",
+            "batchIndex": 8,
+            "symbols": []
+          },
+          {
+            "path": "src/shared/components/DeleteConfirmDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DeleteConfirmDialog"
+            ]
+          }
+        ],
+        "src/components/ui/label.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductDialog"
+            ]
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Settings.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          }
+        ],
+        "src/components/ui/popover.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/select.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "src/components/ui/textarea.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductDialog"
+            ]
+          }
+        ],
+        "src/hooks/useClients.ts": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          }
+        ],
+        "src/hooks/useInvoices.ts": [
+          {
+            "path": "src/api/invoices.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getInvoices",
+              "getInvoicesByClient",
+              "getInvoiceById",
+              "createInvoice",
+              "updateInvoice",
+              "deleteInvoice",
+              "generateInvoiceNumber"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/pages/Invoices.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Invoices"
+            ]
+          }
+        ],
+        "src/hooks/useTransactions.ts": [
+          {
+            "path": "src/api/transactions.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getTransactions",
+              "getTransactionsByClient",
+              "getTransactionsByInvoice",
+              "getInvoicePaidAmount",
+              "createPaymentTransaction",
+              "createSaleTransaction"
+            ]
+          },
+          {
+            "path": "src/hooks/use-toast.ts",
+            "batchIndex": 9,
+            "symbols": [
+              "reducer",
+              "useToast",
+              "toast"
+            ]
+          }
+        ],
+        "src/lib/queryClient.ts": [
+          {
+            "path": "src/hooks/useProducts.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useProducts",
+              "useProduct",
+              "useSearchProducts",
+              "useCreateProduct",
+              "useUpdateProduct",
+              "useDeleteProduct"
+            ]
+          }
+        ],
+        "src/main.tsx": [
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/index.css",
+            "batchIndex": 15,
+            "symbols": []
+          }
+        ],
+        "src/pages/Clients.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientsTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "ClientsTable"
+            ]
+          },
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dropdown-menu.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DropdownMenu",
+              "DropdownMenuTrigger",
+              "DropdownMenuContent",
+              "DropdownMenuItem",
+              "DropdownMenuCheckboxItem",
+              "DropdownMenuRadioItem",
+              "DropdownMenuLabel",
+              "DropdownMenuSeparator",
+              "DropdownMenuShortcut",
+              "DropdownMenuGroup",
+              "DropdownMenuPortal",
+              "DropdownMenuSub",
+              "DropdownMenuSubContent",
+              "DropdownMenuSubTrigger",
+              "DropdownMenuRadioGroup"
+            ]
+          },
+          {
+            "path": "src/components/ui/empty-state.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "EmptyState"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "src/components/FeatureGate.tsx",
+          "language": "typescript",
+          "sizeLines": 95,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/NotificationDropdown.tsx",
+          "language": "typescript",
+          "sizeLines": 175,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientActions.tsx",
+          "language": "typescript",
+          "sizeLines": 175,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientSalesDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 265,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/products/ProductDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 115,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/products/ProductsTable.tsx",
+          "language": "typescript",
+          "sizeLines": 191,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/alert-dialog.tsx",
+          "language": "typescript",
+          "sizeLines": 104,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/button.tsx",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/carousel.tsx",
+          "language": "typescript",
+          "sizeLines": 224,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu.tsx",
+          "language": "typescript",
+          "sizeLines": 179,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/empty-state.tsx",
+          "language": "typescript",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/pagination.tsx",
+          "language": "typescript",
+          "sizeLines": 81,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useProducts.ts",
+          "language": "typescript",
+          "sizeLines": 165,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Invoices.tsx",
+          "language": "typescript",
+          "sizeLines": 132,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Products.tsx",
+          "language": "typescript",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/shared/components/DeleteConfirmDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 95,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/components/FeatureGate.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/tooltip.tsx",
+          "src/hooks/useSubscription.ts",
+          "src/lib/featureFlags.ts"
+        ],
+        "src/components/NotificationDropdown.tsx": [
+          "src/components/ui/badge.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/scroll-area.tsx",
+          "src/hooks/useNotifications.ts",
+          "src/lib/utils.ts"
+        ],
+        "src/components/clients/ClientActions.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/clients/ClientSalesDialog.tsx",
+          "src/components/clients/ClientTransactionsDialog.tsx",
+          "src/components/clients/SimpleTopUpDialog.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/hooks/use-toast.ts",
+          "src/hooks/useClients.ts",
+          "src/hooks/useSubscription.ts",
+          "src/shared/components/DeleteConfirmDialog.tsx"
+        ],
+        "src/components/clients/ClientSalesDialog.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/clients/AddSalesDialog.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/table.tsx",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/components/products/ProductDialog.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/label.tsx",
+          "src/components/ui/textarea.tsx",
+          "src/hooks/useProducts.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/components/products/ProductsTable.tsx": [
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/table.tsx",
+          "src/hooks/useProducts.ts",
+          "src/integrations/supabase/types.ts",
+          "src/shared/components/DeleteConfirmDialog.tsx",
+          "src/shared/utils/index.ts"
+        ],
+        "src/components/ui/alert-dialog.tsx": [
+          "src/components/ui/button.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/button.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/carousel.tsx": [
+          "src/components/ui/button.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/dropdown-menu.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/empty-state.tsx": [
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/button.tsx",
+          "src/lib/featureFlags.ts"
+        ],
+        "src/components/ui/pagination.tsx": [
+          "src/components/ui/button.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/hooks/useProducts.ts": [
+          "src/api/products.api.ts",
+          "src/integrations/supabase/types.ts",
+          "src/lib/queryClient.ts"
+        ],
+        "src/pages/Invoices.tsx": [
+          "src/components/FeatureGate.tsx",
+          "src/components/invoices/InvoiceDialog.tsx",
+          "src/components/invoices/InvoicesTable.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/empty-state.tsx",
+          "src/hooks/useInvoices.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/pages/Products.tsx": [
+          "src/components/FeatureGate.tsx",
+          "src/components/products/ProductDialog.tsx",
+          "src/components/products/ProductsTable.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/empty-state.tsx",
+          "src/hooks/useProducts.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/shared/components/DeleteConfirmDialog.tsx": [
+          "src/components/ui/alert-dialog.tsx",
+          "src/components/ui/input.tsx"
+        ]
+      },
+      "neighborMap": {
+        "src/components/FeatureGate.tsx": [
+          {
+            "path": "src/components/ui/tooltip.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Tooltip",
+              "TooltipTrigger",
+              "TooltipContent",
+              "TooltipProvider"
+            ]
+          },
+          {
+            "path": "src/hooks/useSubscription.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "useSubscription"
+            ]
+          },
+          {
+            "path": "src/lib/featureFlags.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "PLAN_FEATURES",
+              "PLAN_LABELS",
+              "PLAN_PRICES"
+            ]
+          },
+          {
+            "path": "src/components/AppSidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "AppSidebar"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          },
+          {
+            "path": "src/pages/Dashboard.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Dashboard"
+            ]
+          },
+          {
+            "path": "src/pages/Settings.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          }
+        ],
+        "src/components/NotificationDropdown.tsx": [
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/scroll-area.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "ScrollArea",
+              "ScrollBar"
+            ]
+          },
+          {
+            "path": "src/hooks/useNotifications.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "useNotifications",
+              "useUnreadCount",
+              "useMarkAsRead",
+              "useMarkAllAsRead",
+              "useDeleteNotification",
+              "useCreateNotification"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          }
+        ],
+        "src/components/clients/ClientActions.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTransactionsDialog.tsx",
+            "batchIndex": 5,
+            "symbols": [
+              "ClientTransactionsDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/SimpleTopUpDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SimpleTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/hooks/use-toast.ts",
+            "batchIndex": 9,
+            "symbols": [
+              "reducer",
+              "useToast",
+              "toast"
+            ]
+          },
+          {
+            "path": "src/hooks/useClients.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useClients",
+              "useClient",
+              "useCreateClient",
+              "useUpdateClient",
+              "useDeleteClient",
+              "useUpdateClientBalance",
+              "useCreateClientUser"
+            ]
+          },
+          {
+            "path": "src/hooks/useSubscription.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "useSubscription"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientRow.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "ClientRow"
+            ]
+          }
+        ],
+        "src/components/clients/ClientSalesDialog.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/clients/AddSalesDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AddSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/components/ui/table.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          }
+        ],
+        "src/components/products/ProductDialog.tsx": [
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "src/components/ui/textarea.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Textarea"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          }
+        ],
+        "src/components/products/ProductsTable.tsx": [
+          {
+            "path": "src/components/ui/table.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/shared/utils/index.ts",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ],
+        "src/components/ui/alert-dialog.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/button.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/auth/SignUpForm.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SignUpForm"
+            ]
+          },
+          {
+            "path": "src/components/auth/UnifiedLoginForm.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "UnifiedLoginForm"
+            ]
+          },
+          {
+            "path": "src/components/clients/AddSalesDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AddSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ClientDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTopUpDialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "ClientTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/SimpleTopUpDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SimpleTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          },
+          {
+            "path": "src/components/SuperAdminLayout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "SuperAdminLayout"
+            ]
+          },
+          {
+            "path": "src/components/ui/calendar.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Calendar"
+            ]
+          },
+          {
+            "path": "src/components/ui/sidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Sidebar",
+              "SidebarContent",
+              "SidebarFooter",
+              "SidebarGroup",
+              "SidebarGroupAction",
+              "SidebarGroupContent",
+              "SidebarGroupLabel",
+              "SidebarHeader",
+              "SidebarInput",
+              "SidebarInset",
+              "SidebarMenu",
+              "SidebarMenuAction",
+              "SidebarMenuBadge",
+              "SidebarMenuButton",
+              "SidebarMenuItem",
+              "SidebarMenuSkeleton",
+              "SidebarMenuSub",
+              "SidebarMenuSubButton",
+              "SidebarMenuSubItem",
+              "SidebarProvider",
+              "SidebarRail",
+              "SidebarSeparator",
+              "SidebarTrigger",
+              "useSidebar"
+            ]
+          },
+          {
+            "path": "src/pages/ClientDashboard.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          },
+          {
+            "path": "src/pages/Landing.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/NotFound.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Settings.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminUsers.tsx",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ],
+        "src/components/ui/carousel.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/dropdown-menu.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          },
+          {
+            "path": "src/components/SuperAdminLayout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "SuperAdminLayout"
+            ]
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          }
+        ],
+        "src/components/ui/empty-state.tsx": [
+          {
+            "path": "src/lib/featureFlags.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "PLAN_FEATURES",
+              "PLAN_LABELS",
+              "PLAN_PRICES"
+            ]
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          }
+        ],
+        "src/components/ui/pagination.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/hooks/useProducts.ts": [
+          {
+            "path": "src/api/products.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getProducts",
+              "getProductById",
+              "createProduct",
+              "updateProduct",
+              "deleteProduct",
+              "searchProducts"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/lib/queryClient.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "queryClient",
+              "queryKeys"
+            ]
+          },
+          {
+            "path": "src/components/clients/AddSalesDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AddSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          }
+        ],
+        "src/pages/Invoices.tsx": [
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/hooks/useInvoices.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useInvoices",
+              "useInvoicesByClient",
+              "useInvoice",
+              "useGenerateInvoiceNumber",
+              "useCreateInvoice",
+              "useUpdateInvoice",
+              "useDeleteInvoice"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/pages/Products.tsx": [
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/shared/components/DeleteConfirmDialog.tsx": [
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "src/api/clients.api.ts",
+          "language": "typescript",
+          "sizeLines": 241,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/invoices.api.ts",
+          "language": "typescript",
+          "sizeLines": 138,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/notifications.api.ts",
+          "language": "typescript",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/payments.api.ts",
+          "language": "typescript",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/products.api.ts",
+          "language": "typescript",
+          "sizeLines": 114,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/tenant.api.ts",
+          "language": "typescript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/transactions.api.ts",
+          "language": "typescript",
+          "sizeLines": 204,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientTransactionsDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 198,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useGlobalSearch.ts",
+          "language": "typescript",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useNotifications.ts",
+          "language": "typescript",
+          "sizeLines": 130,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/integrations/supabase/client.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/integrations/supabase/types.ts",
+          "language": "typescript",
+          "sizeLines": 977,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/shared/hooks/useTenant.ts",
+          "language": "typescript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/api/clients.api.ts": [
+          "src/api/tenant.api.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/api/invoices.api.ts": [
+          "src/api/tenant.api.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/api/notifications.api.ts": [
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/api/payments.api.ts": [
+          "src/api/tenant.api.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/api/products.api.ts": [
+          "src/api/tenant.api.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/api/tenant.api.ts": [
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/api/transactions.api.ts": [
+          "src/api/tenant.api.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/components/clients/ClientTransactionsDialog.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/skeleton.tsx",
+          "src/components/ui/tabs.tsx",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/hooks/useGlobalSearch.ts": [
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/hooks/useNotifications.ts": [
+          "src/api/notifications.api.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/integrations/supabase/client.ts": [
+          "src/integrations/supabase/types.ts"
+        ],
+        "src/integrations/supabase/types.ts": [],
+        "src/shared/hooks/useTenant.ts": [
+          "src/api/tenant.api.ts"
+        ]
+      },
+      "neighborMap": {
+        "src/api/clients.api.ts": [
+          {
+            "path": "src/components/clients/AddSalesDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AddSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientRow.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "ClientRow"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientSalesDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientsTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "ClientsTable"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTopUpDialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "ClientTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/SimpleTopUpDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SimpleTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/hooks/useClients.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useClients",
+              "useClient",
+              "useCreateClient",
+              "useUpdateClient",
+              "useDeleteClient",
+              "useUpdateClientBalance",
+              "useCreateClientUser"
+            ]
+          },
+          {
+            "path": "src/pages/ClientDashboard.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          }
+        ],
+        "src/api/invoices.api.ts": [
+          {
+            "path": "src/hooks/useInvoices.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useInvoices",
+              "useInvoicesByClient",
+              "useInvoice",
+              "useGenerateInvoiceNumber",
+              "useCreateInvoice",
+              "useUpdateInvoice",
+              "useDeleteInvoice"
+            ]
+          }
+        ],
+        "src/api/payments.api.ts": [
+          {
+            "path": "src/hooks/usePayments.ts",
+            "batchIndex": 6,
+            "symbols": [
+              "queryKeys",
+              "usePaymentDetails",
+              "useActivePaymentDetails",
+              "useCreatePaymentDetail",
+              "useUpdatePaymentDetail",
+              "useDeletePaymentDetail"
+            ]
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "src/api/products.api.ts": [
+          {
+            "path": "src/hooks/useProducts.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useProducts",
+              "useProduct",
+              "useSearchProducts",
+              "useCreateProduct",
+              "useUpdateProduct",
+              "useDeleteProduct"
+            ]
+          }
+        ],
+        "src/api/tenant.api.ts": [
+          {
+            "path": "src/components/providers/SubscriptionProvider.tsx",
+            "batchIndex": 7,
+            "symbols": [
+              "SubscriptionProvider"
+            ]
+          },
+          {
+            "path": "src/pages/Subscription.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          }
+        ],
+        "src/api/transactions.api.ts": [
+          {
+            "path": "src/hooks/useTransactions.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useTransactions",
+              "useTransactionsByClient",
+              "useTransactionsByInvoice",
+              "useInvoicePaidAmount",
+              "useCreatePayment",
+              "useCreateSale"
+            ]
+          }
+        ],
+        "src/components/clients/ClientTransactionsDialog.tsx": [
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/components/ui/skeleton.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Skeleton"
+            ]
+          },
+          {
+            "path": "src/components/ui/tabs.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Tabs",
+              "TabsList",
+              "TabsTrigger",
+              "TabsContent"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          }
+        ],
+        "src/hooks/useGlobalSearch.ts": [
+          {
+            "path": "src/components/GlobalSearch.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "GlobalSearch"
+            ]
+          }
+        ],
+        "src/hooks/useNotifications.ts": [
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/NotificationDropdown.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NotificationDropdown"
+            ]
+          }
+        ],
+        "src/integrations/supabase/client.ts": [
+          {
+            "path": "src/api/profile.api.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "getUserProfile",
+              "updateUserProfile"
+            ]
+          },
+          {
+            "path": "src/api/subscription.api.ts",
+            "batchIndex": 7,
+            "symbols": [
+              "getSubscriptionStatus",
+              "initializePaystackPayment",
+              "cancelSubscription",
+              "getBillingHistory"
+            ]
+          },
+          {
+            "path": "src/components/auth/SignUpForm.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SignUpForm"
+            ]
+          },
+          {
+            "path": "src/components/auth/UnifiedLoginForm.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "UnifiedLoginForm"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientSalesDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          },
+          {
+            "path": "src/hooks/useAuth.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "useAuth"
+            ]
+          },
+          {
+            "path": "src/hooks/useUserRole.ts",
+            "batchIndex": 1,
+            "symbols": [
+              "useUserRole"
+            ]
+          },
+          {
+            "path": "src/pages/ClientDashboard.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Dashboard.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Dashboard"
+            ]
+          },
+          {
+            "path": "src/pages/SuperAdmin.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminUsers.tsx",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ],
+        "src/integrations/supabase/types.ts": [
+          {
+            "path": "src/components/clients/ClientDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ClientDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientSalesDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/SimpleTopUpDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SimpleTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoicesTable.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "InvoicesTable"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductDialog"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductsTable.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductsTable"
+            ]
+          },
+          {
+            "path": "src/hooks/useClients.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useClients",
+              "useClient",
+              "useCreateClient",
+              "useUpdateClient",
+              "useDeleteClient",
+              "useUpdateClientBalance",
+              "useCreateClientUser"
+            ]
+          },
+          {
+            "path": "src/hooks/useInvoices.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useInvoices",
+              "useInvoicesByClient",
+              "useInvoice",
+              "useGenerateInvoiceNumber",
+              "useCreateInvoice",
+              "useUpdateInvoice",
+              "useDeleteInvoice"
+            ]
+          },
+          {
+            "path": "src/hooks/useProducts.ts",
+            "batchIndex": 4,
+            "symbols": [
+              "useProducts",
+              "useProduct",
+              "useSearchProducts",
+              "useCreateProduct",
+              "useUpdateProduct",
+              "useDeleteProduct"
+            ]
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          },
+          {
+            "path": "src/pages/Invoices.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Invoices"
+            ]
+          },
+          {
+            "path": "src/pages/Products.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Products"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "src/components/auth/UnifiedLoginForm.tsx",
+          "language": "typescript",
+          "sizeLines": 286,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientTopUpDialog.tsx",
+          "language": "typescript",
+          "sizeLines": 139,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/card.tsx",
+          "language": "typescript",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/dialog.tsx",
+          "language": "typescript",
+          "sizeLines": 95,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/scroll-area.tsx",
+          "language": "typescript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/switch.tsx",
+          "language": "typescript",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/tabs.tsx",
+          "language": "typescript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/usePayments.ts",
+          "language": "typescript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Auth.tsx",
+          "language": "typescript",
+          "sizeLines": 166,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/ClientDashboard.tsx",
+          "language": "typescript",
+          "sizeLines": 516,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Payments.tsx",
+          "language": "typescript",
+          "sizeLines": 371,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/SuperAdminTenants.tsx",
+          "language": "typescript",
+          "sizeLines": 541,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/components/auth/UnifiedLoginForm.tsx": [
+          "src/components/ui/button.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/form.tsx",
+          "src/components/ui/input.tsx",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/components/clients/ClientTopUpDialog.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/hooks/usePayments.ts"
+        ],
+        "src/components/ui/card.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/dialog.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/scroll-area.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/switch.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/tabs.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/hooks/usePayments.ts": [
+          "src/api/payments.api.ts"
+        ],
+        "src/pages/Auth.tsx": [
+          "src/components/auth/SignUpForm.tsx",
+          "src/components/auth/UnifiedLoginForm.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/tabs.tsx",
+          "src/hooks/useAuth.tsx"
+        ],
+        "src/pages/ClientDashboard.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/clients/ClientTopUpDialog.tsx",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/tabs.tsx",
+          "src/hooks/useAuth.tsx",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/pages/Payments.tsx": [
+          "src/api/payments.api.ts",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/label.tsx",
+          "src/components/ui/select.tsx",
+          "src/components/ui/switch.tsx",
+          "src/hooks/usePayments.ts",
+          "src/shared/components/DeleteConfirmDialog.tsx"
+        ],
+        "src/pages/SuperAdminTenants.tsx": [
+          "src/components/ui/badge.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/dialog.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/scroll-area.tsx",
+          "src/components/ui/select.tsx",
+          "src/components/ui/switch.tsx",
+          "src/components/ui/table.tsx",
+          "src/components/ui/tabs.tsx",
+          "src/integrations/supabase/client.ts",
+          "src/shared/components/DeleteConfirmDialog.tsx"
+        ]
+      },
+      "neighborMap": {
+        "src/components/auth/UnifiedLoginForm.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/form.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "useFormField",
+              "Form",
+              "FormItem",
+              "FormLabel",
+              "FormControl",
+              "FormDescription",
+              "FormMessage",
+              "FormField"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ],
+        "src/components/clients/ClientTopUpDialog.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          }
+        ],
+        "src/components/ui/card.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/pages/Dashboard.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Dashboard"
+            ]
+          },
+          {
+            "path": "src/pages/Landing.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Settings.tsx",
+            "batchIndex": 7,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdmin.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminUsers.tsx",
+            "batchIndex": 8,
+            "symbols": []
+          }
+        ],
+        "src/components/ui/dialog.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/clients/AddSalesDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "AddSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "ClientDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientSalesDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTransactionsDialog.tsx",
+            "batchIndex": 5,
+            "symbols": [
+              "ClientTransactionsDialog"
+            ]
+          },
+          {
+            "path": "src/components/clients/SimpleTopUpDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SimpleTopUpDialog"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductDialog"
+            ]
+          },
+          {
+            "path": "src/components/ui/command.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Command",
+              "CommandDialog",
+              "CommandInput",
+              "CommandList",
+              "CommandEmpty",
+              "CommandGroup",
+              "CommandItem",
+              "CommandShortcut",
+              "CommandSeparator"
+            ]
+          },
+          {
+            "path": "src/components/WhatsAppButton.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "WhatsAppButton"
+            ]
+          }
+        ],
+        "src/components/ui/scroll-area.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/NotificationDropdown.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NotificationDropdown"
+            ]
+          }
+        ],
+        "src/components/ui/switch.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/tabs.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTransactionsDialog.tsx",
+            "batchIndex": 5,
+            "symbols": [
+              "ClientTransactionsDialog"
+            ]
+          }
+        ],
+        "src/hooks/usePayments.ts": [
+          {
+            "path": "src/api/payments.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getPaymentDetails",
+              "getActivePaymentDetails",
+              "createPaymentDetail",
+              "updatePaymentDetail",
+              "deletePaymentDetail"
+            ]
+          }
+        ],
+        "src/pages/Auth.tsx": [
+          {
+            "path": "src/components/auth/SignUpForm.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "SignUpForm"
+            ]
+          },
+          {
+            "path": "src/hooks/useAuth.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "useAuth"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/pages/ClientDashboard.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/hooks/useAuth.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "useAuth"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/pages/Payments.tsx": [
+          {
+            "path": "src/api/payments.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getPaymentDetails",
+              "getActivePaymentDetails",
+              "createPaymentDetail",
+              "updatePaymentDetail",
+              "deletePaymentDetail"
+            ]
+          },
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectGroup",
+              "SelectValue",
+              "SelectTrigger",
+              "SelectContent",
+              "SelectLabel",
+              "SelectItem",
+              "SelectSeparator",
+              "SelectScrollUpButton",
+              "SelectScrollDownButton"
+            ]
+          },
+          {
+            "path": "src/shared/components/DeleteConfirmDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DeleteConfirmDialog"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/pages/SuperAdminTenants.tsx": [
+          {
+            "path": "src/components/ui/badge.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Badge",
+              "badgeVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/components/ui/select.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Select",
+              "SelectGroup",
+              "SelectValue",
+              "SelectTrigger",
+              "SelectContent",
+              "SelectLabel",
+              "SelectItem",
+              "SelectSeparator",
+              "SelectScrollUpButton",
+              "SelectScrollDownButton"
+            ]
+          },
+          {
+            "path": "src/components/ui/table.tsx",
+            "batchIndex": 8,
+            "symbols": [
+              "Table",
+              "TableHeader",
+              "TableBody",
+              "TableFooter",
+              "TableHead",
+              "TableRow",
+              "TableCell",
+              "TableCaption"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/shared/components/DeleteConfirmDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DeleteConfirmDialog"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "src/api/profile.api.ts",
+          "language": "typescript",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/api/subscription.api.ts",
+          "language": "typescript",
+          "sizeLines": 128,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/SubscriptionGuard.tsx",
+          "language": "typescript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/TrialBanner.tsx",
+          "language": "typescript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/providers/SubscriptionProvider.tsx",
+          "language": "typescript",
+          "sizeLines": 107,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/contexts/SubscriptionContext.tsx",
+          "language": "typescript",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/useSubscription.ts",
+          "language": "typescript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lib/featureFlags.ts",
+          "language": "typescript",
+          "sizeLines": 94,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lib/paystackConfig.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Settings.tsx",
+          "language": "typescript",
+          "sizeLines": 439,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Subscription.tsx",
+          "language": "typescript",
+          "sizeLines": 370,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/api/profile.api.ts": [
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/api/subscription.api.ts": [
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/components/SubscriptionGuard.tsx": [
+          "src/hooks/useSubscription.ts"
+        ],
+        "src/components/TrialBanner.tsx": [
+          "src/hooks/useSubscription.ts"
+        ],
+        "src/components/providers/SubscriptionProvider.tsx": [
+          "src/api/subscription.api.ts",
+          "src/api/tenant.api.ts",
+          "src/contexts/SubscriptionContext.tsx",
+          "src/hooks/useAuth.tsx",
+          "src/lib/featureFlags.ts",
+          "src/lib/paystackConfig.ts"
+        ],
+        "src/contexts/SubscriptionContext.tsx": [
+          "src/api/subscription.api.ts",
+          "src/lib/featureFlags.ts"
+        ],
+        "src/hooks/useSubscription.ts": [
+          "src/contexts/SubscriptionContext.tsx",
+          "src/lib/featureFlags.ts"
+        ],
+        "src/lib/featureFlags.ts": [],
+        "src/lib/paystackConfig.ts": [],
+        "src/pages/Settings.tsx": [
+          "src/api/profile.api.ts",
+          "src/api/subscription.api.ts",
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/label.tsx",
+          "src/hooks/useSubscription.ts",
+          "src/lib/paystackConfig.ts"
+        ],
+        "src/pages/Subscription.tsx": [
+          "src/api/profile.api.ts",
+          "src/api/subscription.api.ts",
+          "src/api/tenant.api.ts",
+          "src/hooks/useAuth.tsx",
+          "src/hooks/useSubscription.ts",
+          "src/lib/paystackConfig.ts"
+        ]
+      },
+      "neighborMap": {
+        "src/api/profile.api.ts": [
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ],
+        "src/api/subscription.api.ts": [
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          }
+        ],
+        "src/components/SubscriptionGuard.tsx": [
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/components/TrialBanner.tsx": [
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          }
+        ],
+        "src/components/providers/SubscriptionProvider.tsx": [
+          {
+            "path": "src/api/tenant.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getCurrentTenantId",
+              "getCurrentUser"
+            ]
+          },
+          {
+            "path": "src/hooks/useAuth.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "useAuth"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/hooks/useSubscription.ts": [
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          },
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          }
+        ],
+        "src/lib/featureFlags.ts": [
+          {
+            "path": "src/components/AppSidebar.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "AppSidebar"
+            ]
+          },
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          },
+          {
+            "path": "src/components/ui/empty-state.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "EmptyState"
+            ]
+          }
+        ],
+        "src/pages/Settings.tsx": [
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/card.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/components/ui/label.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Label"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/pages/Subscription.tsx": [
+          {
+            "path": "src/api/tenant.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getCurrentTenantId",
+              "getCurrentUser"
+            ]
+          },
+          {
+            "path": "src/hooks/useAuth.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "useAuth"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "src/components/GlobalSearch.tsx",
+          "language": "typescript",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientRow.tsx",
+          "language": "typescript",
+          "sizeLines": 78,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/clients/ClientsTable.tsx",
+          "language": "typescript",
+          "sizeLines": 112,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/invoices/InvoicesTable.tsx",
+          "language": "typescript",
+          "sizeLines": 411,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/badge.tsx",
+          "language": "typescript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/command.tsx",
+          "language": "typescript",
+          "sizeLines": 132,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/table.tsx",
+          "language": "typescript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lib/pdfGenerator.ts",
+          "language": "typescript",
+          "sizeLines": 125,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/lib/whatsapp.ts",
+          "language": "typescript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/SuperAdminUsers.tsx",
+          "language": "typescript",
+          "sizeLines": 311,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/shared/utils/index.ts",
+          "language": "typescript",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/components/GlobalSearch.tsx": [
+          "src/components/ui/badge.tsx",
+          "src/components/ui/command.tsx",
+          "src/hooks/useGlobalSearch.ts"
+        ],
+        "src/components/clients/ClientRow.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/clients/ClientActions.tsx",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/table.tsx",
+          "src/shared/utils/index.ts"
+        ],
+        "src/components/clients/ClientsTable.tsx": [
+          "src/api/clients.api.ts",
+          "src/components/clients/ClientRow.tsx",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/table.tsx",
+          "src/shared/utils/index.ts"
+        ],
+        "src/components/invoices/InvoicesTable.tsx": [
+          "src/components/FeatureGate.tsx",
+          "src/components/ui/badge.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/table.tsx",
+          "src/hooks/useInvoices.ts",
+          "src/integrations/supabase/client.ts",
+          "src/integrations/supabase/types.ts",
+          "src/lib/pdfGenerator.ts",
+          "src/lib/whatsapp.ts",
+          "src/shared/components/DeleteConfirmDialog.tsx",
+          "src/shared/utils/index.ts"
+        ],
+        "src/components/ui/badge.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/command.tsx": [
+          "src/components/ui/dialog.tsx",
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/table.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/lib/pdfGenerator.ts": [],
+        "src/lib/whatsapp.ts": [],
+        "src/pages/SuperAdminUsers.tsx": [
+          "src/components/ui/badge.tsx",
+          "src/components/ui/button.tsx",
+          "src/components/ui/card.tsx",
+          "src/components/ui/input.tsx",
+          "src/components/ui/table.tsx",
+          "src/integrations/supabase/client.ts"
+        ],
+        "src/shared/utils/index.ts": []
+      },
+      "neighborMap": {
+        "src/components/GlobalSearch.tsx": [
+          {
+            "path": "src/hooks/useGlobalSearch.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "useGlobalSearch"
+            ]
+          },
+          {
+            "path": "src/components/Layout.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Layout"
+            ]
+          }
+        ],
+        "src/components/clients/ClientRow.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          }
+        ],
+        "src/components/clients/ClientsTable.tsx": [
+          {
+            "path": "src/api/clients.api.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "getClientsWithDetails",
+              "getClientById",
+              "createClient",
+              "updateClient",
+              "deleteClient",
+              "updateClientBalance",
+              "createClientUser"
+            ]
+          },
+          {
+            "path": "src/pages/Clients.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Clients"
+            ]
+          }
+        ],
+        "src/components/invoices/InvoicesTable.tsx": [
+          {
+            "path": "src/components/FeatureGate.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "FeatureGate"
+            ]
+          },
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/hooks/useInvoices.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useInvoices",
+              "useInvoicesByClient",
+              "useInvoice",
+              "useGenerateInvoiceNumber",
+              "useCreateInvoice",
+              "useUpdateInvoice",
+              "useDeleteInvoice"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/types.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "Constants"
+            ]
+          },
+          {
+            "path": "src/shared/components/DeleteConfirmDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "DeleteConfirmDialog"
+            ]
+          },
+          {
+            "path": "src/pages/Invoices.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Invoices"
+            ]
+          }
+        ],
+        "src/components/ui/badge.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientTransactionsDialog.tsx",
+            "batchIndex": 5,
+            "symbols": [
+              "ClientTransactionsDialog"
+            ]
+          },
+          {
+            "path": "src/components/NotificationDropdown.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "NotificationDropdown"
+            ]
+          },
+          {
+            "path": "src/pages/ClientDashboard.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/Payments.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdmin.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "src/components/ui/command.tsx": [
+          {
+            "path": "src/components/ui/dialog.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Dialog",
+              "DialogPortal",
+              "DialogOverlay",
+              "DialogClose",
+              "DialogTrigger",
+              "DialogContent",
+              "DialogHeader",
+              "DialogFooter",
+              "DialogTitle",
+              "DialogDescription"
+            ]
+          },
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/invoices/InvoiceDialog.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "InvoiceDialog"
+            ]
+          }
+        ],
+        "src/components/ui/table.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          },
+          {
+            "path": "src/components/clients/ClientSalesDialog.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientSalesDialog"
+            ]
+          },
+          {
+            "path": "src/components/products/ProductsTable.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductsTable"
+            ]
+          },
+          {
+            "path": "src/pages/Dashboard.tsx",
+            "batchIndex": 1,
+            "symbols": [
+              "Dashboard"
+            ]
+          },
+          {
+            "path": "src/pages/SuperAdminTenants.tsx",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "src/pages/SuperAdminUsers.tsx": [
+          {
+            "path": "src/components/ui/button.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "Button",
+              "buttonVariants"
+            ]
+          },
+          {
+            "path": "src/components/ui/card.tsx",
+            "batchIndex": 6,
+            "symbols": [
+              "Card",
+              "CardHeader",
+              "CardFooter",
+              "CardTitle",
+              "CardDescription",
+              "CardContent"
+            ]
+          },
+          {
+            "path": "src/components/ui/input.tsx",
+            "batchIndex": 3,
+            "symbols": [
+              "Input"
+            ]
+          },
+          {
+            "path": "src/integrations/supabase/client.ts",
+            "batchIndex": 5,
+            "symbols": [
+              "supabase"
+            ]
+          },
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/shared/utils/index.ts": [
+          {
+            "path": "src/components/products/ProductsTable.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ProductsTable"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "src/components/ui/toast.tsx",
+          "language": "typescript",
+          "sizeLines": 111,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/toaster.tsx",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ui/use-toast.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/hooks/use-toast.ts",
+          "language": "typescript",
+          "sizeLines": 186,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/components/ui/toast.tsx": [
+          "src/lib/utils.ts"
+        ],
+        "src/components/ui/toaster.tsx": [
+          "src/components/ui/toast.tsx",
+          "src/hooks/use-toast.ts"
+        ],
+        "src/components/ui/use-toast.ts": [
+          "src/hooks/use-toast.ts"
+        ],
+        "src/hooks/use-toast.ts": [
+          "src/components/ui/toast.tsx"
+        ]
+      },
+      "neighborMap": {
+        "src/components/ui/toast.tsx": [
+          {
+            "path": "src/lib/utils.ts",
+            "batchIndex": 2,
+            "symbols": [
+              "cn"
+            ]
+          }
+        ],
+        "src/components/ui/toaster.tsx": [
+          {
+            "path": "src/App.tsx",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "src/hooks/use-toast.ts": [
+          {
+            "path": "src/components/clients/ClientActions.tsx",
+            "batchIndex": 4,
+            "symbols": [
+              "ClientActions"
+            ]
+          },
+          {
+            "path": "src/hooks/useTransactions.ts",
+            "batchIndex": 3,
+            "symbols": [
+              "useTransactions",
+              "useTransactionsByClient",
+              "useTransactionsByInvoice",
+              "useInvoicePaidAmount",
+              "useCreatePayment",
+              "useCreateSale"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 10,
+      "files": [
+        {
+          "path": ".github/workflows/main.yml",
+          "language": "yaml",
+          "sizeLines": 69,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        ".github/workflows/main.yml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 11,
+      "files": [
+        {
+          "path": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+          "language": "sql",
+          "sizeLines": 256,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+          "language": "sql",
+          "sizeLines": 11,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+          "language": "sql",
+          "sizeLines": 8,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+          "language": "sql",
+          "sizeLines": 19,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+          "language": "sql",
+          "sizeLines": 13,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+          "language": "sql",
+          "sizeLines": 1,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+          "language": "sql",
+          "sizeLines": 60,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+          "language": "sql",
+          "sizeLines": 56,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+          "language": "sql",
+          "sizeLines": 40,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+          "language": "sql",
+          "sizeLines": 7,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+          "language": "sql",
+          "sizeLines": 26,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+          "language": "sql",
+          "sizeLines": 49,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+          "language": "sql",
+          "sizeLines": 19,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+          "language": "sql",
+          "sizeLines": 54,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+          "language": "sql",
+          "sizeLines": 36,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+          "language": "sql",
+          "sizeLines": 63,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+          "language": "sql",
+          "sizeLines": 110,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260127155500_add_superadmin_role.sql",
+          "language": "sql",
+          "sizeLines": 29,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260127203127_add_subscription_tiers.sql",
+          "language": "sql",
+          "sizeLines": 29,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+          "language": "sql",
+          "sizeLines": 35,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+          "language": "sql",
+          "sizeLines": 46,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql",
+          "language": "sql",
+          "sizeLines": 14,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+          "language": "sql",
+          "sizeLines": 19,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+          "language": "sql",
+          "sizeLines": 7,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260327214000_add_profile_email.sql",
+          "language": "sql",
+          "sizeLines": 17,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+          "language": "sql",
+          "sizeLines": 31,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql": [],
+        "supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql": [],
+        "supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql": [],
+        "supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql": [],
+        "supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql": [],
+        "supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql": [],
+        "supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql": [],
+        "supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql": [],
+        "supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql": [],
+        "supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql": [],
+        "supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql": [],
+        "supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql": [],
+        "supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql": [],
+        "supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql": [],
+        "supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql": [],
+        "supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql": [],
+        "supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql": [],
+        "supabase/migrations/20260127155500_add_superadmin_role.sql": [],
+        "supabase/migrations/20260127203127_add_subscription_tiers.sql": [],
+        "supabase/migrations/20260127224000_superadmin_rls_expansion.sql": [],
+        "supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql": [],
+        "supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql": [],
+        "supabase/migrations/20260128110000_superadmin_user_management_rls.sql": [],
+        "supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql": [],
+        "supabase/migrations/20260327214000_add_profile_email.sql": [],
+        "supabase/migrations/20260328192957_add_subscription_billing_history.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 12,
+      "files": [
+        {
+          "path": ".env",
+          "language": "config",
+          "sizeLines": 16,
+          "fileCategory": "config"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 52,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "components.json",
+          "language": "json",
+          "sizeLines": 20,
+          "fileCategory": "config"
+        },
+        {
+          "path": "index.html",
+          "language": "html",
+          "sizeLines": 36,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 88,
+          "fileCategory": "config"
+        },
+        {
+          "path": "tsconfig.app.json",
+          "language": "json",
+          "sizeLines": 31,
+          "fileCategory": "config"
+        },
+        {
+          "path": "tsconfig.json",
+          "language": "json",
+          "sizeLines": 23,
+          "fileCategory": "config"
+        },
+        {
+          "path": "tsconfig.node.json",
+          "language": "json",
+          "sizeLines": 22,
+          "fileCategory": "config"
+        },
+        {
+          "path": "vercel.json",
+          "language": "json",
+          "sizeLines": 8,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        ".env": [],
+        "README.md": [],
+        "components.json": [],
+        "index.html": [],
+        "package.json": [],
+        "tsconfig.app.json": [],
+        "tsconfig.json": [],
+        "tsconfig.node.json": [],
+        "vercel.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 13,
+      "files": [
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "language": "markdown",
+          "sizeLines": 1074,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/DEVELOPER.md",
+          "language": "markdown",
+          "sizeLines": 154,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/ROLES.md",
+          "language": "markdown",
+          "sizeLines": 65,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "docs/ARCHITECTURE.md": [],
+        "docs/DEVELOPER.md": [],
+        "docs/ROLES.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 14,
+      "files": [
+        {
+          "path": "supabase/add_subscription_columns.sql",
+          "language": "sql",
+          "sizeLines": 78,
+          "fileCategory": "data"
+        },
+        {
+          "path": "supabase/config.toml",
+          "language": "toml",
+          "sizeLines": 13,
+          "fileCategory": "config"
+        },
+        {
+          "path": "supabase/recreate_database.sql",
+          "language": "sql",
+          "sizeLines": 737,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "supabase/add_subscription_columns.sql": [],
+        "supabase/config.toml": [],
+        "supabase/recreate_database.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 15,
+      "files": [
+        {
+          "path": ".understand-anything/.understandignore",
+          "language": "unknown",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "bun.lockb",
+          "language": "lockb",
+          "sizeLines": 335,
+          "fileCategory": "code"
+        },
+        {
+          "path": "eslint.config.js",
+          "language": "javascript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "postcss.config.js",
+          "language": "javascript",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "public/robots.txt",
+          "language": "txt",
+          "sizeLines": 14,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "src/App.css",
+          "language": "css",
+          "sizeLines": 42,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "src/components/ui/aspect-ratio.tsx",
+          "language": "typescript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/index.css",
+          "language": "css",
+          "sizeLines": 188,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "src/shared/utils/currency.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/shared/utils/date.ts",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/vite-env.d.ts",
+          "language": "typescript",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/cli-latest",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/gotrue-version",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/pooler-url",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/postgres-version",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/project-ref",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/rest-version",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/storage-migration",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/.temp/storage-version",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/fix_sql.py",
+          "language": "python",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/create-client-user/index.ts",
+          "language": "typescript",
+          "sizeLines": 413,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/delete-tenant/index.ts",
+          "language": "typescript",
+          "sizeLines": 117,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/deno.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        },
+        {
+          "path": "supabase/functions/paystack-cancel/index.ts",
+          "language": "typescript",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/paystack-initialize/index.ts",
+          "language": "typescript",
+          "sizeLines": 191,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".understand-anything/.understandignore": [],
+        "bun.lockb": [],
+        "eslint.config.js": [],
+        "postcss.config.js": [],
+        "public/robots.txt": [],
+        "src/App.css": [],
+        "src/components/ui/aspect-ratio.tsx": [],
+        "src/index.css": [],
+        "src/shared/utils/currency.ts": [],
+        "src/shared/utils/date.ts": [],
+        "src/vite-env.d.ts": [],
+        "supabase/.temp/cli-latest": [],
+        "supabase/.temp/gotrue-version": [],
+        "supabase/.temp/pooler-url": [],
+        "supabase/.temp/postgres-version": [],
+        "supabase/.temp/project-ref": [],
+        "supabase/.temp/rest-version": [],
+        "supabase/.temp/storage-migration": [],
+        "supabase/.temp/storage-version": [],
+        "supabase/fix_sql.py": [],
+        "supabase/functions/create-client-user/index.ts": [],
+        "supabase/functions/delete-tenant/index.ts": [],
+        "supabase/functions/deno.json": [],
+        "supabase/functions/paystack-cancel/index.ts": [],
+        "supabase/functions/paystack-initialize/index.ts": []
+      },
+      "neighborMap": {
+        "src/index.css": [
+          {
+            "path": "src/main.tsx",
+            "batchIndex": 3,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 16,
+      "files": [
+        {
+          "path": "supabase/functions/paystack-webhook/index.ts",
+          "language": "typescript",
+          "sizeLines": 399,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/reset-password/index.ts",
+          "language": "typescript",
+          "sizeLines": 206,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/resolve-login-email/index.ts",
+          "language": "typescript",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/send-transaction-sms/index.ts",
+          "language": "typescript",
+          "sizeLines": 255,
+          "fileCategory": "code"
+        },
+        {
+          "path": "supabase/functions/setup-tenant/index.ts",
+          "language": "typescript",
+          "sizeLines": 151,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tailwind.config.ts",
+          "language": "typescript",
+          "sizeLines": 110,
+          "fileCategory": "code"
+        },
+        {
+          "path": "vite.config.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "supabase/functions/paystack-webhook/index.ts": [],
+        "supabase/functions/reset-password/index.ts": [],
+        "supabase/functions/resolve-login-email/index.ts": [],
+        "supabase/functions/send-transaction-sms/index.ts": [],
+        "supabase/functions/setup-tenant/index.ts": [],
+        "tailwind.config.ts": [],
+        "vite.config.ts": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

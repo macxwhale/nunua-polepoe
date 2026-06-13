@@ -1,0 +1,785 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "supabase/functions/paystack-webhook/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 399,
+      "nonEmptyLines": 344,
+      "functions": [
+        {
+          "name": "syncTenantData",
+          "startLine": 360,
+          "endLine": 399,
+          "params": [
+            "supabase",
+            "tenantId",
+            "planCode",
+            "isActive"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 51
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 51
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 52
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 52
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 53
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 53
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "console.log",
+          "lineNumber": 361
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 364
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 364
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 365
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 365
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 366
+        },
+        {
+          "caller": "getPlanType",
+          "callee": "code.includes",
+          "lineNumber": 366
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "getPlanType",
+          "lineNumber": 370
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "supabase.from(\"tenant_feature_flags\").upsert",
+          "lineNumber": 385
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "supabase.from",
+          "lineNumber": 385
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "new Date().toISOString",
+          "lineNumber": 389
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "supabase.from(\"tenant_usage_metrics\").upsert",
+          "lineNumber": 394
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "supabase.from",
+          "lineNumber": 394
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "new Date().toISOString().split",
+          "lineNumber": 396
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "new Date().toISOString",
+          "lineNumber": 396
+        },
+        {
+          "caller": "syncTenantData",
+          "callee": "new Date().toISOString",
+          "lineNumber": 397
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/reset-password/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 206,
+      "nonEmptyLines": 176,
+      "functions": [
+        {
+          "name": "generatePin",
+          "startLine": 13,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "handler",
+          "startLine": 21,
+          "endLine": 204,
+          "params": [
+            "req"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generatePin",
+          "callee": "crypto.getRandomValues",
+          "lineNumber": 16
+        },
+        {
+          "caller": "generatePin",
+          "callee": "pin.toString",
+          "lineNumber": 18
+        },
+        {
+          "caller": "handler",
+          "callee": "req.json",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handler",
+          "callee": "/^0\\d{9}$/.test",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handler",
+          "callee": "createClient",
+          "lineNumber": 36
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handler",
+          "callee": "generatePin",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin\n      .from(\"profiles\")\n      .select(\"user_id\")\n      .eq",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin\n      .from(\"profiles\")\n      .select",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin\n      .from",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handler",
+          "callee": "Array.from(new Set((profiles ?? []).map((p: { user_id: string }) => p.user_id))).filter",
+          "lineNumber": 63
+        },
+        {
+          "caller": "handler",
+          "callee": "Array.from",
+          "lineNumber": 63
+        },
+        {
+          "caller": "handler",
+          "callee": "(profiles ?? []).map",
+          "lineNumber": 63
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handler",
+          "callee": "userIds.map",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin.auth.admin.updateUserById",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handler",
+          "callee": "Promise.allSettled",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handler",
+          "callee": "results.filter",
+          "lineNumber": 77
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 83
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 88
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 92
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.trim",
+          "lineNumber": 96
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 97
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.trim",
+          "lineNumber": 100
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 101
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.split(\",\").map",
+          "lineNumber": 104
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.split",
+          "lineNumber": 104
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "n.trim",
+          "lineNumber": 104
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.startsWith",
+          "lineNumber": 107
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.substring",
+          "lineNumber": 107
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.startsWith",
+          "lineNumber": 108
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.substring",
+          "lineNumber": 108
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phoneVariants.some",
+          "lineNumber": 110
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowedNumbers.includes",
+          "lineNumber": 110
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 111
+        },
+        {
+          "caller": "handler",
+          "callee": "phone_number.startsWith",
+          "lineNumber": 117
+        },
+        {
+          "caller": "handler",
+          "callee": "phone_number.substring",
+          "lineNumber": 117
+        },
+        {
+          "caller": "handler",
+          "callee": "isPhoneAllowed",
+          "lineNumber": 120
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 121
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 135
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 135
+        },
+        {
+          "caller": "handler",
+          "callee": "fetch",
+          "lineNumber": 137
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 144
+        },
+        {
+          "caller": "handler",
+          "callee": "smsResponse.text",
+          "lineNumber": 147
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 148
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 151
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.parse",
+          "lineNumber": 154
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 156
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 159
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 162
+        },
+        {
+          "caller": "handler",
+          "callee": "console.warn",
+          "lineNumber": 167
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 172
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 186
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 198
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 199
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/resolve-login-email/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "handler",
+          "startLine": 13,
+          "endLine": 100,
+          "params": [
+            "req"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "handler",
+          "callee": "req.json",
+          "lineNumber": 19
+        },
+        {
+          "caller": "handler",
+          "callee": "/^0\\d{9}$/.test",
+          "lineNumber": 21
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 23
+        },
+        {
+          "caller": "handler",
+          "callee": "createClient",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handler",
+          "callee": "Deno.env.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin\n      .from('profiles')\n      .select('user_id')\n      .eq",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin\n      .from('profiles')\n      .select",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin\n      .from",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 43
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handler",
+          "callee": "Array.from(new Set((profiles ?? []).map((p: { user_id: string }) => p.user_id))).filter",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handler",
+          "callee": "Array.from",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handler",
+          "callee": "(profiles ?? []).map",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 55
+        },
+        {
+          "caller": "handler",
+          "callee": "Promise.allSettled",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handler",
+          "callee": "userIds.map",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handler",
+          "callee": "supabaseAdmin.auth.admin.getUserById",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handler",
+          "callee": "lookups\n      .map(r => (r.status === 'fulfilled' ? r.value.data.user?.email : null))\n      .filter",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handler",
+          "callee": "lookups\n      .map",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handler",
+          "callee": "Array.from",
+          "lineNumber": 69
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handler",
+          "callee": "console.log",
+          "lineNumber": 84
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 86
+        },
+        {
+          "caller": "handler",
+          "callee": "console.error",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handler",
+          "callee": "JSON.stringify",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/send-transaction-sms/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 255,
+      "nonEmptyLines": 216,
+      "callGraph": [
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.trim",
+          "lineNumber": 150
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 151
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.trim",
+          "lineNumber": 154
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 155
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.split(',').map",
+          "lineNumber": 158
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.split",
+          "lineNumber": 158
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "n.trim",
+          "lineNumber": 158
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.startsWith",
+          "lineNumber": 161
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.substring",
+          "lineNumber": 161
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.startsWith",
+          "lineNumber": 162
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.substring",
+          "lineNumber": 162
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phoneVariants.some",
+          "lineNumber": 164
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowedNumbers.includes",
+          "lineNumber": 164
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 165
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/setup-tenant/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 125,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tailwind.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 110,
+      "nonEmptyLines": 109,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "vite.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

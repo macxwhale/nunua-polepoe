@@ -9,7 +9,7 @@ const corsHeaders = {
 
 interface TransactionSmsRequest {
   clientId: string;
-  type: 'sale' | 'payment';
+  type: 'sale' | 'payment' | 'refund';
   amount: number;
   invoiceNumber?: string;
   productName?: string;
@@ -188,6 +188,8 @@ serve(async (req) => {
 
     if (type === 'sale') {
       smsMessage = `${businessName}: Dear ${clientName}, a new invoice of ${formattedAmount} has been added to your account${productName ? ` for ${productName}` : ''}${invoiceNumber ? ` (Invoice: ${invoiceNumber})` : ''}. Please pay at your convenience.`;
+    } else if (type === 'refund') {
+      smsMessage = `${businessName}: Dear ${clientName}, a refund of ${formattedAmount} has been processed on your account${invoiceNumber ? ` for Invoice ${invoiceNumber}` : ''}.${newBalance !== undefined ? ` Your outstanding balance is now KSH ${newBalance.toLocaleString()}.` : ''} If you have questions, please contact us.`;
     } else {
       // payment/top-up
       smsMessage = `${businessName}: Dear ${clientName}, we have received your payment of ${formattedAmount}${invoiceNumber ? ` for Invoice ${invoiceNumber}` : ''}. Thank you for your payment!${newBalance !== undefined ? ` Your remaining balance is KSH ${newBalance.toLocaleString()}.` : ''}`;

@@ -79,6 +79,37 @@ export const useCreatePayment = () => {
 };
 
 /**
+ * Hook to create a refund transaction
+ */
+export const useCreateRefund = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: transactionsApi.createRefundTransaction,
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.transactions });
+      queryClient.invalidateQueries({ queryKey: queryKeys.transactionsByClient(variables.clientId) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.transactionsByInvoice(variables.invoiceId) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.invoices });
+      queryClient.invalidateQueries({ queryKey: queryKeys.clients });
+
+      toast({
+        title: "Refund Recorded",
+        description: `Refund of KSH ${variables.amount.toLocaleString()} recorded. Invoice balance updated.`,
+      });
+    },
+    onError: (error) => {
+      console.error("Error creating refund:", error);
+      toast({
+        title: "Error",
+        description: "Failed to record refund. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+};
+
+/**
  * Hook to create a sale transaction
  */
 export const useCreateSale = () => {

@@ -1,0 +1,740 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/api/clients.api.ts",
+      "type": "file",
+      "name": "clients.api.ts",
+      "filePath": "src/api/clients.api.ts",
+      "summary": "Provides full CRUD operations and financial helpers for client records in the multi-tenant platform, including balance updates, enriched client-detail queries joining invoices and transactions, and a phone/PIN-based client user creation via Supabase Edge Functions.",
+      "tags": ["api-handler", "service", "data-model", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/api/clients.api.ts:getClientsWithDetails",
+      "type": "function",
+      "name": "getClientsWithDetails",
+      "filePath": "src/api/clients.api.ts",
+      "lineRange": [18, 68],
+      "summary": "Fetches all clients for the current tenant, then enriches each with aggregate invoice totals and payment/sale transaction totals by performing parallel Supabase queries.",
+      "tags": ["service", "data-model", "utility"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/api/clients.api.ts:createClient",
+      "type": "function",
+      "name": "createClient",
+      "filePath": "src/api/clients.api.ts",
+      "lineRange": [90, 127],
+      "summary": "Inserts a new client record scoped to the current tenant and maps duplicate-key or phone-conflict database errors into user-friendly error messages.",
+      "tags": ["service", "validation", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/api/clients.api.ts:updateClientBalance",
+      "type": "function",
+      "name": "updateClientBalance",
+      "filePath": "src/api/clients.api.ts",
+      "lineRange": [168, 193],
+      "summary": "Reads the client's current total_balance from Supabase, applies a signed delta, and writes the new balance back atomically within the tenant scope.",
+      "tags": ["service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/api/clients.api.ts:createClientUser",
+      "type": "function",
+      "name": "createClientUser",
+      "filePath": "src/api/clients.api.ts",
+      "lineRange": [198, 241],
+      "summary": "Invokes a Supabase Edge Function to create a phone/PIN-authenticated client user, parsing and rethrowing structured error messages from the function response.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/api/invoices.api.ts",
+      "type": "file",
+      "name": "invoices.api.ts",
+      "filePath": "src/api/invoices.api.ts",
+      "summary": "Exposes tenant-scoped CRUD operations for invoices with joined product data, plus a sequential invoice-number generator that derives the next number from the most recent invoice.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/api/invoices.api.ts:generateInvoiceNumber",
+      "type": "function",
+      "name": "generateInvoiceNumber",
+      "filePath": "src/api/invoices.api.ts",
+      "lineRange": [119, 138],
+      "summary": "Queries the most recent invoice number for the tenant, parses its numeric suffix, increments it, and returns the padded next invoice number string.",
+      "tags": ["utility", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/api/notifications.api.ts",
+      "type": "file",
+      "name": "notifications.api.ts",
+      "filePath": "src/api/notifications.api.ts",
+      "summary": "Provides CRUD and read-state operations for user notifications in Supabase, automatically associating new notifications with the authenticated user's tenant profile.",
+      "tags": ["api-handler", "service", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/api/notifications.api.ts:createNotification",
+      "type": "function",
+      "name": "createNotification",
+      "filePath": "src/api/notifications.api.ts",
+      "lineRange": [76, 102],
+      "summary": "Resolves the current authenticated user and their tenant profile, then inserts a new notification record scoped to that user and tenant.",
+      "tags": ["api-handler", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/api/payments.api.ts",
+      "type": "file",
+      "name": "payments.api.ts",
+      "filePath": "src/api/payments.api.ts",
+      "summary": "Manages tenant-scoped CRUD operations for payment_details records, including filtering to only active payment methods.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/api/products.api.ts",
+      "type": "file",
+      "name": "products.api.ts",
+      "filePath": "src/api/products.api.ts",
+      "summary": "Provides tenant-scoped CRUD and ILIKE-based search operations for product records via Supabase.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/api/tenant.api.ts",
+      "type": "file",
+      "name": "tenant.api.ts",
+      "filePath": "src/api/tenant.api.ts",
+      "summary": "Shared utility module that resolves the current authenticated user's tenant ID and user record from Supabase, used as a foundation by all other API modules.",
+      "tags": ["utility", "service", "singleton"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/tenant.api.ts:getCurrentTenantId",
+      "type": "function",
+      "name": "getCurrentTenantId",
+      "filePath": "src/api/tenant.api.ts",
+      "lineRange": [7, 25],
+      "summary": "Authenticates the current user via Supabase Auth and looks up their associated tenant_id from the profiles table, throwing if either step fails.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/transactions.api.ts",
+      "type": "file",
+      "name": "transactions.api.ts",
+      "filePath": "src/api/transactions.api.ts",
+      "summary": "Handles creation and querying of payment and sale transactions for the tenant, with SMS notification dispatch via Supabase Edge Functions after successful transaction recording.",
+      "tags": ["api-handler", "service", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/api/transactions.api.ts:sendTransactionSms",
+      "type": "function",
+      "name": "sendTransactionSms",
+      "filePath": "src/api/transactions.api.ts",
+      "lineRange": [26, 49],
+      "summary": "Invokes a Supabase Edge Function to dispatch an SMS notification for a completed transaction, logging both success and error outcomes.",
+      "tags": ["service", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/transactions.api.ts:createPaymentTransaction",
+      "type": "function",
+      "name": "createPaymentTransaction",
+      "filePath": "src/api/transactions.api.ts",
+      "lineRange": [121, 161],
+      "summary": "Inserts a payment-type transaction, fetches the related invoice details and cumulative paid amount, then sends an SMS notification with payment and balance context.",
+      "tags": ["api-handler", "service", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/api/transactions.api.ts:createSaleTransaction",
+      "type": "function",
+      "name": "createSaleTransaction",
+      "filePath": "src/api/transactions.api.ts",
+      "lineRange": [166, 204],
+      "summary": "Inserts a sale-type transaction, fetches the associated invoice and product name, then dispatches an SMS notification with the sale details.",
+      "tags": ["api-handler", "service", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "type": "file",
+      "name": "ClientTransactionsDialog.tsx",
+      "filePath": "src/components/clients/ClientTransactionsDialog.tsx",
+      "summary": "React dialog component that displays a client's full transaction and invoice history with running totals, loading skeletons, and per-row status badges fetched directly from Supabase.",
+      "tags": ["component", "data-model", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/clients/ClientTransactionsDialog.tsx:ClientTransactionsDialog",
+      "type": "function",
+      "name": "ClientTransactionsDialog",
+      "filePath": "src/components/clients/ClientTransactionsDialog.tsx",
+      "lineRange": [21, 198],
+      "summary": "Renders a modal dialog with tabular transaction and invoice records for a given client, computing invoiced totals, payments received, and outstanding balance.",
+      "tags": ["component", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useGlobalSearch.ts",
+      "type": "file",
+      "name": "useGlobalSearch.ts",
+      "filePath": "src/hooks/useGlobalSearch.ts",
+      "summary": "React hook that debounces a search query and runs parallel Supabase ILIKE queries across clients, invoices, and products, returning a unified list of typed search result objects.",
+      "tags": ["hook", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useGlobalSearch.ts:useGlobalSearch",
+      "type": "function",
+      "name": "useGlobalSearch",
+      "filePath": "src/hooks/useGlobalSearch.ts",
+      "lineRange": [14, 105],
+      "summary": "Debounces the input query and runs parallel Supabase searches across clients, invoices, and products, normalizing results into a common shape for UI rendering.",
+      "tags": ["hook", "utility", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useNotifications.ts",
+      "type": "file",
+      "name": "useNotifications.ts",
+      "filePath": "src/hooks/useNotifications.ts",
+      "summary": "Collection of React Query hooks for managing notifications — fetching, marking read/unread, deleting, and creating — with real-time Supabase channel subscriptions that auto-invalidate the query cache.",
+      "tags": ["hook", "event-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/hooks/useNotifications.ts:useNotifications",
+      "type": "function",
+      "name": "useNotifications",
+      "filePath": "src/hooks/useNotifications.ts",
+      "lineRange": [14, 46],
+      "summary": "Fetches the notification list with React Query and subscribes to a Supabase realtime channel to invalidate the cache on any change.",
+      "tags": ["hook", "event-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useNotifications.ts:useMarkAllAsRead",
+      "type": "function",
+      "name": "useMarkAllAsRead",
+      "filePath": "src/hooks/useNotifications.ts",
+      "lineRange": [79, 93],
+      "summary": "React Query mutation hook that marks all notifications as read and shows a success or error toast on completion.",
+      "tags": ["hook", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/integrations/supabase/client.ts",
+      "type": "file",
+      "name": "client.ts",
+      "filePath": "src/integrations/supabase/client.ts",
+      "summary": "Initializes and exports a singleton Supabase client instance configured with the project URL and anon key, serving as the shared data access entry point for the entire application.",
+      "tags": ["singleton", "service", "entry-point"],
+      "complexity": "simple",
+      "languageNotes": "Uses createClient from @supabase/supabase-js; exported as a named singleton so all modules share one connection pool."
+    },
+    {
+      "id": "file:src/integrations/supabase/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/integrations/supabase/types.ts",
+      "summary": "Auto-generated Supabase type definitions covering all database tables, enums, views, and functions, providing end-to-end type safety for all Supabase client interactions throughout the project.",
+      "tags": ["type-definition", "data-model", "schema-definition"],
+      "complexity": "complex",
+      "languageNotes": "Generated file — contains a large Database type with nested Row, Insert, and Update shapes for every table, plus a Constants export with enum values."
+    },
+    {
+      "id": "file:src/shared/hooks/useTenant.ts",
+      "type": "file",
+      "name": "useTenant.ts",
+      "filePath": "src/shared/hooks/useTenant.ts",
+      "summary": "Shared React hooks that wrap React Query to reactively resolve the current user's tenant ID and profile, reusing the imperative API from tenant.api.ts in a hook-friendly form.",
+      "tags": ["hook", "utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/shared/hooks/useTenant.ts:useTenantId",
+      "type": "function",
+      "name": "useTenantId",
+      "filePath": "src/shared/hooks/useTenant.ts",
+      "lineRange": [7, 14],
+      "summary": "Returns the current tenant ID using React Query, backed by getCurrentTenantId from the tenant API.",
+      "tags": ["hook", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/shared/hooks/useTenant.ts:useCurrentUser",
+      "type": "function",
+      "name": "useCurrentUser",
+      "filePath": "src/shared/hooks/useTenant.ts",
+      "lineRange": [19, 25],
+      "summary": "Returns the current authenticated user using React Query, backed by getCurrentUser from the tenant API.",
+      "tags": ["hook", "utility"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/invoices.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/invoices.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/notifications.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/notifications.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/payments.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/payments.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/products.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/products.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/tenant.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/tenant.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "file:src/integrations/supabase/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/hooks/useTransactions.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useGlobalSearch.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useGlobalSearch.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useGlobalSearch.ts",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "file:src/api/notifications.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/shared/hooks/useTenant.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/shared/hooks/useTenant.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:getClientsWithDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:getClientsWithDetails",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:createClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:createClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:updateClientBalance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:updateClientBalance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:createClientUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/clients.api.ts",
+      "target": "function:src/api/clients.api.ts:createClientUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/invoices.api.ts",
+      "target": "function:src/api/invoices.api.ts:generateInvoiceNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/invoices.api.ts",
+      "target": "function:src/api/invoices.api.ts:generateInvoiceNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/notifications.api.ts",
+      "target": "function:src/api/notifications.api.ts:createNotification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/notifications.api.ts",
+      "target": "function:src/api/notifications.api.ts:createNotification",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/tenant.api.ts",
+      "target": "function:src/api/tenant.api.ts:getCurrentTenantId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/tenant.api.ts",
+      "target": "function:src/api/tenant.api.ts:getCurrentTenantId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "function:src/api/transactions.api.ts:sendTransactionSms",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "function:src/api/transactions.api.ts:createPaymentTransaction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "function:src/api/transactions.api.ts:createPaymentTransaction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "function:src/api/transactions.api.ts:createSaleTransaction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/transactions.api.ts",
+      "target": "function:src/api/transactions.api.ts:createSaleTransaction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "function:src/components/clients/ClientTransactionsDialog.tsx:ClientTransactionsDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "target": "function:src/components/clients/ClientTransactionsDialog.tsx:ClientTransactionsDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useGlobalSearch.ts",
+      "target": "function:src/hooks/useGlobalSearch.ts:useGlobalSearch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useGlobalSearch.ts",
+      "target": "function:src/hooks/useGlobalSearch.ts:useGlobalSearch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "function:src/hooks/useNotifications.ts:useNotifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "function:src/hooks/useNotifications.ts:useNotifications",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "function:src/hooks/useNotifications.ts:useMarkAllAsRead",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "function:src/hooks/useNotifications.ts:useMarkAllAsRead",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/shared/hooks/useTenant.ts",
+      "target": "function:src/shared/hooks/useTenant.ts:useTenantId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/shared/hooks/useTenant.ts",
+      "target": "function:src/shared/hooks/useTenant.ts:useTenantId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/shared/hooks/useTenant.ts",
+      "target": "function:src/shared/hooks/useTenant.ts:useCurrentUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/shared/hooks/useTenant.ts",
+      "target": "function:src/shared/hooks/useTenant.ts:useCurrentUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/api/transactions.api.ts:createPaymentTransaction",
+      "target": "function:src/api/transactions.api.ts:sendTransactionSms",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/api/transactions.api.ts:createSaleTransaction",
+      "target": "function:src/api/transactions.api.ts:sendTransactionSms",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/api/transactions.api.ts:createPaymentTransaction",
+      "target": "function:src/api/transactions.api.ts:getInvoicePaidAmount",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useNotifications.ts",
+      "target": "file:src/api/notifications.api.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

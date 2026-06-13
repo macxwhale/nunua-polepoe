@@ -1,0 +1,600 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/GlobalSearch.tsx",
+      "type": "file",
+      "name": "GlobalSearch.tsx",
+      "filePath": "src/components/GlobalSearch.tsx",
+      "summary": "Modal global search component that listens for keyboard shortcuts, queries all project entities via useGlobalSearch, groups results by type, and navigates to the selected item's detail page.",
+      "tags": ["component", "search", "event-handler", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GlobalSearch.tsx:GlobalSearch",
+      "type": "function",
+      "name": "GlobalSearch",
+      "filePath": "src/components/GlobalSearch.tsx",
+      "lineRange": [39, 133],
+      "summary": "Exported React component rendering a CommandDialog-based search palette with keyboard shortcut support, real-time result grouping by entity type, and navigation on selection.",
+      "tags": ["component", "search", "event-handler", "keyboard-shortcut"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/clients/ClientRow.tsx",
+      "type": "file",
+      "name": "ClientRow.tsx",
+      "filePath": "src/components/clients/ClientRow.tsx",
+      "summary": "Renders a single client record as a table row, displaying formatted dates, currency amounts, and inline action buttons via ClientActions.",
+      "tags": ["component", "table-row", "utility", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/clients/ClientRow.tsx:ClientRow",
+      "type": "function",
+      "name": "ClientRow",
+      "filePath": "src/components/clients/ClientRow.tsx",
+      "lineRange": [16, 78],
+      "summary": "Exported React component that renders a single client as a table row, applying formatting utilities for dates and currency and wiring up edit and refresh callbacks.",
+      "tags": ["component", "table-row", "client"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/clients/ClientsTable.tsx",
+      "type": "file",
+      "name": "ClientsTable.tsx",
+      "filePath": "src/components/clients/ClientsTable.tsx",
+      "summary": "Full-featured clients table component with desktop and mobile views, summary statistics row, pagination, and per-row action delegation to ClientRow.",
+      "tags": ["component", "table", "client", "pagination"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/clients/ClientsTable.tsx:ClientsTable",
+      "type": "function",
+      "name": "ClientsTable",
+      "filePath": "src/components/clients/ClientsTable.tsx",
+      "summary": "Exported React component rendering a paginated, responsive client listing table with aggregate financial summaries and row-level actions.",
+      "tags": ["component", "table", "client", "pagination"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/invoices/InvoicesTable.tsx",
+      "type": "file",
+      "name": "InvoicesTable.tsx",
+      "filePath": "src/components/invoices/InvoicesTable.tsx",
+      "summary": "Large invoice management table component with desktop and mobile layouts supporting PDF download, PDF print, WhatsApp sharing, edit, and delete operations via Supabase queries.",
+      "tags": ["component", "table", "invoice", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/invoices/InvoicesTable.tsx:InvoicesTable",
+      "type": "function",
+      "name": "InvoicesTable",
+      "filePath": "src/components/invoices/InvoicesTable.tsx",
+      "lineRange": [31, 412],
+      "summary": "Exported React component managing invoice display with status badges, multi-channel actions (PDF generation, WhatsApp, delete confirmation dialog), and Supabase-backed data fetching for each action.",
+      "tags": ["component", "table", "invoice", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ui/badge.tsx",
+      "type": "file",
+      "name": "badge.tsx",
+      "filePath": "src/components/ui/badge.tsx",
+      "summary": "Reusable shadcn/ui Badge component with variant styles (default, secondary, destructive, outline) built on class-variance-authority.",
+      "tags": ["component", "ui", "utility", "shadcn"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/command.tsx",
+      "type": "file",
+      "name": "command.tsx",
+      "filePath": "src/components/ui/command.tsx",
+      "summary": "shadcn/ui Command palette primitive providing Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, and CommandShortcut subcomponents built on cmdk.",
+      "tags": ["component", "ui", "command-palette", "shadcn"],
+      "complexity": "moderate",
+      "languageNotes": "Wraps the cmdk library with shadcn styling conventions; CommandDialog composes the Dialog primitive to render a full-screen command modal."
+    },
+    {
+      "id": "function:src/components/ui/command.tsx:CommandDialog",
+      "type": "function",
+      "name": "CommandDialog",
+      "filePath": "src/components/ui/command.tsx",
+      "lineRange": [26, 36],
+      "summary": "Exported wrapper that renders a Command inside a Dialog, providing modal command-palette behaviour.",
+      "tags": ["component", "ui", "dialog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/table.tsx",
+      "type": "file",
+      "name": "table.tsx",
+      "filePath": "src/components/ui/table.tsx",
+      "summary": "shadcn/ui Table primitive exporting all structural subcomponents: Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, and TableCaption.",
+      "tags": ["component", "ui", "table", "shadcn"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lib/pdfGenerator.ts",
+      "type": "file",
+      "name": "pdfGenerator.ts",
+      "filePath": "src/lib/pdfGenerator.ts",
+      "summary": "Invoice PDF generation library using jsPDF and jspdf-autotable; exposes generateInvoicePDF for building the document, downloadInvoicePDF for browser download, and printInvoicePDF for silent browser print.",
+      "tags": ["utility", "pdf", "invoice", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/lib/pdfGenerator.ts:generateInvoicePDF",
+      "type": "function",
+      "name": "generateInvoicePDF",
+      "filePath": "src/lib/pdfGenerator.ts",
+      "lineRange": [27, 115],
+      "summary": "Core PDF document builder that lays out business name, invoice metadata, client details, a product line-item table, and totals using jsPDF primitives and autoTable.",
+      "tags": ["utility", "pdf", "invoice"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/lib/pdfGenerator.ts:downloadInvoicePDF",
+      "type": "function",
+      "name": "downloadInvoicePDF",
+      "filePath": "src/lib/pdfGenerator.ts",
+      "lineRange": [117, 120],
+      "summary": "Exported thin wrapper that calls generateInvoicePDF and triggers a browser file-save via doc.save.",
+      "tags": ["utility", "pdf", "download"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lib/pdfGenerator.ts:printInvoicePDF",
+      "type": "function",
+      "name": "printInvoicePDF",
+      "filePath": "src/lib/pdfGenerator.ts",
+      "lineRange": [122, 126],
+      "summary": "Exported thin wrapper that calls generateInvoicePDF, triggers autoPrint, and opens the PDF output URL in a new browser tab for printing.",
+      "tags": ["utility", "pdf", "print"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lib/whatsapp.ts",
+      "type": "file",
+      "name": "whatsapp.ts",
+      "filePath": "src/lib/whatsapp.ts",
+      "summary": "Client-side WhatsApp integration utilities that format phone numbers and open wa.me deep-links to send pre-composed invoice notifications or generic messages.",
+      "tags": ["utility", "whatsapp", "messaging", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lib/whatsapp.ts:sendWhatsAppInvoice",
+      "type": "function",
+      "name": "sendWhatsAppInvoice",
+      "filePath": "src/lib/whatsapp.ts",
+      "lineRange": [1, 21],
+      "summary": "Exported function that normalises a phone number, constructs a pre-populated invoice notification message, and opens the WhatsApp deep-link in a new browser tab.",
+      "tags": ["utility", "whatsapp", "invoice"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/lib/whatsapp.ts:sendWhatsAppMessage",
+      "type": "function",
+      "name": "sendWhatsAppMessage",
+      "filePath": "src/lib/whatsapp.ts",
+      "lineRange": [23, 30],
+      "summary": "Exported generic function that normalises a phone number and opens a WhatsApp deep-link with a custom message payload.",
+      "tags": ["utility", "whatsapp", "messaging"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/SuperAdminUsers.tsx",
+      "type": "file",
+      "name": "SuperAdminUsers.tsx",
+      "filePath": "src/pages/SuperAdminUsers.tsx",
+      "summary": "Super-admin management page that lists all super-admin users, enables global profile search across tenants, and allows promoting users to the super-admin role via Supabase mutations.",
+      "tags": ["component", "api-handler", "admin", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/SuperAdminUsers.tsx:SuperAdminUsers",
+      "type": "function",
+      "name": "SuperAdminUsers",
+      "filePath": "src/pages/SuperAdminUsers.tsx",
+      "lineRange": [25, 309],
+      "summary": "Page-level React component using react-query to load and mutate super-admin role assignments, with an inline global-search form that queries profiles and tenants across the platform.",
+      "tags": ["component", "api-handler", "admin", "react-query"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/shared/utils/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/shared/utils/index.ts",
+      "summary": "Minimal barrel file re-exporting shared utility helpers (formatDate, formatCurrency) for use across the application.",
+      "tags": ["barrel", "utility", "entry-point"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/GlobalSearch.tsx",
+      "target": "function:src/components/GlobalSearch.tsx:GlobalSearch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/GlobalSearch.tsx",
+      "target": "function:src/components/GlobalSearch.tsx:GlobalSearch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GlobalSearch.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/GlobalSearch.tsx",
+      "target": "file:src/components/ui/command.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/GlobalSearch.tsx",
+      "target": "file:src/hooks/useGlobalSearch.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "function:src/components/clients/ClientRow.tsx:ClientRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "function:src/components/clients/ClientRow.tsx:ClientRow",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "file:src/components/clients/ClientActions.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientRow.tsx",
+      "target": "file:src/shared/utils/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "function:src/components/clients/ClientsTable.tsx:ClientsTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "function:src/components/clients/ClientsTable.tsx:ClientsTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "file:src/components/clients/ClientRow.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientsTable.tsx",
+      "target": "file:src/components/ui/pagination.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "function:src/components/invoices/InvoicesTable.tsx:InvoicesTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "function:src/components/invoices/InvoicesTable.tsx:InvoicesTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/api/invoices.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/components/invoices/InvoiceDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/lib/pdfGenerator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/lib/whatsapp.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "function:src/lib/pdfGenerator.ts:downloadInvoicePDF",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "function:src/lib/pdfGenerator.ts:printInvoicePDF",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/invoices/InvoicesTable.tsx",
+      "target": "function:src/lib/whatsapp.ts:sendWhatsAppInvoice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/badge.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/command.tsx",
+      "target": "function:src/components/ui/command.tsx:CommandDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/command.tsx",
+      "target": "function:src/components/ui/command.tsx:CommandDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/command.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/command.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/table.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lib/pdfGenerator.ts",
+      "target": "function:src/lib/pdfGenerator.ts:generateInvoicePDF",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/pdfGenerator.ts",
+      "target": "function:src/lib/pdfGenerator.ts:generateInvoicePDF",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib/pdfGenerator.ts",
+      "target": "function:src/lib/pdfGenerator.ts:downloadInvoicePDF",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/pdfGenerator.ts",
+      "target": "function:src/lib/pdfGenerator.ts:downloadInvoicePDF",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib/pdfGenerator.ts",
+      "target": "function:src/lib/pdfGenerator.ts:printInvoicePDF",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/pdfGenerator.ts",
+      "target": "function:src/lib/pdfGenerator.ts:printInvoicePDF",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib/whatsapp.ts",
+      "target": "function:src/lib/whatsapp.ts:sendWhatsAppInvoice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/whatsapp.ts",
+      "target": "function:src/lib/whatsapp.ts:sendWhatsAppInvoice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib/whatsapp.ts",
+      "target": "function:src/lib/whatsapp.ts:sendWhatsAppMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/lib/whatsapp.ts",
+      "target": "function:src/lib/whatsapp.ts:sendWhatsAppMessage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "function:src/pages/SuperAdminUsers.tsx:SuperAdminUsers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminUsers.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

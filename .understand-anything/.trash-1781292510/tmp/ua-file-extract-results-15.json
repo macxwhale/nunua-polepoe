@@ -1,0 +1,528 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 33,
+      "metrics": {}
+    },
+    {
+      "path": "bun.lockb",
+      "language": "lockb",
+      "fileCategory": "code",
+      "totalLines": 336,
+      "nonEmptyLines": 336,
+      "metrics": {}
+    },
+    {
+      "path": "eslint.config.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 25,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "postcss.config.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "public/robots.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 14,
+      "nonEmptyLines": 10,
+      "metrics": {}
+    },
+    {
+      "path": "src/App.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 42,
+      "nonEmptyLines": 37,
+      "metrics": {}
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "exports": [
+        {
+          "name": "AspectRatio",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/index.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 188,
+      "nonEmptyLines": 150,
+      "metrics": {}
+    },
+    {
+      "path": "src/shared/utils/currency.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "formatCurrency",
+          "startLine": 4,
+          "endLine": 9,
+          "params": [
+            "amount"
+          ]
+        },
+        {
+          "name": "parseCurrency",
+          "startLine": 14,
+          "endLine": 16,
+          "params": [
+            "currencyString"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "formatCurrency",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "parseCurrency",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatCurrency",
+          "callee": "parseFloat",
+          "lineNumber": 6
+        },
+        {
+          "caller": "formatCurrency",
+          "callee": "isNaN",
+          "lineNumber": 7
+        },
+        {
+          "caller": "formatCurrency",
+          "callee": "numAmount.toLocaleString",
+          "lineNumber": 8
+        },
+        {
+          "caller": "parseCurrency",
+          "callee": "parseFloat",
+          "lineNumber": 15
+        },
+        {
+          "caller": "parseCurrency",
+          "callee": "currencyString.replace",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/shared/utils/date.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "formatDate",
+          "startLine": 4,
+          "endLine": 11,
+          "params": [
+            "date"
+          ]
+        },
+        {
+          "name": "formatDateShort",
+          "startLine": 16,
+          "endLine": 19,
+          "params": [
+            "date"
+          ]
+        },
+        {
+          "name": "formatRelativeTime",
+          "startLine": 24,
+          "endLine": 36,
+          "params": [
+            "date"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "formatDate",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "formatDateShort",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "formatRelativeTime",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatDate",
+          "callee": "dateObj.toLocaleDateString",
+          "lineNumber": 6
+        },
+        {
+          "caller": "formatDateShort",
+          "callee": "dateObj.toLocaleDateString",
+          "lineNumber": 18
+        },
+        {
+          "caller": "formatRelativeTime",
+          "callee": "now.getTime",
+          "lineNumber": 27
+        },
+        {
+          "caller": "formatRelativeTime",
+          "callee": "dateObj.getTime",
+          "lineNumber": 27
+        },
+        {
+          "caller": "formatRelativeTime",
+          "callee": "Math.floor",
+          "lineNumber": 28
+        },
+        {
+          "caller": "formatRelativeTime",
+          "callee": "Math.floor",
+          "lineNumber": 33
+        },
+        {
+          "caller": "formatRelativeTime",
+          "callee": "Math.floor",
+          "lineNumber": 34
+        },
+        {
+          "caller": "formatRelativeTime",
+          "callee": "Math.floor",
+          "lineNumber": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/.temp/cli-latest",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/gotrue-version",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/pooler-url",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/postgres-version",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/project-ref",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/rest-version",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/storage-migration",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/.temp/storage-version",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "supabase/fix_sql.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 19,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/create-client-user/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 413,
+      "nonEmptyLines": 355,
+      "callGraph": [
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.trim",
+          "lineNumber": 301
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 302
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.trim",
+          "lineNumber": 305
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 306
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.split(\",\").map",
+          "lineNumber": 310
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowlist.split",
+          "lineNumber": 310
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "n.trim",
+          "lineNumber": 310
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.startsWith",
+          "lineNumber": 313
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.substring",
+          "lineNumber": 313
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.startsWith",
+          "lineNumber": 314
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phone.substring",
+          "lineNumber": 314
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "phoneVariants.some",
+          "lineNumber": 316
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "allowedNumbers.includes",
+          "lineNumber": 316
+        },
+        {
+          "caller": "isPhoneAllowed",
+          "callee": "console.log",
+          "lineNumber": 317
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/delete-tenant/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 117,
+      "nonEmptyLines": 92,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/deno.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "sections": [
+        {
+          "heading": "imports",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "supabase/functions/paystack-cancel/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 65,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "supabase/functions/paystack-initialize/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 191,
+      "nonEmptyLines": 162,
+      "callGraph": [
+        {
+          "caller": "getPlanValues",
+          "callee": "code.includes",
+          "lineNumber": 96
+        },
+        {
+          "caller": "getPlanValues",
+          "callee": "code.includes",
+          "lineNumber": 96
+        },
+        {
+          "caller": "getPlanValues",
+          "callee": "code.includes",
+          "lineNumber": 97
+        },
+        {
+          "caller": "getPlanValues",
+          "callee": "code.includes",
+          "lineNumber": 97
+        },
+        {
+          "caller": "getPlanValues",
+          "callee": "code.includes",
+          "lineNumber": 98
+        },
+        {
+          "caller": "getPlanValues",
+          "callee": "code.includes",
+          "lineNumber": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

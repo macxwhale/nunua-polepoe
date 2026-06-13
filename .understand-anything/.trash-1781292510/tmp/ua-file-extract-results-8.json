@@ -1,0 +1,1500 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/components/GlobalSearch.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 133,
+      "nonEmptyLines": 119,
+      "functions": [
+        {
+          "name": "GlobalSearch",
+          "startLine": 39,
+          "endLine": 133,
+          "params": [
+            "{ open, onOpenChange }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "GlobalSearch",
+          "line": 39,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GlobalSearch",
+          "callee": "useState",
+          "lineNumber": 40
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "useGlobalSearch",
+          "lineNumber": 41
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "useNavigate",
+          "lineNumber": 42
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "useEffect",
+          "lineNumber": 44
+        },
+        {
+          "caller": "down",
+          "callee": "e.preventDefault",
+          "lineNumber": 47
+        },
+        {
+          "caller": "down",
+          "callee": "onOpenChange",
+          "lineNumber": 48
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "document.addEventListener",
+          "lineNumber": 52
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "document.removeEventListener",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handleSelect",
+          "callee": "onOpenChange",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleSelect",
+          "callee": "navigate",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleSelect",
+          "callee": "setQuery",
+          "lineNumber": 59
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "results.reduce",
+          "lineNumber": 62
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "acc[result.type].push",
+          "lineNumber": 66
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "Object.entries(groupedResults).map",
+          "lineNumber": 92
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "Object.entries",
+          "lineNumber": 92
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "items.map",
+          "lineNumber": 100
+        },
+        {
+          "caller": "GlobalSearch",
+          "callee": "handleSelect",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientRow.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "ClientRow",
+          "startLine": 16,
+          "endLine": 78,
+          "params": [
+            "{ client, onEdit, onRefresh, mobileActions, rowIndex = 0 }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientRow",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientRow",
+          "callee": "formatDate",
+          "lineNumber": 38
+        },
+        {
+          "caller": "ClientRow",
+          "callee": "formatCurrency",
+          "lineNumber": 47
+        },
+        {
+          "caller": "ClientRow",
+          "callee": "formatCurrency",
+          "lineNumber": 51
+        },
+        {
+          "caller": "ClientRow",
+          "callee": "formatCurrency",
+          "lineNumber": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientsTable.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 112,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "ClientsTable",
+          "startLine": 14,
+          "endLine": 112,
+          "params": [
+            "{ clients, onEdit, onRefresh }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientsTable",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientsTable",
+          "callee": "clients.map",
+          "lineNumber": 19
+        },
+        {
+          "caller": "ClientsTable",
+          "callee": "formatCurrency",
+          "lineNumber": 59
+        },
+        {
+          "caller": "ClientsTable",
+          "callee": "formatCurrency",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ClientsTable",
+          "callee": "formatCurrency",
+          "lineNumber": 71
+        },
+        {
+          "caller": "ClientsTable",
+          "callee": "clients.map",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/invoices/InvoicesTable.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 412,
+      "nonEmptyLines": 383,
+      "functions": [
+        {
+          "name": "InvoicesTable",
+          "startLine": 31,
+          "endLine": 412,
+          "params": [
+            "{ invoices, onEdit, onRefresh }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InvoicesTable",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "InvoicesTable",
+          "callee": "useState",
+          "lineNumber": 32
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "useState",
+          "lineNumber": 33
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "useDeleteInvoice",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"clients\")\n        .select(\"name, email, phone_number\")\n        .eq(\"id\", invoice.client_id)\n        .single",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"clients\")\n        .select(\"name, email, phone_number\")\n        .eq",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"clients\")\n        .select",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"profiles\")\n        .select(\"tenant_id\")\n        .eq(\"user_id\", user?.id)\n        .single",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"profiles\")\n        .select(\"tenant_id\")\n        .eq",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"profiles\")\n        .select",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"tenants\")\n        .select(\"business_name, phone_number\")\n        .eq(\"id\", profile?.tenant_id)\n        .single",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"tenants\")\n        .select(\"business_name, phone_number\")\n        .eq",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from(\"tenants\")\n        .select",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n        .from",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n          .from(\"products\")\n          .select(\"name, description, price\")\n          .eq(\"id\", invoice.product_id)\n          .single",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n          .from(\"products\")\n          .select(\"name, description, price\")\n          .eq",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n          .from(\"products\")\n          .select",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "supabase\n          .from",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "downloadInvoicePDF",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "toast.success",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "console.error",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleDownloadPDF",
+          "callee": "toast.error",
+          "lineNumber": 83
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"clients\")\n        .select(\"name, email, phone_number\")\n        .eq(\"id\", invoice.client_id)\n        .single",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"clients\")\n        .select(\"name, email, phone_number\")\n        .eq",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"clients\")\n        .select",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 95
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"profiles\")\n        .select(\"tenant_id\")\n        .eq(\"user_id\", user?.id)\n        .single",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"profiles\")\n        .select(\"tenant_id\")\n        .eq",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"profiles\")\n        .select",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"tenants\")\n        .select(\"business_name, phone_number\")\n        .eq(\"id\", profile?.tenant_id)\n        .single",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"tenants\")\n        .select(\"business_name, phone_number\")\n        .eq",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from(\"tenants\")\n        .select",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n        .from",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n          .from(\"products\")\n          .select(\"name, description, price\")\n          .eq(\"id\", invoice.product_id)\n          .single",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n          .from(\"products\")\n          .select(\"name, description, price\")\n          .eq",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n          .from(\"products\")\n          .select",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "supabase\n          .from",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "printInvoicePDF",
+          "lineNumber": 125
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "console.error",
+          "lineNumber": 132
+        },
+        {
+          "caller": "handlePrintPDF",
+          "callee": "toast.error",
+          "lineNumber": 133
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n        .from(\"clients\")\n        .select(\"phone_number\")\n        .eq(\"id\", invoice.client_id)\n        .single",
+          "lineNumber": 139
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n        .from(\"clients\")\n        .select(\"phone_number\")\n        .eq",
+          "lineNumber": 139
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n        .from(\"clients\")\n        .select",
+          "lineNumber": 139
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n        .from",
+          "lineNumber": 139
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "toast.error",
+          "lineNumber": 146
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n          .from(\"products\")\n          .select(\"name\")\n          .eq(\"id\", invoice.product_id)\n          .single",
+          "lineNumber": 152
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n          .from(\"products\")\n          .select(\"name\")\n          .eq",
+          "lineNumber": 152
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n          .from(\"products\")\n          .select",
+          "lineNumber": 152
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "supabase\n          .from",
+          "lineNumber": 152
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "sendWhatsAppInvoice",
+          "lineNumber": 160
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "Number",
+          "lineNumber": 160
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "toast.success",
+          "lineNumber": 161
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "console.error",
+          "lineNumber": 163
+        },
+        {
+          "caller": "handleSendWhatsApp",
+          "callee": "toast.error",
+          "lineNumber": 164
+        },
+        {
+          "caller": "handleDeleteClick",
+          "callee": "setInvoiceToDelete",
+          "lineNumber": 169
+        },
+        {
+          "caller": "handleDeleteClick",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 170
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "deleteInvoice.mutateAsync",
+          "lineNumber": 175
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 176
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "setInvoiceToDelete",
+          "lineNumber": 177
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "onRefresh",
+          "lineNumber": 178
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "invoices.map",
+          "lineNumber": 196
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "formatDateShort",
+          "lineNumber": 216
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "getStatusStyles",
+          "lineNumber": 220
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "formatCurrency",
+          "lineNumber": 228
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handleDownloadPDF",
+          "lineNumber": 242
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handlePrintPDF",
+          "lineNumber": 251
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handleSendWhatsApp",
+          "lineNumber": 260
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "onEdit",
+          "lineNumber": 270
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handleDeleteClick",
+          "lineNumber": 281
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "invoices.map",
+          "lineNumber": 317
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "formatCurrency",
+          "lineNumber": 333
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "getStatusStyles",
+          "lineNumber": 336
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "formatDateShort",
+          "lineNumber": 341
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handleDownloadPDF",
+          "lineNumber": 348
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handlePrintPDF",
+          "lineNumber": 357
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handleSendWhatsApp",
+          "lineNumber": 366
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "onEdit",
+          "lineNumber": 376
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "handleDeleteClick",
+          "lineNumber": 387
+        },
+        {
+          "caller": "InvoicesTable",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 404
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 27,
+      "functions": [
+        {
+          "name": "Badge",
+          "startLine": 28,
+          "endLine": 30,
+          "params": [
+            "{ className, variant, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Badge",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "badgeVariants",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Badge",
+          "callee": "cn",
+          "lineNumber": 29
+        },
+        {
+          "caller": "Badge",
+          "callee": "badgeVariants",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/command.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 132,
+      "nonEmptyLines": 115,
+      "functions": [
+        {
+          "name": "CommandDialog",
+          "startLine": 26,
+          "endLine": 36,
+          "params": [
+            "{ children, ...props }"
+          ]
+        },
+        {
+          "name": "CommandShortcut",
+          "startLine": 117,
+          "endLine": 119,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Command",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandDialog",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandInput",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandList",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandEmpty",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandGroup",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandItem",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandShortcut",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "CommandSeparator",
+          "line": 122,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CommandShortcut",
+          "callee": "cn",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 9,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/table.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 62,
+      "exports": [
+        {
+          "name": "Table",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableHeader",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableBody",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableFooter",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableHead",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableRow",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableCell",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "TableCaption",
+          "line": 72,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 8,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lib/pdfGenerator.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 111,
+      "functions": [
+        {
+          "name": "generateInvoicePDF",
+          "startLine": 27,
+          "endLine": 115,
+          "params": [
+            "invoice"
+          ]
+        },
+        {
+          "name": "downloadInvoicePDF",
+          "startLine": 117,
+          "endLine": 120,
+          "params": [
+            "invoice"
+          ]
+        },
+        {
+          "name": "printInvoicePDF",
+          "startLine": 122,
+          "endLine": 126,
+          "params": [
+            "invoice"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "generateInvoicePDF",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "downloadInvoicePDF",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "printInvoicePDF",
+          "line": 122,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 31
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 32
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 33
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 35
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 36
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 37
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 40
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 41
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 42
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 43
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 44
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 46
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 50
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 51
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "format",
+          "lineNumber": 51
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 53
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "invoice.status.toUpperCase",
+          "lineNumber": 53
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 57
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 58
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 59
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 61
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 62
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 63
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 66
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 70
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "invoice.product.price.toLocaleString",
+          "lineNumber": 81
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "invoice.amount.toLocaleString",
+          "lineNumber": 82
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "invoice.amount.toLocaleString",
+          "lineNumber": 86
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "invoice.amount.toLocaleString",
+          "lineNumber": 86
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "autoTable",
+          "lineNumber": 89
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 101
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 102
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 103
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 104
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.splitTextToSize",
+          "lineNumber": 105
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 106
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFontSize",
+          "lineNumber": 110
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.setFont",
+          "lineNumber": 111
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "doc.text",
+          "lineNumber": 112
+        },
+        {
+          "caller": "generateInvoicePDF",
+          "callee": "invoice.amount.toLocaleString",
+          "lineNumber": 112
+        },
+        {
+          "caller": "downloadInvoicePDF",
+          "callee": "generateInvoicePDF",
+          "lineNumber": 118
+        },
+        {
+          "caller": "downloadInvoicePDF",
+          "callee": "doc.save",
+          "lineNumber": 119
+        },
+        {
+          "caller": "printInvoicePDF",
+          "callee": "generateInvoicePDF",
+          "lineNumber": 123
+        },
+        {
+          "caller": "printInvoicePDF",
+          "callee": "doc.autoPrint",
+          "lineNumber": 124
+        },
+        {
+          "caller": "printInvoicePDF",
+          "callee": "window.open",
+          "lineNumber": 125
+        },
+        {
+          "caller": "printInvoicePDF",
+          "callee": "doc.output",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lib/whatsapp.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "sendWhatsAppInvoice",
+          "startLine": 1,
+          "endLine": 21,
+          "params": [
+            "phoneNumber",
+            "invoiceNumber",
+            "amount",
+            "productName"
+          ]
+        },
+        {
+          "name": "sendWhatsAppMessage",
+          "startLine": 23,
+          "endLine": 30,
+          "params": [
+            "phoneNumber",
+            "message"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "sendWhatsAppInvoice",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "sendWhatsAppMessage",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sendWhatsAppInvoice",
+          "callee": "phoneNumber.replace",
+          "lineNumber": 8
+        },
+        {
+          "caller": "sendWhatsAppInvoice",
+          "callee": "formattedPhone.startsWith",
+          "lineNumber": 9
+        },
+        {
+          "caller": "sendWhatsAppInvoice",
+          "callee": "formattedPhone.replace",
+          "lineNumber": 9
+        },
+        {
+          "caller": "sendWhatsAppInvoice",
+          "callee": "encodeURIComponent",
+          "lineNumber": 11
+        },
+        {
+          "caller": "sendWhatsAppInvoice",
+          "callee": "amount.toLocaleString",
+          "lineNumber": 15
+        },
+        {
+          "caller": "sendWhatsAppInvoice",
+          "callee": "window.open",
+          "lineNumber": 20
+        },
+        {
+          "caller": "sendWhatsAppMessage",
+          "callee": "phoneNumber.replace",
+          "lineNumber": 24
+        },
+        {
+          "caller": "sendWhatsAppMessage",
+          "callee": "formattedPhone.startsWith",
+          "lineNumber": 25
+        },
+        {
+          "caller": "sendWhatsAppMessage",
+          "callee": "formattedPhone.replace",
+          "lineNumber": 25
+        },
+        {
+          "caller": "sendWhatsAppMessage",
+          "callee": "encodeURIComponent",
+          "lineNumber": 27
+        },
+        {
+          "caller": "sendWhatsAppMessage",
+          "callee": "window.open",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/SuperAdminUsers.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 311,
+      "nonEmptyLines": 298,
+      "functions": [
+        {
+          "name": "SuperAdminUsers",
+          "startLine": 25,
+          "endLine": 309,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "useQueryClient",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "useState",
+          "lineNumber": 29
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "useQuery",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "supabase\n                .from(\"user_roles\")\n                .select(`\n                    id,\n                    user_id,\n                    role,\n                    profiles!user_roles_user_id_profiles_fkey(\n                        full_name, \n                        phone_number, \n                        tenant_id, \n                        tenants(business_name)\n                    )\n                `)\n                .eq",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "supabase\n                .from(\"user_roles\")\n                .select",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "supabase\n                .from",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "console.error",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "searchQuery.trim",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "setGlobalSearchLoading",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "supabase\n                .from(\"profiles\")\n                .select(`\n                    id,\n                    user_id,\n                    full_name,\n                    phone_number,\n                    tenant_id,\n                    tenants(business_name),\n                    user_roles!user_roles_user_id_profiles_fkey(role)\n                `)\n                .or(`full_name.ilike.%${searchQuery}%,phone_number.ilike.%${searchQuery}%`)\n                .limit",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "supabase\n                .from(\"profiles\")\n                .select(`\n                    id,\n                    user_id,\n                    full_name,\n                    phone_number,\n                    tenant_id,\n                    tenants(business_name),\n                    user_roles!user_roles_user_id_profiles_fkey(role)\n                `)\n                .or",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "supabase\n                .from(\"profiles\")\n                .select",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "supabase\n                .from",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "setFoundUsers",
+          "lineNumber": 77
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "toast.info",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "toast.error",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleGlobalSearch",
+          "callee": "setGlobalSearchLoading",
+          "lineNumber": 84
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "useMutation",
+          "lineNumber": 88
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "supabase\n                .from(\"user_roles\")\n                .insert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "supabase\n                .from",
+          "lineNumber": 90
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 96
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "toast.success",
+          "lineNumber": 97
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "setFoundUsers",
+          "lineNumber": 98
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "setSearchQuery",
+          "lineNumber": 99
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "toast.error",
+          "lineNumber": 101
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "setSearchQuery",
+          "lineNumber": 154
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "handleGlobalSearch",
+          "lineNumber": 155
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "foundUsers.map",
+          "lineNumber": 172
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "user.user_roles?.some",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "promoteMutation.mutate",
+          "lineNumber": 195
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "superadmins?.map",
+          "lineNumber": 244
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "Array.isArray",
+          "lineNumber": 249
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "Array.isArray",
+          "lineNumber": 252
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "Array.isArray",
+          "lineNumber": 258
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "superadmins?.map",
+          "lineNumber": 281
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "Array.isArray",
+          "lineNumber": 286
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "Array.isArray",
+          "lineNumber": 289
+        },
+        {
+          "caller": "SuperAdminUsers",
+          "callee": "Array.isArray",
+          "lineNumber": 296
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/shared/utils/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

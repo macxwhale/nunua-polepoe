@@ -1,0 +1,9 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": "docs/ARCHITECTURE.md", "language": "markdown", "sizeLines": 1074, "fileCategory": "docs"},
+    {"path": "docs/DEVELOPER.md", "language": "markdown", "sizeLines": 154, "fileCategory": "docs"},
+    {"path": "docs/ROLES.md", "language": "markdown", "sizeLines": 65, "fileCategory": "docs"}
+  ],
+  "batchImportData": {"docs/ARCHITECTURE.md":[],"docs/DEVELOPER.md":[],"docs/ROLES.md":[]}
+}

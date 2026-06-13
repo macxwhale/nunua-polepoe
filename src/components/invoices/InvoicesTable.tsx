@@ -1,6 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
   Table,
   TableBody,
   TableCell,
@@ -9,15 +18,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useDeleteInvoice } from "@/hooks/useInvoices";
+import { useCreateRefund } from "@/hooks/useTransactions";
 import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
 import { downloadInvoicePDF, printInvoicePDF } from "@/lib/pdfGenerator";
 import { sendWhatsAppInvoice } from "@/lib/whatsapp";
 import { DeleteConfirmDialog } from "@/shared/components/DeleteConfirmDialog";
 import { formatCurrency, formatDateShort } from "@/shared/utils";
-import { Download, Edit, FileText, MessageSquare, Printer, Trash } from "lucide-react";
+import { Download, Edit, FileText, MessageSquare, Printer, RotateCcw, Trash } from "lucide-react";
 import { FeatureGate } from "@/components/FeatureGate";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 type Invoice = Tables<"invoices">;
@@ -31,7 +41,56 @@ interface InvoicesTableProps {
 export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProps) {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [invoiceToDelete, setInvoiceToDelete] = useState<Invoice | null>(null);
+  const [refundDialogOpen, setRefundDialogOpen] = useState(false);
+  const [refundInvoice, setRefundInvoice] = useState<Invoice | null>(null);
+  const [refundAmount, setRefundAmount] = useState("");
+  const [refundNotes, setRefundNotes] = useState("");
+  const [maxRefund, setMaxRefund] = useState(0);
+  const [refundedInvoiceIds, setRefundedInvoiceIds] = useState<Set<string>>(new Set());
   const deleteInvoice = useDeleteInvoice();
+  const createRefund = useCreateRefund();
+
+  useEffect(() => {
+    supabase
+      .from("transactions")
+      .select("invoice_id, amount")
+      .eq("type", "payment")
+      .lt("amount", 0)
+      .then(({ data }) => {
+        if (data) {
+          setRefundedInvoiceIds(new Set(data.map((t) => t.invoice_id).filter(Boolean)));
+        }
+      });
+  }, [invoices]);
+
+  const handleRefundClick = async (invoice: Invoice) => {
+    const { data } = await supabase
+      .from("transactions")
+      .select("amount")
+      .eq("invoice_id", invoice.id)
+      .eq("type", "payment");
+    const paid = data?.reduce((sum, t) => sum + Number(t.amount), 0) ?? 0;
+    setMaxRefund(paid);
+    setRefundInvoice(invoice);
+    setRefundAmount("");
+    setRefundNotes("");
+    setRefundDialogOpen(true);
+  };
+
+  const handleRefundConfirm = async () => {
+    if (!refundInvoice) return;
+    const amount = parseFloat(refundAmount);
+    if (!amount || amount <= 0 || amount > maxRefund) return;
+    await createRefund.mutateAsync({
+      clientId: refundInvoice.client_id,
+      invoiceId: refundInvoice.id,
+      amount,
+      notes: refundNotes || "Refund",
+    });
+    setRefundDialogOpen(false);
+    setRefundInvoice(null);
+    onRefresh();
+  };
 
   const handleDownloadPDF = async (invoice: Invoice) => {
     try {
@@ -209,8 +268,13 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                     <FileText className={`h-5 w-5 ${isPaid ? 'text-primary' : 'text-secondary'}`} />
                   </div>
                   <div>
-                    <div className="font-display font-bold text-sm text-foreground">
+                    <div className="flex items-center gap-1.5 font-display font-bold text-sm text-foreground">
                       {(invoice as any).products?.name || invoice.invoice_number}
+                      {refundedInvoiceIds.has(invoice.id) && (
+                        <Badge className="text-[10px] px-1.5 py-0 h-4 bg-warning/10 text-warning border-warning/30 font-medium">
+                          Refunded
+                        </Badge>
+                      )}
                     </div>
                     <div className="text-xs text-muted-foreground">
                       {formatDateShort(invoice.created_at)}
@@ -274,6 +338,19 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                     Edit
                   </Button>
                 </FeatureGate>
+                {(invoice.status === "paid" || invoice.status === "partial") && (
+                  <FeatureGate feature="invoicing" fallback="lock">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleRefundClick(invoice)}
+                      className="h-9 px-3 text-xs text-warning-foreground border-warning/40 hover:bg-warning/10"
+                    >
+                      <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+                      Refund
+                    </Button>
+                  </FeatureGate>
+                )}
                 <FeatureGate feature="invoicing" fallback="lock">
                   <Button
                     variant="ghost"
@@ -327,6 +404,11 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                         }`} />
                     </div>
                     <span className="font-medium">{(invoice as any).products?.name || invoice.invoice_number}</span>
+                    {refundedInvoiceIds.has(invoice.id) && (
+                      <Badge className="text-[10px] px-1.5 py-0 h-4 bg-warning/10 text-warning border-warning/30 font-medium">
+                        Refunded
+                      </Badge>
+                    )}
                   </div>
                 </TableCell>
                 <TableCell className="font-display font-bold text-base py-4">
@@ -380,6 +462,19 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
                         <Edit className="h-4 w-4" />
                       </Button>
                     </FeatureGate>
+                    {(invoice.status === "paid" || invoice.status === "partial") && (
+                      <FeatureGate feature="invoicing" fallback="lock">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleRefundClick(invoice)}
+                          title="Refund"
+                          className="h-8 w-8 text-warning-foreground hover:bg-warning/10"
+                        >
+                          <RotateCcw className="h-4 w-4" />
+                        </Button>
+                      </FeatureGate>
+                    )}
                     <FeatureGate feature="invoicing" fallback="lock">
                       <Button
                         variant="ghost"
@@ -407,6 +502,65 @@ export function InvoicesTable({ invoices, onEdit, onRefresh }: InvoicesTableProp
         description={`Are you sure you want to delete invoice "${invoiceToDelete?.invoice_number}"? This action cannot be undone.`}
         isLoading={deleteInvoice.isPending}
       />
+
+      <Dialog open={refundDialogOpen} onOpenChange={setRefundDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Record Refund</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <p className="text-sm text-muted-foreground">
+              Invoice: <span className="font-medium text-foreground">{refundInvoice?.invoice_number}</span>
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Maximum refundable: <span className="font-medium text-foreground">{maxRefund.toLocaleString("en-KE", { style: "currency", currency: "KES" })}</span>
+            </p>
+            <div className="space-y-1.5">
+              <Label htmlFor="refund-amount">Refund Amount (KSH)</Label>
+              <Input
+                id="refund-amount"
+                type="number"
+                min="0.01"
+                max={maxRefund}
+                step="0.01"
+                placeholder="0.00"
+                value={refundAmount}
+                onChange={(e) => setRefundAmount(e.target.value)}
+              />
+              {refundAmount && (parseFloat(refundAmount) > maxRefund || parseFloat(refundAmount) <= 0) && (
+                <p className="text-xs text-destructive">
+                  Amount must be between 0 and {maxRefund.toLocaleString()}.
+                </p>
+              )}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="refund-notes">Notes (optional)</Label>
+              <Input
+                id="refund-notes"
+                placeholder="Reason for refund..."
+                value={refundNotes}
+                onChange={(e) => setRefundNotes(e.target.value)}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setRefundDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              onClick={handleRefundConfirm}
+              disabled={
+                createRefund.isPending ||
+                !refundAmount ||
+                parseFloat(refundAmount) <= 0 ||
+                parseFloat(refundAmount) > maxRefund
+              }
+            >
+              {createRefund.isPending ? "Processing..." : "Confirm Refund"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeftRight, FileText, CheckCircle, Coins, TrendingUp } from "lucide-react";
+import { ArrowLeftRight, FileText, CheckCircle, Coins, TrendingUp, RotateCcw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -107,35 +107,47 @@ export function ClientTransactionsDialog({ open, onClose, client }: ClientTransa
                 <p>No transactions found</p>
               </div>
             ) : (
-              transactions.map((txn) => (
-                <div
-                  key={txn.id}
-                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
-                >
-                  <div className="flex items-center gap-3">
-                    {txn.type === "payment" ? (
-                      <CheckCircle className="h-5 w-5 text-success" />
-                    ) : (
-                      <TrendingUp className="h-5 w-5 text-destructive" />
-                    )}
-                    <div>
-                      <div className="font-medium capitalize">
-                        {txn.type === "sale" ? "Invoice Charge" : txn.type}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {new Date(txn.date).toLocaleDateString("en-GB", {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        })}
+              transactions.map((txn) => {
+                const isRefund = txn.type === "payment" && Number(txn.amount) < 0;
+                const isSale = txn.type === "sale";
+                return (
+                  <div
+                    key={txn.id}
+                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      {isRefund ? (
+                        <RotateCcw className="h-5 w-5 text-warning" />
+                      ) : isSale ? (
+                        <TrendingUp className="h-5 w-5 text-destructive" />
+                      ) : (
+                        <CheckCircle className="h-5 w-5 text-success" />
+                      )}
+                      <div>
+                        <div className="font-medium">
+                          {isRefund ? "Refund" : isSale ? "Invoice Charge" : "Payment"}
+                        </div>
+                        {txn.notes && (
+                          <div className="text-xs text-muted-foreground">{txn.notes}</div>
+                        )}
+                        <div className="text-sm text-muted-foreground">
+                          {new Date(txn.date).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </div>
                       </div>
                     </div>
+                    <Badge
+                      variant={isRefund ? "outline" : isSale ? "destructive" : "success"}
+                      className={`text-base font-semibold px-3 py-1 ${isRefund ? "text-warning border-warning/40" : ""}`}
+                    >
+                      {isRefund ? "-" : ""}KSH {Math.abs(Number(txn.amount)).toLocaleString()}
+                    </Badge>
                   </div>
-                  <Badge variant={txn.type === "payment" ? "success" : "destructive"} className="text-base font-semibold px-3 py-1">
-                    KSH {Number(txn.amount).toLocaleString()}
-                  </Badge>
-                </div>
-              ))
+                );
+              })
             )}
           </TabsContent>
 

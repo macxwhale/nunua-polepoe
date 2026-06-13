@@ -1,0 +1,725 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 198,
+    "filesWithImports": 113,
+    "totalEdges": 404
+  },
+  "importMap": {
+    ".env": [],
+    ".github/workflows/main.yml": [],
+    ".understand-anything/.understandignore": [],
+    "bun.lockb": [],
+    "components.json": [],
+    "docs/ARCHITECTURE.md": [],
+    "docs/DEVELOPER.md": [],
+    "docs/ROLES.md": [],
+    "eslint.config.js": [],
+    "index.html": [],
+    "package.json": [],
+    "postcss.config.js": [],
+    "public/robots.txt": [],
+    "README.md": [],
+    "src/api/clients.api.ts": [
+      "src/api/tenant.api.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/api/invoices.api.ts": [
+      "src/api/tenant.api.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/api/notifications.api.ts": [
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/api/payments.api.ts": [
+      "src/api/tenant.api.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/api/products.api.ts": [
+      "src/api/tenant.api.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/api/profile.api.ts": [
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/api/subscription.api.ts": [
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/api/tenant.api.ts": [
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/api/transactions.api.ts": [
+      "src/api/tenant.api.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/App.css": [],
+    "src/App.tsx": [
+      "src/components/Layout.tsx",
+      "src/components/providers/SubscriptionProvider.tsx",
+      "src/components/SubscriptionGuard.tsx",
+      "src/components/SuperAdminLayout.tsx",
+      "src/components/ui/sonner.tsx",
+      "src/components/ui/toaster.tsx",
+      "src/components/ui/tooltip.tsx",
+      "src/components/WhatsAppButton.tsx",
+      "src/hooks/useAuth.tsx",
+      "src/hooks/useUserRole.ts",
+      "src/pages/Auth.tsx",
+      "src/pages/ClientDashboard.tsx",
+      "src/pages/Clients.tsx",
+      "src/pages/Dashboard.tsx",
+      "src/pages/Invoices.tsx",
+      "src/pages/Landing.tsx",
+      "src/pages/NotFound.tsx",
+      "src/pages/Payments.tsx",
+      "src/pages/Products.tsx",
+      "src/pages/Settings.tsx",
+      "src/pages/Subscription.tsx",
+      "src/pages/SuperAdmin.tsx",
+      "src/pages/SuperAdminTenants.tsx",
+      "src/pages/SuperAdminUsers.tsx"
+    ],
+    "src/components/AppSidebar.tsx": [
+      "src/components/clients/ClientDialog.tsx",
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/collapsible.tsx",
+      "src/components/ui/sidebar.tsx",
+      "src/hooks/use-mobile.tsx",
+      "src/hooks/useUserRole.ts",
+      "src/lib/featureFlags.ts",
+      "src/lib/utils.ts"
+    ],
+    "src/components/auth/SignUpForm.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/form.tsx",
+      "src/components/ui/input.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/components/auth/UnifiedLoginForm.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/form.tsx",
+      "src/components/ui/input.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/components/clients/AddSalesDialog.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/label.tsx",
+      "src/components/ui/select.tsx",
+      "src/components/ui/textarea.tsx",
+      "src/hooks/useInvoices.ts",
+      "src/hooks/useProducts.ts",
+      "src/hooks/useTransactions.ts"
+    ],
+    "src/components/clients/ClientActions.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/clients/ClientSalesDialog.tsx",
+      "src/components/clients/ClientTransactionsDialog.tsx",
+      "src/components/clients/SimpleTopUpDialog.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/hooks/use-toast.ts",
+      "src/hooks/useClients.ts",
+      "src/hooks/useSubscription.ts",
+      "src/shared/components/DeleteConfirmDialog.tsx"
+    ],
+    "src/components/clients/ClientDialog.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/form.tsx",
+      "src/components/ui/input.tsx",
+      "src/hooks/useClients.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/components/clients/ClientRow.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/clients/ClientActions.tsx",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/table.tsx",
+      "src/shared/utils/index.ts"
+    ],
+    "src/components/clients/ClientSalesDialog.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/clients/AddSalesDialog.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/table.tsx",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/components/clients/ClientsTable.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/clients/ClientRow.tsx",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/table.tsx",
+      "src/shared/utils/index.ts"
+    ],
+    "src/components/clients/ClientTopUpDialog.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/hooks/usePayments.ts"
+    ],
+    "src/components/clients/ClientTransactionsDialog.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/skeleton.tsx",
+      "src/components/ui/tabs.tsx",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/components/clients/SimpleTopUpDialog.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/ui/button.tsx",
+      "src/components/ui/calendar.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/label.tsx",
+      "src/components/ui/popover.tsx",
+      "src/components/ui/select.tsx",
+      "src/hooks/useInvoices.ts",
+      "src/hooks/useTransactions.ts",
+      "src/integrations/supabase/types.ts",
+      "src/lib/utils.ts"
+    ],
+    "src/components/FeatureGate.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/tooltip.tsx",
+      "src/hooks/useSubscription.ts",
+      "src/lib/featureFlags.ts"
+    ],
+    "src/components/GlobalSearch.tsx": [
+      "src/components/ui/badge.tsx",
+      "src/components/ui/command.tsx",
+      "src/hooks/useGlobalSearch.ts"
+    ],
+    "src/components/invoices/InvoiceDialog.tsx": [
+      "src/components/products/ProductDialog.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/command.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/form.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/popover.tsx",
+      "src/components/ui/select.tsx",
+      "src/components/ui/textarea.tsx",
+      "src/hooks/useClients.ts",
+      "src/hooks/useInvoices.ts",
+      "src/hooks/useNotifications.ts",
+      "src/hooks/useProducts.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts",
+      "src/lib/utils.ts"
+    ],
+    "src/components/invoices/InvoicesTable.tsx": [
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/table.tsx",
+      "src/hooks/useInvoices.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts",
+      "src/lib/pdfGenerator.ts",
+      "src/lib/whatsapp.ts",
+      "src/shared/components/DeleteConfirmDialog.tsx",
+      "src/shared/utils/index.ts"
+    ],
+    "src/components/Layout.tsx": [
+      "src/components/AppSidebar.tsx",
+      "src/components/GlobalSearch.tsx",
+      "src/components/NotificationDropdown.tsx",
+      "src/components/TrialBanner.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/sidebar.tsx",
+      "src/hooks/useAuth.tsx",
+      "src/hooks/useUserRole.ts",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/components/NotificationDropdown.tsx": [
+      "src/components/ui/badge.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/scroll-area.tsx",
+      "src/hooks/useNotifications.ts",
+      "src/lib/utils.ts"
+    ],
+    "src/components/products/ProductDialog.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/label.tsx",
+      "src/components/ui/textarea.tsx",
+      "src/hooks/useProducts.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/components/products/ProductsTable.tsx": [
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/table.tsx",
+      "src/hooks/useProducts.ts",
+      "src/integrations/supabase/types.ts",
+      "src/shared/components/DeleteConfirmDialog.tsx",
+      "src/shared/utils/index.ts"
+    ],
+    "src/components/providers/SubscriptionProvider.tsx": [
+      "src/api/subscription.api.ts",
+      "src/api/tenant.api.ts",
+      "src/contexts/SubscriptionContext.tsx",
+      "src/hooks/useAuth.tsx",
+      "src/lib/featureFlags.ts",
+      "src/lib/paystackConfig.ts"
+    ],
+    "src/components/SubscriptionGuard.tsx": [
+      "src/hooks/useSubscription.ts"
+    ],
+    "src/components/SuperAdminLayout.tsx": [
+      "src/components/SuperAdminSidebar.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/sidebar.tsx",
+      "src/hooks/useAuth.tsx"
+    ],
+    "src/components/SuperAdminSidebar.tsx": [
+      "src/components/ui/sidebar.tsx",
+      "src/hooks/use-mobile.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/TrialBanner.tsx": [
+      "src/hooks/useSubscription.ts"
+    ],
+    "src/components/ui/accordion.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/alert-dialog.tsx": [
+      "src/components/ui/button.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/alert.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/aspect-ratio.tsx": [],
+    "src/components/ui/avatar.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/badge.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/breadcrumb.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/button.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/calendar.tsx": [
+      "src/components/ui/button.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/card.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/carousel.tsx": [
+      "src/components/ui/button.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/chart.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/checkbox.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/collapsible.tsx": [],
+    "src/components/ui/command.tsx": [
+      "src/components/ui/dialog.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/context-menu.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/dialog.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/drawer.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/dropdown-menu.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/empty-state.tsx": [
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/button.tsx",
+      "src/lib/featureFlags.ts"
+    ],
+    "src/components/ui/form.tsx": [
+      "src/components/ui/label.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/hover-card.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/input-otp.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/input.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/label.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/menubar.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/navigation-menu.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/pagination.tsx": [
+      "src/components/ui/button.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/popover.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/progress.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/radio-group.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/resizable.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/scroll-area.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/select.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/separator.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/sheet.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/sidebar.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/separator.tsx",
+      "src/components/ui/sheet.tsx",
+      "src/components/ui/skeleton.tsx",
+      "src/components/ui/tooltip.tsx",
+      "src/hooks/use-mobile.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/skeleton.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/slider.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/sonner.tsx": [],
+    "src/components/ui/switch.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/table.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/tabs.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/textarea.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/toast.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/toaster.tsx": [
+      "src/components/ui/toast.tsx",
+      "src/hooks/use-toast.ts"
+    ],
+    "src/components/ui/toggle-group.tsx": [
+      "src/components/ui/toggle.tsx",
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/toggle.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/tooltip.tsx": [
+      "src/lib/utils.ts"
+    ],
+    "src/components/ui/use-toast.ts": [
+      "src/hooks/use-toast.ts"
+    ],
+    "src/components/WhatsAppButton.tsx": [
+      "src/components/ui/dialog.tsx"
+    ],
+    "src/contexts/SubscriptionContext.tsx": [
+      "src/api/subscription.api.ts",
+      "src/lib/featureFlags.ts"
+    ],
+    "src/hooks/use-mobile.tsx": [],
+    "src/hooks/use-toast.ts": [
+      "src/components/ui/toast.tsx"
+    ],
+    "src/hooks/useAuth.tsx": [
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/hooks/useClients.ts": [
+      "src/api/clients.api.ts",
+      "src/integrations/supabase/types.ts",
+      "src/lib/queryClient.ts"
+    ],
+    "src/hooks/useGlobalSearch.ts": [
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/hooks/useInvoices.ts": [
+      "src/api/invoices.api.ts",
+      "src/integrations/supabase/types.ts",
+      "src/lib/queryClient.ts"
+    ],
+    "src/hooks/useNotifications.ts": [
+      "src/api/notifications.api.ts",
+      "src/integrations/supabase/client.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/hooks/usePayments.ts": [
+      "src/api/payments.api.ts"
+    ],
+    "src/hooks/useProducts.ts": [
+      "src/api/products.api.ts",
+      "src/integrations/supabase/types.ts",
+      "src/lib/queryClient.ts"
+    ],
+    "src/hooks/useSubscription.ts": [
+      "src/contexts/SubscriptionContext.tsx",
+      "src/lib/featureFlags.ts"
+    ],
+    "src/hooks/useTransactions.ts": [
+      "src/api/transactions.api.ts",
+      "src/hooks/use-toast.ts",
+      "src/lib/queryClient.ts"
+    ],
+    "src/hooks/useUserRole.ts": [
+      "src/hooks/useAuth.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/index.css": [],
+    "src/integrations/supabase/client.ts": [
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/integrations/supabase/types.ts": [],
+    "src/lib/featureFlags.ts": [],
+    "src/lib/paystackConfig.ts": [],
+    "src/lib/pdfGenerator.ts": [],
+    "src/lib/queryClient.ts": [],
+    "src/lib/utils.ts": [],
+    "src/lib/whatsapp.ts": [],
+    "src/main.tsx": [
+      "src/App.tsx",
+      "src/index.css",
+      "src/lib/queryClient.ts"
+    ],
+    "src/pages/Auth.tsx": [
+      "src/components/auth/SignUpForm.tsx",
+      "src/components/auth/UnifiedLoginForm.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/tabs.tsx",
+      "src/hooks/useAuth.tsx"
+    ],
+    "src/pages/ClientDashboard.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/clients/ClientTopUpDialog.tsx",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/tabs.tsx",
+      "src/hooks/useAuth.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/pages/Clients.tsx": [
+      "src/api/clients.api.ts",
+      "src/components/clients/ClientDialog.tsx",
+      "src/components/clients/ClientsTable.tsx",
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/empty-state.tsx",
+      "src/components/ui/input.tsx",
+      "src/hooks/useClients.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/pages/Dashboard.tsx": [
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/skeleton.tsx",
+      "src/components/ui/table.tsx",
+      "src/hooks/useAuth.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/pages/Invoices.tsx": [
+      "src/components/FeatureGate.tsx",
+      "src/components/invoices/InvoiceDialog.tsx",
+      "src/components/invoices/InvoicesTable.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/empty-state.tsx",
+      "src/hooks/useInvoices.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/pages/Landing.tsx": [
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/sheet.tsx",
+      "src/hooks/useAuth.tsx"
+    ],
+    "src/pages/NotFound.tsx": [
+      "src/components/ui/button.tsx"
+    ],
+    "src/pages/Payments.tsx": [
+      "src/api/payments.api.ts",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/label.tsx",
+      "src/components/ui/select.tsx",
+      "src/components/ui/switch.tsx",
+      "src/hooks/usePayments.ts",
+      "src/shared/components/DeleteConfirmDialog.tsx"
+    ],
+    "src/pages/Products.tsx": [
+      "src/components/FeatureGate.tsx",
+      "src/components/products/ProductDialog.tsx",
+      "src/components/products/ProductsTable.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/empty-state.tsx",
+      "src/hooks/useProducts.ts",
+      "src/integrations/supabase/types.ts"
+    ],
+    "src/pages/Settings.tsx": [
+      "src/api/profile.api.ts",
+      "src/api/subscription.api.ts",
+      "src/components/FeatureGate.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/label.tsx",
+      "src/hooks/useSubscription.ts",
+      "src/lib/paystackConfig.ts"
+    ],
+    "src/pages/Subscription.tsx": [
+      "src/api/profile.api.ts",
+      "src/api/subscription.api.ts",
+      "src/api/tenant.api.ts",
+      "src/hooks/useAuth.tsx",
+      "src/hooks/useSubscription.ts",
+      "src/lib/paystackConfig.ts"
+    ],
+    "src/pages/SuperAdmin.tsx": [
+      "src/components/ui/badge.tsx",
+      "src/components/ui/card.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/pages/SuperAdminTenants.tsx": [
+      "src/components/ui/badge.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/dialog.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/scroll-area.tsx",
+      "src/components/ui/select.tsx",
+      "src/components/ui/switch.tsx",
+      "src/components/ui/table.tsx",
+      "src/components/ui/tabs.tsx",
+      "src/integrations/supabase/client.ts",
+      "src/shared/components/DeleteConfirmDialog.tsx"
+    ],
+    "src/pages/SuperAdminUsers.tsx": [
+      "src/components/ui/badge.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/input.tsx",
+      "src/components/ui/table.tsx",
+      "src/integrations/supabase/client.ts"
+    ],
+    "src/shared/components/DeleteConfirmDialog.tsx": [
+      "src/components/ui/alert-dialog.tsx",
+      "src/components/ui/input.tsx"
+    ],
+    "src/shared/hooks/useTenant.ts": [
+      "src/api/tenant.api.ts"
+    ],
+    "src/shared/utils/currency.ts": [],
+    "src/shared/utils/date.ts": [],
+    "src/shared/utils/index.ts": [],
+    "src/vite-env.d.ts": [],
+    "supabase/.temp/cli-latest": [],
+    "supabase/.temp/gotrue-version": [],
+    "supabase/.temp/pooler-url": [],
+    "supabase/.temp/postgres-version": [],
+    "supabase/.temp/project-ref": [],
+    "supabase/.temp/rest-version": [],
+    "supabase/.temp/storage-migration": [],
+    "supabase/.temp/storage-version": [],
+    "supabase/add_subscription_columns.sql": [],
+    "supabase/config.toml": [],
+    "supabase/fix_sql.py": [],
+    "supabase/functions/create-client-user/index.ts": [],
+    "supabase/functions/delete-tenant/index.ts": [],
+    "supabase/functions/deno.json": [],
+    "supabase/functions/paystack-cancel/index.ts": [],
+    "supabase/functions/paystack-initialize/index.ts": [],
+    "supabase/functions/paystack-webhook/index.ts": [],
+    "supabase/functions/reset-password/index.ts": [],
+    "supabase/functions/resolve-login-email/index.ts": [],
+    "supabase/functions/send-transaction-sms/index.ts": [],
+    "supabase/functions/setup-tenant/index.ts": [],
+    "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql": [],
+    "supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql": [],
+    "supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql": [],
+    "supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql": [],
+    "supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql": [],
+    "supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql": [],
+    "supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql": [],
+    "supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql": [],
+    "supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql": [],
+    "supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql": [],
+    "supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql": [],
+    "supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql": [],
+    "supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql": [],
+    "supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql": [],
+    "supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql": [],
+    "supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql": [],
+    "supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql": [],
+    "supabase/migrations/20260127155500_add_superadmin_role.sql": [],
+    "supabase/migrations/20260127203127_add_subscription_tiers.sql": [],
+    "supabase/migrations/20260127224000_superadmin_rls_expansion.sql": [],
+    "supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql": [],
+    "supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql": [],
+    "supabase/migrations/20260128110000_superadmin_user_management_rls.sql": [],
+    "supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql": [],
+    "supabase/migrations/20260327214000_add_profile_email.sql": [],
+    "supabase/migrations/20260328192957_add_subscription_billing_history.sql": [],
+    "supabase/recreate_database.sql": [],
+    "tailwind.config.ts": [],
+    "tsconfig.app.json": [],
+    "tsconfig.json": [],
+    "tsconfig.node.json": [],
+    "vercel.json": [],
+    "vite.config.ts": []
+  }
+}

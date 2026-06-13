@@ -1,0 +1,116 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Start with the README to understand what Nunua Polepole is: a multi-tenant SaaS platform for business directory management, credit tracking, and global administrative governance. It outlines the four core pillars \u2014 Business Directory, Multi-Tenant Architecture, Strategic Auditing, and Global Governance \u2014 along with the technology stack (Vite, React, Supabase). Reading this first establishes the vocabulary and mental model you will need to make sense of every subsequent code file.",
+    "nodeIds": [
+      "document:README.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Application Bootstrap",
+    "description": "src/main.tsx is the true entry point: it mounts the React root and wraps the entire application in a shared QueryClientProvider so that React Query's cache is available everywhere. This tiny file is important because it sets the outermost execution boundary \u2014 everything else is a descendant of what is initialized here.",
+    "nodeIds": [
+      "file:src/main.tsx"
+    ],
+    "languageLesson": "React 18's createRoot API enables concurrent rendering features. Wrapping the app in a single QueryClientProvider at the root means all hooks that call useQuery or useMutation share one cache instance \u2014 no duplicate network requests across components."
+  },
+  {
+    "order": 3,
+    "title": "Routing and Auth Guards",
+    "description": "src/App.tsx is the application shell: it declares the full React Router route tree and enforces authentication and authorization before any page renders. It defines two inline helper components \u2014 ProtectedRoute, which redirects unauthenticated users to /auth and enforces role requirements, and DashboardRouter, which routes users to the appropriate dashboard view based on their active role. Understanding this file tells you exactly which URLs exist and who is allowed to reach each one.",
+    "nodeIds": [
+      "file:src/App.tsx"
+    ],
+    "languageLesson": "The ProtectedRoute pattern is a common React Router idiom: render a wrapper component that checks auth state and returns <Navigate> for unauthorized users, or <Outlet>/children for authorized ones. This keeps route-level access logic in one place rather than scattered across individual pages."
+  },
+  {
+    "order": 4,
+    "title": "Authentication and Role System",
+    "description": "useAuth.tsx listens to Supabase's auth state stream and exposes the current user, session, and loading state to any component that needs it. useUserRole.ts builds on top of that by fetching the user's roles from the user_roles database table and computing boolean capability flags (isOwner, isSuperAdmin, isClientUser). These two hooks are the foundation of every access-control decision in the application \u2014 the ProtectedRoute in App.tsx, the sidebar navigation filtering, and the FeatureGate component all depend on them.",
+    "nodeIds": [
+      "file:src/hooks/useAuth.tsx",
+      "file:src/hooks/useUserRole.ts"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Supabase Client and Type Safety",
+    "description": "src/integrations/supabase/client.ts is the most-imported file in the entire codebase (fan-in of 32) \u2014 it initializes and exports a singleton Supabase client configured with the project URL and anon key. Every API module, hook, and edge function routes all database and auth calls through this one instance. Paired with it, src/integrations/supabase/types.ts is auto-generated from the live database schema and provides end-to-end TypeScript types for every table, view, enum, and RPC function \u2014 ensuring the compiler catches mismatches between the database shape and frontend code.",
+    "nodeIds": [
+      "file:src/integrations/supabase/client.ts",
+      "file:src/integrations/supabase/types.ts"
+    ],
+    "languageLesson": "The Supabase CLI can regenerate types.ts at any time with `supabase gen types typescript`. Committing this file to source control means TypeScript's type-checker acts as a compile-time schema validation layer \u2014 a broken query against a renamed column becomes a build error rather than a runtime exception."
+  },
+  {
+    "order": 6,
+    "title": "API Layer: Data Access Pattern",
+    "description": "src/api/clients.api.ts is one of the most referenced API modules (fan-in of 13) and serves as the canonical example of how data access is structured throughout the project. Each API file exports plain async functions that call the Supabase client directly \u2014 no ORM, no generic abstraction layer. All queries are tenant-scoped by passing tenantId as a filter, which is how the multi-tenant isolation guarantee is enforced at the query level. The same pattern is repeated across clients.api.ts, invoices.api.ts, payments.api.ts, products.api.ts, and transactions.api.ts.",
+    "nodeIds": [
+      "file:src/api/clients.api.ts"
+    ],
+    "languageLesson": "Keeping API functions as plain async functions (rather than class methods or hook calls) makes them easy to test in isolation and easy to compose \u2014 a React Query hook simply wraps them in useQuery or useMutation, and the hook owns the caching/invalidation strategy while the API function owns the query logic."
+  },
+  {
+    "order": 7,
+    "title": "Subscription and Feature Flags",
+    "description": "The subscription subsystem spans three files that work together. src/lib/featureFlags.ts declares the static PLAN_FEATURES map that lists which capabilities each subscription tier (starter, professional, enterprise) unlocks. src/contexts/SubscriptionContext.tsx makes the current tenant's active plan available to any component via React Context. src/components/FeatureGate.tsx is the UI enforcement point \u2014 it wraps any feature block and either renders it (if the plan includes the feature) or shows an upgrade prompt. This three-layer design separates feature definition, state distribution, and UI rendering into distinct concerns.",
+    "nodeIds": [
+      "file:src/lib/featureFlags.ts",
+      "file:src/contexts/SubscriptionContext.tsx",
+      "file:src/components/FeatureGate.tsx"
+    ],
+    "languageLesson": "Feature flags backed by a static config map (rather than runtime API calls) have zero latency and work offline. The tradeoff is that adding a new feature requires a code deployment. For a SaaS where plan capabilities change infrequently, this is a reasonable trade."
+  },
+  {
+    "order": 8,
+    "title": "Authenticated Layout and Tenant Context",
+    "description": "src/components/Layout.tsx is the primary authenticated shell that every tenant-facing page is rendered inside \u2014 it provides the sidebar, top navigation bar with a user avatar dropdown, global search, and notification bell. src/shared/hooks/useTenant.ts underpins the layout and most API calls by resolving the current user's tenant ID from the profiles table, making it available as a React Query-cached value that avoids repeated database round-trips. Together these two files define the visual and data environment that all tenant dashboard pages operate within.",
+    "nodeIds": [
+      "file:src/components/Layout.tsx",
+      "file:src/shared/hooks/useTenant.ts"
+    ]
+  },
+  {
+    "order": 9,
+    "title": "Tenant Dashboard and Superadmin Views",
+    "description": "src/pages/Dashboard.tsx is the main landing page for tenant users, aggregating KPI statistics, revenue charts, latest invoices, and top clients by composing multiple API calls and React Query hooks. src/pages/SuperAdmin.tsx is the platform-wide counterpart for superadmin users \u2014 it displays total tenant count, global client and revenue aggregates, and transaction volumes across all tenants. Comparing these two pages makes the multi-tenant boundary concrete: the tenant dashboard is scoped to one business's data, while the superadmin view crosses all tenant boundaries.",
+    "nodeIds": [
+      "file:src/pages/Dashboard.tsx",
+      "file:src/pages/SuperAdmin.tsx"
+    ]
+  },
+  {
+    "order": 10,
+    "title": "Database Schema",
+    "description": "supabase/recreate_database.sql is the single most authoritative description of the system's data model. It defines all 14 tables, 5 ENUM types, one view, 42 indexes, and the complete set of Row Level Security (RLS) policies that enforce multi-tenant isolation at the database layer. The key tables \u2014 tenants, profiles, clients, invoices, transactions, and user_roles \u2014 map directly to the TypeScript types in src/integrations/supabase/types.ts and the API functions explored in Step 6. Reading this file after the frontend makes the RLS policies legible: each policy references the same role names and tenant_id patterns you have already seen in the application code.",
+    "nodeIds": [
+      "schema:supabase/recreate_database.sql",
+      "table:supabase/recreate_database.sql:tenants",
+      "table:supabase/recreate_database.sql:clients"
+    ],
+    "languageLesson": "Supabase Row Level Security (RLS) policies are PostgreSQL policies attached to tables. A policy like `USING (tenant_id = auth.jwt() ->> 'tenant_id')` means the database itself enforces tenant isolation \u2014 even if application code has a bug that omits a tenant filter, the query returns zero rows for data belonging to other tenants."
+  },
+  {
+    "order": 11,
+    "title": "Backend Edge Functions",
+    "description": "supabase/functions/setup-tenant/index.ts is the server-side counterpart to the signup flow: when a new user registers, this Deno edge function runs with elevated service-role privileges to create the tenant record, link the user profile, and assign the owner role \u2014 operations that require bypassing RLS and cannot safely be done from the frontend. supabase/functions/paystack-webhook/index.ts handles the payment lifecycle: it receives Paystack webhook events, verifies signatures, and updates the tenant's subscription status, tier, and billing history. Both functions illustrate the boundary between client-safe operations and privileged backend operations in a Supabase architecture.",
+    "nodeIds": [
+      "file:supabase/functions/setup-tenant/index.ts",
+      "file:supabase/functions/paystack-webhook/index.ts"
+    ],
+    "languageLesson": "Supabase Edge Functions run on Deno, not Node.js \u2014 imports use URL specifiers (e.g., `import { serve } from 'https://deno.land/std/http/server.ts'`) rather than npm packages. The service-role key grants full database access bypassing RLS, so it must never be exposed to the browser."
+  },
+  {
+    "order": 12,
+    "title": "Architecture Deep Dive and CI/CD",
+    "description": "docs/ARCHITECTURE.md is the capstone reference document \u2014 it covers the domain-driven design, the 15 architectural sections, data flows, and the rationale behind key decisions like RLS-enforced multi-tenancy and Supabase Edge Functions for privileged operations. Alongside it, pipeline:.github/workflows/main.yml closes the loop on how code reaches production: every push to main triggers a Vite build and force-pushes the compiled output to the deployment branch, feeding Vercel's deployment pipeline. Reading these two files after the code gives the architecture narrative its full context.",
+    "nodeIds": [
+      "document:docs/ARCHITECTURE.md",
+      "pipeline:.github/workflows/main.yml"
+    ],
+    "languageLesson": "GitHub Actions workflows use `on: push` triggers scoped to specific branches. Force-pushing a compiled dist/ directory to a separate branch is a common pattern for static site hosts that expect a pre-built artifact \u2014 it keeps build tooling out of the production branch and keeps deployment history clean."
+  }
+]

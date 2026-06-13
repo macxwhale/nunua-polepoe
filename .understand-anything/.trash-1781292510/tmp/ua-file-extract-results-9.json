@@ -1,0 +1,346 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/components/ui/toast.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 111,
+      "nonEmptyLines": 99,
+      "exports": [
+        {
+          "name": "ToastProps",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastActionElement",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastProvider",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastViewport",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "Toast",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastTitle",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastDescription",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastClose",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ToastAction",
+          "line": 101,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/toaster.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "Toaster",
+          "startLine": 4,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Toaster",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Toaster",
+          "callee": "useToast",
+          "lineNumber": 5
+        },
+        {
+          "caller": "Toaster",
+          "callee": "toasts.map",
+          "lineNumber": 9
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/use-toast.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "exports": [
+        {
+          "name": "useToast",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "toast",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/use-toast.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 186,
+      "nonEmptyLines": 156,
+      "functions": [
+        {
+          "name": "genId",
+          "startLine": 24,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "addToRemoveQueue",
+          "startLine": 55,
+          "endLine": 69,
+          "params": [
+            "toastId"
+          ]
+        },
+        {
+          "name": "reducer",
+          "startLine": 71,
+          "endLine": 122,
+          "params": [
+            "state",
+            "action"
+          ]
+        },
+        {
+          "name": "dispatch",
+          "startLine": 128,
+          "endLine": 133,
+          "params": [
+            "action"
+          ]
+        },
+        {
+          "name": "toast",
+          "startLine": 137,
+          "endLine": 164,
+          "params": [
+            "{ ...props }"
+          ]
+        },
+        {
+          "name": "useToast",
+          "startLine": 166,
+          "endLine": 184,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "reducer",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "useToast",
+          "line": 186,
+          "isDefault": false
+        },
+        {
+          "name": "toast",
+          "line": 186,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "genId",
+          "callee": "count.toString",
+          "lineNumber": 26
+        },
+        {
+          "caller": "addToRemoveQueue",
+          "callee": "toastTimeouts.has",
+          "lineNumber": 56
+        },
+        {
+          "caller": "addToRemoveQueue",
+          "callee": "setTimeout",
+          "lineNumber": 60
+        },
+        {
+          "caller": "addToRemoveQueue",
+          "callee": "toastTimeouts.delete",
+          "lineNumber": 61
+        },
+        {
+          "caller": "addToRemoveQueue",
+          "callee": "dispatch",
+          "lineNumber": 62
+        },
+        {
+          "caller": "addToRemoveQueue",
+          "callee": "toastTimeouts.set",
+          "lineNumber": 68
+        },
+        {
+          "caller": "reducer",
+          "callee": "[action.toast, ...state.toasts].slice",
+          "lineNumber": 76
+        },
+        {
+          "caller": "reducer",
+          "callee": "state.toasts.map",
+          "lineNumber": 82
+        },
+        {
+          "caller": "reducer",
+          "callee": "addToRemoveQueue",
+          "lineNumber": 91
+        },
+        {
+          "caller": "reducer",
+          "callee": "state.toasts.forEach",
+          "lineNumber": 93
+        },
+        {
+          "caller": "reducer",
+          "callee": "addToRemoveQueue",
+          "lineNumber": 94
+        },
+        {
+          "caller": "reducer",
+          "callee": "state.toasts.map",
+          "lineNumber": 100
+        },
+        {
+          "caller": "reducer",
+          "callee": "state.toasts.filter",
+          "lineNumber": 119
+        },
+        {
+          "caller": "dispatch",
+          "callee": "reducer",
+          "lineNumber": 129
+        },
+        {
+          "caller": "dispatch",
+          "callee": "listeners.forEach",
+          "lineNumber": 130
+        },
+        {
+          "caller": "dispatch",
+          "callee": "listener",
+          "lineNumber": 131
+        },
+        {
+          "caller": "toast",
+          "callee": "genId",
+          "lineNumber": 138
+        },
+        {
+          "caller": "update",
+          "callee": "dispatch",
+          "lineNumber": 141
+        },
+        {
+          "caller": "dismiss",
+          "callee": "dispatch",
+          "lineNumber": 145
+        },
+        {
+          "caller": "toast",
+          "callee": "dispatch",
+          "lineNumber": 147
+        },
+        {
+          "caller": "toast",
+          "callee": "dismiss",
+          "lineNumber": 154
+        },
+        {
+          "caller": "useToast",
+          "callee": "React.useState",
+          "lineNumber": 167
+        },
+        {
+          "caller": "useToast",
+          "callee": "React.useEffect",
+          "lineNumber": 169
+        },
+        {
+          "caller": "useToast",
+          "callee": "listeners.push",
+          "lineNumber": 170
+        },
+        {
+          "caller": "useToast",
+          "callee": "listeners.indexOf",
+          "lineNumber": 172
+        },
+        {
+          "caller": "useToast",
+          "callee": "listeners.splice",
+          "lineNumber": 174
+        },
+        {
+          "caller": "useToast",
+          "callee": "dispatch",
+          "lineNumber": 182
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,720 @@
+{
+  "nodes": [
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+      "type": "table",
+      "name": "tenants",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [8, 16],
+      "summary": "Core tenants table representing business organizations in the multi-tenant platform, with phone number uniqueness constraints and timestamps.",
+      "tags": ["database", "schema-definition", "multi-tenant", "core-entity"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "table",
+      "name": "profiles",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [19, 29],
+      "summary": "User profile records linked to both auth users and tenants, storing display name and contact information with phone validation.",
+      "tags": ["database", "schema-definition", "auth", "multi-tenant"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "table",
+      "name": "user_roles",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [32, 38],
+      "summary": "Join table assigning app_role enum values (admin, user) to auth users, with a unique constraint per user-role pair.",
+      "tags": ["database", "schema-definition", "auth", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "table",
+      "name": "clients",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [41, 53],
+      "summary": "Client records scoped to a tenant, tracking contact information, account balance, and status with phone format validation.",
+      "tags": ["database", "schema-definition", "multi-tenant", "core-entity"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:products",
+      "type": "table",
+      "name": "products",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [56, 64],
+      "summary": "Product catalog entries scoped to a tenant with name, price, and optional description.",
+      "tags": ["database", "schema-definition", "multi-tenant", "core-entity"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "table",
+      "name": "invoices",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [67, 78],
+      "summary": "Invoice records linking tenants and clients with invoice number uniqueness per tenant, amount, status, and optional notes.",
+      "tags": ["database", "schema-definition", "multi-tenant", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "table",
+      "name": "transactions",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "lineRange": [81, 91],
+      "summary": "Financial transaction records of type 'sale' or 'payment', linked to tenant, client, and optionally an invoice.",
+      "tags": ["database", "schema-definition", "multi-tenant", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "type": "table",
+      "name": "20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "filePath": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "summary": "Initial schema migration establishing the core multi-tenant data model: tenants, profiles, user_roles, clients, products, invoices, and transactions tables with RLS policies, helper functions, and performance indexes.",
+      "tags": ["database", "migration", "schema-definition", "multi-tenant", "security"],
+      "complexity": "complex",
+      "languageNotes": "Uses Supabase Row Level Security (RLS) with SECURITY DEFINER helper functions to enforce tenant isolation at the database layer."
+    },
+    {
+      "id": "table:supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+      "type": "table",
+      "name": "20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+      "filePath": "supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+      "summary": "Security fix migration that patches the update_updated_at_column trigger function to set search_path, closing a potential schema injection vulnerability.",
+      "tags": ["database", "migration", "security", "bugfix"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+      "type": "table",
+      "name": "20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+      "filePath": "supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+      "summary": "Alters the clients table to make phone_number required and name/email optional, and adds a unique constraint on phone_number per tenant.",
+      "tags": ["database", "migration", "schema-definition", "multi-tenant"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "type": "table",
+      "name": "20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "filePath": "supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "summary": "Creates the client_details view joining clients, invoices, and transactions to expose total_invoiced and total_paid aggregates, and adds several performance indexes.",
+      "tags": ["database", "migration", "schema-definition", "view"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+      "type": "table",
+      "name": "20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+      "filePath": "supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+      "summary": "Recreates the client_details view with security_invoker = true so it respects the querying user's RLS policies rather than bypassing them.",
+      "tags": ["database", "migration", "security", "view"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+      "type": "table",
+      "name": "20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+      "filePath": "supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+      "summary": "Adds the 'client' value to the app_role enum to support client-facing authenticated access.",
+      "tags": ["database", "migration", "auth", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+      "type": "table",
+      "name": "20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+      "filePath": "supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+      "summary": "Introduces the update_client_status trigger function to automatically recalculate and update a client's status (open/closed) after any change to invoices or transactions.",
+      "tags": ["database", "migration", "trigger", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+      "type": "table",
+      "name": "20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+      "filePath": "supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+      "summary": "Security fix that drops and recreates the update_client_status function and its triggers with SECURITY DEFINER and a fixed search_path.",
+      "tags": ["database", "migration", "security", "trigger"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+      "type": "table",
+      "name": "20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+      "filePath": "supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+      "summary": "Further refines the update_client_status function by adding it to the public schema with proper SECURITY DEFINER and search_path settings.",
+      "tags": ["database", "migration", "security", "trigger"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+      "type": "table",
+      "name": "20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+      "filePath": "supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+      "summary": "Adds an optional product_id foreign key column to the invoices table to support product-linked invoices, with a performance index.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+      "type": "table",
+      "name": "20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+      "filePath": "supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+      "summary": "Extends the invoices table status column to accept 'partial' as a valid value alongside pending, paid, and overdue, using a check constraint.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql:notifications",
+      "type": "table",
+      "name": "notifications",
+      "filePath": "supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "lineRange": [2, 13],
+      "summary": "Notifications table storing per-user, per-tenant alerts for invoice, payment, client, product, and system events with read status and deep-link support.",
+      "tags": ["database", "schema-definition", "multi-tenant", "real-time"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "type": "table",
+      "name": "20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "filePath": "supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "summary": "Creates the notifications table with RLS policies, an updated_at trigger, performance indexes, and enables Supabase Realtime for the table.",
+      "tags": ["database", "migration", "schema-definition", "real-time"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "type": "table",
+      "name": "20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "filePath": "supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "summary": "Adds client-facing RLS policies to invoices and clients tables so authenticated clients can view their own records based on a phone number encoded in their JWT email.",
+      "tags": ["database", "migration", "security", "auth"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql:payment_details",
+      "type": "table",
+      "name": "payment_details",
+      "filePath": "supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "lineRange": [2, 13],
+      "summary": "Payment configuration table for tenants to store M-Pesa Paybill and Till payment options with active/inactive toggles.",
+      "tags": ["database", "schema-definition", "multi-tenant", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "type": "table",
+      "name": "20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "filePath": "supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "summary": "Creates the payment_details table with RLS policies for tenant admins and clients to view active payment options (M-Pesa Paybill/Till), plus an updated_at trigger.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "type": "table",
+      "name": "20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "filePath": "supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "summary": "Updates client-facing RLS policies on clients, invoices, and payment_details tables to use a new tenant-specific email format that encodes both phone and tenant ID.",
+      "tags": ["database", "migration", "security", "auth"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "type": "table",
+      "name": "20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "filePath": "supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "summary": "Adds the update_invoice_status_on_payment trigger function implementing a pending → partial → paid state machine, fired after any transaction change.",
+      "tags": ["database", "migration", "trigger", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "type": "table",
+      "name": "20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "filePath": "supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "summary": "Implements domain event-driven notification triggers: create_payment_notification fires after each payment transaction and create_invoice_notification fires after each invoice insert, writing records to the notifications table.",
+      "tags": ["database", "migration", "trigger", "business-logic"],
+      "complexity": "complex",
+      "languageNotes": "Follows a Domain Event pattern in plpgsql — each trigger represents a named business event (PaymentReceived, InvoiceCreated) rather than a raw table mutation."
+    },
+    {
+      "id": "table:supabase/migrations/20260127155500_add_superadmin_role.sql",
+      "type": "table",
+      "name": "20260127155500_add_superadmin_role.sql",
+      "filePath": "supabase/migrations/20260127155500_add_superadmin_role.sql",
+      "summary": "Adds 'superadmin' to the app_role enum and updates RLS policies on tenants, profiles, and user_roles so superadmins can read all rows across all tenants.",
+      "tags": ["database", "migration", "security", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260127203127_add_subscription_tiers.sql",
+      "type": "table",
+      "name": "20260127203127_add_subscription_tiers.sql",
+      "filePath": "supabase/migrations/20260127203127_add_subscription_tiers.sql",
+      "summary": "Introduces the subscription_tier enum (monthly, semi-annual, annual) and adds subscription_tier and is_active columns to the tenants table; also grants superadmins visibility over all transactions and invoices.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "type": "table",
+      "name": "20260127224000_superadmin_rls_expansion.sql",
+      "filePath": "supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "summary": "Expands superadmin SELECT visibility to the clients, products, and invoices tables by replacing tenant-scoped policies with has_role-gated alternatives.",
+      "tags": ["database", "migration", "security", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "type": "table",
+      "name": "20260127230000_comprehensive_superadmin_rls.sql",
+      "filePath": "supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "summary": "Comprehensive RLS expansion ensuring superadmins can SELECT across all core tables: profiles, clients, products, invoices, transactions, and user_roles.",
+      "tags": ["database", "migration", "security", "rbac"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql",
+      "type": "table",
+      "name": "20260127233000_superadmin_tenant_update_rls.sql",
+      "filePath": "supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql",
+      "summary": "Grants superadmins UPDATE access on the tenants table for managing activation state and subscription tiers.",
+      "tags": ["database", "migration", "security", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+      "type": "table",
+      "name": "20260128110000_superadmin_user_management_rls.sql",
+      "filePath": "supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+      "summary": "Grants superadmins full CRUD access on user_roles and refines the profile SELECT policy, also adding a foreign key from user_roles.user_id to profiles.user_id.",
+      "tags": ["database", "migration", "security", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+      "type": "table",
+      "name": "20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+      "filePath": "supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+      "summary": "Replaces the get_user_tenant_id helper function using the updated SET search_path TO syntax for improved security compliance.",
+      "tags": ["database", "migration", "security", "bugfix"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260327214000_add_profile_email.sql",
+      "type": "table",
+      "name": "20260327214000_add_profile_email.sql",
+      "filePath": "supabase/migrations/20260327214000_add_profile_email.sql",
+      "summary": "Adds an optional email column to the profiles table to store the user's real email address for transactions and notifications.",
+      "tags": ["database", "migration", "schema-definition", "profiles"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql:subscription_billing_history",
+      "type": "table",
+      "name": "subscription_billing_history",
+      "filePath": "supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+      "lineRange": [3, 14],
+      "summary": "Billing history table recording Paystack subscription events (charge.success, invoice.payment_failed, etc.) per tenant with reference, amount, and status.",
+      "tags": ["database", "schema-definition", "billing", "multi-tenant"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+      "type": "table",
+      "name": "20260328192957_add_subscription_billing_history.sql",
+      "filePath": "supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+      "summary": "Creates the subscription_billing_history table with RLS so each tenant sees only their own billing events, plus indexes for fast lookup by tenant and Paystack reference.",
+      "tags": ["database", "migration", "schema-definition", "billing"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:products",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "target": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql:notifications",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "target": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql:payment_details",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "target": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql:payment_details",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "target": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql:notifications",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127155500_add_superadmin_role.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127155500_add_superadmin_role.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127155500_add_superadmin_role.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127203127_add_subscription_tiers.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127203127_add_subscription_tiers.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127203127_add_subscription_tiers.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:products",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:products",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260327214000_add_profile_email.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+      "target": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql:subscription_billing_history",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "target": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

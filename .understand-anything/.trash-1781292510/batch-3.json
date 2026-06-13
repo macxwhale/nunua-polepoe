@@ -1,0 +1,1109 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/auth/SignUpForm.tsx",
+      "type": "file",
+      "name": "SignUpForm.tsx",
+      "filePath": "src/components/auth/SignUpForm.tsx",
+      "summary": "Renders the user registration form with email, password, and business name fields, handling Supabase sign-up, auto sign-in, tenant provisioning via edge function, and password strength feedback.",
+      "tags": ["component", "authentication", "form", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/auth/SignUpForm.tsx:SignUpForm",
+      "type": "function",
+      "name": "SignUpForm",
+      "filePath": "src/components/auth/SignUpForm.tsx",
+      "lineRange": [39, 297],
+      "summary": "React component implementing the multi-step sign-up flow: validates input with Zod, signs up and auto-signs-in via Supabase Auth, invokes a setup edge function, and reports password strength in real-time.",
+      "tags": ["component", "authentication", "form", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/clients/AddSalesDialog.tsx",
+      "type": "file",
+      "name": "AddSalesDialog.tsx",
+      "filePath": "src/components/clients/AddSalesDialog.tsx",
+      "summary": "Modal dialog for recording a new sale for a client, supporting both product selection from existing inventory and inline product creation, then generating an invoice and sale record.",
+      "tags": ["component", "dialog", "sales", "invoice"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/clients/AddSalesDialog.tsx:AddSalesDialog",
+      "type": "function",
+      "name": "AddSalesDialog",
+      "filePath": "src/components/clients/AddSalesDialog.tsx",
+      "lineRange": [20, 215],
+      "summary": "Controlled dialog component that orchestrates product selection or creation, invoice generation via useCreateInvoice, and sale recording via useCreateSale for a given client.",
+      "tags": ["component", "dialog", "sales", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/clients/ClientDialog.tsx",
+      "type": "file",
+      "name": "ClientDialog.tsx",
+      "filePath": "src/components/clients/ClientDialog.tsx",
+      "summary": "Modal dialog for creating or editing a client record, including automatic PIN generation for new clients and optional creation of an associated client user account.",
+      "tags": ["component", "dialog", "client-management", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/clients/ClientDialog.tsx:ClientDialog",
+      "type": "function",
+      "name": "ClientDialog",
+      "filePath": "src/components/clients/ClientDialog.tsx",
+      "lineRange": [41, 160],
+      "summary": "Dual-mode dialog that handles both client creation (with PIN generation and optional user account provisioning) and client editing via Zod-validated react-hook-form.",
+      "tags": ["component", "dialog", "form", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "type": "file",
+      "name": "SimpleTopUpDialog.tsx",
+      "filePath": "src/components/clients/SimpleTopUpDialog.tsx",
+      "summary": "Modal dialog that allows recording a payment top-up against a client's unpaid invoices, showing current balance, outstanding amount, and per-invoice balance calculations.",
+      "tags": ["component", "dialog", "payment", "invoice"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/clients/SimpleTopUpDialog.tsx:SimpleTopUpDialog",
+      "type": "function",
+      "name": "SimpleTopUpDialog",
+      "filePath": "src/components/clients/SimpleTopUpDialog.tsx",
+      "lineRange": [23, 233],
+      "summary": "Controlled dialog component that fetches unpaid invoices for a client, computes remaining balances, and submits a payment record via useCreatePayment with date and amount inputs.",
+      "tags": ["component", "dialog", "payment", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/invoices/InvoiceDialog.tsx",
+      "type": "file",
+      "name": "InvoiceDialog.tsx",
+      "filePath": "src/components/invoices/InvoiceDialog.tsx",
+      "summary": "Comprehensive modal dialog for creating and editing invoices, supporting client and product selection with popovers, auto-filled amounts, transaction recording, and in-app notifications on creation.",
+      "tags": ["component", "dialog", "invoice", "form"],
+      "complexity": "complex",
+      "languageNotes": "Directly queries Supabase from the component for transaction insertion alongside the mutation hooks, showing a hybrid data-access pattern."
+    },
+    {
+      "id": "function:src/components/invoices/InvoiceDialog.tsx:InvoiceDialog",
+      "type": "function",
+      "name": "InvoiceDialog",
+      "filePath": "src/components/invoices/InvoiceDialog.tsx",
+      "lineRange": [69, 414],
+      "summary": "Large dual-mode invoice form component that orchestrates client/product popovers, Zod validation, invoice creation or update mutations, supplementary transaction insertion, and notification dispatch.",
+      "tags": ["component", "dialog", "invoice", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ui/calendar.tsx",
+      "type": "file",
+      "name": "calendar.tsx",
+      "filePath": "src/components/ui/calendar.tsx",
+      "summary": "Thin shadcn/ui wrapper around the react-day-picker DayPicker component, applying project-consistent Tailwind class names via cn() and buttonVariants.",
+      "tags": ["component", "ui", "calendar", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/calendar.tsx:Calendar",
+      "type": "function",
+      "name": "Calendar",
+      "filePath": "src/components/ui/calendar.tsx",
+      "lineRange": [10, 51],
+      "summary": "Exported calendar component wrapping DayPicker with custom classNames for navigation buttons and day cells using the project's cn utility.",
+      "tags": ["component", "ui", "calendar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/form.tsx",
+      "type": "file",
+      "name": "form.tsx",
+      "filePath": "src/components/ui/form.tsx",
+      "summary": "shadcn/ui form primitives built on react-hook-form, exporting Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, and the useFormField hook for consistent form layout and error display.",
+      "tags": ["component", "ui", "form", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/ui/form.tsx:useFormField",
+      "type": "function",
+      "name": "useFormField",
+      "filePath": "src/components/ui/form.tsx",
+      "lineRange": [33, 54],
+      "summary": "Custom hook that reads FormItem and FormField contexts together with react-hook-form's field state to provide a unified API for individual form field components.",
+      "tags": ["hook", "form", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/input.tsx",
+      "type": "file",
+      "name": "input.tsx",
+      "filePath": "src/components/ui/input.tsx",
+      "summary": "shadcn/ui Input primitive — a styled HTML input element with consistent focus, disabled, and placeholder styles via cn().",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/label.tsx",
+      "type": "file",
+      "name": "label.tsx",
+      "filePath": "src/components/ui/label.tsx",
+      "summary": "shadcn/ui Label primitive wrapping Radix UI's LabelPrimitive with peer-disabled styling for accessibility-compliant form labels.",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/popover.tsx",
+      "type": "file",
+      "name": "popover.tsx",
+      "filePath": "src/components/ui/popover.tsx",
+      "summary": "shadcn/ui Popover primitives re-exporting Radix UI's Popover, PopoverTrigger, and a styled PopoverContent with animation and positioning classes.",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/select.tsx",
+      "type": "file",
+      "name": "select.tsx",
+      "filePath": "src/components/ui/select.tsx",
+      "summary": "shadcn/ui Select component set re-exporting all Radix UI Select primitives (Select, SelectTrigger, SelectContent, SelectItem, etc.) with Tailwind styling and scroll buttons.",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/textarea.tsx",
+      "type": "file",
+      "name": "textarea.tsx",
+      "filePath": "src/components/ui/textarea.tsx",
+      "summary": "shadcn/ui Textarea primitive — a styled HTML textarea element with consistent resize, focus, and placeholder styles.",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/useClients.ts",
+      "type": "file",
+      "name": "useClients.ts",
+      "filePath": "src/hooks/useClients.ts",
+      "summary": "Collection of React Query hooks for the clients domain, providing data fetching (useClients, useClient) and mutations with optimistic updates for create, update, delete, balance update, and client-user provisioning.",
+      "tags": ["hook", "service", "client-management", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/hooks/useClients.ts:useClients",
+      "type": "function",
+      "name": "useClients",
+      "filePath": "src/hooks/useClients.ts",
+      "lineRange": [11, 16],
+      "summary": "React Query hook that fetches the full list of clients for the current tenant.",
+      "tags": ["hook", "service", "client-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/useClients.ts:useCreateClient",
+      "type": "function",
+      "name": "useCreateClient",
+      "filePath": "src/hooks/useClients.ts",
+      "lineRange": [32, 77],
+      "summary": "Mutation hook for creating a new client with optimistic update support — immediately inserts a temporary record into the query cache and rolls back on error.",
+      "tags": ["hook", "mutation", "client-management", "optimistic-update"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useClients.ts:useUpdateClient",
+      "type": "function",
+      "name": "useUpdateClient",
+      "filePath": "src/hooks/useClients.ts",
+      "lineRange": [82, 116],
+      "summary": "Mutation hook for updating an existing client record with optimistic updates to both the clients list and individual client queries.",
+      "tags": ["hook", "mutation", "client-management", "optimistic-update"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useClients.ts:useDeleteClient",
+      "type": "function",
+      "name": "useDeleteClient",
+      "filePath": "src/hooks/useClients.ts",
+      "lineRange": [121, 156],
+      "summary": "Mutation hook for deleting a client with optimistic removal from the cache and rollback on failure, followed by cache invalidation.",
+      "tags": ["hook", "mutation", "client-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useClients.ts:useCreateClientUser",
+      "type": "function",
+      "name": "useCreateClientUser",
+      "filePath": "src/hooks/useClients.ts",
+      "lineRange": [181, 186],
+      "summary": "Mutation hook that provisions a mobile/portal user account for a client via the clients API.",
+      "tags": ["hook", "mutation", "client-management", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/useInvoices.ts",
+      "type": "file",
+      "name": "useInvoices.ts",
+      "filePath": "src/hooks/useInvoices.ts",
+      "summary": "Collection of React Query hooks for the invoices domain, providing fetching hooks (useInvoices, useInvoicesByClient, useInvoice, useGenerateInvoiceNumber) and optimistic-update mutations for create, update, and delete.",
+      "tags": ["hook", "service", "invoice", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/hooks/useInvoices.ts:useInvoices",
+      "type": "function",
+      "name": "useInvoices",
+      "filePath": "src/hooks/useInvoices.ts",
+      "lineRange": [12, 17],
+      "summary": "React Query hook that fetches all invoices for the current tenant.",
+      "tags": ["hook", "service", "invoice"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/useInvoices.ts:useCreateInvoice",
+      "type": "function",
+      "name": "useCreateInvoice",
+      "filePath": "src/hooks/useInvoices.ts",
+      "lineRange": [56, 102],
+      "summary": "Mutation hook that creates an invoice with optimistic cache insertion and rolls back on error, invalidating both invoice and client query caches on success.",
+      "tags": ["hook", "mutation", "invoice", "optimistic-update"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useInvoices.ts:useUpdateInvoice",
+      "type": "function",
+      "name": "useUpdateInvoice",
+      "filePath": "src/hooks/useInvoices.ts",
+      "lineRange": [107, 146],
+      "summary": "Mutation hook for updating an invoice record with optimistic updates and multi-key invalidation on success.",
+      "tags": ["hook", "mutation", "invoice", "optimistic-update"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useInvoices.ts:useDeleteInvoice",
+      "type": "function",
+      "name": "useDeleteInvoice",
+      "filePath": "src/hooks/useInvoices.ts",
+      "lineRange": [151, 182],
+      "summary": "Mutation hook for deleting an invoice with optimistic removal and cache invalidation across invoice and client query keys.",
+      "tags": ["hook", "mutation", "invoice"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/hooks/useTransactions.ts",
+      "type": "file",
+      "name": "useTransactions.ts",
+      "filePath": "src/hooks/useTransactions.ts",
+      "summary": "Collection of React Query hooks for the transactions domain, providing fetching by client/invoice, paid-amount aggregation, and mutations for recording payments and sales.",
+      "tags": ["hook", "service", "transaction", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useTransactions.ts:useCreatePayment",
+      "type": "function",
+      "name": "useCreatePayment",
+      "filePath": "src/hooks/useTransactions.ts",
+      "lineRange": [52, 79],
+      "summary": "Mutation hook for recording a client payment, invalidating invoice, transaction, and client query caches on success and displaying toast feedback.",
+      "tags": ["hook", "mutation", "payment", "transaction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useTransactions.ts:useCreateSale",
+      "type": "function",
+      "name": "useCreateSale",
+      "filePath": "src/hooks/useTransactions.ts",
+      "lineRange": [84, 105],
+      "summary": "Mutation hook for recording a sale transaction, invalidating related query caches and displaying error or success feedback via toast.",
+      "tags": ["hook", "mutation", "sales", "transaction"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lib/queryClient.ts",
+      "type": "file",
+      "name": "queryClient.ts",
+      "filePath": "src/lib/queryClient.ts",
+      "summary": "Configures and exports the shared TanStack Query client instance with default staleTime/gcTime settings, and exports the queryKeys registry used across all data hooks.",
+      "tags": ["configuration", "utility", "service"],
+      "complexity": "simple",
+      "languageNotes": "queryKeys acts as a centralized query key factory, preventing cache key drift across hooks."
+    },
+    {
+      "id": "file:src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "src/main.tsx",
+      "summary": "Application entry point that mounts the React root, wrapping the App component with the shared QueryClientProvider.",
+      "tags": ["entry-point", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/Clients.tsx",
+      "type": "file",
+      "name": "Clients.tsx",
+      "filePath": "src/pages/Clients.tsx",
+      "summary": "Clients page component that lists clients with live search filtering, manages the create/edit dialog lifecycle, and renders loading skeletons, the clients table, and a feature-gated add button.",
+      "tags": ["component", "page", "client-management", "api-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/Clients.tsx:Clients",
+      "type": "function",
+      "name": "Clients",
+      "filePath": "src/pages/Clients.tsx",
+      "lineRange": [23, 165],
+      "summary": "Default-exported page component that orchestrates client data fetching, search filtering with useMemo, and dialog open/close state, composing ClientsTable, ClientDialog, and ClientActions sub-components.",
+      "tags": ["component", "page", "client-management"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "function:src/components/auth/SignUpForm.tsx:SignUpForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "function:src/components/auth/SignUpForm.tsx:SignUpForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/SignUpForm.tsx",
+      "target": "file:src/components/ui/label.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "function:src/components/clients/AddSalesDialog.tsx:AddSalesDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "function:src/components/clients/AddSalesDialog.tsx:AddSalesDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/hooks/useTransactions.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/components/ui/select.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "function:src/components/clients/ClientDialog.tsx:ClientDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "function:src/components/clients/ClientDialog.tsx:ClientDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/components/ui/label.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/components/ui/select.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "function:src/components/clients/SimpleTopUpDialog.tsx:SimpleTopUpDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "function:src/components/clients/SimpleTopUpDialog.tsx:SimpleTopUpDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/hooks/useTransactions.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "function:src/components/invoices/InvoiceDialog.tsx:InvoiceDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "function:src/components/invoices/InvoiceDialog.tsx:InvoiceDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/hooks/useInvoices.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/select.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/calendar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/components/ui/popover.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/calendar.tsx",
+      "target": "function:src/components/ui/calendar.tsx:Calendar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/calendar.tsx",
+      "target": "function:src/components/ui/calendar.tsx:Calendar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/calendar.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/form.tsx",
+      "target": "function:src/components/ui/form.tsx:useFormField",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/form.tsx",
+      "target": "function:src/components/ui/form.tsx:useFormField",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/form.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/form.tsx",
+      "target": "file:src/components/ui/label.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/input.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/label.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/popover.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/select.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/textarea.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useClients",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useClients",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useCreateClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useCreateClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useUpdateClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useUpdateClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useDeleteClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useDeleteClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useCreateClientUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "function:src/hooks/useClients.ts:useCreateClientUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useClients.ts",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useInvoices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useInvoices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useCreateInvoice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useCreateInvoice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useUpdateInvoice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useUpdateInvoice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useDeleteInvoice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "function:src/hooks/useInvoices.ts:useDeleteInvoice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useInvoices.ts",
+      "target": "file:src/api/invoices.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "function:src/hooks/useTransactions.ts:useCreatePayment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "function:src/hooks/useTransactions.ts:useCreatePayment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "function:src/hooks/useTransactions.ts:useCreateSale",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "function:src/hooks/useTransactions.ts:useCreateSale",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "file:src/api/transactions.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/main.tsx",
+      "target": "file:src/App.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/main.tsx",
+      "target": "file:src/lib/queryClient.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "function:src/pages/Clients.tsx:Clients",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "function:src/pages/Clients.tsx:Clients",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/components/clients/ClientActions.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/components/clients/ClientDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/components/clients/ClientsTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Clients.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/clients/ClientDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/AddSalesDialog.tsx",
+      "target": "file:src/hooks/useTransactions.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "target": "file:src/hooks/useTransactions.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/invoices/InvoiceDialog.tsx",
+      "target": "file:src/hooks/useInvoices.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

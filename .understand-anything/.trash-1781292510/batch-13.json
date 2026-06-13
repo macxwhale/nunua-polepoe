@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/ARCHITECTURE.md",
+      "type": "document",
+      "name": "ARCHITECTURE.md",
+      "filePath": "docs/ARCHITECTURE.md",
+      "summary": "Comprehensive domain-driven architecture guide for the Lipia Pole Pole credit management platform, covering 15 sections including bounded contexts, entity relationships, state machines, multi-tenancy patterns, authentication/authorization with RBAC, API layer patterns, error handling, and coding conventions.",
+      "tags": ["documentation", "architecture", "domain-driven-design", "multi-tenancy", "reference"],
+      "complexity": "complex",
+      "languageNotes": "Uses Mermaid diagrams for ERD and state machines, and defines a Ubiquitous Language glossary — a DDD practice ensuring consistent terminology across code and documentation."
+    },
+    {
+      "id": "document:docs/DEVELOPER.md",
+      "type": "document",
+      "name": "DEVELOPER.md",
+      "filePath": "docs/DEVELOPER.md",
+      "summary": "Developer-focused guide covering the multi-tenant SaaS architecture, database ERD with key tables, project directory structure, and step-by-step instructions for adding database migrations, new API endpoints, and Supabase Edge Functions.",
+      "tags": ["documentation", "development", "onboarding", "database", "api-schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/ROLES.md",
+      "type": "document",
+      "name": "ROLES.md",
+      "filePath": "docs/ROLES.md",
+      "summary": "Reference document for the platform's role-based access control (RBAC) system, defining the four-tier role hierarchy (Superadmin, Owner, Staff, Client), their respective permissions, and how roles are enforced at both the Supabase RLS database layer and the React frontend layer.",
+      "tags": ["documentation", "security", "rbac", "authorization", "configuration"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:docs/ARCHITECTURE.md",
+      "target": "document:docs/ROLES.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/DEVELOPER.md",
+      "target": "document:docs/ARCHITECTURE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/ROLES.md",
+      "target": "document:docs/ARCHITECTURE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

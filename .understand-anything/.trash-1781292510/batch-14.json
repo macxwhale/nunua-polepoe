@@ -1,0 +1,329 @@
+{
+  "nodes": [
+    {
+      "id": "table:supabase/recreate_database.sql:tenants",
+      "type": "table",
+      "name": "tenants",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [61, 74],
+      "summary": "Root multi-tenant entity storing business identity, status, subscription tier, and soft-delete metadata. All other tenant-scoped tables cascade from this table via foreign key.",
+      "tags": ["database", "multi-tenant", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:profiles",
+      "type": "table",
+      "name": "profiles",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [77, 87],
+      "summary": "Links Supabase auth users to their tenant, storing display name and phone number with format validation constraints.",
+      "tags": ["database", "authentication", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:clients",
+      "type": "table",
+      "name": "clients",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [90, 103],
+      "summary": "Stores business clients per tenant with contact details, running balance, and status. Phone number is unique per tenant.",
+      "tags": ["database", "multi-tenant", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:products",
+      "type": "table",
+      "name": "products",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [106, 114],
+      "summary": "Catalog of products or services offered by a tenant, with name, price, and optional description.",
+      "tags": ["database", "multi-tenant", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:invoices",
+      "type": "table",
+      "name": "invoices",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [117, 130],
+      "summary": "Records invoices issued by a tenant to a client for a product, with status lifecycle (pending/paid/partial/overdue) and unique invoice numbers per tenant.",
+      "tags": ["database", "billing", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:transactions",
+      "type": "table",
+      "name": "transactions",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [133, 144],
+      "summary": "Captures financial transactions (sales or payments) per tenant-client pair, optionally linked to an invoice.",
+      "tags": ["database", "billing", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:notifications",
+      "type": "table",
+      "name": "notifications",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [147, 159],
+      "summary": "In-app notification records for tenant users, supporting invoice, payment, client, product, and system event types.",
+      "tags": ["database", "multi-tenant", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:payment_details",
+      "type": "table",
+      "name": "payment_details",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [162, 173],
+      "summary": "Stores per-tenant M-Pesa payment configuration entries (paybill, till, or account number) with active/inactive status.",
+      "tags": ["database", "multi-tenant", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:user_roles",
+      "type": "table",
+      "name": "user_roles",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [176, 183],
+      "summary": "Associates auth users with application roles (admin, user, client, superadmin) with uniqueness enforced per user-role pair.",
+      "tags": ["database", "authentication", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:super_admins",
+      "type": "table",
+      "name": "super_admins",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [186, 196],
+      "summary": "Registry of platform-level super and support administrators, identified by user_id and email, with active status and last login tracking.",
+      "tags": ["database", "authentication", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:super_admin_audit_logs",
+      "type": "table",
+      "name": "super_admin_audit_logs",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [199, 211],
+      "summary": "Immutable audit trail for super admin actions, capturing action type, affected resource, tenant, IP address, and user agent for governance.",
+      "tags": ["database", "security", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:tenant_subscriptions",
+      "type": "table",
+      "name": "tenant_subscriptions",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [214, 228],
+      "summary": "Tracks per-tenant subscription plan (free/pro/enterprise) with usage limits for users, clients, invoices, and products, plus billing lifecycle dates.",
+      "tags": ["database", "billing", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:tenant_feature_flags",
+      "type": "table",
+      "name": "tenant_feature_flags",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [231, 240],
+      "summary": "Per-tenant feature flag toggles enabling runtime feature gating by flag name without code deploys.",
+      "tags": ["database", "multi-tenant", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/recreate_database.sql:tenant_usage_metrics",
+      "type": "table",
+      "name": "tenant_usage_metrics",
+      "filePath": "supabase/recreate_database.sql",
+      "lineRange": [243, 259],
+      "summary": "Periodic usage snapshots per tenant recording user, client, invoice, and transaction counts alongside API calls and storage bytes for billing and analytics.",
+      "tags": ["database", "monitoring", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "schema:supabase/recreate_database.sql",
+      "type": "schema",
+      "name": "recreate_database.sql",
+      "filePath": "supabase/recreate_database.sql",
+      "summary": "Complete Supabase database recreation script defining all 14 tables, 5 ENUM types, 1 view, 42 indexes, Row Level Security policies, and 15+ PL/pgSQL functions and triggers for the multi-tenant platform. Includes super admin governance, subscription management, and automated business logic triggers.",
+      "tags": ["database", "schema-definition", "migration", "security"],
+      "complexity": "complex",
+      "languageNotes": "Uses Supabase-specific patterns including auth.uid(), auth.jwt(), SECURITY DEFINER functions, and RLS policies. PL/pgSQL triggers maintain denormalized running balances and invoice statuses automatically."
+    },
+    {
+      "id": "table:supabase/add_subscription_columns.sql:tenants",
+      "type": "table",
+      "name": "tenants (trial column)",
+      "filePath": "supabase/add_subscription_columns.sql",
+      "lineRange": [7, 13],
+      "summary": "Migration target: adds trial_ends_at column to tenants with a 7-day default and backfills existing rows.",
+      "tags": ["database", "migration", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase/add_subscription_columns.sql:tenant_subscriptions",
+      "type": "table",
+      "name": "tenant_subscriptions (paystack columns)",
+      "filePath": "supabase/add_subscription_columns.sql",
+      "lineRange": [16, 20],
+      "summary": "Migration target: adds Paystack integration columns (customer code, subscription code, next payment date, cancellation timestamp) to tenant_subscriptions.",
+      "tags": ["database", "migration", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "schema:supabase/add_subscription_columns.sql",
+      "type": "schema",
+      "name": "add_subscription_columns.sql",
+      "filePath": "supabase/add_subscription_columns.sql",
+      "summary": "Additive migration extending the subscription model with trial period tracking on tenants and Paystack payment gateway fields on tenant_subscriptions. Includes trigger and helper function for automated trial assignment.",
+      "tags": ["database", "migration", "billing", "schema-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Uses CREATE OR REPLACE FUNCTION with SECURITY DEFINER and a BEFORE INSERT trigger to auto-assign trials on tenant creation. The get_tenant_subscription_status function returns a 4-state enum string: trial, active, cancelled, or expired."
+    },
+    {
+      "id": "config:supabase/config.toml",
+      "type": "config",
+      "name": "config.toml",
+      "filePath": "supabase/config.toml",
+      "summary": "Supabase project configuration specifying the project ID and disabling JWT verification for four Edge Functions: reset-password, resolve-login-email, create-client-user, and send-transaction-sms.",
+      "tags": ["configuration", "infrastructure", "authentication"],
+      "complexity": "simple",
+      "languageNotes": "verify_jwt = false on these functions allows unauthenticated invocation, which is required for signup flows and SMS delivery that run before a session exists."
+    }
+  ],
+  "edges": [
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:tenants",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:profiles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:clients",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:products",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:invoices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:transactions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:notifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:payment_details",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:user_roles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:super_admins",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:super_admin_audit_logs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:tenant_subscriptions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:tenant_feature_flags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/recreate_database.sql",
+      "target": "table:supabase/recreate_database.sql:tenant_usage_metrics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/add_subscription_columns.sql",
+      "target": "table:supabase/add_subscription_columns.sql:tenants",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/add_subscription_columns.sql",
+      "target": "table:supabase/add_subscription_columns.sql:tenant_subscriptions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "schema:supabase/add_subscription_columns.sql",
+      "target": "table:supabase/recreate_database.sql:tenants",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "schema:supabase/add_subscription_columns.sql",
+      "target": "table:supabase/recreate_database.sql:tenant_subscriptions",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "schema:supabase/add_subscription_columns.sql",
+      "target": "schema:supabase/recreate_database.sql",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

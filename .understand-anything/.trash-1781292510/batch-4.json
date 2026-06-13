@@ -1,0 +1,928 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/FeatureGate.tsx",
+      "type": "file",
+      "name": "FeatureGate.tsx",
+      "filePath": "src/components/FeatureGate.tsx",
+      "summary": "Conditional rendering wrapper that gates UI content behind subscription plan feature flags, showing upgrade prompts or hiding content based on the user's current plan.",
+      "tags": ["component", "middleware", "subscription", "feature-flag"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/FeatureGate.tsx:FeatureGate",
+      "type": "function",
+      "name": "FeatureGate",
+      "filePath": "src/components/FeatureGate.tsx",
+      "lineRange": [28, 95],
+      "summary": "React component that wraps children and conditionally renders them based on whether the current subscription plan has the specified feature enabled.",
+      "tags": ["component", "feature-flag", "subscription", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/NotificationDropdown.tsx",
+      "type": "file",
+      "name": "NotificationDropdown.tsx",
+      "filePath": "src/components/NotificationDropdown.tsx",
+      "summary": "Dropdown notification center component displaying unread count badge, notification list with mark-as-read and delete actions, and navigation on click.",
+      "tags": ["component", "notifications", "event-handler", "ui"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/NotificationDropdown.tsx:NotificationDropdown",
+      "type": "function",
+      "name": "NotificationDropdown",
+      "filePath": "src/components/NotificationDropdown.tsx",
+      "lineRange": [35, 175],
+      "summary": "Renders a dropdown menu showing in-app notifications with unread badge, per-notification read/delete controls, and a mark-all-as-read action.",
+      "tags": ["component", "notifications", "event-handler", "dropdown"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/clients/ClientActions.tsx",
+      "type": "file",
+      "name": "ClientActions.tsx",
+      "filePath": "src/components/clients/ClientActions.tsx",
+      "summary": "Action menu component for individual client rows, providing edit, top-up, sales, transactions, status toggle, and delete operations with subscription-gated feature checks.",
+      "tags": ["component", "api-handler", "event-handler", "client-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/clients/ClientActions.tsx:ClientActions",
+      "type": "function",
+      "name": "ClientActions",
+      "filePath": "src/components/clients/ClientActions.tsx",
+      "lineRange": [26, 175],
+      "summary": "Renders a dropdown action menu for a client entity with handlers for delete, status toggle, top-up routing, and dialog state management.",
+      "tags": ["component", "event-handler", "client-management", "dropdown"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/clients/ClientSalesDialog.tsx",
+      "type": "file",
+      "name": "ClientSalesDialog.tsx",
+      "filePath": "src/components/clients/ClientSalesDialog.tsx",
+      "summary": "Dialog component displaying a client's sales history, invoice listing, balance summary, and account activation capability, with direct Supabase queries for invoice fetching.",
+      "tags": ["component", "client-management", "data-model", "dialog"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/clients/ClientSalesDialog.tsx:ClientSalesDialog",
+      "type": "function",
+      "name": "ClientSalesDialog",
+      "filePath": "src/components/clients/ClientSalesDialog.tsx",
+      "lineRange": [33, 265],
+      "summary": "Modal dialog showing client financial overview including total invoiced, balance, invoice history table, and an option to activate inactive accounts via direct Supabase mutation.",
+      "tags": ["component", "dialog", "client-management", "data-model"],
+      "complexity": "complex",
+      "languageNotes": "Makes direct Supabase calls within the component rather than delegating to a custom hook, mixing data-fetching concerns with presentation."
+    },
+    {
+      "id": "file:src/components/products/ProductDialog.tsx",
+      "type": "file",
+      "name": "ProductDialog.tsx",
+      "filePath": "src/components/products/ProductDialog.tsx",
+      "summary": "Form dialog for creating and editing products, managing form state for name, description, price, and stock fields with create/update mutation dispatch.",
+      "tags": ["component", "dialog", "form", "product-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/products/ProductDialog.tsx:ProductDialog",
+      "type": "function",
+      "name": "ProductDialog",
+      "filePath": "src/components/products/ProductDialog.tsx",
+      "lineRange": [23, 115],
+      "summary": "Controlled dialog form that initializes from an optional existing product and dispatches either create or update mutations on submit.",
+      "tags": ["component", "dialog", "form", "product-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/products/ProductsTable.tsx",
+      "type": "file",
+      "name": "ProductsTable.tsx",
+      "filePath": "src/components/products/ProductsTable.tsx",
+      "summary": "Responsive products table component with card-based mobile view and tabular desktop view, supporting edit and delete actions with confirmation dialog.",
+      "tags": ["component", "data-model", "table", "product-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/products/ProductsTable.tsx:ProductsTable",
+      "type": "function",
+      "name": "ProductsTable",
+      "filePath": "src/components/products/ProductsTable.tsx",
+      "lineRange": [26, 192],
+      "summary": "Renders product records in both a mobile card layout and a desktop table layout, handling delete confirmation flow and delegating edit to the parent component.",
+      "tags": ["component", "table", "product-management", "event-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ui/alert-dialog.tsx",
+      "type": "file",
+      "name": "alert-dialog.tsx",
+      "filePath": "src/components/ui/alert-dialog.tsx",
+      "summary": "shadcn/ui alert dialog primitive wrapping Radix UI AlertDialog with styled overlay, content, header, footer, title, description, action, and cancel sub-components.",
+      "tags": ["component", "ui", "dialog", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/button.tsx",
+      "type": "file",
+      "name": "button.tsx",
+      "filePath": "src/components/ui/button.tsx",
+      "summary": "shadcn/ui Button component using cva for variant and size styling, exporting both the component and the variant helper for use in other components.",
+      "tags": ["component", "ui", "utility", "design-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/carousel.tsx",
+      "type": "file",
+      "name": "carousel.tsx",
+      "filePath": "src/components/ui/carousel.tsx",
+      "summary": "Embla Carousel integration providing Carousel, CarouselContent, CarouselItem, and navigation button components with a context-based useCarousel hook.",
+      "tags": ["component", "ui", "carousel", "design-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/ui/carousel.tsx:useCarousel",
+      "type": "function",
+      "name": "useCarousel",
+      "filePath": "src/components/ui/carousel.tsx",
+      "lineRange": [31, 39],
+      "summary": "Context consumer hook that provides access to the carousel context, throwing if used outside a Carousel provider.",
+      "tags": ["hook", "context", "carousel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/dropdown-menu.tsx",
+      "type": "file",
+      "name": "dropdown-menu.tsx",
+      "filePath": "src/components/ui/dropdown-menu.tsx",
+      "summary": "shadcn/ui Dropdown Menu primitives wrapping Radix UI DropdownMenu with 15 styled sub-components including items, labels, separators, sub-menus, and keyboard shortcuts.",
+      "tags": ["component", "ui", "dropdown", "design-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ui/empty-state.tsx",
+      "type": "file",
+      "name": "empty-state.tsx",
+      "filePath": "src/components/ui/empty-state.tsx",
+      "summary": "Generic empty state UI component displaying an icon, title, description, and optional action button, with optional feature prop integration.",
+      "tags": ["component", "ui", "utility", "empty-state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/empty-state.tsx:EmptyState",
+      "type": "function",
+      "name": "EmptyState",
+      "filePath": "src/components/ui/empty-state.tsx",
+      "lineRange": [17, 53],
+      "summary": "Renders a centered empty state view with icon, title, description text, and an optional call-to-action element.",
+      "tags": ["component", "ui", "empty-state"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/pagination.tsx",
+      "type": "file",
+      "name": "pagination.tsx",
+      "filePath": "src/components/ui/pagination.tsx",
+      "summary": "Pagination UI component set including Pagination container, content, item, link, previous/next navigation, and ellipsis sub-components built on Button variants.",
+      "tags": ["component", "ui", "pagination", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/hooks/useProducts.ts",
+      "type": "file",
+      "name": "useProducts.ts",
+      "filePath": "src/hooks/useProducts.ts",
+      "summary": "Collection of React Query hooks for product CRUD operations, implementing optimistic updates on create, update, and delete with toast notifications and cache invalidation.",
+      "tags": ["hook", "service", "product-management", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/hooks/useProducts.ts:useCreateProduct",
+      "type": "function",
+      "name": "useCreateProduct",
+      "filePath": "src/hooks/useProducts.ts",
+      "lineRange": [45, 87],
+      "summary": "Mutation hook that creates a new product with optimistic cache update, rollback on error, success toast, and query invalidation.",
+      "tags": ["hook", "mutation", "optimistic-update", "product-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useProducts.ts:useUpdateProduct",
+      "type": "function",
+      "name": "useUpdateProduct",
+      "filePath": "src/hooks/useProducts.ts",
+      "lineRange": [92, 130],
+      "summary": "Mutation hook that updates an existing product with optimistic cache modification, rollback on error, and invalidates both list and by-ID queries on success.",
+      "tags": ["hook", "mutation", "optimistic-update", "product-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useProducts.ts:useDeleteProduct",
+      "type": "function",
+      "name": "useDeleteProduct",
+      "filePath": "src/hooks/useProducts.ts",
+      "lineRange": [135, 165],
+      "summary": "Mutation hook that deletes a product with optimistic cache removal, rollback on failure, and query invalidation on success.",
+      "tags": ["hook", "mutation", "optimistic-update", "product-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/Invoices.tsx",
+      "type": "file",
+      "name": "Invoices.tsx",
+      "filePath": "src/pages/Invoices.tsx",
+      "summary": "Invoices page component providing a full invoice management UI with loading skeletons, an invoice table, create/edit dialog, and feature-gated access control.",
+      "tags": ["component", "api-handler", "page", "invoices"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/Invoices.tsx:Invoices",
+      "type": "function",
+      "name": "Invoices",
+      "filePath": "src/pages/Invoices.tsx",
+      "lineRange": [21, 132],
+      "summary": "Page-level component rendering invoice list with skeleton loading, status badge display, and edit dialog integration wrapped in a FeatureGate.",
+      "tags": ["component", "page", "invoices", "feature-flag"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/Products.tsx",
+      "type": "file",
+      "name": "Products.tsx",
+      "filePath": "src/pages/Products.tsx",
+      "summary": "Products page component that renders the product catalog with loading skeletons, edit dialog, and feature-gated create/manage controls.",
+      "tags": ["component", "page", "product-management", "feature-flag"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/Products.tsx:Products",
+      "type": "function",
+      "name": "Products",
+      "filePath": "src/pages/Products.tsx",
+      "lineRange": [13, 98],
+      "summary": "Page-level component rendering the products catalog with loading state skeletons, ProductsTable, and a gated Add Product dialog.",
+      "tags": ["component", "page", "product-management", "feature-flag"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "type": "file",
+      "name": "DeleteConfirmDialog.tsx",
+      "filePath": "src/shared/components/DeleteConfirmDialog.tsx",
+      "summary": "Shared reusable delete confirmation dialog requiring the user to type a confirmation value before the destructive action is enabled, with optional loading state.",
+      "tags": ["component", "dialog", "validation", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/shared/components/DeleteConfirmDialog.tsx:DeleteConfirmDialog",
+      "type": "function",
+      "name": "DeleteConfirmDialog",
+      "filePath": "src/shared/components/DeleteConfirmDialog.tsx",
+      "lineRange": [25, 95],
+      "summary": "Alert dialog that gates the confirm action behind a typed-confirmation input, resetting state on open/close and disabling the button until the input matches the expected value.",
+      "tags": ["component", "dialog", "validation", "security"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/FeatureGate.tsx",
+      "target": "function:src/components/FeatureGate.tsx:FeatureGate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/FeatureGate.tsx",
+      "target": "function:src/components/FeatureGate.tsx:FeatureGate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/FeatureGate.tsx",
+      "target": "file:src/hooks/useUserRole.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/FeatureGate.tsx",
+      "target": "file:src/lib/featureFlags.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "function:src/components/NotificationDropdown.tsx:NotificationDropdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "function:src/components/NotificationDropdown.tsx:NotificationDropdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "file:src/hooks/useNotifications.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "file:src/components/ui/dropdown-menu.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/NotificationDropdown.tsx",
+      "target": "file:src/components/ui/scroll-area.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "function:src/components/clients/ClientActions.tsx:ClientActions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "function:src/components/clients/ClientActions.tsx:ClientActions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/components/clients/ClientDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/components/clients/AddSalesDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/components/ui/dropdown-menu.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientActions.tsx",
+      "target": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "function:src/components/clients/ClientSalesDialog.tsx:ClientSalesDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "function:src/components/clients/ClientSalesDialog.tsx:ClientSalesDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/hooks/useTransactions.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientSalesDialog.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "function:src/components/products/ProductDialog.tsx:ProductDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "function:src/components/products/ProductDialog.tsx:ProductDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/hooks/useProducts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/components/ui/label.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/components/ui/textarea.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "function:src/components/products/ProductsTable.tsx:ProductsTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "function:src/components/products/ProductsTable.tsx:ProductsTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/hooks/useProducts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/components/products/ProductDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/alert-dialog.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/button.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/carousel.tsx",
+      "target": "function:src/components/ui/carousel.tsx:useCarousel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/carousel.tsx",
+      "target": "function:src/components/ui/carousel.tsx:useCarousel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/carousel.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/dropdown-menu.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/pagination.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/pagination.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/empty-state.tsx",
+      "target": "function:src/components/ui/empty-state.tsx:EmptyState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/empty-state.tsx",
+      "target": "function:src/components/ui/empty-state.tsx:EmptyState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "function:src/hooks/useProducts.ts:useCreateProduct",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "function:src/hooks/useProducts.ts:useCreateProduct",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "function:src/hooks/useProducts.ts:useUpdateProduct",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "function:src/hooks/useProducts.ts:useUpdateProduct",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "function:src/hooks/useProducts.ts:useDeleteProduct",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "function:src/hooks/useProducts.ts:useDeleteProduct",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useProducts.ts",
+      "target": "file:src/api/products.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "function:src/pages/Invoices.tsx:Invoices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "function:src/pages/Invoices.tsx:Invoices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/hooks/useInvoices.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/hooks/useClients.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/invoices/InvoiceDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "function:src/pages/Products.tsx:Products",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "function:src/pages/Products.tsx:Products",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "file:src/hooks/useProducts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "file:src/components/products/ProductsTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "target": "function:src/shared/components/DeleteConfirmDialog.tsx:DeleteConfirmDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "target": "function:src/shared/components/DeleteConfirmDialog.tsx:DeleteConfirmDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "target": "file:src/components/ui/alert-dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Invoices.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/products/ProductDialog.tsx",
+      "target": "file:src/hooks/useProducts.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/products/ProductsTable.tsx",
+      "target": "file:src/hooks/useProducts.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Products.tsx",
+      "target": "file:src/hooks/useProducts.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

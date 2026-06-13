@@ -1,0 +1,2196 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:src/App.tsx",
+      "score": 5,
+      "name": "App.tsx",
+      "summary": "Root application component that configures the React Router, wraps routes with authentication guards and subscription providers, and handles role-based access control for tenant and super-admin users."
+    },
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "summary": "Project overview for Nunua Polepole — a multi-tenant business directory and credit management platform. Covers core features, superadmin capabilities, local development setup, and the technology stack (Vite, React, TypeScript, shadcn/ui, Tailwind CSS, Supabase)."
+    },
+    {
+      "id": "file:src/main.tsx",
+      "score": 4,
+      "name": "main.tsx",
+      "summary": "Application entry point that mounts the React root, wrapping the App component with the shared QueryClientProvider."
+    },
+    {
+      "id": "file:supabase/functions/paystack-webhook/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "summary": "Supabase Edge Function that handles Paystack webhook events for subscription lifecycle management, including charge success, subscription creation, invoice payments, and cancellations. Verifies HMAC-SHA512 signatures, manages plan upgrades/downgrades with proration, logs billing history, and syncs tenant feature flags and usage metrics."
+    },
+    {
+      "id": "file:supabase/functions/reset-password/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "summary": "Supabase Edge Function that resets user passwords by generating a random 6-digit PIN, looking up user accounts by phone number via the profiles table, updating all matched user accounts, and sending the PIN via Africa's Talking SMS API with allowlist enforcement."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:src/lib/utils.ts",
+      "fanIn": 50,
+      "name": "utils.ts"
+    },
+    {
+      "id": "file:src/components/ui/button.tsx",
+      "fanIn": 37,
+      "name": "button.tsx"
+    },
+    {
+      "id": "file:src/integrations/supabase/client.ts",
+      "fanIn": 32,
+      "name": "client.ts"
+    },
+    {
+      "id": "file:src/integrations/supabase/types.ts",
+      "fanIn": 24,
+      "name": "types.ts"
+    },
+    {
+      "id": "file:src/hooks/useAuth.tsx",
+      "fanIn": 20,
+      "name": "useAuth.tsx"
+    },
+    {
+      "id": "file:src/components/ui/card.tsx",
+      "fanIn": 16,
+      "name": "card.tsx"
+    },
+    {
+      "id": "file:src/components/ui/dialog.tsx",
+      "fanIn": 16,
+      "name": "dialog.tsx"
+    },
+    {
+      "id": "file:src/components/ui/badge.tsx",
+      "fanIn": 16,
+      "name": "badge.tsx"
+    },
+    {
+      "id": "file:src/components/ui/input.tsx",
+      "fanIn": 15,
+      "name": "input.tsx"
+    },
+    {
+      "id": "file:src/api/clients.api.ts",
+      "fanIn": 13,
+      "name": "clients.api.ts"
+    },
+    {
+      "id": "file:src/hooks/useClients.ts",
+      "fanIn": 11,
+      "name": "useClients.ts"
+    },
+    {
+      "id": "file:src/components/FeatureGate.tsx",
+      "fanIn": 11,
+      "name": "FeatureGate.tsx"
+    },
+    {
+      "id": "file:src/components/ui/table.tsx",
+      "fanIn": 11,
+      "name": "table.tsx"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+      "fanIn": 11,
+      "name": "clients"
+    },
+    {
+      "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+      "fanIn": 11,
+      "name": "invoices"
+    },
+    {
+      "id": "file:src/lib/featureFlags.ts",
+      "fanIn": 9,
+      "name": "featureFlags.ts"
+    },
+    {
+      "id": "file:src/components/ui/form.tsx",
+      "fanIn": 8,
+      "name": "form.tsx"
+    },
+    {
+      "id": "file:src/components/ui/label.tsx",
+      "fanIn": 8,
+      "name": "label.tsx"
+    },
+    {
+      "id": "file:src/hooks/useProducts.ts",
+      "fanIn": 8,
+      "name": "useProducts.ts"
+    },
+    {
+      "id": "file:src/api/tenant.api.ts",
+      "fanIn": 8,
+      "name": "tenant.api.ts"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:src/App.tsx",
+      "fanOut": 27,
+      "name": "App.tsx"
+    },
+    {
+      "id": "file:src/pages/Settings.tsx",
+      "fanOut": 23,
+      "name": "Settings.tsx"
+    },
+    {
+      "id": "file:src/pages/Payments.tsx",
+      "fanOut": 21,
+      "name": "Payments.tsx"
+    },
+    {
+      "id": "file:src/components/invoices/InvoiceDialog.tsx",
+      "fanOut": 20,
+      "name": "InvoiceDialog.tsx"
+    },
+    {
+      "id": "file:src/components/invoices/InvoicesTable.tsx",
+      "fanOut": 18,
+      "name": "InvoicesTable.tsx"
+    },
+    {
+      "id": "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "fanOut": 17,
+      "name": "SimpleTopUpDialog.tsx"
+    },
+    {
+      "id": "file:src/hooks/useClients.ts",
+      "fanOut": 16,
+      "name": "useClients.ts"
+    },
+    {
+      "id": "file:src/pages/Dashboard.tsx",
+      "fanOut": 15,
+      "name": "Dashboard.tsx"
+    },
+    {
+      "id": "file:src/components/clients/AddSalesDialog.tsx",
+      "fanOut": 15,
+      "name": "AddSalesDialog.tsx"
+    },
+    {
+      "id": "file:src/pages/Clients.tsx",
+      "fanOut": 15,
+      "name": "Clients.tsx"
+    },
+    {
+      "id": "file:src/pages/Invoices.tsx",
+      "fanOut": 15,
+      "name": "Invoices.tsx"
+    },
+    {
+      "id": "file:src/pages/ClientDashboard.tsx",
+      "fanOut": 15,
+      "name": "ClientDashboard.tsx"
+    },
+    {
+      "id": "file:src/pages/SuperAdminTenants.tsx",
+      "fanOut": 15,
+      "name": "SuperAdminTenants.tsx"
+    },
+    {
+      "id": "file:src/hooks/useInvoices.ts",
+      "fanOut": 14,
+      "name": "useInvoices.ts"
+    },
+    {
+      "id": "file:src/components/clients/ClientActions.tsx",
+      "fanOut": 14,
+      "name": "ClientActions.tsx"
+    },
+    {
+      "id": "file:src/components/clients/ClientSalesDialog.tsx",
+      "fanOut": 14,
+      "name": "ClientSalesDialog.tsx"
+    },
+    {
+      "id": "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "fanOut": 14,
+      "name": "ClientTransactionsDialog.tsx"
+    },
+    {
+      "id": "schema:supabase/recreate_database.sql",
+      "fanOut": 14,
+      "name": "recreate_database.sql"
+    },
+    {
+      "id": "file:src/components/Layout.tsx",
+      "fanOut": 13,
+      "name": "Layout.tsx"
+    },
+    {
+      "id": "file:src/components/products/ProductsTable.tsx",
+      "fanOut": 12,
+      "name": "ProductsTable.tsx"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:src/App.tsx",
+    "order": [
+      "file:src/App.tsx",
+      "file:src/components/Layout.tsx",
+      "file:src/components/providers/SubscriptionProvider.tsx",
+      "file:src/components/SubscriptionGuard.tsx",
+      "file:src/components/SuperAdminLayout.tsx",
+      "file:src/components/ui/sonner.tsx",
+      "file:src/components/ui/toaster.tsx",
+      "file:src/components/ui/tooltip.tsx",
+      "file:src/components/WhatsAppButton.tsx",
+      "file:src/hooks/useAuth.tsx",
+      "file:src/hooks/useUserRole.ts",
+      "file:src/pages/Auth.tsx",
+      "file:src/pages/ClientDashboard.tsx",
+      "file:src/pages/Clients.tsx",
+      "file:src/pages/Dashboard.tsx",
+      "file:src/pages/Invoices.tsx",
+      "file:src/pages/Landing.tsx",
+      "file:src/pages/NotFound.tsx",
+      "file:src/pages/Payments.tsx",
+      "file:src/pages/Products.tsx",
+      "file:src/pages/Settings.tsx",
+      "file:src/pages/Subscription.tsx",
+      "file:src/pages/SuperAdmin.tsx",
+      "file:src/pages/SuperAdminTenants.tsx",
+      "file:src/pages/SuperAdminUsers.tsx",
+      "file:src/components/AppSidebar.tsx",
+      "file:src/components/GlobalSearch.tsx",
+      "file:src/components/NotificationDropdown.tsx",
+      "file:src/components/TrialBanner.tsx",
+      "file:src/components/ui/button.tsx",
+      "file:src/components/ui/dropdown-menu.tsx",
+      "file:src/components/ui/input.tsx",
+      "file:src/components/ui/sidebar.tsx",
+      "file:src/integrations/supabase/client.ts",
+      "file:src/api/subscription.api.ts",
+      "file:src/api/tenant.api.ts",
+      "file:src/contexts/SubscriptionContext.tsx",
+      "file:src/lib/featureFlags.ts",
+      "file:src/lib/paystackConfig.ts",
+      "file:src/hooks/useSubscription.ts",
+      "file:src/components/SuperAdminSidebar.tsx",
+      "file:src/components/ui/toast.tsx",
+      "file:src/hooks/use-toast.ts",
+      "file:src/lib/utils.ts",
+      "file:src/components/ui/dialog.tsx",
+      "file:src/components/auth/SignUpForm.tsx",
+      "file:src/components/auth/UnifiedLoginForm.tsx",
+      "file:src/components/ui/card.tsx",
+      "file:src/components/ui/tabs.tsx",
+      "file:src/api/clients.api.ts",
+      "file:src/api/invoices.api.ts",
+      "file:src/api/payments.api.ts",
+      "file:src/api/transactions.api.ts",
+      "file:src/components/ui/badge.tsx",
+      "file:src/components/ui/chart.tsx",
+      "file:src/shared/hooks/useTenant.ts",
+      "file:src/components/clients/ClientTopUpDialog.tsx",
+      "file:src/hooks/useClients.ts",
+      "file:src/components/clients/ClientActions.tsx",
+      "file:src/components/clients/ClientDialog.tsx",
+      "file:src/components/clients/ClientsTable.tsx",
+      "file:src/components/FeatureGate.tsx",
+      "file:src/components/ui/empty-state.tsx",
+      "file:src/integrations/supabase/types.ts",
+      "file:src/api/products.api.ts",
+      "file:src/components/ui/skeleton.tsx",
+      "file:src/components/ui/table.tsx",
+      "file:src/hooks/useInvoices.ts",
+      "file:src/components/invoices/InvoiceDialog.tsx",
+      "file:src/components/invoices/InvoicesTable.tsx",
+      "file:src/components/ui/sheet.tsx",
+      "file:src/hooks/usePayments.ts",
+      "file:src/lib/pdfGenerator.ts",
+      "file:src/components/ui/label.tsx",
+      "file:src/components/ui/select.tsx",
+      "file:src/components/ui/switch.tsx",
+      "file:src/shared/components/DeleteConfirmDialog.tsx",
+      "file:src/hooks/useProducts.ts",
+      "file:src/components/products/ProductsTable.tsx",
+      "file:src/components/products/ProductDialog.tsx",
+      "file:src/api/profile.api.ts",
+      "file:src/components/ui/form.tsx",
+      "file:src/components/ui/scroll-area.tsx",
+      "file:src/components/ui/collapsible.tsx",
+      "file:src/hooks/use-mobile.tsx",
+      "file:src/components/ui/command.tsx",
+      "file:src/hooks/useGlobalSearch.ts",
+      "file:src/hooks/useNotifications.ts",
+      "file:src/components/ui/alert.tsx",
+      "file:src/components/ui/separator.tsx",
+      "file:src/lib/queryClient.ts",
+      "file:src/components/clients/AddSalesDialog.tsx",
+      "file:src/components/clients/SimpleTopUpDialog.tsx",
+      "file:src/components/clients/ClientSalesDialog.tsx",
+      "file:src/components/clients/ClientTransactionsDialog.tsx",
+      "file:src/components/clients/ClientRow.tsx",
+      "file:src/components/ui/pagination.tsx",
+      "file:src/shared/utils/index.ts",
+      "file:src/components/ui/calendar.tsx",
+      "file:src/components/ui/popover.tsx",
+      "file:src/components/ui/textarea.tsx",
+      "file:src/lib/whatsapp.ts",
+      "file:src/components/ui/alert-dialog.tsx",
+      "file:src/api/notifications.api.ts",
+      "file:src/hooks/useTransactions.ts"
+    ],
+    "depthMap": {
+      "file:src/App.tsx": 0,
+      "file:src/components/Layout.tsx": 1,
+      "file:src/components/providers/SubscriptionProvider.tsx": 1,
+      "file:src/components/SubscriptionGuard.tsx": 1,
+      "file:src/components/SuperAdminLayout.tsx": 1,
+      "file:src/components/ui/sonner.tsx": 1,
+      "file:src/components/ui/toaster.tsx": 1,
+      "file:src/components/ui/tooltip.tsx": 1,
+      "file:src/components/WhatsAppButton.tsx": 1,
+      "file:src/hooks/useAuth.tsx": 1,
+      "file:src/hooks/useUserRole.ts": 1,
+      "file:src/pages/Auth.tsx": 1,
+      "file:src/pages/ClientDashboard.tsx": 1,
+      "file:src/pages/Clients.tsx": 1,
+      "file:src/pages/Dashboard.tsx": 1,
+      "file:src/pages/Invoices.tsx": 1,
+      "file:src/pages/Landing.tsx": 1,
+      "file:src/pages/NotFound.tsx": 1,
+      "file:src/pages/Payments.tsx": 1,
+      "file:src/pages/Products.tsx": 1,
+      "file:src/pages/Settings.tsx": 1,
+      "file:src/pages/Subscription.tsx": 1,
+      "file:src/pages/SuperAdmin.tsx": 1,
+      "file:src/pages/SuperAdminTenants.tsx": 1,
+      "file:src/pages/SuperAdminUsers.tsx": 1,
+      "file:src/components/AppSidebar.tsx": 2,
+      "file:src/components/GlobalSearch.tsx": 2,
+      "file:src/components/NotificationDropdown.tsx": 2,
+      "file:src/components/TrialBanner.tsx": 2,
+      "file:src/components/ui/button.tsx": 2,
+      "file:src/components/ui/dropdown-menu.tsx": 2,
+      "file:src/components/ui/input.tsx": 2,
+      "file:src/components/ui/sidebar.tsx": 2,
+      "file:src/integrations/supabase/client.ts": 2,
+      "file:src/api/subscription.api.ts": 2,
+      "file:src/api/tenant.api.ts": 2,
+      "file:src/contexts/SubscriptionContext.tsx": 2,
+      "file:src/lib/featureFlags.ts": 2,
+      "file:src/lib/paystackConfig.ts": 2,
+      "file:src/hooks/useSubscription.ts": 2,
+      "file:src/components/SuperAdminSidebar.tsx": 2,
+      "file:src/components/ui/toast.tsx": 2,
+      "file:src/hooks/use-toast.ts": 2,
+      "file:src/lib/utils.ts": 2,
+      "file:src/components/ui/dialog.tsx": 2,
+      "file:src/components/auth/SignUpForm.tsx": 2,
+      "file:src/components/auth/UnifiedLoginForm.tsx": 2,
+      "file:src/components/ui/card.tsx": 2,
+      "file:src/components/ui/tabs.tsx": 2,
+      "file:src/api/clients.api.ts": 2,
+      "file:src/api/invoices.api.ts": 2,
+      "file:src/api/payments.api.ts": 2,
+      "file:src/api/transactions.api.ts": 2,
+      "file:src/components/ui/badge.tsx": 2,
+      "file:src/components/ui/chart.tsx": 2,
+      "file:src/shared/hooks/useTenant.ts": 2,
+      "file:src/components/clients/ClientTopUpDialog.tsx": 2,
+      "file:src/hooks/useClients.ts": 2,
+      "file:src/components/clients/ClientActions.tsx": 2,
+      "file:src/components/clients/ClientDialog.tsx": 2,
+      "file:src/components/clients/ClientsTable.tsx": 2,
+      "file:src/components/FeatureGate.tsx": 2,
+      "file:src/components/ui/empty-state.tsx": 2,
+      "file:src/integrations/supabase/types.ts": 2,
+      "file:src/api/products.api.ts": 2,
+      "file:src/components/ui/skeleton.tsx": 2,
+      "file:src/components/ui/table.tsx": 2,
+      "file:src/hooks/useInvoices.ts": 2,
+      "file:src/components/invoices/InvoiceDialog.tsx": 2,
+      "file:src/components/invoices/InvoicesTable.tsx": 2,
+      "file:src/components/ui/sheet.tsx": 2,
+      "file:src/hooks/usePayments.ts": 2,
+      "file:src/lib/pdfGenerator.ts": 2,
+      "file:src/components/ui/label.tsx": 2,
+      "file:src/components/ui/select.tsx": 2,
+      "file:src/components/ui/switch.tsx": 2,
+      "file:src/shared/components/DeleteConfirmDialog.tsx": 2,
+      "file:src/hooks/useProducts.ts": 2,
+      "file:src/components/products/ProductsTable.tsx": 2,
+      "file:src/components/products/ProductDialog.tsx": 2,
+      "file:src/api/profile.api.ts": 2,
+      "file:src/components/ui/form.tsx": 2,
+      "file:src/components/ui/scroll-area.tsx": 2,
+      "file:src/components/ui/collapsible.tsx": 3,
+      "file:src/hooks/use-mobile.tsx": 3,
+      "file:src/components/ui/command.tsx": 3,
+      "file:src/hooks/useGlobalSearch.ts": 3,
+      "file:src/hooks/useNotifications.ts": 3,
+      "file:src/components/ui/alert.tsx": 3,
+      "file:src/components/ui/separator.tsx": 3,
+      "file:src/lib/queryClient.ts": 3,
+      "file:src/components/clients/AddSalesDialog.tsx": 3,
+      "file:src/components/clients/SimpleTopUpDialog.tsx": 3,
+      "file:src/components/clients/ClientSalesDialog.tsx": 3,
+      "file:src/components/clients/ClientTransactionsDialog.tsx": 3,
+      "file:src/components/clients/ClientRow.tsx": 3,
+      "file:src/components/ui/pagination.tsx": 3,
+      "file:src/shared/utils/index.ts": 3,
+      "file:src/components/ui/calendar.tsx": 3,
+      "file:src/components/ui/popover.tsx": 3,
+      "file:src/components/ui/textarea.tsx": 3,
+      "file:src/lib/whatsapp.ts": 3,
+      "file:src/components/ui/alert-dialog.tsx": 3,
+      "file:src/api/notifications.api.ts": 4,
+      "file:src/hooks/useTransactions.ts": 4
+    },
+    "byDepth": {
+      "0": [
+        "file:src/App.tsx"
+      ],
+      "1": [
+        "file:src/components/Layout.tsx",
+        "file:src/components/providers/SubscriptionProvider.tsx",
+        "file:src/components/SubscriptionGuard.tsx",
+        "file:src/components/SuperAdminLayout.tsx",
+        "file:src/components/ui/sonner.tsx",
+        "file:src/components/ui/toaster.tsx",
+        "file:src/components/ui/tooltip.tsx",
+        "file:src/components/WhatsAppButton.tsx",
+        "file:src/hooks/useAuth.tsx",
+        "file:src/hooks/useUserRole.ts",
+        "file:src/pages/Auth.tsx",
+        "file:src/pages/ClientDashboard.tsx",
+        "file:src/pages/Clients.tsx",
+        "file:src/pages/Dashboard.tsx",
+        "file:src/pages/Invoices.tsx",
+        "file:src/pages/Landing.tsx",
+        "file:src/pages/NotFound.tsx",
+        "file:src/pages/Payments.tsx",
+        "file:src/pages/Products.tsx",
+        "file:src/pages/Settings.tsx",
+        "file:src/pages/Subscription.tsx",
+        "file:src/pages/SuperAdmin.tsx",
+        "file:src/pages/SuperAdminTenants.tsx",
+        "file:src/pages/SuperAdminUsers.tsx"
+      ],
+      "2": [
+        "file:src/components/AppSidebar.tsx",
+        "file:src/components/GlobalSearch.tsx",
+        "file:src/components/NotificationDropdown.tsx",
+        "file:src/components/TrialBanner.tsx",
+        "file:src/components/ui/button.tsx",
+        "file:src/components/ui/dropdown-menu.tsx",
+        "file:src/components/ui/input.tsx",
+        "file:src/components/ui/sidebar.tsx",
+        "file:src/integrations/supabase/client.ts",
+        "file:src/api/subscription.api.ts",
+        "file:src/api/tenant.api.ts",
+        "file:src/contexts/SubscriptionContext.tsx",
+        "file:src/lib/featureFlags.ts",
+        "file:src/lib/paystackConfig.ts",
+        "file:src/hooks/useSubscription.ts",
+        "file:src/components/SuperAdminSidebar.tsx",
+        "file:src/components/ui/toast.tsx",
+        "file:src/hooks/use-toast.ts",
+        "file:src/lib/utils.ts",
+        "file:src/components/ui/dialog.tsx",
+        "file:src/components/auth/SignUpForm.tsx",
+        "file:src/components/auth/UnifiedLoginForm.tsx",
+        "file:src/components/ui/card.tsx",
+        "file:src/components/ui/tabs.tsx",
+        "file:src/api/clients.api.ts",
+        "file:src/api/invoices.api.ts",
+        "file:src/api/payments.api.ts",
+        "file:src/api/transactions.api.ts",
+        "file:src/components/ui/badge.tsx",
+        "file:src/components/ui/chart.tsx",
+        "file:src/shared/hooks/useTenant.ts",
+        "file:src/components/clients/ClientTopUpDialog.tsx",
+        "file:src/hooks/useClients.ts",
+        "file:src/components/clients/ClientActions.tsx",
+        "file:src/components/clients/ClientDialog.tsx",
+        "file:src/components/clients/ClientsTable.tsx",
+        "file:src/components/FeatureGate.tsx",
+        "file:src/components/ui/empty-state.tsx",
+        "file:src/integrations/supabase/types.ts",
+        "file:src/api/products.api.ts",
+        "file:src/components/ui/skeleton.tsx",
+        "file:src/components/ui/table.tsx",
+        "file:src/hooks/useInvoices.ts",
+        "file:src/components/invoices/InvoiceDialog.tsx",
+        "file:src/components/invoices/InvoicesTable.tsx",
+        "file:src/components/ui/sheet.tsx",
+        "file:src/hooks/usePayments.ts",
+        "file:src/lib/pdfGenerator.ts",
+        "file:src/components/ui/label.tsx",
+        "file:src/components/ui/select.tsx",
+        "file:src/components/ui/switch.tsx",
+        "file:src/shared/components/DeleteConfirmDialog.tsx",
+        "file:src/hooks/useProducts.ts",
+        "file:src/components/products/ProductsTable.tsx",
+        "file:src/components/products/ProductDialog.tsx",
+        "file:src/api/profile.api.ts",
+        "file:src/components/ui/form.tsx",
+        "file:src/components/ui/scroll-area.tsx"
+      ],
+      "3": [
+        "file:src/components/ui/collapsible.tsx",
+        "file:src/hooks/use-mobile.tsx",
+        "file:src/components/ui/command.tsx",
+        "file:src/hooks/useGlobalSearch.ts",
+        "file:src/hooks/useNotifications.ts",
+        "file:src/components/ui/alert.tsx",
+        "file:src/components/ui/separator.tsx",
+        "file:src/lib/queryClient.ts",
+        "file:src/components/clients/AddSalesDialog.tsx",
+        "file:src/components/clients/SimpleTopUpDialog.tsx",
+        "file:src/components/clients/ClientSalesDialog.tsx",
+        "file:src/components/clients/ClientTransactionsDialog.tsx",
+        "file:src/components/clients/ClientRow.tsx",
+        "file:src/components/ui/pagination.tsx",
+        "file:src/shared/utils/index.ts",
+        "file:src/components/ui/calendar.tsx",
+        "file:src/components/ui/popover.tsx",
+        "file:src/components/ui/textarea.tsx",
+        "file:src/lib/whatsapp.ts",
+        "file:src/components/ui/alert-dialog.tsx"
+      ],
+      "4": [
+        "file:src/api/notifications.api.ts",
+        "file:src/hooks/useTransactions.ts"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Project overview for Nunua Polepole — a multi-tenant business directory and credit management platform. Covers core features, superadmin capabilities, local development setup, and the technology stack (Vite, React, TypeScript, shadcn/ui, Tailwind CSS, Supabase)."
+      },
+      {
+        "id": "document:docs/ARCHITECTURE.md",
+        "name": "ARCHITECTURE.md",
+        "type": "document",
+        "summary": "Comprehensive domain-driven architecture guide for the Lipia Pole Pole credit management platform, covering 15 sections including bounded contexts, entity relationships, state machines, multi-tenancy patterns, authentication/authorization with RBAC, API layer patterns, error handling, and coding conventions."
+      },
+      {
+        "id": "document:docs/DEVELOPER.md",
+        "name": "DEVELOPER.md",
+        "type": "document",
+        "summary": "Developer-focused guide covering the multi-tenant SaaS architecture, database ERD with key tables, project directory structure, and step-by-step instructions for adding database migrations, new API endpoints, and Supabase Edge Functions."
+      },
+      {
+        "id": "document:docs/ROLES.md",
+        "name": "ROLES.md",
+        "type": "document",
+        "summary": "Reference document for the platform's role-based access control (RBAC) system, defining the four-tier role hierarchy (Superadmin, Owner, Staff, Client), their respective permissions, and how roles are enforced at both the Supabase RLS database layer and the React frontend layer."
+      },
+      {
+        "id": "document:public/robots.txt",
+        "name": "robots.txt",
+        "type": "document",
+        "summary": "Robots exclusion file allowing all web crawlers unrestricted access to the site, with a sitemap reference pointing to the production domain."
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "pipeline:.github/workflows/main.yml",
+        "name": "main.yml",
+        "type": "pipeline",
+        "summary": "GitHub Actions workflow that triggers on every push to main, builds the Vite/React project, and force-pushes the compiled dist output to a dedicated dist branch for deployment."
+      },
+      {
+        "id": "step:.github/workflows/main.yml:deploy-dist",
+        "name": "deploy-dist",
+        "type": "pipeline",
+        "summary": "Single CI job running on ubuntu-latest that checks out the repo, installs Node 18 dependencies, builds the project, and publishes the dist output to the dist branch via force-push."
+      }
+    ],
+    "data": [
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants",
+        "name": "tenants",
+        "type": "table",
+        "summary": "Core tenants table representing business organizations in the multi-tenant platform, with phone number uniqueness constraints and timestamps."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles",
+        "name": "profiles",
+        "type": "table",
+        "summary": "User profile records linked to both auth users and tenants, storing display name and contact information with phone validation."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles",
+        "name": "user_roles",
+        "type": "table",
+        "summary": "Join table assigning app_role enum values (admin, user) to auth users, with a unique constraint per user-role pair."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients",
+        "name": "clients",
+        "type": "table",
+        "summary": "Client records scoped to a tenant, tracking contact information, account balance, and status with phone format validation."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:products",
+        "name": "products",
+        "type": "table",
+        "summary": "Product catalog entries scoped to a tenant with name, price, and optional description."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices",
+        "name": "invoices",
+        "type": "table",
+        "summary": "Invoice records linking tenants and clients with invoice number uniqueness per tenant, amount, status, and optional notes."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions",
+        "name": "transactions",
+        "type": "table",
+        "summary": "Financial transaction records of type 'sale' or 'payment', linked to tenant, client, and optionally an invoice."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+        "name": "20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+        "type": "table",
+        "summary": "Initial schema migration establishing the core multi-tenant data model: tenants, profiles, user_roles, clients, products, invoices, and transactions tables with RLS policies, helper functions, and performance indexes."
+      },
+      {
+        "id": "table:supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+        "name": "20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+        "type": "table",
+        "summary": "Security fix migration that patches the update_updated_at_column trigger function to set search_path, closing a potential schema injection vulnerability."
+      },
+      {
+        "id": "table:supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+        "name": "20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+        "type": "table",
+        "summary": "Alters the clients table to make phone_number required and name/email optional, and adds a unique constraint on phone_number per tenant."
+      },
+      {
+        "id": "table:supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+        "name": "20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+        "type": "table",
+        "summary": "Creates the client_details view joining clients, invoices, and transactions to expose total_invoiced and total_paid aggregates, and adds several performance indexes."
+      },
+      {
+        "id": "table:supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+        "name": "20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+        "type": "table",
+        "summary": "Recreates the client_details view with security_invoker = true so it respects the querying user's RLS policies rather than bypassing them."
+      },
+      {
+        "id": "table:supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+        "name": "20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+        "type": "table",
+        "summary": "Adds the 'client' value to the app_role enum to support client-facing authenticated access."
+      },
+      {
+        "id": "table:supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+        "name": "20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+        "type": "table",
+        "summary": "Introduces the update_client_status trigger function to automatically recalculate and update a client's status (open/closed) after any change to invoices or transactions."
+      },
+      {
+        "id": "table:supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+        "name": "20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+        "type": "table",
+        "summary": "Security fix that drops and recreates the update_client_status function and its triggers with SECURITY DEFINER and a fixed search_path."
+      },
+      {
+        "id": "table:supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+        "name": "20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+        "type": "table",
+        "summary": "Further refines the update_client_status function by adding it to the public schema with proper SECURITY DEFINER and search_path settings."
+      },
+      {
+        "id": "table:supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+        "name": "20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+        "type": "table",
+        "summary": "Adds an optional product_id foreign key column to the invoices table to support product-linked invoices, with a performance index."
+      },
+      {
+        "id": "table:supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+        "name": "20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+        "type": "table",
+        "summary": "Extends the invoices table status column to accept 'partial' as a valid value alongside pending, paid, and overdue, using a check constraint."
+      },
+      {
+        "id": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql:notifications",
+        "name": "notifications",
+        "type": "table",
+        "summary": "Notifications table storing per-user, per-tenant alerts for invoice, payment, client, product, and system events with read status and deep-link support."
+      },
+      {
+        "id": "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+        "name": "20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+        "type": "table",
+        "summary": "Creates the notifications table with RLS policies, an updated_at trigger, performance indexes, and enables Supabase Realtime for the table."
+      },
+      {
+        "id": "table:supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+        "name": "20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+        "type": "table",
+        "summary": "Adds client-facing RLS policies to invoices and clients tables so authenticated clients can view their own records based on a phone number encoded in their JWT email."
+      },
+      {
+        "id": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql:payment_details",
+        "name": "payment_details",
+        "type": "table",
+        "summary": "Payment configuration table for tenants to store M-Pesa Paybill and Till payment options with active/inactive toggles."
+      },
+      {
+        "id": "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+        "name": "20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+        "type": "table",
+        "summary": "Creates the payment_details table with RLS policies for tenant admins and clients to view active payment options (M-Pesa Paybill/Till), plus an updated_at trigger."
+      },
+      {
+        "id": "table:supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+        "name": "20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+        "type": "table",
+        "summary": "Updates client-facing RLS policies on clients, invoices, and payment_details tables to use a new tenant-specific email format that encodes both phone and tenant ID."
+      },
+      {
+        "id": "table:supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+        "name": "20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+        "type": "table",
+        "summary": "Adds the update_invoice_status_on_payment trigger function implementing a pending → partial → paid state machine, fired after any transaction change."
+      },
+      {
+        "id": "table:supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+        "name": "20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+        "type": "table",
+        "summary": "Implements domain event-driven notification triggers: create_payment_notification fires after each payment transaction and create_invoice_notification fires after each invoice insert, writing records to the notifications table."
+      },
+      {
+        "id": "table:supabase/migrations/20260127155500_add_superadmin_role.sql",
+        "name": "20260127155500_add_superadmin_role.sql",
+        "type": "table",
+        "summary": "Adds 'superadmin' to the app_role enum and updates RLS policies on tenants, profiles, and user_roles so superadmins can read all rows across all tenants."
+      },
+      {
+        "id": "table:supabase/migrations/20260127203127_add_subscription_tiers.sql",
+        "name": "20260127203127_add_subscription_tiers.sql",
+        "type": "table",
+        "summary": "Introduces the subscription_tier enum (monthly, semi-annual, annual) and adds subscription_tier and is_active columns to the tenants table; also grants superadmins visibility over all transactions and invoices."
+      },
+      {
+        "id": "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+        "name": "20260127224000_superadmin_rls_expansion.sql",
+        "type": "table",
+        "summary": "Expands superadmin SELECT visibility to the clients, products, and invoices tables by replacing tenant-scoped policies with has_role-gated alternatives."
+      },
+      {
+        "id": "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+        "name": "20260127230000_comprehensive_superadmin_rls.sql",
+        "type": "table",
+        "summary": "Comprehensive RLS expansion ensuring superadmins can SELECT across all core tables: profiles, clients, products, invoices, transactions, and user_roles."
+      },
+      {
+        "id": "table:supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql",
+        "name": "20260127233000_superadmin_tenant_update_rls.sql",
+        "type": "table",
+        "summary": "Grants superadmins UPDATE access on the tenants table for managing activation state and subscription tiers."
+      },
+      {
+        "id": "table:supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+        "name": "20260128110000_superadmin_user_management_rls.sql",
+        "type": "table",
+        "summary": "Grants superadmins full CRUD access on user_roles and refines the profile SELECT policy, also adding a foreign key from user_roles.user_id to profiles.user_id."
+      },
+      {
+        "id": "table:supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+        "name": "20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+        "type": "table",
+        "summary": "Replaces the get_user_tenant_id helper function using the updated SET search_path TO syntax for improved security compliance."
+      },
+      {
+        "id": "table:supabase/migrations/20260327214000_add_profile_email.sql",
+        "name": "20260327214000_add_profile_email.sql",
+        "type": "table",
+        "summary": "Adds an optional email column to the profiles table to store the user's real email address for transactions and notifications."
+      },
+      {
+        "id": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql:subscription_billing_history",
+        "name": "subscription_billing_history",
+        "type": "table",
+        "summary": "Billing history table recording Paystack subscription events (charge.success, invoice.payment_failed, etc.) per tenant with reference, amount, and status."
+      },
+      {
+        "id": "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+        "name": "20260328192957_add_subscription_billing_history.sql",
+        "type": "table",
+        "summary": "Creates the subscription_billing_history table with RLS so each tenant sees only their own billing events, plus indexes for fast lookup by tenant and Paystack reference."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:tenants",
+        "name": "tenants",
+        "type": "table",
+        "summary": "Root multi-tenant entity storing business identity, status, subscription tier, and soft-delete metadata. All other tenant-scoped tables cascade from this table via foreign key."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:profiles",
+        "name": "profiles",
+        "type": "table",
+        "summary": "Links Supabase auth users to their tenant, storing display name and phone number with format validation constraints."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:clients",
+        "name": "clients",
+        "type": "table",
+        "summary": "Stores business clients per tenant with contact details, running balance, and status. Phone number is unique per tenant."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:products",
+        "name": "products",
+        "type": "table",
+        "summary": "Catalog of products or services offered by a tenant, with name, price, and optional description."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:invoices",
+        "name": "invoices",
+        "type": "table",
+        "summary": "Records invoices issued by a tenant to a client for a product, with status lifecycle (pending/paid/partial/overdue) and unique invoice numbers per tenant."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:transactions",
+        "name": "transactions",
+        "type": "table",
+        "summary": "Captures financial transactions (sales or payments) per tenant-client pair, optionally linked to an invoice."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:notifications",
+        "name": "notifications",
+        "type": "table",
+        "summary": "In-app notification records for tenant users, supporting invoice, payment, client, product, and system event types."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:payment_details",
+        "name": "payment_details",
+        "type": "table",
+        "summary": "Stores per-tenant M-Pesa payment configuration entries (paybill, till, or account number) with active/inactive status."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:user_roles",
+        "name": "user_roles",
+        "type": "table",
+        "summary": "Associates auth users with application roles (admin, user, client, superadmin) with uniqueness enforced per user-role pair."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:super_admins",
+        "name": "super_admins",
+        "type": "table",
+        "summary": "Registry of platform-level super and support administrators, identified by user_id and email, with active status and last login tracking."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:super_admin_audit_logs",
+        "name": "super_admin_audit_logs",
+        "type": "table",
+        "summary": "Immutable audit trail for super admin actions, capturing action type, affected resource, tenant, IP address, and user agent for governance."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:tenant_subscriptions",
+        "name": "tenant_subscriptions",
+        "type": "table",
+        "summary": "Tracks per-tenant subscription plan (free/pro/enterprise) with usage limits for users, clients, invoices, and products, plus billing lifecycle dates."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:tenant_feature_flags",
+        "name": "tenant_feature_flags",
+        "type": "table",
+        "summary": "Per-tenant feature flag toggles enabling runtime feature gating by flag name without code deploys."
+      },
+      {
+        "id": "table:supabase/recreate_database.sql:tenant_usage_metrics",
+        "name": "tenant_usage_metrics",
+        "type": "table",
+        "summary": "Periodic usage snapshots per tenant recording user, client, invoice, and transaction counts alongside API calls and storage bytes for billing and analytics."
+      },
+      {
+        "id": "schema:supabase/recreate_database.sql",
+        "name": "recreate_database.sql",
+        "type": "schema",
+        "summary": "Complete Supabase database recreation script defining all 14 tables, 5 ENUM types, 1 view, 42 indexes, Row Level Security policies, and 15+ PL/pgSQL functions and triggers for the multi-tenant platform. Includes super admin governance, subscription management, and automated business logic triggers."
+      },
+      {
+        "id": "table:supabase/add_subscription_columns.sql:tenants",
+        "name": "tenants (trial column)",
+        "type": "table",
+        "summary": "Migration target: adds trial_ends_at column to tenants with a 7-day default and backfills existing rows."
+      },
+      {
+        "id": "table:supabase/add_subscription_columns.sql:tenant_subscriptions",
+        "name": "tenant_subscriptions (paystack columns)",
+        "type": "table",
+        "summary": "Migration target: adds Paystack integration columns (customer code, subscription code, next payment date, cancellation timestamp) to tenant_subscriptions."
+      },
+      {
+        "id": "schema:supabase/add_subscription_columns.sql",
+        "name": "add_subscription_columns.sql",
+        "type": "schema",
+        "summary": "Additive migration extending the subscription model with trial period tracking on tenants and Paystack payment gateway fields on tenant_subscriptions. Includes trigger and helper function for automated trial assignment."
+      }
+    ],
+    "config": [
+      {
+        "id": "config:.env",
+        "name": ".env",
+        "type": "config",
+        "summary": "Environment variable file configuring runtime secrets for Supabase (URL, project ID, API key), Paystack payment gateway (test and production keys, plan codes for monthly/6-month/12-month tiers), Africa's Talking SMS credentials, and superadmin email."
+      },
+      {
+        "id": "config:components.json",
+        "name": "components.json",
+        "type": "config",
+        "summary": "shadcn/ui CLI configuration specifying default style, TSX mode, Tailwind setup (config path, CSS entry, slate base color, CSS variables), and path aliases for components, utils, ui, lib, and hooks directories."
+      },
+      {
+        "id": "config:package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Node.js project manifest defining build scripts (dev, build, lint, preview), runtime dependencies (React, Radix UI primitives, Supabase JS client, Tanstack Query, Paystack, Recharts, Zod, React Hook Form), and dev dependencies (Vite, TypeScript, Tailwind CSS, ESLint)."
+      },
+      {
+        "id": "config:tsconfig.app.json",
+        "name": "tsconfig.app.json",
+        "type": "config",
+        "summary": "TypeScript compiler configuration for the React application source targeting ES2020 with react-jsx transform, bundler module resolution, the @/* path alias mapped to src/*, noEmit enabled, and strict mode disabled to allow gradual type safety adoption."
+      },
+      {
+        "id": "config:tsconfig.json",
+        "name": "tsconfig.json",
+        "type": "config",
+        "summary": "Root TypeScript project file using composite project references to delegate compilation to tsconfig.app.json (src/ application code) and tsconfig.node.json (Vite config tooling), with shared loose compiler options and the @/* path alias."
+      },
+      {
+        "id": "config:tsconfig.node.json",
+        "name": "tsconfig.node.json",
+        "type": "config",
+        "summary": "TypeScript compiler configuration for Vite's Node.js tooling (vite.config.ts), using bundler module resolution with ESNext target and composite project reference support."
+      },
+      {
+        "id": "config:vercel.json",
+        "name": "vercel.json",
+        "type": "config",
+        "summary": "Vercel deployment configuration with a catch-all rewrite rule that redirects all routes to index.html, enabling client-side routing for the React SPA."
+      },
+      {
+        "id": "config:supabase/config.toml",
+        "name": "config.toml",
+        "type": "config",
+        "summary": "Supabase project configuration specifying the project ID and disabling JWT verification for four Edge Functions: reset-password, resolve-login-email, create-client-user, and send-transaction-sms."
+      },
+      {
+        "id": "config:supabase/functions/deno.json",
+        "name": "deno.json",
+        "type": "config",
+        "summary": "Deno configuration file for Supabase Edge Functions that pins the Deno standard library import map to version 0.177.0."
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "nodes": [
+        "document:docs/ARCHITECTURE.md",
+        "document:docs/ROLES.md"
+      ],
+      "edgeCount": 2
+    }
+  ],
+  "layers": {
+    "count": 10,
+    "list": [
+      {
+        "id": "layer:entry-point",
+        "name": "Entry Point",
+        "description": "Application bootstrap and root component"
+      },
+      {
+        "id": "layer:presentation",
+        "name": "Presentation",
+        "description": "Pages and feature-area components"
+      },
+      {
+        "id": "layer:ui-primitives",
+        "name": "UI Primitives",
+        "description": "shadcn/ui wrapper components"
+      },
+      {
+        "id": "layer:service",
+        "name": "Service",
+        "description": "Hooks, API clients, contexts, Supabase integration"
+      },
+      {
+        "id": "layer:library",
+        "name": "Library",
+        "description": "Utility functions and helpers"
+      },
+      {
+        "id": "layer:backend-functions",
+        "name": "Backend Functions",
+        "description": "Supabase Deno Edge Functions"
+      },
+      {
+        "id": "layer:database",
+        "name": "Database",
+        "description": "SQL migrations, schema, table definitions"
+      },
+      {
+        "id": "layer:infrastructure",
+        "name": "Infrastructure",
+        "description": "Build configs, CI/CD, deployment"
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Documentation",
+        "description": "Architecture docs, README, developer guides"
+      },
+      {
+        "id": "layer:misc",
+        "name": "Misc",
+        "description": "Lock files, temp files, scripts"
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:src/App.tsx": {
+      "name": "App.tsx",
+      "type": "file",
+      "summary": "Root application component that configures the React Router, wraps routes with authentication guards and subscription providers, and handles role-based access control for tenant and super-admin users."
+    },
+    "file:src/components/AppSidebar.tsx": {
+      "name": "AppSidebar.tsx",
+      "type": "file",
+      "summary": "Main application sidebar that renders role-filtered navigation groups with collapsible sections, color-coded icons, and a client-creation dialog trigger."
+    },
+    "file:src/components/Layout.tsx": {
+      "name": "Layout.tsx",
+      "type": "file",
+      "summary": "Primary authenticated layout wrapping pages in a sidebar provider with a top navigation bar, user avatar dropdown, global search, and logout handling."
+    },
+    "file:src/components/SuperAdminLayout.tsx": {
+      "name": "SuperAdminLayout.tsx",
+      "type": "file",
+      "summary": "Dedicated layout for the super-admin section, providing the SuperAdminSidebar and a header with a user profile avatar and sign-out button."
+    },
+    "file:src/components/SuperAdminSidebar.tsx": {
+      "name": "SuperAdminSidebar.tsx",
+      "type": "file",
+      "summary": "Sidebar navigation component for the super-admin section with links to tenants, users, and overview, adapting its layout to mobile breakpoints."
+    },
+    "file:src/components/WhatsAppButton.tsx": {
+      "name": "WhatsAppButton.tsx",
+      "type": "file",
+      "summary": "Floating WhatsApp contact button that opens a dialog with a pre-filled message input and redirects the user to the WhatsApp web chat on submission."
+    },
+    "file:src/components/ui/collapsible.tsx": {
+      "name": "collapsible.tsx",
+      "type": "file",
+      "summary": "Re-exports the Radix UI Collapsible primitive components (Collapsible, CollapsibleTrigger, CollapsibleContent) for use throughout the application."
+    },
+    "file:src/components/ui/separator.tsx": {
+      "name": "separator.tsx",
+      "type": "file",
+      "summary": "Thin wrapper around the Radix UI Separator primitive that merges custom className props with default orientation styling via the cn utility."
+    },
+    "file:src/components/ui/sheet.tsx": {
+      "name": "sheet.tsx",
+      "type": "file",
+      "summary": "Slide-in panel (Sheet) component built on Radix UI Dialog, exporting all sub-components including overlay, content, header, footer, title, and description."
+    },
+    "file:src/components/ui/sidebar.tsx": {
+      "name": "sidebar.tsx",
+      "type": "file",
+      "summary": "Comprehensive sidebar UI primitive library providing SidebarProvider context, collapsible rail, full set of layout sub-components, and the useSidebar hook."
+    },
+    "file:src/components/ui/skeleton.tsx": {
+      "name": "skeleton.tsx",
+      "type": "file",
+      "summary": "Minimal Skeleton loading placeholder component that applies an animated pulse CSS class with optional className override."
+    },
+    "file:src/components/ui/sonner.tsx": {
+      "name": "sonner.tsx",
+      "type": "file",
+      "summary": "Themed Toaster wrapper around the sonner library that reads the current theme to pass to the toast renderer, also re-exporting the toast helper."
+    },
+    "file:src/components/ui/tooltip.tsx": {
+      "name": "tooltip.tsx",
+      "type": "file",
+      "summary": "Re-exports Radix UI Tooltip primitives (Tooltip, TooltipTrigger, TooltipContent, TooltipProvider) as styled wrappers using the cn utility."
+    },
+    "file:src/hooks/use-mobile.tsx": {
+      "name": "use-mobile.tsx",
+      "type": "file",
+      "summary": "React hook that tracks whether the current viewport width is below the mobile breakpoint (768px) using a matchMedia listener."
+    },
+    "file:src/hooks/useAuth.tsx": {
+      "name": "useAuth.tsx",
+      "type": "file",
+      "summary": "Authentication hook that listens to Supabase auth state changes to expose the current user, session, loading state, and a signOut helper."
+    },
+    "file:src/hooks/useUserRole.ts": {
+      "name": "useUserRole.ts",
+      "type": "file",
+      "summary": "Hook that fetches the authenticated user's role(s) from the user_roles table in Supabase and computes capability flags for owner, super-admin, manager, and client access."
+    },
+    "file:src/pages/Dashboard.tsx": {
+      "name": "Dashboard.tsx",
+      "type": "file",
+      "summary": "Main tenant dashboard page that aggregates KPI statistics, revenue charts, latest invoices, and top clients by fetching data from multiple API modules and Supabase directly."
+    },
+    "file:src/pages/Landing.tsx": {
+      "name": "Landing.tsx",
+      "type": "file",
+      "summary": "Public marketing landing page with hero section, feature highlights, animated revenue chart preview, pricing tiers, and call-to-action buttons for sign-up and login."
+    },
+    "file:src/pages/NotFound.tsx": {
+      "name": "NotFound.tsx",
+      "type": "file",
+      "summary": "404 error page that logs the invalid route to the console and renders a friendly message with a home navigation link."
+    },
+    "file:src/pages/SuperAdmin.tsx": {
+      "name": "SuperAdmin.tsx",
+      "type": "file",
+      "summary": "Super-admin overview dashboard displaying global platform statistics — total tenants, clients, revenue, and transactions — fetched via React Query from Supabase."
+    },
+    "file:src/components/ui/accordion.tsx": {
+      "name": "accordion.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Accordion component wrapping Radix UI primitives, exporting Accordion, AccordionItem, AccordionTrigger, and AccordionContent with Tailwind styling."
+    },
+    "file:src/components/ui/alert.tsx": {
+      "name": "alert.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Alert component providing styled alert boxes with title and description sub-components, supporting variant-based styling via cva."
+    },
+    "file:src/components/ui/avatar.tsx": {
+      "name": "avatar.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Avatar component wrapping Radix UI primitives, exporting Avatar, AvatarImage, and AvatarFallback for user profile images with fallback support."
+    },
+    "file:src/components/ui/breadcrumb.tsx": {
+      "name": "breadcrumb.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Breadcrumb navigation component exporting a full set of sub-components including list, item, link, page, separator, and ellipsis for hierarchical navigation display."
+    },
+    "file:src/components/ui/chart.tsx": {
+      "name": "chart.tsx",
+      "type": "file",
+      "summary": "Comprehensive chart wrapper built on Recharts, providing ChartContainer with context-based theming, dynamic CSS variable injection via ChartStyle, fully-styled tooltip and legend content components, and a utility for resolving payload config."
+    },
+    "file:src/components/ui/checkbox.tsx": {
+      "name": "checkbox.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Checkbox component wrapping Radix UI CheckboxPrimitive with Tailwind styling and a check indicator icon."
+    },
+    "file:src/components/ui/context-menu.tsx": {
+      "name": "context-menu.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Context Menu component providing a full suite of 15 sub-components wrapping Radix UI ContextMenu primitives, including items, checkboxes, radio items, labels, separators, sub-menus, and keyboard shortcut display."
+    },
+    "file:src/components/ui/drawer.tsx": {
+      "name": "drawer.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Drawer component wrapping vaul's Drawer primitive, exporting a full set of sub-components including overlay, trigger, close, content, header, footer, title, and description."
+    },
+    "file:src/components/ui/hover-card.tsx": {
+      "name": "hover-card.tsx",
+      "type": "file",
+      "summary": "shadcn/ui HoverCard component exporting HoverCard, HoverCardTrigger, and HoverCardContent backed by Radix UI primitives for hover-triggered floating content panels."
+    },
+    "file:src/components/ui/input-otp.tsx": {
+      "name": "input-otp.tsx",
+      "type": "file",
+      "summary": "shadcn/ui OTP input component built on input-otp library, exporting InputOTP, InputOTPGroup, InputOTPSlot, and InputOTPSeparator for one-time password entry flows."
+    },
+    "file:src/components/ui/menubar.tsx": {
+      "name": "menubar.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Menubar component providing a full application-style menu bar with 16 sub-components wrapping Radix UI Menubar primitives, including menus, items, checkboxes, radio groups, sub-menus, and keyboard shortcuts."
+    },
+    "file:src/components/ui/navigation-menu.tsx": {
+      "name": "navigation-menu.tsx",
+      "type": "file",
+      "summary": "shadcn/ui NavigationMenu component exporting 9 sub-components plus a trigger style helper, wrapping Radix UI NavigationMenu primitives for accessible site navigation with viewport and indicator support."
+    },
+    "file:src/components/ui/progress.tsx": {
+      "name": "progress.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Progress component wrapping Radix UI ProgressPrimitive, rendering an animated progress bar driven by a value prop."
+    },
+    "file:src/components/ui/radio-group.tsx": {
+      "name": "radio-group.tsx",
+      "type": "file",
+      "summary": "shadcn/ui RadioGroup component exporting RadioGroup and RadioGroupItem, wrapping Radix UI primitives with a styled circle indicator for form selection."
+    },
+    "file:src/components/ui/resizable.tsx": {
+      "name": "resizable.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Resizable panel components wrapping react-resizable-panels, exporting ResizablePanelGroup, ResizablePanel, and ResizableHandle with optional visible drag handle."
+    },
+    "file:src/components/ui/slider.tsx": {
+      "name": "slider.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Slider component wrapping Radix UI SliderPrimitive, rendering a styled range slider with track, range, and thumb sub-elements."
+    },
+    "file:src/components/ui/toggle-group.tsx": {
+      "name": "toggle-group.tsx",
+      "type": "file",
+      "summary": "shadcn/ui ToggleGroup component wrapping Radix UI ToggleGroup primitives, using a React context to propagate toggle variant and size to ToggleGroupItem children."
+    },
+    "file:src/components/ui/toggle.tsx": {
+      "name": "toggle.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Toggle component exporting a Toggle button and toggleVariants cva helper, wrapping Radix UI TogglePrimitive with default, outline, and size variant styles."
+    },
+    "file:src/lib/utils.ts": {
+      "name": "utils.ts",
+      "type": "file",
+      "summary": "Core utility module exporting the cn helper that merges Tailwind class names using clsx for conditional logic and twMerge to resolve conflicts."
+    },
+    "file:src/components/auth/SignUpForm.tsx": {
+      "name": "SignUpForm.tsx",
+      "type": "file",
+      "summary": "Renders the user registration form with email, password, and business name fields, handling Supabase sign-up, auto sign-in, tenant provisioning via edge function, and password strength feedback."
+    },
+    "file:src/components/clients/AddSalesDialog.tsx": {
+      "name": "AddSalesDialog.tsx",
+      "type": "file",
+      "summary": "Modal dialog for recording a new sale for a client, supporting both product selection from existing inventory and inline product creation, then generating an invoice and sale record."
+    },
+    "file:src/components/clients/ClientDialog.tsx": {
+      "name": "ClientDialog.tsx",
+      "type": "file",
+      "summary": "Modal dialog for creating or editing a client record, including automatic PIN generation for new clients and optional creation of an associated client user account."
+    },
+    "file:src/components/clients/SimpleTopUpDialog.tsx": {
+      "name": "SimpleTopUpDialog.tsx",
+      "type": "file",
+      "summary": "Modal dialog that allows recording a payment top-up against a client's unpaid invoices, showing current balance, outstanding amount, and per-invoice balance calculations."
+    },
+    "file:src/components/invoices/InvoiceDialog.tsx": {
+      "name": "InvoiceDialog.tsx",
+      "type": "file",
+      "summary": "Comprehensive modal dialog for creating and editing invoices, supporting client and product selection with popovers, auto-filled amounts, transaction recording, and in-app notifications on creation."
+    },
+    "file:src/components/ui/calendar.tsx": {
+      "name": "calendar.tsx",
+      "type": "file",
+      "summary": "Thin shadcn/ui wrapper around the react-day-picker DayPicker component, applying project-consistent Tailwind class names via cn() and buttonVariants."
+    },
+    "file:src/components/ui/form.tsx": {
+      "name": "form.tsx",
+      "type": "file",
+      "summary": "shadcn/ui form primitives built on react-hook-form, exporting Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, and the useFormField hook for consistent form layout and error display."
+    },
+    "file:src/components/ui/input.tsx": {
+      "name": "input.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Input primitive — a styled HTML input element with consistent focus, disabled, and placeholder styles via cn()."
+    },
+    "file:src/components/ui/label.tsx": {
+      "name": "label.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Label primitive wrapping Radix UI's LabelPrimitive with peer-disabled styling for accessibility-compliant form labels."
+    },
+    "file:src/components/ui/popover.tsx": {
+      "name": "popover.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Popover primitives re-exporting Radix UI's Popover, PopoverTrigger, and a styled PopoverContent with animation and positioning classes."
+    },
+    "file:src/components/ui/select.tsx": {
+      "name": "select.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Select component set re-exporting all Radix UI Select primitives (Select, SelectTrigger, SelectContent, SelectItem, etc.) with Tailwind styling and scroll buttons."
+    },
+    "file:src/components/ui/textarea.tsx": {
+      "name": "textarea.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Textarea primitive — a styled HTML textarea element with consistent resize, focus, and placeholder styles."
+    },
+    "file:src/hooks/useClients.ts": {
+      "name": "useClients.ts",
+      "type": "file",
+      "summary": "Collection of React Query hooks for the clients domain, providing data fetching (useClients, useClient) and mutations with optimistic updates for create, update, delete, balance update, and client-user provisioning."
+    },
+    "file:src/hooks/useInvoices.ts": {
+      "name": "useInvoices.ts",
+      "type": "file",
+      "summary": "Collection of React Query hooks for the invoices domain, providing fetching hooks (useInvoices, useInvoicesByClient, useInvoice, useGenerateInvoiceNumber) and optimistic-update mutations for create, update, and delete."
+    },
+    "file:src/hooks/useTransactions.ts": {
+      "name": "useTransactions.ts",
+      "type": "file",
+      "summary": "Collection of React Query hooks for the transactions domain, providing fetching by client/invoice, paid-amount aggregation, and mutations for recording payments and sales."
+    },
+    "file:src/lib/queryClient.ts": {
+      "name": "queryClient.ts",
+      "type": "file",
+      "summary": "Configures and exports the shared TanStack Query client instance with default staleTime/gcTime settings, and exports the queryKeys registry used across all data hooks."
+    },
+    "file:src/main.tsx": {
+      "name": "main.tsx",
+      "type": "file",
+      "summary": "Application entry point that mounts the React root, wrapping the App component with the shared QueryClientProvider."
+    },
+    "file:src/pages/Clients.tsx": {
+      "name": "Clients.tsx",
+      "type": "file",
+      "summary": "Clients page component that lists clients with live search filtering, manages the create/edit dialog lifecycle, and renders loading skeletons, the clients table, and a feature-gated add button."
+    },
+    "file:src/components/FeatureGate.tsx": {
+      "name": "FeatureGate.tsx",
+      "type": "file",
+      "summary": "Conditional rendering wrapper that gates UI content behind subscription plan feature flags, showing upgrade prompts or hiding content based on the user's current plan."
+    },
+    "file:src/components/NotificationDropdown.tsx": {
+      "name": "NotificationDropdown.tsx",
+      "type": "file",
+      "summary": "Dropdown notification center component displaying unread count badge, notification list with mark-as-read and delete actions, and navigation on click."
+    },
+    "file:src/components/clients/ClientActions.tsx": {
+      "name": "ClientActions.tsx",
+      "type": "file",
+      "summary": "Action menu component for individual client rows, providing edit, top-up, sales, transactions, status toggle, and delete operations with subscription-gated feature checks."
+    },
+    "file:src/components/clients/ClientSalesDialog.tsx": {
+      "name": "ClientSalesDialog.tsx",
+      "type": "file",
+      "summary": "Dialog component displaying a client's sales history, invoice listing, balance summary, and account activation capability, with direct Supabase queries for invoice fetching."
+    },
+    "file:src/components/products/ProductDialog.tsx": {
+      "name": "ProductDialog.tsx",
+      "type": "file",
+      "summary": "Form dialog for creating and editing products, managing form state for name, description, price, and stock fields with create/update mutation dispatch."
+    },
+    "file:src/components/products/ProductsTable.tsx": {
+      "name": "ProductsTable.tsx",
+      "type": "file",
+      "summary": "Responsive products table component with card-based mobile view and tabular desktop view, supporting edit and delete actions with confirmation dialog."
+    },
+    "file:src/components/ui/alert-dialog.tsx": {
+      "name": "alert-dialog.tsx",
+      "type": "file",
+      "summary": "shadcn/ui alert dialog primitive wrapping Radix UI AlertDialog with styled overlay, content, header, footer, title, description, action, and cancel sub-components."
+    },
+    "file:src/components/ui/button.tsx": {
+      "name": "button.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Button component using cva for variant and size styling, exporting both the component and the variant helper for use in other components."
+    },
+    "file:src/components/ui/carousel.tsx": {
+      "name": "carousel.tsx",
+      "type": "file",
+      "summary": "Embla Carousel integration providing Carousel, CarouselContent, CarouselItem, and navigation button components with a context-based useCarousel hook."
+    },
+    "file:src/components/ui/dropdown-menu.tsx": {
+      "name": "dropdown-menu.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Dropdown Menu primitives wrapping Radix UI DropdownMenu with 15 styled sub-components including items, labels, separators, sub-menus, and keyboard shortcuts."
+    },
+    "file:src/components/ui/empty-state.tsx": {
+      "name": "empty-state.tsx",
+      "type": "file",
+      "summary": "Generic empty state UI component displaying an icon, title, description, and optional action button, with optional feature prop integration."
+    },
+    "file:src/components/ui/pagination.tsx": {
+      "name": "pagination.tsx",
+      "type": "file",
+      "summary": "Pagination UI component set including Pagination container, content, item, link, previous/next navigation, and ellipsis sub-components built on Button variants."
+    },
+    "file:src/hooks/useProducts.ts": {
+      "name": "useProducts.ts",
+      "type": "file",
+      "summary": "Collection of React Query hooks for product CRUD operations, implementing optimistic updates on create, update, and delete with toast notifications and cache invalidation."
+    },
+    "file:src/pages/Invoices.tsx": {
+      "name": "Invoices.tsx",
+      "type": "file",
+      "summary": "Invoices page component providing a full invoice management UI with loading skeletons, an invoice table, create/edit dialog, and feature-gated access control."
+    },
+    "file:src/pages/Products.tsx": {
+      "name": "Products.tsx",
+      "type": "file",
+      "summary": "Products page component that renders the product catalog with loading skeletons, edit dialog, and feature-gated create/manage controls."
+    },
+    "file:src/shared/components/DeleteConfirmDialog.tsx": {
+      "name": "DeleteConfirmDialog.tsx",
+      "type": "file",
+      "summary": "Shared reusable delete confirmation dialog requiring the user to type a confirmation value before the destructive action is enabled, with optional loading state."
+    },
+    "file:src/api/clients.api.ts": {
+      "name": "clients.api.ts",
+      "type": "file",
+      "summary": "Provides full CRUD operations and financial helpers for client records in the multi-tenant platform, including balance updates, enriched client-detail queries joining invoices and transactions, and a phone/PIN-based client user creation via Supabase Edge Functions."
+    },
+    "file:src/api/invoices.api.ts": {
+      "name": "invoices.api.ts",
+      "type": "file",
+      "summary": "Exposes tenant-scoped CRUD operations for invoices with joined product data, plus a sequential invoice-number generator that derives the next number from the most recent invoice."
+    },
+    "file:src/api/notifications.api.ts": {
+      "name": "notifications.api.ts",
+      "type": "file",
+      "summary": "Provides CRUD and read-state operations for user notifications in Supabase, automatically associating new notifications with the authenticated user's tenant profile."
+    },
+    "file:src/api/payments.api.ts": {
+      "name": "payments.api.ts",
+      "type": "file",
+      "summary": "Manages tenant-scoped CRUD operations for payment_details records, including filtering to only active payment methods."
+    },
+    "file:src/api/products.api.ts": {
+      "name": "products.api.ts",
+      "type": "file",
+      "summary": "Provides tenant-scoped CRUD and ILIKE-based search operations for product records via Supabase."
+    },
+    "file:src/api/tenant.api.ts": {
+      "name": "tenant.api.ts",
+      "type": "file",
+      "summary": "Shared utility module that resolves the current authenticated user's tenant ID and user record from Supabase, used as a foundation by all other API modules."
+    },
+    "file:src/api/transactions.api.ts": {
+      "name": "transactions.api.ts",
+      "type": "file",
+      "summary": "Handles creation and querying of payment and sale transactions for the tenant, with SMS notification dispatch via Supabase Edge Functions after successful transaction recording."
+    },
+    "file:src/components/clients/ClientTransactionsDialog.tsx": {
+      "name": "ClientTransactionsDialog.tsx",
+      "type": "file",
+      "summary": "React dialog component that displays a client's full transaction and invoice history with running totals, loading skeletons, and per-row status badges fetched directly from Supabase."
+    },
+    "file:src/hooks/useGlobalSearch.ts": {
+      "name": "useGlobalSearch.ts",
+      "type": "file",
+      "summary": "React hook that debounces a search query and runs parallel Supabase ILIKE queries across clients, invoices, and products, returning a unified list of typed search result objects."
+    },
+    "file:src/hooks/useNotifications.ts": {
+      "name": "useNotifications.ts",
+      "type": "file",
+      "summary": "Collection of React Query hooks for managing notifications — fetching, marking read/unread, deleting, and creating — with real-time Supabase channel subscriptions that auto-invalidate the query cache."
+    },
+    "file:src/integrations/supabase/client.ts": {
+      "name": "client.ts",
+      "type": "file",
+      "summary": "Initializes and exports a singleton Supabase client instance configured with the project URL and anon key, serving as the shared data access entry point for the entire application."
+    },
+    "file:src/integrations/supabase/types.ts": {
+      "name": "types.ts",
+      "type": "file",
+      "summary": "Auto-generated Supabase type definitions covering all database tables, enums, views, and functions, providing end-to-end type safety for all Supabase client interactions throughout the project."
+    },
+    "file:src/shared/hooks/useTenant.ts": {
+      "name": "useTenant.ts",
+      "type": "file",
+      "summary": "Shared React hooks that wrap React Query to reactively resolve the current user's tenant ID and profile, reusing the imperative API from tenant.api.ts in a hook-friendly form."
+    },
+    "file:src/components/auth/UnifiedLoginForm.tsx": {
+      "name": "UnifiedLoginForm.tsx",
+      "type": "file",
+      "summary": "Provides a unified login form component supporting both email/password authentication and password reset via Supabase edge functions and client-side auth, with zod-validated react-hook-form forms and tabbed UI."
+    },
+    "file:src/components/clients/ClientTopUpDialog.tsx": {
+      "name": "ClientTopUpDialog.tsx",
+      "type": "file",
+      "summary": "Dialog component allowing clients to top up their account balance by displaying active payment method details (e.g., M-Pesa Paybill, Till, account number) with clipboard-copy support."
+    },
+    "file:src/components/ui/card.tsx": {
+      "name": "card.tsx",
+      "type": "file",
+      "summary": "Reusable shadcn/ui Card primitive providing Card, CardHeader, CardFooter, CardTitle, CardDescription, and CardContent components styled with TailwindCSS utility classes."
+    },
+    "file:src/components/ui/dialog.tsx": {
+      "name": "dialog.tsx",
+      "type": "file",
+      "summary": "Reusable shadcn/ui Dialog primitive wrapping Radix UI Dialog with styled overlay, content, header, footer, title, and description sub-components."
+    },
+    "file:src/components/ui/scroll-area.tsx": {
+      "name": "scroll-area.tsx",
+      "type": "file",
+      "summary": "Reusable shadcn/ui ScrollArea and ScrollBar primitives wrapping Radix UI ScrollArea for custom-styled scrollable regions."
+    },
+    "file:src/components/ui/switch.tsx": {
+      "name": "switch.tsx",
+      "type": "file",
+      "summary": "Reusable shadcn/ui Switch toggle primitive wrapping Radix UI Switch with TailwindCSS styling."
+    },
+    "file:src/components/ui/tabs.tsx": {
+      "name": "tabs.tsx",
+      "type": "file",
+      "summary": "Reusable shadcn/ui Tabs primitive providing Tabs, TabsList, TabsTrigger, and TabsContent components wrapping Radix UI Tabs with TailwindCSS styling."
+    },
+    "file:src/hooks/usePayments.ts": {
+      "name": "usePayments.ts",
+      "type": "file",
+      "summary": "Custom React Query hooks for full CRUD lifecycle of payment details (paybill, till, account), exporting usePaymentDetails, useActivePaymentDetails, useCreatePaymentDetail, useUpdatePaymentDetail, and useDeletePaymentDetail."
+    },
+    "file:src/pages/Auth.tsx": {
+      "name": "Auth.tsx",
+      "type": "file",
+      "summary": "Authentication page that renders a split-layout with UnifiedLoginForm or SignUpForm based on active tab, redirecting authenticated users away, and displaying feature highlights for unauthenticated visitors."
+    },
+    "file:src/pages/ClientDashboard.tsx": {
+      "name": "ClientDashboard.tsx",
+      "type": "file",
+      "summary": "Client-facing dashboard page displaying the client's invoices, payment history, account balance, and a top-up dialog; fetches data from clients, invoices, and transactions APIs via Supabase and provides invoice detail drill-down."
+    },
+    "file:src/pages/Payments.tsx": {
+      "name": "Payments.tsx",
+      "type": "file",
+      "summary": "Admin payment-settings page for managing business payment method details (M-Pesa Paybill, Till, etc.); supports create, edit, delete, and active-toggle operations via React Query hooks and renders both list and card view layouts."
+    },
+    "file:src/pages/SuperAdminTenants.tsx": {
+      "name": "SuperAdminTenants.tsx",
+      "type": "file",
+      "summary": "Super-admin tenant management page providing a searchable list of tenants with per-tenant detail drill-down showing staff, clients, revenue stats, and controls for toggling tenant active status, changing subscription tier, and purging tenant data."
+    },
+    "file:src/api/profile.api.ts": {
+      "name": "profile.api.ts",
+      "type": "file",
+      "summary": "Provides Supabase-backed API functions for fetching and updating the authenticated user's profile record from the profiles table."
+    },
+    "file:src/api/subscription.api.ts": {
+      "name": "subscription.api.ts",
+      "type": "file",
+      "summary": "Provides subscription management API functions including status retrieval, Paystack payment initialization, subscription cancellation, and billing history retrieval via Supabase."
+    },
+    "file:src/components/SubscriptionGuard.tsx": {
+      "name": "SubscriptionGuard.tsx",
+      "type": "file",
+      "summary": "React component that conditionally renders its children based on subscription validity, redirecting unauthenticated or expired-subscription users to appropriate pages."
+    },
+    "file:src/components/TrialBanner.tsx": {
+      "name": "TrialBanner.tsx",
+      "type": "file",
+      "summary": "Dismissible alert banner component that notifies users about their remaining trial days and prompts them to upgrade to a paid plan."
+    },
+    "file:src/components/providers/SubscriptionProvider.tsx": {
+      "name": "SubscriptionProvider.tsx",
+      "type": "file",
+      "summary": "React context provider that loads and exposes subscription state for the current tenant, computing derived flags such as trial days remaining, feature access, and plan identifiers."
+    },
+    "file:src/contexts/SubscriptionContext.tsx": {
+      "name": "SubscriptionContext.tsx",
+      "type": "file",
+      "summary": "Defines and exports the React SubscriptionContext used to share subscription state across the component tree."
+    },
+    "file:src/hooks/useSubscription.ts": {
+      "name": "useSubscription.ts",
+      "type": "file",
+      "summary": "Custom React hook that consumes SubscriptionContext and throws an error if called outside of a SubscriptionProvider, ensuring safe access to subscription state."
+    },
+    "file:src/lib/featureFlags.ts": {
+      "name": "featureFlags.ts",
+      "type": "file",
+      "summary": "Defines and exports static configuration maps for subscription plan features (PLAN_FEATURES), human-readable plan labels (PLAN_LABELS), and plan pricing (PLAN_PRICES) used throughout the application."
+    },
+    "file:src/lib/paystackConfig.ts": {
+      "name": "paystackConfig.ts",
+      "type": "file",
+      "summary": "Exports a paystackConfig object containing Paystack public key and plan codes for each subscription tier, sourced from environment variables."
+    },
+    "file:src/pages/Settings.tsx": {
+      "name": "Settings.tsx",
+      "type": "file",
+      "summary": "Full-featured settings page that allows users to view and edit their profile, manage their subscription status and cancellation, and review billing history across tabbed sections."
+    },
+    "file:src/pages/Subscription.tsx": {
+      "name": "Subscription.tsx",
+      "type": "file",
+      "summary": "Subscription management page where users can view their current plan, compare available plans with feature lists, enter a payment email, and initiate a Paystack checkout for plan upgrades."
+    },
+    "file:src/components/GlobalSearch.tsx": {
+      "name": "GlobalSearch.tsx",
+      "type": "file",
+      "summary": "Modal global search component that listens for keyboard shortcuts, queries all project entities via useGlobalSearch, groups results by type, and navigates to the selected item's detail page."
+    },
+    "file:src/components/clients/ClientRow.tsx": {
+      "name": "ClientRow.tsx",
+      "type": "file",
+      "summary": "Renders a single client record as a table row, displaying formatted dates, currency amounts, and inline action buttons via ClientActions."
+    },
+    "file:src/components/clients/ClientsTable.tsx": {
+      "name": "ClientsTable.tsx",
+      "type": "file",
+      "summary": "Full-featured clients table component with desktop and mobile views, summary statistics row, pagination, and per-row action delegation to ClientRow."
+    },
+    "file:src/components/invoices/InvoicesTable.tsx": {
+      "name": "InvoicesTable.tsx",
+      "type": "file",
+      "summary": "Large invoice management table component with desktop and mobile layouts supporting PDF download, PDF print, WhatsApp sharing, edit, and delete operations via Supabase queries."
+    },
+    "file:src/components/ui/badge.tsx": {
+      "name": "badge.tsx",
+      "type": "file",
+      "summary": "Reusable shadcn/ui Badge component with variant styles (default, secondary, destructive, outline) built on class-variance-authority."
+    },
+    "file:src/components/ui/command.tsx": {
+      "name": "command.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Command palette primitive providing Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, and CommandShortcut subcomponents built on cmdk."
+    },
+    "file:src/components/ui/table.tsx": {
+      "name": "table.tsx",
+      "type": "file",
+      "summary": "shadcn/ui Table primitive exporting all structural subcomponents: Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, and TableCaption."
+    },
+    "file:src/lib/pdfGenerator.ts": {
+      "name": "pdfGenerator.ts",
+      "type": "file",
+      "summary": "Invoice PDF generation library using jsPDF and jspdf-autotable; exposes generateInvoicePDF for building the document, downloadInvoicePDF for browser download, and printInvoicePDF for silent browser print."
+    },
+    "file:src/lib/whatsapp.ts": {
+      "name": "whatsapp.ts",
+      "type": "file",
+      "summary": "Client-side WhatsApp integration utilities that format phone numbers and open wa.me deep-links to send pre-composed invoice notifications or generic messages."
+    },
+    "file:src/pages/SuperAdminUsers.tsx": {
+      "name": "SuperAdminUsers.tsx",
+      "type": "file",
+      "summary": "Super-admin management page that lists all super-admin users, enables global profile search across tenants, and allows promoting users to the super-admin role via Supabase mutations."
+    },
+    "file:src/shared/utils/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Minimal barrel file re-exporting shared utility helpers (formatDate, formatCurrency) for use across the application."
+    },
+    "file:src/components/ui/toast.tsx": {
+      "name": "toast.tsx",
+      "type": "file",
+      "summary": "Defines the full set of Radix UI-based toast primitive components — ToastProvider, ToastViewport, Toast, ToastAction, ToastClose, ToastTitle, and ToastDescription — styled with CVA variants (default and destructive) and TailwindCSS."
+    },
+    "file:src/components/ui/toaster.tsx": {
+      "name": "toaster.tsx",
+      "type": "file",
+      "summary": "Renders the active toast notifications by consuming the useToast hook and mapping over the current toast state to display Toast, ToastTitle, ToastDescription, ToastClose, and ToastAction components."
+    },
+    "file:src/components/ui/use-toast.ts": {
+      "name": "use-toast.ts",
+      "type": "file",
+      "summary": "Thin re-export barrel that proxies the useToast hook and toast imperative function from src/hooks/use-toast.ts, maintaining a shadcn-compatible import path at the UI component layer."
+    },
+    "file:src/hooks/use-toast.ts": {
+      "name": "use-toast.ts",
+      "type": "file",
+      "summary": "Implements the complete client-side toast notification system: a Redux-style reducer managing ADD, UPDATE, DISMISS, and REMOVE actions against an in-memory singleton state, an imperative toast() factory function, and a useToast React hook that subscribes components to that state."
+    },
+    "pipeline:.github/workflows/main.yml": {
+      "name": "main.yml",
+      "type": "pipeline",
+      "summary": "GitHub Actions workflow that triggers on every push to main, builds the Vite/React project, and force-pushes the compiled dist output to a dedicated dist branch for deployment."
+    },
+    "step:.github/workflows/main.yml:deploy-dist": {
+      "name": "deploy-dist",
+      "type": "pipeline",
+      "summary": "Single CI job running on ubuntu-latest that checks out the repo, installs Node 18 dependencies, builds the project, and publishes the dist output to the dist branch via force-push."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:tenants": {
+      "name": "tenants",
+      "type": "table",
+      "summary": "Core tenants table representing business organizations in the multi-tenant platform, with phone number uniqueness constraints and timestamps."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:profiles": {
+      "name": "profiles",
+      "type": "table",
+      "summary": "User profile records linked to both auth users and tenants, storing display name and contact information with phone validation."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:user_roles": {
+      "name": "user_roles",
+      "type": "table",
+      "summary": "Join table assigning app_role enum values (admin, user) to auth users, with a unique constraint per user-role pair."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:clients": {
+      "name": "clients",
+      "type": "table",
+      "summary": "Client records scoped to a tenant, tracking contact information, account balance, and status with phone format validation."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:products": {
+      "name": "products",
+      "type": "table",
+      "summary": "Product catalog entries scoped to a tenant with name, price, and optional description."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:invoices": {
+      "name": "invoices",
+      "type": "table",
+      "summary": "Invoice records linking tenants and clients with invoice number uniqueness per tenant, amount, status, and optional notes."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql:transactions": {
+      "name": "transactions",
+      "type": "table",
+      "summary": "Financial transaction records of type 'sale' or 'payment', linked to tenant, client, and optionally an invoice."
+    },
+    "table:supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql": {
+      "name": "20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "type": "table",
+      "summary": "Initial schema migration establishing the core multi-tenant data model: tenants, profiles, user_roles, clients, products, invoices, and transactions tables with RLS policies, helper functions, and performance indexes."
+    },
+    "table:supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql": {
+      "name": "20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+      "type": "table",
+      "summary": "Security fix migration that patches the update_updated_at_column trigger function to set search_path, closing a potential schema injection vulnerability."
+    },
+    "table:supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql": {
+      "name": "20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+      "type": "table",
+      "summary": "Alters the clients table to make phone_number required and name/email optional, and adds a unique constraint on phone_number per tenant."
+    },
+    "table:supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql": {
+      "name": "20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "type": "table",
+      "summary": "Creates the client_details view joining clients, invoices, and transactions to expose total_invoiced and total_paid aggregates, and adds several performance indexes."
+    },
+    "table:supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql": {
+      "name": "20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+      "type": "table",
+      "summary": "Recreates the client_details view with security_invoker = true so it respects the querying user's RLS policies rather than bypassing them."
+    },
+    "table:supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql": {
+      "name": "20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+      "type": "table",
+      "summary": "Adds the 'client' value to the app_role enum to support client-facing authenticated access."
+    },
+    "table:supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql": {
+      "name": "20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+      "type": "table",
+      "summary": "Introduces the update_client_status trigger function to automatically recalculate and update a client's status (open/closed) after any change to invoices or transactions."
+    },
+    "table:supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql": {
+      "name": "20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+      "type": "table",
+      "summary": "Security fix that drops and recreates the update_client_status function and its triggers with SECURITY DEFINER and a fixed search_path."
+    },
+    "table:supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql": {
+      "name": "20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+      "type": "table",
+      "summary": "Further refines the update_client_status function by adding it to the public schema with proper SECURITY DEFINER and search_path settings."
+    },
+    "table:supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql": {
+      "name": "20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+      "type": "table",
+      "summary": "Adds an optional product_id foreign key column to the invoices table to support product-linked invoices, with a performance index."
+    },
+    "table:supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql": {
+      "name": "20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+      "type": "table",
+      "summary": "Extends the invoices table status column to accept 'partial' as a valid value alongside pending, paid, and overdue, using a check constraint."
+    },
+    "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql:notifications": {
+      "name": "notifications",
+      "type": "table",
+      "summary": "Notifications table storing per-user, per-tenant alerts for invoice, payment, client, product, and system events with read status and deep-link support."
+    },
+    "table:supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql": {
+      "name": "20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "type": "table",
+      "summary": "Creates the notifications table with RLS policies, an updated_at trigger, performance indexes, and enables Supabase Realtime for the table."
+    },
+    "table:supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql": {
+      "name": "20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "type": "table",
+      "summary": "Adds client-facing RLS policies to invoices and clients tables so authenticated clients can view their own records based on a phone number encoded in their JWT email."
+    },
+    "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql:payment_details": {
+      "name": "payment_details",
+      "type": "table",
+      "summary": "Payment configuration table for tenants to store M-Pesa Paybill and Till payment options with active/inactive toggles."
+    },
+    "table:supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql": {
+      "name": "20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "type": "table",
+      "summary": "Creates the payment_details table with RLS policies for tenant admins and clients to view active payment options (M-Pesa Paybill/Till), plus an updated_at trigger."
+    },
+    "table:supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql": {
+      "name": "20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "type": "table",
+      "summary": "Updates client-facing RLS policies on clients, invoices, and payment_details tables to use a new tenant-specific email format that encodes both phone and tenant ID."
+    },
+    "table:supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql": {
+      "name": "20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "type": "table",
+      "summary": "Adds the update_invoice_status_on_payment trigger function implementing a pending → partial → paid state machine, fired after any transaction change."
+    },
+    "table:supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql": {
+      "name": "20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "type": "table",
+      "summary": "Implements domain event-driven notification triggers: create_payment_notification fires after each payment transaction and create_invoice_notification fires after each invoice insert, writing records to the notifications table."
+    },
+    "table:supabase/migrations/20260127155500_add_superadmin_role.sql": {
+      "name": "20260127155500_add_superadmin_role.sql",
+      "type": "table",
+      "summary": "Adds 'superadmin' to the app_role enum and updates RLS policies on tenants, profiles, and user_roles so superadmins can read all rows across all tenants."
+    },
+    "table:supabase/migrations/20260127203127_add_subscription_tiers.sql": {
+      "name": "20260127203127_add_subscription_tiers.sql",
+      "type": "table",
+      "summary": "Introduces the subscription_tier enum (monthly, semi-annual, annual) and adds subscription_tier and is_active columns to the tenants table; also grants superadmins visibility over all transactions and invoices."
+    },
+    "table:supabase/migrations/20260127224000_superadmin_rls_expansion.sql": {
+      "name": "20260127224000_superadmin_rls_expansion.sql",
+      "type": "table",
+      "summary": "Expands superadmin SELECT visibility to the clients, products, and invoices tables by replacing tenant-scoped policies with has_role-gated alternatives."
+    },
+    "table:supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql": {
+      "name": "20260127230000_comprehensive_superadmin_rls.sql",
+      "type": "table",
+      "summary": "Comprehensive RLS expansion ensuring superadmins can SELECT across all core tables: profiles, clients, products, invoices, transactions, and user_roles."
+    },
+    "table:supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql": {
+      "name": "20260127233000_superadmin_tenant_update_rls.sql",
+      "type": "table",
+      "summary": "Grants superadmins UPDATE access on the tenants table for managing activation state and subscription tiers."
+    },
+    "table:supabase/migrations/20260128110000_superadmin_user_management_rls.sql": {
+      "name": "20260128110000_superadmin_user_management_rls.sql",
+      "type": "table",
+      "summary": "Grants superadmins full CRUD access on user_roles and refines the profile SELECT policy, also adding a foreign key from user_roles.user_id to profiles.user_id."
+    },
+    "table:supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql": {
+      "name": "20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+      "type": "table",
+      "summary": "Replaces the get_user_tenant_id helper function using the updated SET search_path TO syntax for improved security compliance."
+    },
+    "table:supabase/migrations/20260327214000_add_profile_email.sql": {
+      "name": "20260327214000_add_profile_email.sql",
+      "type": "table",
+      "summary": "Adds an optional email column to the profiles table to store the user's real email address for transactions and notifications."
+    },
+    "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql:subscription_billing_history": {
+      "name": "subscription_billing_history",
+      "type": "table",
+      "summary": "Billing history table recording Paystack subscription events (charge.success, invoice.payment_failed, etc.) per tenant with reference, amount, and status."
+    },
+    "table:supabase/migrations/20260328192957_add_subscription_billing_history.sql": {
+      "name": "20260328192957_add_subscription_billing_history.sql",
+      "type": "table",
+      "summary": "Creates the subscription_billing_history table with RLS so each tenant sees only their own billing events, plus indexes for fast lookup by tenant and Paystack reference."
+    },
+    "config:.env": {
+      "name": ".env",
+      "type": "config",
+      "summary": "Environment variable file configuring runtime secrets for Supabase (URL, project ID, API key), Paystack payment gateway (test and production keys, plan codes for monthly/6-month/12-month tiers), Africa's Talking SMS credentials, and superadmin email."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Project overview for Nunua Polepole — a multi-tenant business directory and credit management platform. Covers core features, superadmin capabilities, local development setup, and the technology stack (Vite, React, TypeScript, shadcn/ui, Tailwind CSS, Supabase)."
+    },
+    "config:components.json": {
+      "name": "components.json",
+      "type": "config",
+      "summary": "shadcn/ui CLI configuration specifying default style, TSX mode, Tailwind setup (config path, CSS entry, slate base color, CSS variables), and path aliases for components, utils, ui, lib, and hooks directories."
+    },
+    "file:index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "Vite SPA entry HTML document for LipiaPolePole credit management system. Declares viewport, favicon, Open Graph and Twitter card metadata, Google Fonts imports (Outfit + Plus Jakarta Sans), and the root div that bootstraps src/main.tsx."
+    },
+    "config:package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Node.js project manifest defining build scripts (dev, build, lint, preview), runtime dependencies (React, Radix UI primitives, Supabase JS client, Tanstack Query, Paystack, Recharts, Zod, React Hook Form), and dev dependencies (Vite, TypeScript, Tailwind CSS, ESLint)."
+    },
+    "config:tsconfig.app.json": {
+      "name": "tsconfig.app.json",
+      "type": "config",
+      "summary": "TypeScript compiler configuration for the React application source targeting ES2020 with react-jsx transform, bundler module resolution, the @/* path alias mapped to src/*, noEmit enabled, and strict mode disabled to allow gradual type safety adoption."
+    },
+    "config:tsconfig.json": {
+      "name": "tsconfig.json",
+      "type": "config",
+      "summary": "Root TypeScript project file using composite project references to delegate compilation to tsconfig.app.json (src/ application code) and tsconfig.node.json (Vite config tooling), with shared loose compiler options and the @/* path alias."
+    },
+    "config:tsconfig.node.json": {
+      "name": "tsconfig.node.json",
+      "type": "config",
+      "summary": "TypeScript compiler configuration for Vite's Node.js tooling (vite.config.ts), using bundler module resolution with ESNext target and composite project reference support."
+    },
+    "config:vercel.json": {
+      "name": "vercel.json",
+      "type": "config",
+      "summary": "Vercel deployment configuration with a catch-all rewrite rule that redirects all routes to index.html, enabling client-side routing for the React SPA."
+    },
+    "document:docs/ARCHITECTURE.md": {
+      "name": "ARCHITECTURE.md",
+      "type": "document",
+      "summary": "Comprehensive domain-driven architecture guide for the Lipia Pole Pole credit management platform, covering 15 sections including bounded contexts, entity relationships, state machines, multi-tenancy patterns, authentication/authorization with RBAC, API layer patterns, error handling, and coding conventions."
+    },
+    "document:docs/DEVELOPER.md": {
+      "name": "DEVELOPER.md",
+      "type": "document",
+      "summary": "Developer-focused guide covering the multi-tenant SaaS architecture, database ERD with key tables, project directory structure, and step-by-step instructions for adding database migrations, new API endpoints, and Supabase Edge Functions."
+    },
+    "document:docs/ROLES.md": {
+      "name": "ROLES.md",
+      "type": "document",
+      "summary": "Reference document for the platform's role-based access control (RBAC) system, defining the four-tier role hierarchy (Superadmin, Owner, Staff, Client), their respective permissions, and how roles are enforced at both the Supabase RLS database layer and the React frontend layer."
+    },
+    "table:supabase/recreate_database.sql:tenants": {
+      "name": "tenants",
+      "type": "table",
+      "summary": "Root multi-tenant entity storing business identity, status, subscription tier, and soft-delete metadata. All other tenant-scoped tables cascade from this table via foreign key."
+    },
+    "table:supabase/recreate_database.sql:profiles": {
+      "name": "profiles",
+      "type": "table",
+      "summary": "Links Supabase auth users to their tenant, storing display name and phone number with format validation constraints."
+    },
+    "table:supabase/recreate_database.sql:clients": {
+      "name": "clients",
+      "type": "table",
+      "summary": "Stores business clients per tenant with contact details, running balance, and status. Phone number is unique per tenant."
+    },
+    "table:supabase/recreate_database.sql:products": {
+      "name": "products",
+      "type": "table",
+      "summary": "Catalog of products or services offered by a tenant, with name, price, and optional description."
+    },
+    "table:supabase/recreate_database.sql:invoices": {
+      "name": "invoices",
+      "type": "table",
+      "summary": "Records invoices issued by a tenant to a client for a product, with status lifecycle (pending/paid/partial/overdue) and unique invoice numbers per tenant."
+    },
+    "table:supabase/recreate_database.sql:transactions": {
+      "name": "transactions",
+      "type": "table",
+      "summary": "Captures financial transactions (sales or payments) per tenant-client pair, optionally linked to an invoice."
+    },
+    "table:supabase/recreate_database.sql:notifications": {
+      "name": "notifications",
+      "type": "table",
+      "summary": "In-app notification records for tenant users, supporting invoice, payment, client, product, and system event types."
+    },
+    "table:supabase/recreate_database.sql:payment_details": {
+      "name": "payment_details",
+      "type": "table",
+      "summary": "Stores per-tenant M-Pesa payment configuration entries (paybill, till, or account number) with active/inactive status."
+    },
+    "table:supabase/recreate_database.sql:user_roles": {
+      "name": "user_roles",
+      "type": "table",
+      "summary": "Associates auth users with application roles (admin, user, client, superadmin) with uniqueness enforced per user-role pair."
+    },
+    "table:supabase/recreate_database.sql:super_admins": {
+      "name": "super_admins",
+      "type": "table",
+      "summary": "Registry of platform-level super and support administrators, identified by user_id and email, with active status and last login tracking."
+    },
+    "table:supabase/recreate_database.sql:super_admin_audit_logs": {
+      "name": "super_admin_audit_logs",
+      "type": "table",
+      "summary": "Immutable audit trail for super admin actions, capturing action type, affected resource, tenant, IP address, and user agent for governance."
+    },
+    "table:supabase/recreate_database.sql:tenant_subscriptions": {
+      "name": "tenant_subscriptions",
+      "type": "table",
+      "summary": "Tracks per-tenant subscription plan (free/pro/enterprise) with usage limits for users, clients, invoices, and products, plus billing lifecycle dates."
+    },
+    "table:supabase/recreate_database.sql:tenant_feature_flags": {
+      "name": "tenant_feature_flags",
+      "type": "table",
+      "summary": "Per-tenant feature flag toggles enabling runtime feature gating by flag name without code deploys."
+    },
+    "table:supabase/recreate_database.sql:tenant_usage_metrics": {
+      "name": "tenant_usage_metrics",
+      "type": "table",
+      "summary": "Periodic usage snapshots per tenant recording user, client, invoice, and transaction counts alongside API calls and storage bytes for billing and analytics."
+    },
+    "schema:supabase/recreate_database.sql": {
+      "name": "recreate_database.sql",
+      "type": "schema",
+      "summary": "Complete Supabase database recreation script defining all 14 tables, 5 ENUM types, 1 view, 42 indexes, Row Level Security policies, and 15+ PL/pgSQL functions and triggers for the multi-tenant platform. Includes super admin governance, subscription management, and automated business logic triggers."
+    },
+    "table:supabase/add_subscription_columns.sql:tenants": {
+      "name": "tenants (trial column)",
+      "type": "table",
+      "summary": "Migration target: adds trial_ends_at column to tenants with a 7-day default and backfills existing rows."
+    },
+    "table:supabase/add_subscription_columns.sql:tenant_subscriptions": {
+      "name": "tenant_subscriptions (paystack columns)",
+      "type": "table",
+      "summary": "Migration target: adds Paystack integration columns (customer code, subscription code, next payment date, cancellation timestamp) to tenant_subscriptions."
+    },
+    "schema:supabase/add_subscription_columns.sql": {
+      "name": "add_subscription_columns.sql",
+      "type": "schema",
+      "summary": "Additive migration extending the subscription model with trial period tracking on tenants and Paystack payment gateway fields on tenant_subscriptions. Includes trigger and helper function for automated trial assignment."
+    },
+    "config:supabase/config.toml": {
+      "name": "config.toml",
+      "type": "config",
+      "summary": "Supabase project configuration specifying the project ID and disabling JWT verification for four Edge Functions: reset-password, resolve-login-email, create-client-user, and send-transaction-sms."
+    },
+    "file:.understand-anything/.understandignore": {
+      "name": ".understandignore",
+      "type": "file",
+      "summary": "Ignore rules for the understand-anything knowledge graph tool, listing file patterns (binaries, build artifacts, lockfiles, temp files) to exclude from codebase analysis."
+    },
+    "file:bun.lockb": {
+      "name": "bun.lockb",
+      "type": "file",
+      "summary": "Binary lockfile generated by the Bun package manager, pinning exact dependency versions for reproducible installs across environments."
+    },
+    "file:eslint.config.js": {
+      "name": "eslint.config.js",
+      "type": "file",
+      "summary": "ESLint flat configuration enabling TypeScript-ESLint recommended rules, React Hooks linting, and React Refresh component-export warnings for the project's TypeScript and TSX files."
+    },
+    "file:postcss.config.js": {
+      "name": "postcss.config.js",
+      "type": "file",
+      "summary": "PostCSS configuration file wiring in Tailwind CSS and Autoprefixer plugins for CSS processing during the Vite build pipeline."
+    },
+    "document:public/robots.txt": {
+      "name": "robots.txt",
+      "type": "document",
+      "summary": "Robots exclusion file allowing all web crawlers unrestricted access to the site, with a sitemap reference pointing to the production domain."
+    },
+    "file:src/App.css": {
+      "name": "App.css",
+      "type": "file",
+      "summary": "Root application CSS file providing base styles for the app container, logo animations, and card layout utilities used at the top-level component level."
+    },
+    "file:src/components/ui/aspect-ratio.tsx": {
+      "name": "aspect-ratio.tsx",
+      "type": "file",
+      "summary": "Thin re-export of the Radix UI AspectRatio primitive, exposing it as a named export for use in the project's shadcn/ui component library."
+    },
+    "file:src/index.css": {
+      "name": "index.css",
+      "type": "file",
+      "summary": "Global stylesheet defining Tailwind CSS base/components/utilities directives, CSS custom properties for the design system (colors, radius, fonts), and dark mode theme tokens."
+    },
+    "file:src/shared/utils/currency.ts": {
+      "name": "currency.ts",
+      "type": "file",
+      "summary": "Provides currency formatting and parsing utilities that localize monetary amounts and convert formatted currency strings back to numeric values."
+    },
+    "file:src/shared/utils/date.ts": {
+      "name": "date.ts",
+      "type": "file",
+      "summary": "Provides date formatting helpers for displaying dates in long, short, and human-readable relative formats (e.g., '2 days ago') throughout the application."
+    },
+    "file:src/vite-env.d.ts": {
+      "name": "vite-env.d.ts",
+      "type": "file",
+      "summary": "Vite environment type declaration file that references Vite's client type definitions, enabling IntelliSense for import.meta.env and other Vite globals."
+    },
+    "file:supabase/.temp/cli-latest": {
+      "name": "cli-latest",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file recording the latest Supabase CLI version used with this project."
+    },
+    "file:supabase/.temp/gotrue-version": {
+      "name": "gotrue-version",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file recording the GoTrue (authentication service) version for the local Supabase stack."
+    },
+    "file:supabase/.temp/pooler-url": {
+      "name": "pooler-url",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file storing the connection pooler URL for the linked Supabase project."
+    },
+    "file:supabase/.temp/postgres-version": {
+      "name": "postgres-version",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file recording the PostgreSQL version in use for the linked Supabase project."
+    },
+    "file:supabase/.temp/project-ref": {
+      "name": "project-ref",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file storing the project reference ID for the linked remote Supabase project."
+    },
+    "file:supabase/.temp/rest-version": {
+      "name": "rest-version",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file recording the PostgREST (REST API service) version for the local Supabase stack."
+    },
+    "file:supabase/.temp/storage-migration": {
+      "name": "storage-migration",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file tracking the applied storage migration version for the local Supabase stack."
+    },
+    "file:supabase/.temp/storage-version": {
+      "name": "storage-version",
+      "type": "file",
+      "summary": "Supabase CLI temporary state file recording the Supabase Storage service version for the local stack."
+    },
+    "file:supabase/fix_sql.py": {
+      "name": "fix_sql.py",
+      "type": "file",
+      "summary": "One-off Python utility script that reorders sections 7 and 8 in the recreate_database.sql file, swapping the positions of RLS policies and database functions sections."
+    },
+    "file:supabase/functions/create-client-user/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that creates a new tenant-scoped client user via the Supabase Admin API, handling idempotent upsert of auth user, profile, and role records, with rollback on failure and post-creation notifications via Telegram and Africa's Talking SMS."
+    },
+    "file:supabase/functions/delete-tenant/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function restricted to superadmins that performs a cascading hard-delete of a tenant and all related data (transactions, payments, invoices, products, clients, subscriptions, user roles, profiles, and auth users) in FK-safe order."
+    },
+    "config:supabase/functions/deno.json": {
+      "name": "deno.json",
+      "type": "config",
+      "summary": "Deno configuration file for Supabase Edge Functions that pins the Deno standard library import map to version 0.177.0."
+    },
+    "file:supabase/functions/paystack-cancel/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that cancels a Paystack subscription by fetching its secure email token and sending a disable request to the Paystack API, supporting both test and production environments."
+    },
+    "file:supabase/functions/paystack-initialize/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that initializes a Paystack subscription payment, applying prorated credit when a tenant upgrades mid-cycle, creating Paystack customers on demand, and returning a checkout authorization URL."
+    },
+    "file:supabase/functions/paystack-webhook/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that handles Paystack webhook events for subscription lifecycle management, including charge success, subscription creation, invoice payments, and cancellations. Verifies HMAC-SHA512 signatures, manages plan upgrades/downgrades with proration, logs billing history, and syncs tenant feature flags and usage metrics."
+    },
+    "file:supabase/functions/reset-password/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that resets user passwords by generating a random 6-digit PIN, looking up user accounts by phone number via the profiles table, updating all matched user accounts, and sending the PIN via Africa's Talking SMS API with allowlist enforcement."
+    },
+    "file:supabase/functions/resolve-login-email/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that resolves a phone number to one or more Supabase Auth email addresses by querying the profiles table and fetching user records via the admin API, enabling phone-based login flows where email is the actual auth credential."
+    },
+    "file:supabase/functions/send-transaction-sms/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that sends transactional SMS notifications to clients for sales invoices and payment receipts via Africa's Talking API, enforcing JWT authentication, tenant isolation, phone allowlists, and dynamic message formatting in KSH."
+    },
+    "file:supabase/functions/setup-tenant/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Supabase Edge Function that bootstraps a new tenant on first user signup: validates input with Zod, creates or reuses a tenant record, creates the user's profile, and assigns the 'admin' role to the first user of the tenant."
+    },
+    "file:tailwind.config.ts": {
+      "name": "tailwind.config.ts",
+      "type": "file",
+      "summary": "Tailwind CSS configuration defining the design system for the application: custom semantic color tokens mapped to CSS variables (supporting dark mode via class), custom font families (Outfit and Plus Jakarta Sans), border radius tokens, and keyframe animations including accordion and floating effects."
+    },
+    "file:vite.config.ts": {
+      "name": "vite.config.ts",
+      "type": "file",
+      "summary": "Vite build configuration enabling the React SWC plugin for fast compilation, the Lovable component tagger in development mode, and a path alias mapping '@' to the 'src' directory."
+    }
+  },
+  "totalNodes": 225,
+  "totalEdges": 871
+}

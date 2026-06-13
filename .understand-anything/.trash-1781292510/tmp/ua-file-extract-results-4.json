@@ -1,0 +1,1809 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 16,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/components/FeatureGate.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 85,
+      "functions": [
+        {
+          "name": "FeatureGate",
+          "startLine": 28,
+          "endLine": 95,
+          "params": [
+            "{ \n  feature, \n  children, \n  fallback = 'hide',\n  upgradeMessage = \"Upgrade your plan to unlock this feature.\"\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FeatureGate",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FeatureGate",
+          "callee": "useSubscription",
+          "lineNumber": 34
+        },
+        {
+          "caller": "FeatureGate",
+          "callee": "isFeatureEnabled",
+          "lineNumber": 38
+        },
+        {
+          "caller": "FeatureGate",
+          "callee": "React.isValidElement",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/NotificationDropdown.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 175,
+      "nonEmptyLines": 165,
+      "functions": [
+        {
+          "name": "NotificationDropdown",
+          "startLine": 35,
+          "endLine": 175,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NotificationDropdown",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useState",
+          "lineNumber": 36
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useNavigate",
+          "lineNumber": 37
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useNotifications",
+          "lineNumber": 38
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useUnreadCount",
+          "lineNumber": 39
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useMarkAsRead",
+          "lineNumber": 40
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useMarkAllAsRead",
+          "lineNumber": 41
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "useDeleteNotification",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handleNotificationClick",
+          "callee": "markAsRead.mutate",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleNotificationClick",
+          "callee": "navigate",
+          "lineNumber": 49
+        },
+        {
+          "caller": "handleNotificationClick",
+          "callee": "setOpen",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "e.stopPropagation",
+          "lineNumber": 55
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "deleteNotification.mutate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleMarkAllRead",
+          "callee": "markAllAsRead.mutate",
+          "lineNumber": 60
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "notifications.map",
+          "lineNumber": 104
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "cn",
+          "lineNumber": 111
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "handleNotificationClick",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "cn",
+          "lineNumber": 117
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "formatDistanceToNow",
+          "lineNumber": 134
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "handleDelete",
+          "lineNumber": 142
+        },
+        {
+          "caller": "NotificationDropdown",
+          "callee": "setOpen",
+          "lineNumber": 163
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientActions.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 175,
+      "nonEmptyLines": 166,
+      "functions": [
+        {
+          "name": "ClientActions",
+          "startLine": 26,
+          "endLine": 175,
+          "params": [
+            "{ client, onEdit, onRefresh }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientActions",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientActions",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "useState",
+          "lineNumber": 29
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "useState",
+          "lineNumber": 30
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "useDeleteClient",
+          "lineNumber": 32
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "useUpdateClient",
+          "lineNumber": 33
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "useSubscription",
+          "lineNumber": 34
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "isFeatureEnabled",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "deleteClient.mutateAsync",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 39
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "onRefresh",
+          "lineNumber": 40
+        },
+        {
+          "caller": "handleToggleStatus",
+          "callee": "updateClient.mutateAsync",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleToggleStatus",
+          "callee": "toast",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleToggleStatus",
+          "callee": "onRefresh",
+          "lineNumber": 54
+        },
+        {
+          "caller": "handleToggleStatus",
+          "callee": "toast",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleTopUpClick",
+          "callee": "toast",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handleTopUpClick",
+          "callee": "setSalesDialogOpen",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleTopUpClick",
+          "callee": "setTopUpDialogOpen",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "onEdit",
+          "lineNumber": 93
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "handleTopUpClick",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setSalesDialogOpen",
+          "lineNumber": 109
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setTransactionsDialogOpen",
+          "lineNumber": 116
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "handleToggleStatus",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 131
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setTopUpDialogOpen",
+          "lineNumber": 144
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "onRefresh",
+          "lineNumber": 145
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setSalesDialogOpen",
+          "lineNumber": 152
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "onRefresh",
+          "lineNumber": 153
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setTransactionsDialogOpen",
+          "lineNumber": 160
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "onRefresh",
+          "lineNumber": 161
+        },
+        {
+          "caller": "ClientActions",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 167
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientSalesDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 265,
+      "nonEmptyLines": 247,
+      "functions": [
+        {
+          "name": "ClientSalesDialog",
+          "startLine": 33,
+          "endLine": 265,
+          "params": [
+            "{ open, onClose, client }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientSalesDialog",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "useState",
+          "lineNumber": 34
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "useState",
+          "lineNumber": 35
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "useState",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "useEffect",
+          "lineNumber": 38
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "fetchInvoices",
+          "lineNumber": 40
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "setLoading",
+          "lineNumber": 47
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "supabase\n        .from(\"invoices\")\n        .select(\"*, products(name)\")\n        .eq(\"client_id\", client.id)\n        .order",
+          "lineNumber": 49
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "supabase\n        .from(\"invoices\")\n        .select(\"*, products(name)\")\n        .eq",
+          "lineNumber": 49
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "supabase\n        .from(\"invoices\")\n        .select",
+          "lineNumber": 49
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "supabase\n        .from",
+          "lineNumber": 49
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "setInvoices",
+          "lineNumber": 56
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "console.error",
+          "lineNumber": 58
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "toast.error",
+          "lineNumber": 59
+        },
+        {
+          "caller": "fetchInvoices",
+          "callee": "setLoading",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "supabase\n        .from(\"clients\")\n        .update({ status: \"active\" })\n        .eq",
+          "lineNumber": 69
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "supabase\n        .from(\"clients\")\n        .update",
+          "lineNumber": 69
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "supabase\n        .from",
+          "lineNumber": 69
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "toast.success",
+          "lineNumber": 75
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "onClose",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "console.error",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handleActivateAccount",
+          "callee": "toast.error",
+          "lineNumber": 79
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "client.id.slice(0, 8).toUpperCase",
+          "lineNumber": 103
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "client.id.slice",
+          "lineNumber": 103
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "client.totalInvoiced.toLocaleString",
+          "lineNumber": 115
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "Number(client.total_balance).toLocaleString",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "Number",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "setAddSalesDialogOpen",
+          "lineNumber": 142
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "invoices.map",
+          "lineNumber": 157
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "Number(invoice.amount).toLocaleString",
+          "lineNumber": 164
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "Number",
+          "lineNumber": 164
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "invoices.map",
+          "lineNumber": 206
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "Number(invoice.amount).toLocaleString",
+          "lineNumber": 214
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "Number",
+          "lineNumber": 214
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "setAddSalesDialogOpen",
+          "lineNumber": 258
+        },
+        {
+          "caller": "ClientSalesDialog",
+          "callee": "fetchInvoices",
+          "lineNumber": 259
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/products/ProductDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "ProductDialog",
+          "startLine": 23,
+          "endLine": 115,
+          "params": [
+            "{ open, onClose, product }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProductDialog",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProductDialog",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "useCreateProduct",
+          "lineNumber": 30
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "useUpdateProduct",
+          "lineNumber": 31
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "useEffect",
+          "lineNumber": 34
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "setFormData",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "product.price.toString",
+          "lineNumber": 39
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "setFormData",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "e.preventDefault",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "updateProduct.mutate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "onClose",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "createProduct.mutate",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "onClose",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "setFormData",
+          "lineNumber": 77
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "setFormData",
+          "lineNumber": 87
+        },
+        {
+          "caller": "ProductDialog",
+          "callee": "setFormData",
+          "lineNumber": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/products/ProductsTable.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 192,
+      "nonEmptyLines": 182,
+      "functions": [
+        {
+          "name": "ProductsTable",
+          "startLine": 26,
+          "endLine": 192,
+          "params": [
+            "{ products, onEdit, onRefresh }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProductsTable",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProductsTable",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "useState",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "useDeleteProduct",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handleDeleteClick",
+          "callee": "setProductToDelete",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleDeleteClick",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 33
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "deleteProduct.mutateAsync",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 39
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "setProductToDelete",
+          "lineNumber": 40
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "onRefresh",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "products.map",
+          "lineNumber": 48
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "formatCurrency",
+          "lineNumber": 76
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "onEdit",
+          "lineNumber": 85
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "handleDeleteClick",
+          "lineNumber": 96
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "products.map",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "formatCurrency",
+          "lineNumber": 148
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "onEdit",
+          "lineNumber": 156
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "handleDeleteClick",
+          "lineNumber": 167
+        },
+        {
+          "caller": "ProductsTable",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 184
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/alert-dialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 91,
+      "functions": [
+        {
+          "name": "AlertDialogHeader",
+          "startLine": 46,
+          "endLine": 48,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "AlertDialogFooter",
+          "startLine": 51,
+          "endLine": 53,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AlertDialog",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogPortal",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogOverlay",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogTrigger",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogContent",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogHeader",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogFooter",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogTitle",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogDescription",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogAction",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "AlertDialogCancel",
+          "line": 92,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AlertDialogHeader",
+          "callee": "cn",
+          "lineNumber": 47
+        },
+        {
+          "caller": "AlertDialogFooter",
+          "callee": "cn",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 11,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 43,
+      "exports": [
+        {
+          "name": "Button",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "buttonVariants",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/carousel.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 224,
+      "nonEmptyLines": 195,
+      "functions": [
+        {
+          "name": "useCarousel",
+          "startLine": 31,
+          "endLine": 39,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CarouselApi",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "Carousel",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "CarouselContent",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "CarouselItem",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "CarouselPrevious",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "CarouselNext",
+          "line": 224,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useCarousel",
+          "callee": "React.useContext",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/dropdown-menu.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 179,
+      "nonEmptyLines": 162,
+      "functions": [
+        {
+          "name": "DropdownMenuShortcut",
+          "startLine": 158,
+          "endLine": 160,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DropdownMenu",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuTrigger",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuContent",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuItem",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuCheckboxItem",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuRadioItem",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuLabel",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuSeparator",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuShortcut",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuGroup",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuPortal",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuSub",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuSubContent",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuSubTrigger",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "DropdownMenuRadioGroup",
+          "line": 163,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DropdownMenuShortcut",
+          "callee": "cn",
+          "lineNumber": 159
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 15,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/empty-state.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "EmptyState",
+          "startLine": 17,
+          "endLine": 53,
+          "params": [
+            "{ icon: Icon, title, description, action, feature }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "EmptyState",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/pagination.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "Pagination",
+          "startLine": 7,
+          "endLine": 14,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "PaginationLink",
+          "startLine": 34,
+          "endLine": 46,
+          "params": [
+            "{ className, isActive, size = \"icon\", ...props }"
+          ]
+        },
+        {
+          "name": "PaginationPrevious",
+          "startLine": 49,
+          "endLine": 54,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "PaginationNext",
+          "startLine": 57,
+          "endLine": 62,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "PaginationEllipsis",
+          "startLine": 65,
+          "endLine": 70,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Pagination",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "PaginationContent",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "PaginationEllipsis",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "PaginationItem",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "PaginationLink",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "PaginationNext",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "PaginationPrevious",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Pagination",
+          "callee": "cn",
+          "lineNumber": 11
+        },
+        {
+          "caller": "PaginationLink",
+          "callee": "cn",
+          "lineNumber": 37
+        },
+        {
+          "caller": "PaginationLink",
+          "callee": "buttonVariants",
+          "lineNumber": 38
+        },
+        {
+          "caller": "PaginationPrevious",
+          "callee": "cn",
+          "lineNumber": 50
+        },
+        {
+          "caller": "PaginationNext",
+          "callee": "cn",
+          "lineNumber": 58
+        },
+        {
+          "caller": "PaginationEllipsis",
+          "callee": "cn",
+          "lineNumber": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useProducts.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 165,
+      "nonEmptyLines": 147,
+      "functions": [
+        {
+          "name": "useProducts",
+          "startLine": 12,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "useProduct",
+          "startLine": 22,
+          "endLine": 28,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "useSearchProducts",
+          "startLine": 33,
+          "endLine": 40,
+          "params": [
+            "query"
+          ]
+        },
+        {
+          "name": "useCreateProduct",
+          "startLine": 45,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "useUpdateProduct",
+          "startLine": 92,
+          "endLine": 130,
+          "params": []
+        },
+        {
+          "name": "useDeleteProduct",
+          "startLine": 135,
+          "endLine": 165,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useProducts",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "useProduct",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "useSearchProducts",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateProduct",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "useUpdateProduct",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "useDeleteProduct",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useProducts",
+          "callee": "useQuery",
+          "lineNumber": 13
+        },
+        {
+          "caller": "useProduct",
+          "callee": "useQuery",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useProduct",
+          "callee": "queryKeys.productById",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useProduct",
+          "callee": "productsApi.getProductById",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useSearchProducts",
+          "callee": "useQuery",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useSearchProducts",
+          "callee": "productsApi.searchProducts",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "useQueryClient",
+          "lineNumber": 46
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "useMutation",
+          "lineNumber": 48
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "productsApi.createProduct",
+          "lineNumber": 50
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 52
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 54
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 57
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "Date.now",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "new Date().toISOString",
+          "lineNumber": 64
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "new Date().toISOString",
+          "lineNumber": 65
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 75
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "toast.error",
+          "lineNumber": 77
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "console.error",
+          "lineNumber": 78
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "toast.success",
+          "lineNumber": 81
+        },
+        {
+          "caller": "useCreateProduct",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 84
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "useQueryClient",
+          "lineNumber": 93
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "useMutation",
+          "lineNumber": 95
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "productsApi.updateProduct",
+          "lineNumber": 97
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 99
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 104
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "old.map",
+          "lineNumber": 106
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "new Date().toISOString",
+          "lineNumber": 107
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 115
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "toast.error",
+          "lineNumber": 117
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "console.error",
+          "lineNumber": 118
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "toast.success",
+          "lineNumber": 121
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 124
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 126
+        },
+        {
+          "caller": "useUpdateProduct",
+          "callee": "queryKeys.productById",
+          "lineNumber": 126
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "useQueryClient",
+          "lineNumber": 136
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "useMutation",
+          "lineNumber": 138
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 141
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 142
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 144
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "old.filter",
+          "lineNumber": 146
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 153
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "toast.error",
+          "lineNumber": 155
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "console.error",
+          "lineNumber": 156
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "toast.success",
+          "lineNumber": 159
+        },
+        {
+          "caller": "useDeleteProduct",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 162
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Invoices.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 132,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "Invoices",
+          "startLine": 21,
+          "endLine": 132,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Invoices",
+          "line": 21,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Invoices",
+          "callee": "useInvoices",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Invoices",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "Invoices",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setEditingInvoice",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setDialogOpen",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleDialogClose",
+          "callee": "setDialogOpen",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleDialogClose",
+          "callee": "setEditingInvoice",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Invoices",
+          "callee": "[1, 2, 3].map",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Invoices",
+          "callee": "setDialogOpen",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Invoices",
+          "callee": "setDialogOpen",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Invoices",
+          "callee": "refetch",
+          "lineNumber": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Products.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 90,
+      "functions": [
+        {
+          "name": "Products",
+          "startLine": 13,
+          "endLine": 98,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Products",
+          "line": 13,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Products",
+          "callee": "useProducts",
+          "lineNumber": 14
+        },
+        {
+          "caller": "Products",
+          "callee": "useState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Products",
+          "callee": "useState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setEditingProduct",
+          "lineNumber": 19
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setDialogOpen",
+          "lineNumber": 20
+        },
+        {
+          "caller": "handleDialogClose",
+          "callee": "setDialogOpen",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handleDialogClose",
+          "callee": "setEditingProduct",
+          "lineNumber": 25
+        },
+        {
+          "caller": "Products",
+          "callee": "[1, 2, 3].map",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Products",
+          "callee": "setDialogOpen",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Products",
+          "callee": "setDialogOpen",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Products",
+          "callee": "refetch",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/shared/components/DeleteConfirmDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "DeleteConfirmDialog",
+          "startLine": 25,
+          "endLine": 95,
+          "params": [
+            "{\n  open,\n  onClose,\n  onConfirm,\n  title,\n  description,\n  isLoading,\n  confirmValue,\n  confirmText = \"Please type the confirmation value to verify.\",\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DeleteConfirmDialog",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DeleteConfirmDialog",
+          "callee": "useState",
+          "lineNumber": 35
+        },
+        {
+          "caller": "DeleteConfirmDialog",
+          "callee": "useEffect",
+          "lineNumber": 37
+        },
+        {
+          "caller": "DeleteConfirmDialog",
+          "callee": "setInputValue",
+          "lineNumber": 39
+        },
+        {
+          "caller": "DeleteConfirmDialog",
+          "callee": "setInputValue",
+          "lineNumber": 63
+        },
+        {
+          "caller": "DeleteConfirmDialog",
+          "callee": "e.preventDefault",
+          "lineNumber": 81
+        },
+        {
+          "caller": "DeleteConfirmDialog",
+          "callee": "onConfirm",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

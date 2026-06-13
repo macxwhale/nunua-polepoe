@@ -1,0 +1,770 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "type": "file",
+      "name": "UnifiedLoginForm.tsx",
+      "filePath": "src/components/auth/UnifiedLoginForm.tsx",
+      "summary": "Provides a unified login form component supporting both email/password authentication and password reset via Supabase edge functions and client-side auth, with zod-validated react-hook-form forms and tabbed UI.",
+      "tags": ["component", "authentication", "form", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/auth/UnifiedLoginForm.tsx:UnifiedLoginForm",
+      "type": "function",
+      "name": "UnifiedLoginForm",
+      "filePath": "src/components/auth/UnifiedLoginForm.tsx",
+      "lineRange": [36, 286],
+      "summary": "Exported React component that renders sign-in and password-reset tabs; handles multi-tenant login by calling a Supabase edge function to resolve the correct credentials, then signs in with Supabase Auth and calls onSuccess on completion.",
+      "tags": ["component", "authentication", "form"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "type": "file",
+      "name": "ClientTopUpDialog.tsx",
+      "filePath": "src/components/clients/ClientTopUpDialog.tsx",
+      "summary": "Dialog component allowing clients to top up their account balance by displaying active payment method details (e.g., M-Pesa Paybill, Till, account number) with clipboard-copy support.",
+      "tags": ["component", "dialog", "payment", "client"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/clients/ClientTopUpDialog.tsx:ClientTopUpDialog",
+      "type": "function",
+      "name": "ClientTopUpDialog",
+      "filePath": "src/components/clients/ClientTopUpDialog.tsx",
+      "lineRange": [16, 139],
+      "summary": "Exported React component rendering a dialog with payment instructions for client top-ups; fetches active payment details via useActivePaymentDetails and provides copy-to-clipboard functionality for each payment field.",
+      "tags": ["component", "dialog", "payment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/card.tsx",
+      "type": "file",
+      "name": "card.tsx",
+      "filePath": "src/components/ui/card.tsx",
+      "summary": "Reusable shadcn/ui Card primitive providing Card, CardHeader, CardFooter, CardTitle, CardDescription, and CardContent components styled with TailwindCSS utility classes.",
+      "tags": ["component", "ui-primitive", "utility", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/dialog.tsx",
+      "type": "file",
+      "name": "dialog.tsx",
+      "filePath": "src/components/ui/dialog.tsx",
+      "summary": "Reusable shadcn/ui Dialog primitive wrapping Radix UI Dialog with styled overlay, content, header, footer, title, and description sub-components.",
+      "tags": ["component", "ui-primitive", "modal", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/scroll-area.tsx",
+      "type": "file",
+      "name": "scroll-area.tsx",
+      "filePath": "src/components/ui/scroll-area.tsx",
+      "summary": "Reusable shadcn/ui ScrollArea and ScrollBar primitives wrapping Radix UI ScrollArea for custom-styled scrollable regions.",
+      "tags": ["component", "ui-primitive", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/switch.tsx",
+      "type": "file",
+      "name": "switch.tsx",
+      "filePath": "src/components/ui/switch.tsx",
+      "summary": "Reusable shadcn/ui Switch toggle primitive wrapping Radix UI Switch with TailwindCSS styling.",
+      "tags": ["component", "ui-primitive", "form-element"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/tabs.tsx",
+      "type": "file",
+      "name": "tabs.tsx",
+      "filePath": "src/components/ui/tabs.tsx",
+      "summary": "Reusable shadcn/ui Tabs primitive providing Tabs, TabsList, TabsTrigger, and TabsContent components wrapping Radix UI Tabs with TailwindCSS styling.",
+      "tags": ["component", "ui-primitive", "navigation", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/usePayments.ts",
+      "type": "file",
+      "name": "usePayments.ts",
+      "filePath": "src/hooks/usePayments.ts",
+      "summary": "Custom React Query hooks for full CRUD lifecycle of payment details (paybill, till, account), exporting usePaymentDetails, useActivePaymentDetails, useCreatePaymentDetail, useUpdatePaymentDetail, and useDeletePaymentDetail.",
+      "tags": ["hook", "service", "payment", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/usePayments.ts:usePaymentDetails",
+      "type": "function",
+      "name": "usePaymentDetails",
+      "filePath": "src/hooks/usePayments.ts",
+      "lineRange": [13, 18],
+      "summary": "React Query hook that fetches all payment details records for the current tenant.",
+      "tags": ["hook", "payment", "query"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/usePayments.ts:useActivePaymentDetails",
+      "type": "function",
+      "name": "useActivePaymentDetails",
+      "filePath": "src/hooks/usePayments.ts",
+      "lineRange": [23, 28],
+      "summary": "React Query hook that fetches only active payment details, used by the ClientTopUpDialog to show current payment methods.",
+      "tags": ["hook", "payment", "query"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/usePayments.ts:useCreatePaymentDetail",
+      "type": "function",
+      "name": "useCreatePaymentDetail",
+      "filePath": "src/hooks/usePayments.ts",
+      "lineRange": [33, 47],
+      "summary": "React Query mutation hook for creating a new payment detail record, invalidating relevant queries and showing toast feedback on success or error.",
+      "tags": ["hook", "payment", "mutation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/usePayments.ts:useUpdatePaymentDetail",
+      "type": "function",
+      "name": "useUpdatePaymentDetail",
+      "filePath": "src/hooks/usePayments.ts",
+      "lineRange": [52, 67],
+      "summary": "React Query mutation hook for updating an existing payment detail record, invalidating queries and showing toast feedback.",
+      "tags": ["hook", "payment", "mutation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/usePayments.ts:useDeletePaymentDetail",
+      "type": "function",
+      "name": "useDeletePaymentDetail",
+      "filePath": "src/hooks/usePayments.ts",
+      "lineRange": [72, 86],
+      "summary": "React Query mutation hook for deleting a payment detail record, invalidating queries and showing toast feedback.",
+      "tags": ["hook", "payment", "mutation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/Auth.tsx",
+      "type": "file",
+      "name": "Auth.tsx",
+      "filePath": "src/pages/Auth.tsx",
+      "summary": "Authentication page that renders a split-layout with UnifiedLoginForm or SignUpForm based on active tab, redirecting authenticated users away, and displaying feature highlights for unauthenticated visitors.",
+      "tags": ["entry-point", "authentication", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/Auth.tsx:Auth",
+      "type": "function",
+      "name": "Auth",
+      "filePath": "src/pages/Auth.tsx",
+      "lineRange": [10, 146],
+      "summary": "Default-exported page component that checks auth state and redirects logged-in users, then renders a branded two-panel authentication layout with tabbed login/signup forms.",
+      "tags": ["component", "authentication", "page"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/ClientDashboard.tsx",
+      "type": "file",
+      "name": "ClientDashboard.tsx",
+      "filePath": "src/pages/ClientDashboard.tsx",
+      "summary": "Client-facing dashboard page displaying the client's invoices, payment history, account balance, and a top-up dialog; fetches data from clients, invoices, and transactions APIs via Supabase and provides invoice detail drill-down.",
+      "tags": ["component", "dashboard", "api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/ClientDashboard.tsx:ClientDashboard",
+      "type": "function",
+      "name": "ClientDashboard",
+      "filePath": "src/pages/ClientDashboard.tsx",
+      "lineRange": [76, 514],
+      "summary": "Default-exported page component that resolves the current user's client record from their phone number, loads invoices and transactions, and renders summary cards, invoice table, invoice detail dialog, and top-up dialog.",
+      "tags": ["component", "dashboard", "page"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/Payments.tsx",
+      "type": "file",
+      "name": "Payments.tsx",
+      "filePath": "src/pages/Payments.tsx",
+      "summary": "Admin payment-settings page for managing business payment method details (M-Pesa Paybill, Till, etc.); supports create, edit, delete, and active-toggle operations via React Query hooks and renders both list and card view layouts.",
+      "tags": ["component", "payment", "admin", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/Payments.tsx:Payments",
+      "type": "function",
+      "name": "Payments",
+      "filePath": "src/pages/Payments.tsx",
+      "lineRange": [14, 370],
+      "summary": "Default-exported page component providing the full CRUD UI for payment details, including inline form, delete confirmation dialog, active-state toggle, and responsive table/card views.",
+      "tags": ["component", "payment", "page"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/SuperAdminTenants.tsx",
+      "type": "file",
+      "name": "SuperAdminTenants.tsx",
+      "filePath": "src/pages/SuperAdminTenants.tsx",
+      "summary": "Super-admin tenant management page providing a searchable list of tenants with per-tenant detail drill-down showing staff, clients, revenue stats, and controls for toggling tenant active status, changing subscription tier, and purging tenant data.",
+      "tags": ["component", "admin", "tenant", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/SuperAdminTenants.tsx:SuperAdminTenants",
+      "type": "function",
+      "name": "SuperAdminTenants",
+      "filePath": "src/pages/SuperAdminTenants.tsx",
+      "lineRange": [54, 540],
+      "summary": "Default-exported page component that queries all tenants and per-tenant stats via Supabase, supports search filtering, subscription tier editing, active-status toggling, and tenant purge via a Supabase edge function.",
+      "tags": ["component", "admin", "page", "tenant"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "function:src/components/auth/UnifiedLoginForm.tsx:UnifiedLoginForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "function:src/components/auth/UnifiedLoginForm.tsx:UnifiedLoginForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "function:src/components/clients/ClientTopUpDialog.tsx:ClientTopUpDialog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "function:src/components/clients/ClientTopUpDialog.tsx:ClientTopUpDialog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "file:src/hooks/usePayments.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/clients/ClientTopUpDialog.tsx",
+      "target": "function:src/hooks/usePayments.ts:useActivePaymentDetails",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/card.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/dialog.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/scroll-area.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/switch.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/tabs.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:usePaymentDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useActivePaymentDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useCreatePaymentDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useUpdatePaymentDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useDeletePaymentDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:usePaymentDetails",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useActivePaymentDetails",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useCreatePaymentDetail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useUpdatePaymentDetail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "function:src/hooks/usePayments.ts:useDeletePaymentDetail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePayments.ts",
+      "target": "file:src/api/payments.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Auth.tsx",
+      "target": "function:src/pages/Auth.tsx:Auth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Auth.tsx",
+      "target": "file:src/components/auth/SignUpForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Auth.tsx",
+      "target": "file:src/components/auth/UnifiedLoginForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Auth.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Auth.tsx",
+      "target": "function:src/components/auth/UnifiedLoginForm.tsx:UnifiedLoginForm",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "function:src/pages/ClientDashboard.tsx:ClientDashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/api/invoices.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/api/payments.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/api/transactions.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/components/ui/chart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/components/ui/tabs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ClientDashboard.tsx",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "function:src/pages/Payments.tsx:Payments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/api/payments.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/components/ui/tabs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/hooks/usePayments.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/lib/pdfGenerator.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "file:src/shared/hooks/useTenant.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "function:src/hooks/usePayments.ts:usePaymentDetails",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "function:src/hooks/usePayments.ts:useCreatePaymentDetail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "function:src/hooks/usePayments.ts:useUpdatePaymentDetail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Payments.tsx",
+      "target": "function:src/hooks/usePayments.ts:useDeletePaymentDetail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "function:src/pages/SuperAdminTenants.tsx:SuperAdminTenants",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/api/subscription.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/select.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/switch.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/table.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/components/ui/tabs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdminTenants.tsx",
+      "target": "file:src/lib/featureFlags.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

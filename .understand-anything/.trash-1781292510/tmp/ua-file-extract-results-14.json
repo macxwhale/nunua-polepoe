@@ -1,0 +1,532 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "supabase/add_subscription_columns.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 78,
+      "nonEmptyLines": 65,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/config.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 13,
+      "nonEmptyLines": 9,
+      "sections": [
+        {
+          "heading": "functions.reset-password",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "functions.resolve-login-email",
+          "level": 2,
+          "line": 6
+        },
+        {
+          "heading": "functions.create-client-user",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "functions.send-transaction-sms",
+          "level": 2,
+          "line": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    },
+    {
+      "path": "supabase/recreate_database.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 737,
+      "nonEmptyLines": 662,
+      "definitions": [
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "business_name",
+            "phone_number",
+            "status",
+            "is_active",
+            "subscription_tier",
+            "last_activity_at",
+            "deleted_at",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 61,
+          "endLine": 74
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "tenant_id",
+            "full_name",
+            "phone_number",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 77,
+          "endLine": 87
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "name",
+            "phone_number",
+            "email",
+            "total_balance",
+            "status",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 90,
+          "endLine": 103
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "name",
+            "price",
+            "description",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 106,
+          "endLine": 114
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "client_id",
+            "product_id",
+            "invoice_number",
+            "amount",
+            "status",
+            "notes",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 117,
+          "endLine": 130
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "client_id",
+            "invoice_id",
+            "amount",
+            "type",
+            "notes",
+            "date",
+            "created_at"
+          ],
+          "startLine": 133,
+          "endLine": 144
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "user_id",
+            "title",
+            "message",
+            "type",
+            "read",
+            "link",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 147,
+          "endLine": 159
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "payment_type",
+            "name",
+            "paybill",
+            "account_no",
+            "till",
+            "is_active",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 162,
+          "endLine": 173
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "role",
+            "created_at"
+          ],
+          "startLine": 176,
+          "endLine": 183
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "email",
+            "full_name",
+            "role",
+            "is_active",
+            "last_login_at",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 186,
+          "endLine": 196
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "admin_id",
+            "admin_email",
+            "action",
+            "resource_type",
+            "resource_id",
+            "tenant_id",
+            "details",
+            "ip_address",
+            "user_agent",
+            "created_at"
+          ],
+          "startLine": 199,
+          "endLine": 211
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "plan",
+            "max_users",
+            "max_clients",
+            "max_invoices_per_month",
+            "max_products",
+            "features",
+            "started_at",
+            "expires_at",
+            "status",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 214,
+          "endLine": 228
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "flag_name",
+            "is_enabled",
+            "metadata",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 231,
+          "endLine": 240
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "period_start",
+            "period_end",
+            "users_count",
+            "clients_count",
+            "invoices_count",
+            "transactions_count",
+            "total_invoice_amount",
+            "total_payment_amount",
+            "api_calls",
+            "storage_bytes",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 243,
+          "endLine": 259
+        },
+        {
+          "name": "public",
+          "kind": "view",
+          "fields": [],
+          "startLine": 264,
+          "endLine": 264
+        },
+        {
+          "name": "idx_tenants_status",
+          "kind": "index",
+          "fields": [],
+          "startLine": 285,
+          "endLine": 285
+        },
+        {
+          "name": "idx_tenants_deleted_at",
+          "kind": "index",
+          "fields": [],
+          "startLine": 286,
+          "endLine": 286
+        },
+        {
+          "name": "idx_tenants_last_activity_at",
+          "kind": "index",
+          "fields": [],
+          "startLine": 287,
+          "endLine": 287
+        },
+        {
+          "name": "idx_profiles_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 289,
+          "endLine": 289
+        },
+        {
+          "name": "idx_profiles_user_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 290,
+          "endLine": 290
+        },
+        {
+          "name": "idx_clients_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 292,
+          "endLine": 292
+        },
+        {
+          "name": "idx_clients_status",
+          "kind": "index",
+          "fields": [],
+          "startLine": 293,
+          "endLine": 293
+        },
+        {
+          "name": "idx_products_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 295,
+          "endLine": 295
+        },
+        {
+          "name": "idx_invoices_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 297,
+          "endLine": 297
+        },
+        {
+          "name": "idx_invoices_client_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 298,
+          "endLine": 298
+        },
+        {
+          "name": "idx_invoices_product_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 299,
+          "endLine": 299
+        },
+        {
+          "name": "idx_invoices_status",
+          "kind": "index",
+          "fields": [],
+          "startLine": 300,
+          "endLine": 300
+        },
+        {
+          "name": "idx_transactions_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 302,
+          "endLine": 302
+        },
+        {
+          "name": "idx_transactions_client_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 303,
+          "endLine": 303
+        },
+        {
+          "name": "idx_transactions_invoice_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 304,
+          "endLine": 304
+        },
+        {
+          "name": "idx_transactions_type",
+          "kind": "index",
+          "fields": [],
+          "startLine": 305,
+          "endLine": 305
+        },
+        {
+          "name": "idx_notifications_user_tenant",
+          "kind": "index",
+          "fields": [],
+          "startLine": 307,
+          "endLine": 307
+        },
+        {
+          "name": "idx_notifications_read",
+          "kind": "index",
+          "fields": [],
+          "startLine": 308,
+          "endLine": 308
+        },
+        {
+          "name": "idx_user_roles_user_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 310,
+          "endLine": 310
+        },
+        {
+          "name": "idx_super_admins_user_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 312,
+          "endLine": 312
+        },
+        {
+          "name": "idx_super_admins_email",
+          "kind": "index",
+          "fields": [],
+          "startLine": 313,
+          "endLine": 313
+        },
+        {
+          "name": "idx_super_admin_audit_logs_admin_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 315,
+          "endLine": 315
+        },
+        {
+          "name": "idx_super_admin_audit_logs_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 316,
+          "endLine": 316
+        },
+        {
+          "name": "idx_super_admin_audit_logs_action",
+          "kind": "index",
+          "fields": [],
+          "startLine": 317,
+          "endLine": 317
+        },
+        {
+          "name": "idx_super_admin_audit_logs_created_at",
+          "kind": "index",
+          "fields": [],
+          "startLine": 318,
+          "endLine": 318
+        },
+        {
+          "name": "idx_tenant_subscriptions_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 320,
+          "endLine": 320
+        },
+        {
+          "name": "idx_tenant_subscriptions_plan",
+          "kind": "index",
+          "fields": [],
+          "startLine": 321,
+          "endLine": 321
+        },
+        {
+          "name": "idx_tenant_feature_flags_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 323,
+          "endLine": 323
+        },
+        {
+          "name": "idx_tenant_usage_metrics_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 325,
+          "endLine": 325
+        },
+        {
+          "name": "idx_tenant_usage_metrics_period",
+          "kind": "index",
+          "fields": [],
+          "startLine": 326,
+          "endLine": 326
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 45
+      }
+    }
+  ]
+}

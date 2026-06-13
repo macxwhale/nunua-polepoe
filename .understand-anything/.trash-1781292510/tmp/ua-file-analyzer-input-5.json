@@ -1,0 +1,19 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": "src/api/clients.api.ts", "language": "typescript", "sizeLines": 241, "fileCategory": "code"},
+    {"path": "src/api/invoices.api.ts", "language": "typescript", "sizeLines": 138, "fileCategory": "code"},
+    {"path": "src/api/notifications.api.ts", "language": "typescript", "sizeLines": 102, "fileCategory": "code"},
+    {"path": "src/api/payments.api.ts", "language": "typescript", "sizeLines": 98, "fileCategory": "code"},
+    {"path": "src/api/products.api.ts", "language": "typescript", "sizeLines": 114, "fileCategory": "code"},
+    {"path": "src/api/tenant.api.ts", "language": "typescript", "sizeLines": 38, "fileCategory": "code"},
+    {"path": "src/api/transactions.api.ts", "language": "typescript", "sizeLines": 204, "fileCategory": "code"},
+    {"path": "src/components/clients/ClientTransactionsDialog.tsx", "language": "typescript", "sizeLines": 198, "fileCategory": "code"},
+    {"path": "src/hooks/useGlobalSearch.ts", "language": "typescript", "sizeLines": 105, "fileCategory": "code"},
+    {"path": "src/hooks/useNotifications.ts", "language": "typescript", "sizeLines": 130, "fileCategory": "code"},
+    {"path": "src/integrations/supabase/client.ts", "language": "typescript", "sizeLines": 16, "fileCategory": "code"},
+    {"path": "src/integrations/supabase/types.ts", "language": "typescript", "sizeLines": 977, "fileCategory": "code"},
+    {"path": "src/shared/hooks/useTenant.ts", "language": "typescript", "sizeLines": 25, "fileCategory": "code"}
+  ],
+  "batchImportData": {"src/api/clients.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/api/invoices.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/api/notifications.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/api/payments.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/api/products.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/api/tenant.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/api/transactions.api.ts":["src/integrations/supabase/client.ts","src/integrations/supabase/types.ts"],"src/components/clients/ClientTransactionsDialog.tsx":["src/hooks/useTransactions.ts","src/hooks/useClients.ts","src/components/ui/dialog.tsx","src/components/ui/button.tsx","src/components/ui/card.tsx","src/components/ui/badge.tsx","src/components/ui/table.tsx"],"src/hooks/useGlobalSearch.ts":["src/integrations/supabase/client.ts","src/hooks/useAuth.tsx","src/shared/hooks/useTenant.ts"],"src/hooks/useNotifications.ts":["src/integrations/supabase/client.ts","src/hooks/useAuth.tsx","src/shared/hooks/useTenant.ts","src/api/notifications.api.ts"],"src/integrations/supabase/client.ts":[],"src/integrations/supabase/types.ts":[],"src/shared/hooks/useTenant.ts":["src/hooks/useAuth.tsx","src/integrations/supabase/client.ts"]}
+}

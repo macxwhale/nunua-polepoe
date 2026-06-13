@@ -1,0 +1,1925 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/components/auth/UnifiedLoginForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 286,
+      "nonEmptyLines": 264,
+      "functions": [
+        {
+          "name": "UnifiedLoginForm",
+          "startLine": 36,
+          "endLine": 286,
+          "params": [
+            "{ onSuccess }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "UnifiedLoginForm",
+          "line": 36,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "useState",
+          "lineNumber": 37
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "useState",
+          "lineNumber": 38
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "useState",
+          "lineNumber": 39
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "useState",
+          "lineNumber": 40
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "useForm",
+          "lineNumber": 42
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "zodResolver",
+          "lineNumber": 43
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "useForm",
+          "lineNumber": 50
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "zodResolver",
+          "lineNumber": 51
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsLoading",
+          "lineNumber": 58
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 61
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "errorMessage?.includes",
+          "lineNumber": 68
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.error",
+          "lineNumber": 69
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "emails.push",
+          "lineNumber": 81
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "emails.push",
+          "lineNumber": 83
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.error",
+          "lineNumber": 88
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.auth.signInWithPassword",
+          "lineNumber": 97
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.success",
+          "lineNumber": 102
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "onSuccess",
+          "lineNumber": 103
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.error",
+          "lineNumber": 111
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsLoading",
+          "lineNumber": 115
+        },
+        {
+          "caller": "onReset",
+          "callee": "setIsResetting",
+          "lineNumber": 120
+        },
+        {
+          "caller": "onReset",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 122
+        },
+        {
+          "caller": "onReset",
+          "callee": "toast.success",
+          "lineNumber": 134
+        },
+        {
+          "caller": "onReset",
+          "callee": "setIsResetOpen",
+          "lineNumber": 141
+        },
+        {
+          "caller": "onReset",
+          "callee": "resetForm.reset",
+          "lineNumber": 142
+        },
+        {
+          "caller": "onReset",
+          "callee": "toast.error",
+          "lineNumber": 145
+        },
+        {
+          "caller": "onReset",
+          "callee": "setIsResetting",
+          "lineNumber": 147
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "form.handleSubmit",
+          "lineNumber": 158
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "resetForm.handleSubmit",
+          "lineNumber": 208
+        },
+        {
+          "caller": "UnifiedLoginForm",
+          "callee": "setShowPassword",
+          "lineNumber": 258
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientTopUpDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 139,
+      "nonEmptyLines": 133,
+      "functions": [
+        {
+          "name": "ClientTopUpDialog",
+          "startLine": 16,
+          "endLine": 139,
+          "params": [
+            "{ open, onClose, client }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientTopUpDialog",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientTopUpDialog",
+          "callee": "useState",
+          "lineNumber": 17
+        },
+        {
+          "caller": "ClientTopUpDialog",
+          "callee": "useActivePaymentDetails",
+          "lineNumber": 18
+        },
+        {
+          "caller": "handleCopyToClipboard",
+          "callee": "navigator.clipboard.writeText",
+          "lineNumber": 23
+        },
+        {
+          "caller": "handleCopyToClipboard",
+          "callee": "setCopiedId",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handleCopyToClipboard",
+          "callee": "toast.success",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleCopyToClipboard",
+          "callee": "setTimeout",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handleCopyToClipboard",
+          "callee": "setCopiedId",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ClientTopUpDialog",
+          "callee": "paymentDetails.map",
+          "lineNumber": 46
+        },
+        {
+          "caller": "ClientTopUpDialog",
+          "callee": "handleCopyToClipboard",
+          "lineNumber": 70
+        },
+        {
+          "caller": "ClientTopUpDialog",
+          "callee": "handleCopyToClipboard",
+          "lineNumber": 89
+        },
+        {
+          "caller": "ClientTopUpDialog",
+          "callee": "handleCopyToClipboard",
+          "lineNumber": 110
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 48,
+      "exports": [
+        {
+          "name": "Card",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "CardHeader",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "CardFooter",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "CardTitle",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "CardDescription",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "CardContent",
+          "line": 56,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/dialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "DialogHeader",
+          "startLine": 54,
+          "endLine": 56,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "DialogFooter",
+          "startLine": 59,
+          "endLine": 61,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Dialog",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogPortal",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogOverlay",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogClose",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogTrigger",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogContent",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogHeader",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogFooter",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogTitle",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DialogDescription",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "DialogHeader",
+          "callee": "cn",
+          "lineNumber": 55
+        },
+        {
+          "caller": "DialogFooter",
+          "callee": "cn",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/scroll-area.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 34,
+      "exports": [
+        {
+          "name": "ScrollArea",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "ScrollBar",
+          "line": 38,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/switch.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 24,
+      "exports": [
+        {
+          "name": "Switch",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/tabs.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 47,
+      "exports": [
+        {
+          "name": "Tabs",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "TabsList",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "TabsTrigger",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "TabsContent",
+          "line": 53,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/usePayments.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "usePaymentDetails",
+          "startLine": 13,
+          "endLine": 18,
+          "params": []
+        },
+        {
+          "name": "useActivePaymentDetails",
+          "startLine": 23,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "useCreatePaymentDetail",
+          "startLine": 33,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "useUpdatePaymentDetail",
+          "startLine": 52,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "useDeletePaymentDetail",
+          "startLine": 72,
+          "endLine": 86,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "queryKeys",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "usePaymentDetails",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "useActivePaymentDetails",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "useCreatePaymentDetail",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "useUpdatePaymentDetail",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "useDeletePaymentDetail",
+          "line": 72,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "usePaymentDetails",
+          "callee": "useQuery",
+          "lineNumber": 14
+        },
+        {
+          "caller": "useActivePaymentDetails",
+          "callee": "useQuery",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useCreatePaymentDetail",
+          "callee": "useQueryClient",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useCreatePaymentDetail",
+          "callee": "useMutation",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useCreatePaymentDetail",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 39
+        },
+        {
+          "caller": "useCreatePaymentDetail",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 40
+        },
+        {
+          "caller": "useCreatePaymentDetail",
+          "callee": "toast.success",
+          "lineNumber": 41
+        },
+        {
+          "caller": "useCreatePaymentDetail",
+          "callee": "toast.error",
+          "lineNumber": 44
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "useQueryClient",
+          "lineNumber": 53
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "useMutation",
+          "lineNumber": 55
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "paymentsApi.updatePaymentDetail",
+          "lineNumber": 57
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 59
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "toast.success",
+          "lineNumber": 61
+        },
+        {
+          "caller": "useUpdatePaymentDetail",
+          "callee": "toast.error",
+          "lineNumber": 64
+        },
+        {
+          "caller": "useDeletePaymentDetail",
+          "callee": "useQueryClient",
+          "lineNumber": 73
+        },
+        {
+          "caller": "useDeletePaymentDetail",
+          "callee": "useMutation",
+          "lineNumber": 75
+        },
+        {
+          "caller": "useDeletePaymentDetail",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 78
+        },
+        {
+          "caller": "useDeletePaymentDetail",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 79
+        },
+        {
+          "caller": "useDeletePaymentDetail",
+          "callee": "toast.success",
+          "lineNumber": 80
+        },
+        {
+          "caller": "useDeletePaymentDetail",
+          "callee": "toast.error",
+          "lineNumber": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Auth.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 166,
+      "nonEmptyLines": 148,
+      "functions": [
+        {
+          "name": "Auth",
+          "startLine": 10,
+          "endLine": 146,
+          "params": []
+        },
+        {
+          "name": "FeatureItem",
+          "startLine": 154,
+          "endLine": 164,
+          "params": [
+            "{ icon, title, description }"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Auth",
+          "callee": "useNavigate",
+          "lineNumber": 11
+        },
+        {
+          "caller": "Auth",
+          "callee": "useAuth",
+          "lineNumber": 12
+        },
+        {
+          "caller": "Auth",
+          "callee": "useState",
+          "lineNumber": 13
+        },
+        {
+          "caller": "Auth",
+          "callee": "useEffect",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Auth",
+          "callee": "navigate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "handleSuccess",
+          "callee": "navigate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Auth",
+          "callee": "new Date().getFullYear",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Auth",
+          "callee": "new Date().getFullYear",
+          "lineNumber": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/ClientDashboard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 516,
+      "nonEmptyLines": 470,
+      "functions": [
+        {
+          "name": "ClientDashboard",
+          "startLine": 76,
+          "endLine": 514,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientDashboard",
+          "callee": "useAuth",
+          "lineNumber": 77
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useNavigate",
+          "lineNumber": 78
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 79
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 80
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 81
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 82
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 83
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 84
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 85
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 86
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useState",
+          "lineNumber": 87
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "useEffect",
+          "lineNumber": 89
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "fetchClientData",
+          "lineNumber": 91
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "setLoading",
+          "lineNumber": 97
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('profiles')\n        .select('phone_number')\n        .eq('user_id', user.id)\n        .single",
+          "lineNumber": 102
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('profiles')\n        .select('phone_number')\n        .eq",
+          "lineNumber": 102
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('profiles')\n        .select",
+          "lineNumber": 102
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from",
+          "lineNumber": 102
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "console.error",
+          "lineNumber": 109
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "toast.error",
+          "lineNumber": 110
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('clients')\n        .select('*')\n        .eq('phone_number', phoneNumber)\n        .single",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('clients')\n        .select('*')\n        .eq",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('clients')\n        .select",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "console.error",
+          "lineNumber": 124
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "toast.error",
+          "lineNumber": 125
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "setClientData",
+          "lineNumber": 129
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('invoices')\n        .select('*, products(name)')\n        .eq('client_id', clientInfo.id)\n        .order",
+          "lineNumber": 132
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('invoices')\n        .select('*, products(name)')\n        .eq",
+          "lineNumber": 132
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from('invoices')\n        .select",
+          "lineNumber": 132
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n        .from",
+          "lineNumber": 132
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "console.error",
+          "lineNumber": 139
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "toast.error",
+          "lineNumber": 140
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "invoiceData.map",
+          "lineNumber": 147
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n          .from('transactions')\n          .select('invoice_id, amount, type')\n          .in('invoice_id', invoiceIds)\n          .eq",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n          .from('transactions')\n          .select('invoice_id, amount, type')\n          .in",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n          .from('transactions')\n          .select",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "supabase\n          .from",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "console.error",
+          "lineNumber": 155
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "(txData || []).forEach",
+          "lineNumber": 158
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "Number",
+          "lineNumber": 160
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "setInvoicePaidAmounts",
+          "lineNumber": 167
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "setInvoices",
+          "lineNumber": 168
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "console.error",
+          "lineNumber": 170
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "toast.error",
+          "lineNumber": 171
+        },
+        {
+          "caller": "fetchClientData",
+          "callee": "setLoading",
+          "lineNumber": 173
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "supabase\n        .from('transactions')\n        .select('*')\n        .eq('invoice_id', invoice.id)\n        .eq('type', 'payment')\n        .order",
+          "lineNumber": 180
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "supabase\n        .from('transactions')\n        .select('*')\n        .eq('invoice_id', invoice.id)\n        .eq",
+          "lineNumber": 180
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "supabase\n        .from('transactions')\n        .select('*')\n        .eq",
+          "lineNumber": 180
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "supabase\n        .from('transactions')\n        .select",
+          "lineNumber": 180
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "supabase\n        .from",
+          "lineNumber": 180
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "setSelectedInvoiceTransactions",
+          "lineNumber": 188
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "setInvoiceItems",
+          "lineNumber": 192
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "setSelectedInvoice",
+          "lineNumber": 194
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "setIsDialogOpen",
+          "lineNumber": 195
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "console.error",
+          "lineNumber": 197
+        },
+        {
+          "caller": "fetchInvoiceDetails",
+          "callee": "toast.error",
+          "lineNumber": 198
+        },
+        {
+          "caller": "handleTopUpClick",
+          "callee": "setTopUpDialogOpen",
+          "lineNumber": 203
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "supabase.auth.signOut",
+          "lineNumber": 208
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "toast.success",
+          "lineNumber": 211
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "navigate",
+          "lineNumber": 212
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "console.error",
+          "lineNumber": 214
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "toast.error",
+          "lineNumber": 215
+        },
+        {
+          "caller": "calculatePendingAmount",
+          "callee": "Number",
+          "lineNumber": 245
+        },
+        {
+          "caller": "getSelectedInvoicePending",
+          "callee": "selectedInvoiceTransactions.reduce",
+          "lineNumber": 251
+        },
+        {
+          "caller": "getSelectedInvoicePending",
+          "callee": "Number",
+          "lineNumber": 251
+        },
+        {
+          "caller": "getSelectedInvoicePending",
+          "callee": "Number",
+          "lineNumber": 252
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "invoices.map",
+          "lineNumber": 308
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "calculatePendingAmount",
+          "lineNumber": 309
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "Number",
+          "lineNumber": 310
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "((paidAmount / invoice.amount) * 100).toFixed",
+          "lineNumber": 314
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "invoice.amount.toLocaleString",
+          "lineNumber": 344
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "pendingAmount.toLocaleString",
+          "lineNumber": 351
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "format",
+          "lineNumber": 364
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "fetchInvoiceDetails",
+          "lineNumber": 392
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "format",
+          "lineNumber": 422
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "selectedInvoice?.amount.toLocaleString",
+          "lineNumber": 437
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "getSelectedInvoicePending().toLocaleString",
+          "lineNumber": 448
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "getSelectedInvoicePending",
+          "lineNumber": 448
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "selectedInvoiceTransactions.map",
+          "lineNumber": 469
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "format",
+          "lineNumber": 480
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "transaction.amount.toLocaleString",
+          "lineNumber": 491
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "setTopUpDialogOpen",
+          "lineNumber": 507
+        },
+        {
+          "caller": "ClientDashboard",
+          "callee": "fetchClientData",
+          "lineNumber": 508
+        }
+      ],
+      "metrics": {
+        "importCount": 12,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Payments.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 372,
+      "nonEmptyLines": 351,
+      "functions": [
+        {
+          "name": "Payments",
+          "startLine": 14,
+          "endLine": 370,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Payments",
+          "callee": "usePaymentDetails",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Payments",
+          "callee": "useCreatePaymentDetail",
+          "lineNumber": 16
+        },
+        {
+          "caller": "Payments",
+          "callee": "useUpdatePaymentDetail",
+          "lineNumber": 17
+        },
+        {
+          "caller": "Payments",
+          "callee": "useDeletePaymentDetail",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "Payments",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "e.preventDefault",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "updatePayment.mutateAsync",
+          "lineNumber": 33
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setEditingId",
+          "lineNumber": 43
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "createPayment.mutateAsync",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setPaymentType",
+          "lineNumber": 54
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setName",
+          "lineNumber": 55
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setPaybill",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setAccountNo",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setTill",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setEditingId",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setPaymentType",
+          "lineNumber": 63
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setName",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setPaybill",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setAccountNo",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setTill",
+          "lineNumber": 67
+        },
+        {
+          "caller": "handleCancelEdit",
+          "callee": "setEditingId",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handleCancelEdit",
+          "callee": "setPaymentType",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handleCancelEdit",
+          "callee": "setName",
+          "lineNumber": 73
+        },
+        {
+          "caller": "handleCancelEdit",
+          "callee": "setPaybill",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handleCancelEdit",
+          "callee": "setAccountNo",
+          "lineNumber": 75
+        },
+        {
+          "caller": "handleCancelEdit",
+          "callee": "setTill",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleDeleteClick",
+          "callee": "setDeletingId",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handleDeleteClick",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 81
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "deletePayment.mutateAsync",
+          "lineNumber": 86
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "setDeletingId",
+          "lineNumber": 87
+        },
+        {
+          "caller": "handleDeleteConfirm",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 88
+        },
+        {
+          "caller": "handleToggleActive",
+          "callee": "updatePayment.mutateAsync",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Payments",
+          "callee": "setName",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Payments",
+          "callee": "setPaymentType",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Payments",
+          "callee": "setPaybill",
+          "lineNumber": 171
+        },
+        {
+          "caller": "Payments",
+          "callee": "setAccountNo",
+          "lineNumber": 182
+        },
+        {
+          "caller": "Payments",
+          "callee": "setTill",
+          "lineNumber": 195
+        },
+        {
+          "caller": "Payments",
+          "callee": "paymentDetails.map",
+          "lineNumber": 261
+        },
+        {
+          "caller": "Payments",
+          "callee": "handleToggleActive",
+          "lineNumber": 327
+        },
+        {
+          "caller": "Payments",
+          "callee": "handleEdit",
+          "lineNumber": 336
+        },
+        {
+          "caller": "Payments",
+          "callee": "handleDeleteClick",
+          "lineNumber": 344
+        },
+        {
+          "caller": "Payments",
+          "callee": "setDeleteDialogOpen",
+          "lineNumber": 363
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/SuperAdminTenants.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 542,
+      "nonEmptyLines": 513,
+      "functions": [
+        {
+          "name": "SuperAdminTenants",
+          "startLine": 54,
+          "endLine": 540,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useQueryClient",
+          "lineNumber": 55
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useState",
+          "lineNumber": 56
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useState",
+          "lineNumber": 57
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useState",
+          "lineNumber": 58
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useState",
+          "lineNumber": 59
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useQuery",
+          "lineNumber": 61
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase\n                .from(\"tenants\")\n                .select(\"*\")\n                .order",
+          "lineNumber": 64
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase\n                .from(\"tenants\")\n                .select",
+          "lineNumber": 64
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase\n                .from",
+          "lineNumber": 64
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useQuery",
+          "lineNumber": 74
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Promise.all",
+          "lineNumber": 79
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"profiles\").select(`*, user_roles!inner(role)`).eq",
+          "lineNumber": 80
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"profiles\").select",
+          "lineNumber": 80
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 80
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"clients\").select(\"*\").eq",
+          "lineNumber": 81
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"clients\").select",
+          "lineNumber": 81
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 81
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"products\").select(\"id\", { count: \"exact\", head: true }).eq",
+          "lineNumber": 82
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"products\").select",
+          "lineNumber": 82
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 82
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"invoices\").select(\"id\", { count: \"exact\", head: true }).eq",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"invoices\").select",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"transactions\").select(\"amount, type\").eq",
+          "lineNumber": 84
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from(\"transactions\").select",
+          "lineNumber": 84
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 84
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "transactions.data\n                ?.filter(t => t.type === 'payment')\n                .reduce",
+          "lineNumber": 87
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "transactions.data\n                ?.filter",
+          "lineNumber": 87
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Number",
+          "lineNumber": 89
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useMutation",
+          "lineNumber": 105
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "(supabase.from(\"tenants\") as any).update({ is_active }).eq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "(supabase.from(\"tenants\") as any).update",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 111
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "toast.success",
+          "lineNumber": 112
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "toast.error",
+          "lineNumber": 114
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "useMutation",
+          "lineNumber": 117
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "(supabase.from(\"tenants\") as any).update({ subscription_tier }).eq",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "(supabase.from(\"tenants\") as any).update",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "supabase.from",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 123
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "toast.success",
+          "lineNumber": 124
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "toast.error",
+          "lineNumber": 126
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "setPurgeLoading",
+          "lineNumber": 132
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 134
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "toast.success",
+          "lineNumber": 140
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "setIsPurgeDialogOpen",
+          "lineNumber": 141
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "setSelectedTenantId",
+          "lineNumber": 142
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 143
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "console.error",
+          "lineNumber": 145
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "toast.error",
+          "lineNumber": 146
+        },
+        {
+          "caller": "handlePurgeTenant",
+          "callee": "setPurgeLoading",
+          "lineNumber": 148
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "window.location.reload",
+          "lineNumber": 166
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenants?.filter",
+          "lineNumber": 171
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "searchQuery.toLowerCase",
+          "lineNumber": 172
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "t.business_name?.toLowerCase().includes",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "t.business_name?.toLowerCase",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "t.id?.toLowerCase().includes",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "t.id?.toLowerCase",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setSearchQuery",
+          "lineNumber": 204
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "filteredTenants.map",
+          "lineNumber": 227
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenant.id?.slice",
+          "lineNumber": 233
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tierMutation.mutate",
+          "lineNumber": 242
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "toggleMutation.mutate",
+          "lineNumber": 260
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setSelectedTenantId",
+          "lineNumber": 276
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "filteredTenants.map",
+          "lineNumber": 294
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenant.id?.slice",
+          "lineNumber": 300
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setSelectedTenantId",
+          "lineNumber": 308
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tierMutation.mutate",
+          "lineNumber": 318
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "toggleMutation.mutate",
+          "lineNumber": 337
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setSelectedTenantId",
+          "lineNumber": 349
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenants?.find",
+          "lineNumber": 361
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "[\n                                        { label: 'Staff Clear', val: tenantDetails?.stats.products, icon: Package, color: 'text-neutral-600' },\n                                        { label: 'Active Clients', val: tenantDetails?.stats.clients, icon: Users, color: 'text-neutral-600' },\n                                        { label: 'Cumulative Yield', val: tenantDetails?.stats.revenue.toLocaleString(), icon: TrendingUp, color: 'text-primary' },\n                                        { label: 'System Liability', val: `KES ${Math.round((tenantDetails?.stats.revenue || 0) * 0.15).toLocaleString()}`, icon: AlertCircle, color: 'text-destructive' }\n                                    ].map",
+          "lineNumber": 377
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenantDetails?.stats.revenue.toLocaleString",
+          "lineNumber": 380
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Math.round((tenantDetails?.stats.revenue || 0) * 0.15).toLocaleString",
+          "lineNumber": 381
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Math.round",
+          "lineNumber": 381
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenantDetails?.profiles.map",
+          "lineNumber": 416
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenantDetails?.profiles.map",
+          "lineNumber": 433
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenantDetails?.clients.map",
+          "lineNumber": 460
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Number(client.total_balance).toLocaleString",
+          "lineNumber": 463
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Number",
+          "lineNumber": 463
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenantDetails?.clients.map",
+          "lineNumber": 473
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Number(client.total_balance).toLocaleString",
+          "lineNumber": 481
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "Number",
+          "lineNumber": 481
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setIsPurgeDialogOpen",
+          "lineNumber": 510
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setSelectedTenantId",
+          "lineNumber": 523
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "setIsPurgeDialogOpen",
+          "lineNumber": 530
+        },
+        {
+          "caller": "SuperAdminTenants",
+          "callee": "tenants?.find",
+          "lineNumber": 535
+        }
+      ],
+      "metrics": {
+        "importCount": 12,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

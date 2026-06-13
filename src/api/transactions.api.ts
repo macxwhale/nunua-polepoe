@@ -160,6 +160,58 @@ export const createPaymentTransaction = async (data: CreatePaymentData): Promise
   return transaction;
 };
 
+export interface CreateRefundData {
+  clientId: string;
+  invoiceId: string;
+  amount: number;
+  notes?: string;
+}
+
+/**
+ * Create a refund transaction (negative payment).
+ * The DB trigger recalculates invoice status automatically.
+ */
+export const createRefundTransaction = async (data: CreateRefundData): Promise<Transaction> => {
+  const tenantId = await getCurrentTenantId();
+
+  const { data: transaction, error } = await supabase
+    .from("transactions")
+    .insert({
+      tenant_id: tenantId,
+      client_id: data.clientId,
+      invoice_id: data.invoiceId,
+      amount: -Math.abs(data.amount),
+      type: "payment",
+      date: new Date().toISOString(),
+      notes: data.notes || "Refund",
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+
+  // Fetch invoice details for SMS
+  const { data: invoice } = await supabase
+    .from("invoices")
+    .select("invoice_number, amount")
+    .eq("id", data.invoiceId)
+    .single();
+
+  // Calculate outstanding balance after refund
+  const paidAmount = await getInvoicePaidAmount(data.invoiceId);
+  const outstandingBalance = invoice ? Number(invoice.amount) - paidAmount : undefined;
+
+  sendTransactionSms({
+    clientId: data.clientId,
+    type: "refund",
+    amount: data.amount,
+    invoiceNumber: invoice?.invoice_number,
+    newBalance: outstandingBalance,
+  });
+
+  return transaction;
+};
+
 /**
  * Create a sale transaction and send SMS
  */

@@ -1,0 +1,53 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'config:supabase/config.toml' has no edges (orphan)",
+    "Node 'file:.understand-anything/.understandignore' has no edges (orphan)",
+    "Node 'file:bun.lockb' has no edges (orphan)",
+    "Node 'file:eslint.config.js' has no edges (orphan)",
+    "Node 'file:postcss.config.js' has no edges (orphan)",
+    "Node 'document:public/robots.txt' has no edges (orphan)",
+    "Node 'file:src/App.css' has no edges (orphan)",
+    "Node 'file:src/vite-env.d.ts' has no edges (orphan)",
+    "Node 'file:supabase/.temp/cli-latest' has no edges (orphan)",
+    "Node 'file:supabase/.temp/gotrue-version' has no edges (orphan)",
+    "Node 'file:supabase/.temp/pooler-url' has no edges (orphan)",
+    "Node 'file:supabase/.temp/postgres-version' has no edges (orphan)",
+    "Node 'file:supabase/.temp/project-ref' has no edges (orphan)",
+    "Node 'file:supabase/.temp/rest-version' has no edges (orphan)",
+    "Node 'file:supabase/.temp/storage-migration' has no edges (orphan)",
+    "Node 'file:supabase/.temp/storage-version' has no edges (orphan)",
+    "Node 'file:supabase/fix_sql.py' has no edges (orphan)",
+    "Node 'file:supabase/functions/send-transaction-sms/index.ts' has no edges (orphan)",
+    "Node 'file:supabase/functions/setup-tenant/index.ts' has no edges (orphan)",
+    "Node 'file:tailwind.config.ts' has no edges (orphan)",
+    "Node 'file:vite.config.ts' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 351,
+    "totalEdges": 871,
+    "totalLayers": 10,
+    "tourSteps": 12,
+    "nodeTypes": {
+      "file": 155,
+      "function": 126,
+      "pipeline": 2,
+      "table": 52,
+      "config": 9,
+      "document": 5,
+      "schema": 2
+    },
+    "edgeTypes": {
+      "contains": 143,
+      "imports": 501,
+      "calls": 42,
+      "exports": 106,
+      "depends_on": 8,
+      "related": 6,
+      "migrates": 54,
+      "configures": 9,
+      "deploys": 1,
+      "documents": 1
+    }
+  }
+}

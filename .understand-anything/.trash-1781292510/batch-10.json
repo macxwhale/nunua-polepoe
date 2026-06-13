@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:.github/workflows/main.yml",
+      "type": "pipeline",
+      "name": "main.yml",
+      "filePath": ".github/workflows/main.yml",
+      "summary": "GitHub Actions workflow that triggers on every push to main, builds the Vite/React project, and force-pushes the compiled dist output to a dedicated dist branch for deployment.",
+      "tags": ["ci-cd", "deployment", "build-system", "github-actions"],
+      "complexity": "moderate",
+      "languageNotes": "Uses an orphan-branch strategy to keep built assets isolated from source history; force-pushes to origin/dist on every main push."
+    },
+    {
+      "id": "step:.github/workflows/main.yml:deploy-dist",
+      "type": "pipeline",
+      "name": "deploy-dist",
+      "filePath": ".github/workflows/main.yml",
+      "summary": "Single CI job running on ubuntu-latest that checks out the repo, installs Node 18 dependencies, builds the project, and publishes the dist output to the dist branch via force-push.",
+      "tags": ["ci-cd", "deployment", "build-system"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "pipeline:.github/workflows/main.yml",
+      "target": "step:.github/workflows/main.yml:deploy-dist",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ]
+}

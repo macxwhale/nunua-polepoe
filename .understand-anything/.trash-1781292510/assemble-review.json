@@ -1,0 +1,16 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 1,
+  "edgesRestored": 3,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Fixed section had no large-scale normalization issues — 0 ID corrections were needed, indicating the LLM output for this project used consistent prefixes across all 16 batches.",
+    "The single dropped edge (createPaymentTransaction -> getInvoicePaidAmount) was caused by the batch LLM omitting the getInvoicePaidAmount function node entirely from its output, even though the function is exported from src/api/transactions.api.ts (lines 104-116). The node was not present in any batch file. Recovered by constructing the node from source inspection with sensible defaults.",
+    "Three edges were restored for the recovered node: contains and exports from file:src/api/transactions.api.ts, plus the original dropped calls edge from createPaymentTransaction.",
+    "All 350 original nodes had valid ids, valid types (file, function, pipeline, table, config, document, schema), and valid complexity values (simple/moderate/complex). No remapping was required.",
+    "The merge script already recovered 116 import edges from the importMap (198 entries scanned). Cross-batch import coverage is adequate; no additional import edges were identified as missing beyond what the merge script handled.",
+    "Final graph: 351 nodes, 871 edges with 0 dangling edge references."
+  ]
+}

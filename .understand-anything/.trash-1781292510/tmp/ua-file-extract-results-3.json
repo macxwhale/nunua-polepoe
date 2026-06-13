@@ -1,0 +1,2544 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/components/auth/SignUpForm.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 297,
+      "nonEmptyLines": 274,
+      "functions": [
+        {
+          "name": "SignUpForm",
+          "startLine": 39,
+          "endLine": 297,
+          "params": [
+            "{ onSuccess }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SignUpForm",
+          "line": 39,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SignUpForm",
+          "callee": "useState",
+          "lineNumber": 40
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "useState",
+          "lineNumber": 41
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "useState",
+          "lineNumber": 42
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "useForm",
+          "lineNumber": 44
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "zodResolver",
+          "lineNumber": 45
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsLoading",
+          "lineNumber": 56
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.auth.signUp",
+          "lineNumber": 63
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.auth.signInWithPassword",
+          "lineNumber": 80
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 92
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.success",
+          "lineNumber": 102
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.info",
+          "lineNumber": 103
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "onSuccess",
+          "lineNumber": 107
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.error",
+          "lineNumber": 111
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "setIsLoading",
+          "lineNumber": 113
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "form.watch",
+          "lineNumber": 118
+        },
+        {
+          "caller": "getPasswordStrength",
+          "callee": "/[A-Z]/.test",
+          "lineNumber": 123
+        },
+        {
+          "caller": "getPasswordStrength",
+          "callee": "/[0-9]/.test",
+          "lineNumber": 123
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "getPasswordStrength",
+          "lineNumber": 128
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "form.handleSubmit",
+          "lineNumber": 132
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "setShowPassword",
+          "lineNumber": 223
+        },
+        {
+          "caller": "SignUpForm",
+          "callee": "setShowConfirmPassword",
+          "lineNumber": 266
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/AddSalesDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 215,
+      "nonEmptyLines": 197,
+      "functions": [
+        {
+          "name": "AddSalesDialog",
+          "startLine": 20,
+          "endLine": 215,
+          "params": [
+            "{ open, onClose, client }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AddSalesDialog",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useProducts",
+          "lineNumber": 27
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useGenerateInvoiceNumber",
+          "lineNumber": 28
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useCreateProduct",
+          "lineNumber": 29
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useCreateInvoice",
+          "lineNumber": 30
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useCreateSale",
+          "lineNumber": 31
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useEffect",
+          "lineNumber": 36
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setSelectedProduct",
+          "lineNumber": 38
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductName",
+          "lineNumber": 39
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductDescription",
+          "lineNumber": 40
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setPrice",
+          "lineNumber": 41
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setIsCreatingNew",
+          "lineNumber": 42
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "useEffect",
+          "lineNumber": 47
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "products.find",
+          "lineNumber": 49
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setPrice",
+          "lineNumber": 51
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "product.price.toString",
+          "lineNumber": 51
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductName",
+          "lineNumber": 52
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setIsCreatingNew",
+          "lineNumber": 55
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setPrice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductName",
+          "lineNumber": 57
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductDescription",
+          "lineNumber": 58
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setIsCreatingNew",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "e.preventDefault",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "createProduct.mutateAsync",
+          "lineNumber": 73
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "refetchProducts",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "createInvoice.mutateAsync",
+          "lineNumber": 83
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "Date.now",
+          "lineNumber": 85
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 86
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "createSale.mutateAsync",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 97
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "onClose",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "console.error",
+          "lineNumber": 104
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "products.map",
+          "lineNumber": 137
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "Number(product.price).toLocaleString",
+          "lineNumber": 139
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "Number",
+          "lineNumber": 139
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductName",
+          "lineNumber": 160
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setProductDescription",
+          "lineNumber": 174
+        },
+        {
+          "caller": "AddSalesDialog",
+          "callee": "setPrice",
+          "lineNumber": 193
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 160,
+      "nonEmptyLines": 146,
+      "functions": [
+        {
+          "name": "ClientDialog",
+          "startLine": 41,
+          "endLine": 160,
+          "params": [
+            "{ open, onClose, client }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientDialog",
+          "line": 41,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientDialog",
+          "callee": "useCreateClient",
+          "lineNumber": 42
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "useUpdateClient",
+          "lineNumber": 43
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "useCreateClientUser",
+          "lineNumber": 44
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "useForm",
+          "lineNumber": 46
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "zodResolver",
+          "lineNumber": 47
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "useEffect",
+          "lineNumber": 55
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "form.reset",
+          "lineNumber": 57
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "form.reset",
+          "lineNumber": 61
+        },
+        {
+          "caller": "generatePIN",
+          "callee": "crypto.getRandomValues",
+          "lineNumber": 70
+        },
+        {
+          "caller": "generatePIN",
+          "callee": "pin.toString",
+          "lineNumber": 72
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "updateClient.mutateAsync",
+          "lineNumber": 79
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.success",
+          "lineNumber": 85
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "generatePIN",
+          "lineNumber": 88
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "createClient.mutateAsync",
+          "lineNumber": 91
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "createClientUser.mutateAsync({\n          phoneNumber: data.phone_number,\n          pin,\n        }).catch",
+          "lineNumber": 97
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "createClientUser.mutateAsync",
+          "lineNumber": 97
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 101
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.success",
+          "lineNumber": 105
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "onClose",
+          "lineNumber": 110
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 112
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.error",
+          "lineNumber": 114
+        },
+        {
+          "caller": "ClientDialog",
+          "callee": "form.handleSubmit",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/SimpleTopUpDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 233,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "SimpleTopUpDialog",
+          "startLine": 23,
+          "endLine": 233,
+          "params": [
+            "{ open, onClose, client }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SimpleTopUpDialog",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useInvoicesByClient",
+          "lineNumber": 29
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useCreatePayment",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useInvoicePaidAmount",
+          "lineNumber": 33
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "invoices.filter",
+          "lineNumber": 36
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number",
+          "lineNumber": 39
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useEffect",
+          "lineNumber": 42
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "unpaidInvoices.find",
+          "lineNumber": 44
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setSelectedInvoice",
+          "lineNumber": 45
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setSelectedInvoice",
+          "lineNumber": 47
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "useEffect",
+          "lineNumber": 52
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setAmount",
+          "lineNumber": 54
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setDate",
+          "lineNumber": 55
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setSelectedInvoiceId",
+          "lineNumber": 56
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setSelectedInvoice",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "e.preventDefault",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "Number",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "createPayment.mutate",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setAmount",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setDate",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setSelectedInvoiceId",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setSelectedInvoice",
+          "lineNumber": 81
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "refetchInvoices",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "onClose",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number(client?.totalInvoiced ?? 0).toLocaleString",
+          "lineNumber": 110
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number",
+          "lineNumber": 110
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number((client?.totalInvoiced ?? 0) - (client?.totalPaid ?? 0)).toLocaleString",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "unpaidInvoices.map",
+          "lineNumber": 140
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number(invoice.amount).toLocaleString",
+          "lineNumber": 146
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number",
+          "lineNumber": 146
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number(invoiceBalance ?? 0).toLocaleString",
+          "lineNumber": 156
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "Number",
+          "lineNumber": 156
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "cn",
+          "lineNumber": 170
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "format",
+          "lineNumber": 176
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setDate",
+          "lineNumber": 183
+        },
+        {
+          "caller": "SimpleTopUpDialog",
+          "callee": "setAmount",
+          "lineNumber": 200
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/invoices/InvoiceDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 414,
+      "nonEmptyLines": 394,
+      "functions": [
+        {
+          "name": "InvoiceDialog",
+          "startLine": 69,
+          "endLine": 414,
+          "params": [
+            "{ open, onClose, invoice }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InvoiceDialog",
+          "line": 69,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useClients",
+          "lineNumber": 70
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useProducts",
+          "lineNumber": 71
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useGenerateInvoiceNumber",
+          "lineNumber": 72
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useCreateInvoice",
+          "lineNumber": 73
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useUpdateInvoice",
+          "lineNumber": 74
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useCreateNotification",
+          "lineNumber": 75
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useState",
+          "lineNumber": 76
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useState",
+          "lineNumber": 77
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useState",
+          "lineNumber": 80
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useState",
+          "lineNumber": 81
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useForm",
+          "lineNumber": 83
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "zodResolver",
+          "lineNumber": 84
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "useEffect",
+          "lineNumber": 94
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "form.reset",
+          "lineNumber": 96
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "invoice.amount.toString",
+          "lineNumber": 99
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "setSelectedProductId",
+          "lineNumber": 103
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "form.reset",
+          "lineNumber": 105
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "setSelectedProductId",
+          "lineNumber": 112
+        },
+        {
+          "caller": "handleProductChange",
+          "callee": "setSelectedProductId",
+          "lineNumber": 117
+        },
+        {
+          "caller": "handleProductChange",
+          "callee": "products?.find",
+          "lineNumber": 118
+        },
+        {
+          "caller": "handleProductChange",
+          "callee": "form.setValue",
+          "lineNumber": 120
+        },
+        {
+          "caller": "handleProductChange",
+          "callee": "selectedProduct.price.toString",
+          "lineNumber": 120
+        },
+        {
+          "caller": "handleProductDialogClose",
+          "callee": "setProductDialogOpen",
+          "lineNumber": 125
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 133
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "Date.now",
+          "lineNumber": 136
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "updateInvoice.mutateAsync",
+          "lineNumber": 140
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.success",
+          "lineNumber": 144
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "createInvoice.mutateAsync",
+          "lineNumber": 146
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 150
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase\n              .from(\"profiles\")\n              .select(\"tenant_id\")\n              .eq(\"user_id\", user.id)\n              .single",
+          "lineNumber": 152
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase\n              .from(\"profiles\")\n              .select(\"tenant_id\")\n              .eq",
+          "lineNumber": 152
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase\n              .from(\"profiles\")\n              .select",
+          "lineNumber": 152
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase\n              .from",
+          "lineNumber": 152
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.from(\"transactions\").insert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "supabase.from",
+          "lineNumber": 159
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 163
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "new Date().toISOString",
+          "lineNumber": 165
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.success",
+          "lineNumber": 172
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "clients.find",
+          "lineNumber": 175
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "createNotification.mutate",
+          "lineNumber": 176
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "parseFloat(data.amount).toLocaleString",
+          "lineNumber": 178
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "parseFloat",
+          "lineNumber": 178
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "onClose",
+          "lineNumber": 185
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "console.error",
+          "lineNumber": 187
+        },
+        {
+          "caller": "onSubmit",
+          "callee": "toast.error",
+          "lineNumber": 189
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "form.handleSubmit",
+          "lineNumber": 205
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "cn",
+          "lineNumber": 219
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "availableClients.find",
+          "lineNumber": 225
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "availableClients.map",
+          "lineNumber": 237
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "field.onChange",
+          "lineNumber": 242
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "setClientPopoverOpen",
+          "lineNumber": 243
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "cn",
+          "lineNumber": 247
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "cn",
+          "lineNumber": 279
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "products.find",
+          "lineNumber": 285
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "products\n                                    .filter((product) => product.price)\n                                    .map",
+          "lineNumber": 297
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "products\n                                    .filter",
+          "lineNumber": 297
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "field.onChange",
+          "lineNumber": 304
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "handleProductChange",
+          "lineNumber": 305
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "setProductPopoverOpen",
+          "lineNumber": 306
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "cn",
+          "lineNumber": 310
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "product.price.toLocaleString",
+          "lineNumber": 315
+        },
+        {
+          "caller": "InvoiceDialog",
+          "callee": "setProductDialogOpen",
+          "lineNumber": 327
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/calendar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "Calendar",
+          "startLine": 10,
+          "endLine": 51,
+          "params": [
+            "{ className, classNames, showOutsideDays = true, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Calendar",
+          "line": 54,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 14
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Calendar",
+          "callee": "buttonVariants",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Calendar",
+          "callee": "cn",
+          "lineNumber": 32
+        },
+        {
+          "caller": "Calendar",
+          "callee": "buttonVariants",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/form.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 105,
+      "functions": [
+        {
+          "name": "FormField",
+          "startLine": 20,
+          "endLine": 31,
+          "params": [
+            "{\n  ...props\n}"
+          ]
+        },
+        {
+          "name": "useFormField",
+          "startLine": 33,
+          "endLine": 54,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useFormField",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "Form",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "FormItem",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "FormLabel",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "FormControl",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "FormDescription",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "FormMessage",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "FormField",
+          "line": 129,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useFormField",
+          "callee": "React.useContext",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useFormField",
+          "callee": "React.useContext",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useFormField",
+          "callee": "useFormContext",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useFormField",
+          "callee": "getFieldState",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 8,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/input.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 19,
+      "exports": [
+        {
+          "name": "Input",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/label.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 13,
+      "exports": [
+        {
+          "name": "Label",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/popover.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 24,
+      "exports": [
+        {
+          "name": "Popover",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "PopoverTrigger",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "PopoverContent",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/select.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 143,
+      "nonEmptyLines": 130,
+      "exports": [
+        {
+          "name": "Select",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectGroup",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectValue",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectTrigger",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectContent",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectLabel",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectItem",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectSeparator",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectScrollUpButton",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "SelectScrollDownButton",
+          "line": 132,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/textarea.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 17,
+      "exports": [
+        {
+          "name": "Textarea",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useClients.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 186,
+      "nonEmptyLines": 166,
+      "functions": [
+        {
+          "name": "useClients",
+          "startLine": 11,
+          "endLine": 16,
+          "params": []
+        },
+        {
+          "name": "useClient",
+          "startLine": 21,
+          "endLine": 27,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "useCreateClient",
+          "startLine": 32,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "useUpdateClient",
+          "startLine": 82,
+          "endLine": 116,
+          "params": []
+        },
+        {
+          "name": "useDeleteClient",
+          "startLine": 121,
+          "endLine": 156,
+          "params": []
+        },
+        {
+          "name": "useUpdateClientBalance",
+          "startLine": 161,
+          "endLine": 176,
+          "params": []
+        },
+        {
+          "name": "useCreateClientUser",
+          "startLine": 181,
+          "endLine": 186,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useClients",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "useClient",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateClient",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "useUpdateClient",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "useDeleteClient",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "useUpdateClientBalance",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateClientUser",
+          "line": 181,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useClients",
+          "callee": "useQuery",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useClient",
+          "callee": "useQuery",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useClient",
+          "callee": "queryKeys.clientById",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useClient",
+          "callee": "clientsApi.getClientById",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "useQueryClient",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "useMutation",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "clientsApi.createClient",
+          "lineNumber": 37
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 40
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 43
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 46
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "Date.now",
+          "lineNumber": 49
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "new Date().toISOString",
+          "lineNumber": 55
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "new Date().toISOString",
+          "lineNumber": 56
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 69
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "console.error",
+          "lineNumber": 71
+        },
+        {
+          "caller": "useCreateClient",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 74
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "useQueryClient",
+          "lineNumber": 83
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "useMutation",
+          "lineNumber": 85
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "clientsApi.updateClient",
+          "lineNumber": 87
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 89
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 91
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 94
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "old.map",
+          "lineNumber": 96
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "new Date().toISOString",
+          "lineNumber": 97
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 105
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "console.error",
+          "lineNumber": 107
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 110
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 112
+        },
+        {
+          "caller": "useUpdateClient",
+          "callee": "queryKeys.clientById",
+          "lineNumber": 112
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "useQueryClient",
+          "lineNumber": 122
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "useMutation",
+          "lineNumber": 124
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 128
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 131
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 134
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "old.filter",
+          "lineNumber": 136
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 144
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "toast.error",
+          "lineNumber": 146
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "console.error",
+          "lineNumber": 147
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "toast.success",
+          "lineNumber": 150
+        },
+        {
+          "caller": "useDeleteClient",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 153
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "useQueryClient",
+          "lineNumber": 162
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "useMutation",
+          "lineNumber": 164
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "clientsApi.updateClientBalance",
+          "lineNumber": 166
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 168
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "toast.success",
+          "lineNumber": 169
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "toast.error",
+          "lineNumber": 172
+        },
+        {
+          "caller": "useUpdateClientBalance",
+          "callee": "console.error",
+          "lineNumber": 173
+        },
+        {
+          "caller": "useCreateClientUser",
+          "callee": "useMutation",
+          "lineNumber": 182
+        },
+        {
+          "caller": "useCreateClientUser",
+          "callee": "clientsApi.createClientUser",
+          "lineNumber": 184
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useInvoices.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 182,
+      "nonEmptyLines": 163,
+      "functions": [
+        {
+          "name": "useInvoices",
+          "startLine": 12,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "useInvoicesByClient",
+          "startLine": 22,
+          "endLine": 28,
+          "params": [
+            "clientId"
+          ]
+        },
+        {
+          "name": "useInvoice",
+          "startLine": 33,
+          "endLine": 39,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "useGenerateInvoiceNumber",
+          "startLine": 44,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "useCreateInvoice",
+          "startLine": 56,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "useUpdateInvoice",
+          "startLine": 107,
+          "endLine": 146,
+          "params": []
+        },
+        {
+          "name": "useDeleteInvoice",
+          "startLine": 151,
+          "endLine": 182,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useInvoices",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "useInvoicesByClient",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "useInvoice",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "useGenerateInvoiceNumber",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateInvoice",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "useUpdateInvoice",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "useDeleteInvoice",
+          "line": 151,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useInvoices",
+          "callee": "useQuery",
+          "lineNumber": 13
+        },
+        {
+          "caller": "useInvoicesByClient",
+          "callee": "useQuery",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useInvoicesByClient",
+          "callee": "queryKeys.invoicesByClient",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useInvoicesByClient",
+          "callee": "invoicesApi.getInvoicesByClient",
+          "lineNumber": 25
+        },
+        {
+          "caller": "useInvoice",
+          "callee": "useQuery",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useInvoice",
+          "callee": "queryKeys.invoiceById",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useInvoice",
+          "callee": "invoicesApi.getInvoiceById",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useGenerateInvoiceNumber",
+          "callee": "useQuery",
+          "lineNumber": 45
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "useQueryClient",
+          "lineNumber": 57
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "useMutation",
+          "lineNumber": 59
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "invoicesApi.createInvoice",
+          "lineNumber": 61
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 63
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 65
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 68
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "Date.now",
+          "lineNumber": 71
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "new Date().toISOString",
+          "lineNumber": 78
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "new Date().toISOString",
+          "lineNumber": 79
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 89
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "toast.error",
+          "lineNumber": 91
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "console.error",
+          "lineNumber": 92
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "toast.success",
+          "lineNumber": 95
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 98
+        },
+        {
+          "caller": "useCreateInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 99
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "useQueryClient",
+          "lineNumber": 108
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "useMutation",
+          "lineNumber": 110
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "invoicesApi.updateInvoice",
+          "lineNumber": 112
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 114
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 116
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 119
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "old.map",
+          "lineNumber": 121
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "new Date().toISOString",
+          "lineNumber": 122
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 130
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "toast.error",
+          "lineNumber": 132
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "console.error",
+          "lineNumber": 133
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "toast.success",
+          "lineNumber": 136
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 139
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 140
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 142
+        },
+        {
+          "caller": "useUpdateInvoice",
+          "callee": "queryKeys.invoiceById",
+          "lineNumber": 142
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "useQueryClient",
+          "lineNumber": 152
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "useMutation",
+          "lineNumber": 154
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "queryClient.cancelQueries",
+          "lineNumber": 157
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "queryClient.getQueryData",
+          "lineNumber": 158
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 160
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "old.filter",
+          "lineNumber": 162
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "queryClient.setQueryData",
+          "lineNumber": 169
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "toast.error",
+          "lineNumber": 171
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "console.error",
+          "lineNumber": 172
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "toast.success",
+          "lineNumber": 175
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 178
+        },
+        {
+          "caller": "useDeleteInvoice",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useTransactions.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 96,
+      "functions": [
+        {
+          "name": "useTransactions",
+          "startLine": 9,
+          "endLine": 14,
+          "params": []
+        },
+        {
+          "name": "useTransactionsByClient",
+          "startLine": 19,
+          "endLine": 25,
+          "params": [
+            "clientId"
+          ]
+        },
+        {
+          "name": "useTransactionsByInvoice",
+          "startLine": 30,
+          "endLine": 36,
+          "params": [
+            "invoiceId"
+          ]
+        },
+        {
+          "name": "useInvoicePaidAmount",
+          "startLine": 41,
+          "endLine": 47,
+          "params": [
+            "invoiceId"
+          ]
+        },
+        {
+          "name": "useCreatePayment",
+          "startLine": 52,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "useCreateSale",
+          "startLine": 84,
+          "endLine": 105,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useTransactions",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "useTransactionsByClient",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "useTransactionsByInvoice",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "useInvoicePaidAmount",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "useCreatePayment",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateSale",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useTransactions",
+          "callee": "useQuery",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useTransactionsByClient",
+          "callee": "useQuery",
+          "lineNumber": 20
+        },
+        {
+          "caller": "useTransactionsByClient",
+          "callee": "queryKeys.transactionsByClient",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useTransactionsByClient",
+          "callee": "transactionsApi.getTransactionsByClient",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useTransactionsByInvoice",
+          "callee": "useQuery",
+          "lineNumber": 31
+        },
+        {
+          "caller": "useTransactionsByInvoice",
+          "callee": "queryKeys.transactionsByInvoice",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useTransactionsByInvoice",
+          "callee": "transactionsApi.getTransactionsByInvoice",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useInvoicePaidAmount",
+          "callee": "useQuery",
+          "lineNumber": 42
+        },
+        {
+          "caller": "useInvoicePaidAmount",
+          "callee": "queryKeys.transactionsByInvoice",
+          "lineNumber": 43
+        },
+        {
+          "caller": "useInvoicePaidAmount",
+          "callee": "transactionsApi.getInvoicePaidAmount",
+          "lineNumber": 44
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "useQueryClient",
+          "lineNumber": 53
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "useMutation",
+          "lineNumber": 55
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 59
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryKeys.transactionsByClient",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 61
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryKeys.transactionsByInvoice",
+          "lineNumber": 61
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 62
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 63
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "toast",
+          "lineNumber": 65
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "variables.amount.toLocaleString",
+          "lineNumber": 67
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "console.error",
+          "lineNumber": 71
+        },
+        {
+          "caller": "useCreatePayment",
+          "callee": "toast",
+          "lineNumber": 72
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "useQueryClient",
+          "lineNumber": 85
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "useMutation",
+          "lineNumber": 87
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 91
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 92
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "queryKeys.transactionsByClient",
+          "lineNumber": 92
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 93
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 94
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "console.error",
+          "lineNumber": 97
+        },
+        {
+          "caller": "useCreateSale",
+          "callee": "toast",
+          "lineNumber": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/lib/queryClient.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 35,
+      "exports": [
+        {
+          "name": "queryClient",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "queryKeys",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Clients.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 165,
+      "nonEmptyLines": 153,
+      "functions": [
+        {
+          "name": "Clients",
+          "startLine": 23,
+          "endLine": 165,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Clients",
+          "line": 23,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Clients",
+          "callee": "useClients",
+          "lineNumber": 24
+        },
+        {
+          "caller": "Clients",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "Clients",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "Clients",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setEditingClient",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handleEdit",
+          "callee": "setDialogOpen",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleDialogClose",
+          "callee": "setDialogOpen",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleDialogClose",
+          "callee": "setEditingClient",
+          "lineNumber": 36
+        },
+        {
+          "caller": "Clients",
+          "callee": "useMemo",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Clients",
+          "callee": "searchQuery.trim",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Clients",
+          "callee": "searchQuery.toLowerCase",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Clients",
+          "callee": "clients.filter",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Clients",
+          "callee": "client.name?.toLowerCase().includes",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Clients",
+          "callee": "client.name?.toLowerCase",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Clients",
+          "callee": "client.phone_number?.toLowerCase().includes",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Clients",
+          "callee": "client.phone_number?.toLowerCase",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Clients",
+          "callee": "client.email?.toLowerCase().includes",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Clients",
+          "callee": "client.email?.toLowerCase",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Clients",
+          "callee": "[1, 2, 3].map",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Clients",
+          "callee": "setDialogOpen",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Clients",
+          "callee": "setSearchQuery",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Clients",
+          "callee": "setDialogOpen",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Clients",
+          "callee": "refetch",
+          "lineNumber": 155
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

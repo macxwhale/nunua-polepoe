@@ -1,0 +1,2682 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 13,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/api/clients.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 241,
+      "nonEmptyLines": 198,
+      "functions": [
+        {
+          "name": "getClientsWithDetails",
+          "startLine": 18,
+          "endLine": 68,
+          "params": []
+        },
+        {
+          "name": "getClientById",
+          "startLine": 73,
+          "endLine": 85,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "createClient",
+          "startLine": 90,
+          "endLine": 127,
+          "params": [
+            "clientData"
+          ]
+        },
+        {
+          "name": "updateClient",
+          "startLine": 132,
+          "endLine": 148,
+          "params": [
+            "id",
+            "updates"
+          ]
+        },
+        {
+          "name": "deleteClient",
+          "startLine": 153,
+          "endLine": 163,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "updateClientBalance",
+          "startLine": 168,
+          "endLine": 193,
+          "params": [
+            "clientId",
+            "amount"
+          ]
+        },
+        {
+          "name": "createClientUser",
+          "startLine": 198,
+          "endLine": 241,
+          "params": [
+            "phoneNumber",
+            "pin"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getClientsWithDetails",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "getClientById",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "createClient",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "updateClient",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "deleteClient",
+          "line": 153,
+          "isDefault": false
+        },
+        {
+          "name": "updateClientBalance",
+          "line": 168,
+          "isDefault": false
+        },
+        {
+          "name": "createClientUser",
+          "line": 198,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('clients')\n    .select('*')\n    .eq('tenant_id', tenantId)\n    .order",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('clients')\n    .select('*')\n    .eq",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('clients')\n    .select",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('invoices')\n    .select('client_id, amount')\n    .eq('tenant_id', tenantId)\n    .in",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('invoices')\n    .select('client_id, amount')\n    .eq",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('invoices')\n    .select",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "clients.map",
+          "lineNumber": 35
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('transactions')\n    .select('client_id, amount, type')\n    .eq('tenant_id', tenantId)\n    .in",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('transactions')\n    .select('client_id, amount, type')\n    .eq",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from('transactions')\n    .select",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "supabase\n    .from",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "clients.map",
+          "lineNumber": 44
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "clients.map",
+          "lineNumber": 49
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "invoices?.filter",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "transactions?.filter",
+          "lineNumber": 51
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "clientInvoices.reduce",
+          "lineNumber": 53
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "Number",
+          "lineNumber": 54
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "clientTransactions\n      .filter(txn => txn.type === 'payment')\n      .reduce",
+          "lineNumber": 58
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "clientTransactions\n      .filter",
+          "lineNumber": 58
+        },
+        {
+          "caller": "getClientsWithDetails",
+          "callee": "Number",
+          "lineNumber": 60
+        },
+        {
+          "caller": "getClientById",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 74
+        },
+        {
+          "caller": "getClientById",
+          "callee": "supabase\n    .from('clients')\n    .select('*')\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .single",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getClientById",
+          "callee": "supabase\n    .from('clients')\n    .select('*')\n    .eq('id', id)\n    .eq",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getClientById",
+          "callee": "supabase\n    .from('clients')\n    .select('*')\n    .eq",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getClientById",
+          "callee": "supabase\n    .from('clients')\n    .select",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getClientById",
+          "callee": "supabase\n    .from",
+          "lineNumber": 76
+        },
+        {
+          "caller": "createClient",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 93
+        },
+        {
+          "caller": "createClient",
+          "callee": "supabase\n    .from('clients')\n    .insert({\n      ...clientData,\n      tenant_id: tenantId,\n    })\n    .select()\n    .single",
+          "lineNumber": 95
+        },
+        {
+          "caller": "createClient",
+          "callee": "supabase\n    .from('clients')\n    .insert({\n      ...clientData,\n      tenant_id: tenantId,\n    })\n    .select",
+          "lineNumber": 95
+        },
+        {
+          "caller": "createClient",
+          "callee": "supabase\n    .from('clients')\n    .insert",
+          "lineNumber": 95
+        },
+        {
+          "caller": "createClient",
+          "callee": "supabase\n    .from",
+          "lineNumber": 95
+        },
+        {
+          "caller": "createClient",
+          "callee": "console.error",
+          "lineNumber": 105
+        },
+        {
+          "caller": "createClient",
+          "callee": "rawMessage.includes",
+          "lineNumber": 111
+        },
+        {
+          "caller": "createClient",
+          "callee": "rawDetails.includes",
+          "lineNumber": 112
+        },
+        {
+          "caller": "createClient",
+          "callee": "rawMessage.toLowerCase().includes",
+          "lineNumber": 113
+        },
+        {
+          "caller": "createClient",
+          "callee": "rawMessage.toLowerCase",
+          "lineNumber": 113
+        },
+        {
+          "caller": "updateClient",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 136
+        },
+        {
+          "caller": "updateClient",
+          "callee": "supabase\n    .from('clients')\n    .update(updates)\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .select()\n    .single",
+          "lineNumber": 138
+        },
+        {
+          "caller": "updateClient",
+          "callee": "supabase\n    .from('clients')\n    .update(updates)\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .select",
+          "lineNumber": 138
+        },
+        {
+          "caller": "updateClient",
+          "callee": "supabase\n    .from('clients')\n    .update(updates)\n    .eq('id', id)\n    .eq",
+          "lineNumber": 138
+        },
+        {
+          "caller": "updateClient",
+          "callee": "supabase\n    .from('clients')\n    .update(updates)\n    .eq",
+          "lineNumber": 138
+        },
+        {
+          "caller": "updateClient",
+          "callee": "supabase\n    .from('clients')\n    .update",
+          "lineNumber": 138
+        },
+        {
+          "caller": "updateClient",
+          "callee": "supabase\n    .from",
+          "lineNumber": 138
+        },
+        {
+          "caller": "deleteClient",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 154
+        },
+        {
+          "caller": "deleteClient",
+          "callee": "supabase\n    .from('clients')\n    .delete()\n    .eq('id', id)\n    .eq",
+          "lineNumber": 156
+        },
+        {
+          "caller": "deleteClient",
+          "callee": "supabase\n    .from('clients')\n    .delete()\n    .eq",
+          "lineNumber": 156
+        },
+        {
+          "caller": "deleteClient",
+          "callee": "supabase\n    .from('clients')\n    .delete",
+          "lineNumber": 156
+        },
+        {
+          "caller": "deleteClient",
+          "callee": "supabase\n    .from",
+          "lineNumber": 156
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 172
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .select('total_balance')\n    .eq('id', clientId)\n    .eq('tenant_id', tenantId)\n    .single",
+          "lineNumber": 175
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .select('total_balance')\n    .eq('id', clientId)\n    .eq",
+          "lineNumber": 175
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .select('total_balance')\n    .eq",
+          "lineNumber": 175
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .select",
+          "lineNumber": 175
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from",
+          "lineNumber": 175
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "Number",
+          "lineNumber": 184
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .update({ total_balance: newBalance })\n    .eq('id', clientId)\n    .eq",
+          "lineNumber": 186
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .update({ total_balance: newBalance })\n    .eq",
+          "lineNumber": 186
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from('clients')\n    .update",
+          "lineNumber": 186
+        },
+        {
+          "caller": "updateClientBalance",
+          "callee": "supabase\n    .from",
+          "lineNumber": 186
+        },
+        {
+          "caller": "createClientUser",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 202
+        },
+        {
+          "caller": "createClientUser",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 204
+        },
+        {
+          "caller": "createClientUser",
+          "callee": "console.error",
+          "lineNumber": 215
+        },
+        {
+          "caller": "createClientUser",
+          "callee": "error.message.match",
+          "lineNumber": 220
+        },
+        {
+          "caller": "createClientUser",
+          "callee": "JSON.parse",
+          "lineNumber": 223
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/invoices.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 114,
+      "functions": [
+        {
+          "name": "getInvoices",
+          "startLine": 12,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "getInvoicesByClient",
+          "startLine": 28,
+          "endLine": 40,
+          "params": [
+            "clientId"
+          ]
+        },
+        {
+          "name": "getInvoiceById",
+          "startLine": 45,
+          "endLine": 57,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "createInvoice",
+          "startLine": 62,
+          "endLine": 78,
+          "params": [
+            "invoiceData"
+          ]
+        },
+        {
+          "name": "updateInvoice",
+          "startLine": 83,
+          "endLine": 99,
+          "params": [
+            "id",
+            "updates"
+          ]
+        },
+        {
+          "name": "deleteInvoice",
+          "startLine": 104,
+          "endLine": 114,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "generateInvoiceNumber",
+          "startLine": 119,
+          "endLine": 138,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "getInvoices",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "getInvoicesByClient",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "getInvoiceById",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "createInvoice",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "updateInvoice",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "deleteInvoice",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "generateInvoiceNumber",
+          "line": 119,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getInvoices",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getInvoices",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq('tenant_id', tenantId)\n    .order",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getInvoices",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getInvoices",
+          "callee": "supabase\n    .from('invoices')\n    .select",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getInvoices",
+          "callee": "supabase\n    .from",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getInvoicesByClient",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 29
+        },
+        {
+          "caller": "getInvoicesByClient",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq('client_id', clientId)\n    .eq('tenant_id', tenantId)\n    .order",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getInvoicesByClient",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq('client_id', clientId)\n    .eq",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getInvoicesByClient",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getInvoicesByClient",
+          "callee": "supabase\n    .from('invoices')\n    .select",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getInvoicesByClient",
+          "callee": "supabase\n    .from",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getInvoiceById",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 46
+        },
+        {
+          "caller": "getInvoiceById",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .single",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getInvoiceById",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq('id', id)\n    .eq",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getInvoiceById",
+          "callee": "supabase\n    .from('invoices')\n    .select('*, products(id, name, price, description)')\n    .eq",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getInvoiceById",
+          "callee": "supabase\n    .from('invoices')\n    .select",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getInvoiceById",
+          "callee": "supabase\n    .from",
+          "lineNumber": 48
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 65
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .insert({\n      ...invoiceData,\n      tenant_id: tenantId,\n    })\n    .select()\n    .single",
+          "lineNumber": 67
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .insert({\n      ...invoiceData,\n      tenant_id: tenantId,\n    })\n    .select",
+          "lineNumber": 67
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .insert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "supabase\n    .from",
+          "lineNumber": 67
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 87
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .update(updates)\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .select()\n    .single",
+          "lineNumber": 89
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .update(updates)\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .select",
+          "lineNumber": 89
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .update(updates)\n    .eq('id', id)\n    .eq",
+          "lineNumber": 89
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .update(updates)\n    .eq",
+          "lineNumber": 89
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .update",
+          "lineNumber": 89
+        },
+        {
+          "caller": "updateInvoice",
+          "callee": "supabase\n    .from",
+          "lineNumber": 89
+        },
+        {
+          "caller": "deleteInvoice",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 105
+        },
+        {
+          "caller": "deleteInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .delete()\n    .eq('id', id)\n    .eq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "deleteInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .delete()\n    .eq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "deleteInvoice",
+          "callee": "supabase\n    .from('invoices')\n    .delete",
+          "lineNumber": 107
+        },
+        {
+          "caller": "deleteInvoice",
+          "callee": "supabase\n    .from",
+          "lineNumber": 107
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 120
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "supabase\n    .from('invoices')\n    .select('invoice_number')\n    .eq('tenant_id', tenantId)\n    .order('created_at', { ascending: false })\n    .limit",
+          "lineNumber": 122
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "supabase\n    .from('invoices')\n    .select('invoice_number')\n    .eq('tenant_id', tenantId)\n    .order",
+          "lineNumber": 122
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "supabase\n    .from('invoices')\n    .select('invoice_number')\n    .eq",
+          "lineNumber": 122
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "supabase\n    .from('invoices')\n    .select",
+          "lineNumber": 122
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "supabase\n    .from",
+          "lineNumber": 122
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "parseInt",
+          "lineNumber": 135
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "data[0].invoice_number.split",
+          "lineNumber": 135
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "nextNumber.toString().padStart",
+          "lineNumber": 137
+        },
+        {
+          "caller": "generateInvoiceNumber",
+          "callee": "nextNumber.toString",
+          "lineNumber": 137
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/notifications.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "getNotifications",
+          "startLine": 11,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "getUnreadCount",
+          "startLine": 24,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "markAsRead",
+          "startLine": 37,
+          "endLine": 47,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "markAllAsRead",
+          "startLine": 52,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "deleteNotification",
+          "startLine": 64,
+          "endLine": 71,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "createNotification",
+          "startLine": 76,
+          "endLine": 102,
+          "params": [
+            "notification"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getNotifications",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "getUnreadCount",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "markAsRead",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "markAllAsRead",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "deleteNotification",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "createNotification",
+          "line": 76,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getNotifications",
+          "callee": "supabase\n    .from('notifications')\n    .select('*')\n    .order",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getNotifications",
+          "callee": "supabase\n    .from('notifications')\n    .select",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getNotifications",
+          "callee": "supabase\n    .from",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getUnreadCount",
+          "callee": "supabase\n    .from('notifications')\n    .select('*', { count: 'exact', head: true })\n    .eq",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getUnreadCount",
+          "callee": "supabase\n    .from('notifications')\n    .select",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getUnreadCount",
+          "callee": "supabase\n    .from",
+          "lineNumber": 25
+        },
+        {
+          "caller": "markAsRead",
+          "callee": "supabase\n    .from('notifications')\n    .update({ read: true })\n    .eq('id', id)\n    .select()\n    .single",
+          "lineNumber": 38
+        },
+        {
+          "caller": "markAsRead",
+          "callee": "supabase\n    .from('notifications')\n    .update({ read: true })\n    .eq('id', id)\n    .select",
+          "lineNumber": 38
+        },
+        {
+          "caller": "markAsRead",
+          "callee": "supabase\n    .from('notifications')\n    .update({ read: true })\n    .eq",
+          "lineNumber": 38
+        },
+        {
+          "caller": "markAsRead",
+          "callee": "supabase\n    .from('notifications')\n    .update",
+          "lineNumber": 38
+        },
+        {
+          "caller": "markAsRead",
+          "callee": "supabase\n    .from",
+          "lineNumber": 38
+        },
+        {
+          "caller": "markAllAsRead",
+          "callee": "supabase\n    .from('notifications')\n    .update({ read: true })\n    .eq",
+          "lineNumber": 53
+        },
+        {
+          "caller": "markAllAsRead",
+          "callee": "supabase\n    .from('notifications')\n    .update",
+          "lineNumber": 53
+        },
+        {
+          "caller": "markAllAsRead",
+          "callee": "supabase\n    .from",
+          "lineNumber": 53
+        },
+        {
+          "caller": "deleteNotification",
+          "callee": "supabase\n    .from('notifications')\n    .delete()\n    .eq",
+          "lineNumber": 65
+        },
+        {
+          "caller": "deleteNotification",
+          "callee": "supabase\n    .from('notifications')\n    .delete",
+          "lineNumber": 65
+        },
+        {
+          "caller": "deleteNotification",
+          "callee": "supabase\n    .from",
+          "lineNumber": 65
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 79
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from('profiles')\n    .select('tenant_id')\n    .eq('user_id', user.id)\n    .single",
+          "lineNumber": 82
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from('profiles')\n    .select('tenant_id')\n    .eq",
+          "lineNumber": 82
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from('profiles')\n    .select",
+          "lineNumber": 82
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from",
+          "lineNumber": 82
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from('notifications')\n    .insert({\n      ...notification,\n      tenant_id: profile.tenant_id,\n      user_id: user.id,\n    })\n    .select()\n    .single",
+          "lineNumber": 90
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from('notifications')\n    .insert({\n      ...notification,\n      tenant_id: profile.tenant_id,\n      user_id: user.id,\n    })\n    .select",
+          "lineNumber": 90
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from('notifications')\n    .insert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "createNotification",
+          "callee": "supabase\n    .from",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/payments.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "getPaymentDetails",
+          "startLine": 19,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "getActivePaymentDetails",
+          "startLine": 35,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "createPaymentDetail",
+          "startLine": 52,
+          "endLine": 68,
+          "params": [
+            "paymentData"
+          ]
+        },
+        {
+          "name": "updatePaymentDetail",
+          "startLine": 73,
+          "endLine": 86,
+          "params": [
+            "id",
+            "updates"
+          ]
+        },
+        {
+          "name": "deletePaymentDetail",
+          "startLine": 91,
+          "endLine": 98,
+          "params": [
+            "id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getPaymentDetails",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "getActivePaymentDetails",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "createPaymentDetail",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "updatePaymentDetail",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "deletePaymentDetail",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getPaymentDetails",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getPaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .order",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getPaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select(\"*\")\n    .eq",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getPaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getPaymentDetails",
+          "callee": "supabase\n    .from",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getActivePaymentDetails",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 36
+        },
+        {
+          "caller": "getActivePaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .eq(\"is_active\", true)\n    .order",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getActivePaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .eq",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getActivePaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select(\"*\")\n    .eq",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getActivePaymentDetails",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .select",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getActivePaymentDetails",
+          "callee": "supabase\n    .from",
+          "lineNumber": 38
+        },
+        {
+          "caller": "createPaymentDetail",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 55
+        },
+        {
+          "caller": "createPaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .insert({\n      ...paymentData,\n      tenant_id: tenantId,\n    })\n    .select()\n    .single",
+          "lineNumber": 57
+        },
+        {
+          "caller": "createPaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .insert({\n      ...paymentData,\n      tenant_id: tenantId,\n    })\n    .select",
+          "lineNumber": 57
+        },
+        {
+          "caller": "createPaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .insert",
+          "lineNumber": 57
+        },
+        {
+          "caller": "createPaymentDetail",
+          "callee": "supabase\n    .from",
+          "lineNumber": 57
+        },
+        {
+          "caller": "updatePaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .update(updates)\n    .eq(\"id\", id)\n    .select()\n    .single",
+          "lineNumber": 77
+        },
+        {
+          "caller": "updatePaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .update(updates)\n    .eq(\"id\", id)\n    .select",
+          "lineNumber": 77
+        },
+        {
+          "caller": "updatePaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .update(updates)\n    .eq",
+          "lineNumber": 77
+        },
+        {
+          "caller": "updatePaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .update",
+          "lineNumber": 77
+        },
+        {
+          "caller": "updatePaymentDetail",
+          "callee": "supabase\n    .from",
+          "lineNumber": 77
+        },
+        {
+          "caller": "deletePaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .delete()\n    .eq",
+          "lineNumber": 92
+        },
+        {
+          "caller": "deletePaymentDetail",
+          "callee": "supabase\n    .from(\"payment_details\")\n    .delete",
+          "lineNumber": 92
+        },
+        {
+          "caller": "deletePaymentDetail",
+          "callee": "supabase\n    .from",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/products.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "getProducts",
+          "startLine": 12,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "getProductById",
+          "startLine": 28,
+          "endLine": 40,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "createProduct",
+          "startLine": 45,
+          "endLine": 61,
+          "params": [
+            "productData"
+          ]
+        },
+        {
+          "name": "updateProduct",
+          "startLine": 66,
+          "endLine": 82,
+          "params": [
+            "id",
+            "updates"
+          ]
+        },
+        {
+          "name": "deleteProduct",
+          "startLine": 87,
+          "endLine": 97,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "searchProducts",
+          "startLine": 102,
+          "endLine": 114,
+          "params": [
+            "query"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getProducts",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "getProductById",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "createProduct",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "updateProduct",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "deleteProduct",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "searchProducts",
+          "line": 102,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getProducts",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getProducts",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq('tenant_id', tenantId)\n    .order",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getProducts",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getProducts",
+          "callee": "supabase\n    .from('products')\n    .select",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getProducts",
+          "callee": "supabase\n    .from",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getProductById",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 29
+        },
+        {
+          "caller": "getProductById",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .single",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getProductById",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq('id', id)\n    .eq",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getProductById",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getProductById",
+          "callee": "supabase\n    .from('products')\n    .select",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getProductById",
+          "callee": "supabase\n    .from",
+          "lineNumber": 31
+        },
+        {
+          "caller": "createProduct",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 48
+        },
+        {
+          "caller": "createProduct",
+          "callee": "supabase\n    .from('products')\n    .insert({\n      ...productData,\n      tenant_id: tenantId,\n    })\n    .select()\n    .single",
+          "lineNumber": 50
+        },
+        {
+          "caller": "createProduct",
+          "callee": "supabase\n    .from('products')\n    .insert({\n      ...productData,\n      tenant_id: tenantId,\n    })\n    .select",
+          "lineNumber": 50
+        },
+        {
+          "caller": "createProduct",
+          "callee": "supabase\n    .from('products')\n    .insert",
+          "lineNumber": 50
+        },
+        {
+          "caller": "createProduct",
+          "callee": "supabase\n    .from",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 70
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "supabase\n    .from('products')\n    .update(updates)\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .select()\n    .single",
+          "lineNumber": 72
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "supabase\n    .from('products')\n    .update(updates)\n    .eq('id', id)\n    .eq('tenant_id', tenantId)\n    .select",
+          "lineNumber": 72
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "supabase\n    .from('products')\n    .update(updates)\n    .eq('id', id)\n    .eq",
+          "lineNumber": 72
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "supabase\n    .from('products')\n    .update(updates)\n    .eq",
+          "lineNumber": 72
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "supabase\n    .from('products')\n    .update",
+          "lineNumber": 72
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "supabase\n    .from",
+          "lineNumber": 72
+        },
+        {
+          "caller": "deleteProduct",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 88
+        },
+        {
+          "caller": "deleteProduct",
+          "callee": "supabase\n    .from('products')\n    .delete()\n    .eq('id', id)\n    .eq",
+          "lineNumber": 90
+        },
+        {
+          "caller": "deleteProduct",
+          "callee": "supabase\n    .from('products')\n    .delete()\n    .eq",
+          "lineNumber": 90
+        },
+        {
+          "caller": "deleteProduct",
+          "callee": "supabase\n    .from('products')\n    .delete",
+          "lineNumber": 90
+        },
+        {
+          "caller": "deleteProduct",
+          "callee": "supabase\n    .from",
+          "lineNumber": 90
+        },
+        {
+          "caller": "searchProducts",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 103
+        },
+        {
+          "caller": "searchProducts",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq('tenant_id', tenantId)\n    .ilike('name', `%${query}%`)\n    .order",
+          "lineNumber": 105
+        },
+        {
+          "caller": "searchProducts",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq('tenant_id', tenantId)\n    .ilike",
+          "lineNumber": 105
+        },
+        {
+          "caller": "searchProducts",
+          "callee": "supabase\n    .from('products')\n    .select('*')\n    .eq",
+          "lineNumber": 105
+        },
+        {
+          "caller": "searchProducts",
+          "callee": "supabase\n    .from('products')\n    .select",
+          "lineNumber": 105
+        },
+        {
+          "caller": "searchProducts",
+          "callee": "supabase\n    .from",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/tenant.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "getCurrentTenantId",
+          "startLine": 7,
+          "endLine": 25,
+          "params": []
+        },
+        {
+          "name": "getCurrentUser",
+          "startLine": 30,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "getCurrentTenantId",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "getCurrentUser",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getCurrentTenantId",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 8
+        },
+        {
+          "caller": "getCurrentTenantId",
+          "callee": "supabase\n    .from('profiles')\n    .select('tenant_id')\n    .eq('user_id', user.id)\n    .single",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getCurrentTenantId",
+          "callee": "supabase\n    .from('profiles')\n    .select('tenant_id')\n    .eq",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getCurrentTenantId",
+          "callee": "supabase\n    .from('profiles')\n    .select",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getCurrentTenantId",
+          "callee": "supabase\n    .from",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getCurrentUser",
+          "callee": "supabase.auth.getUser",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/api/transactions.api.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 204,
+      "nonEmptyLines": 173,
+      "functions": [
+        {
+          "name": "sendTransactionSms",
+          "startLine": 26,
+          "endLine": 49,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "getTransactions",
+          "startLine": 54,
+          "endLine": 65,
+          "params": []
+        },
+        {
+          "name": "getTransactionsByClient",
+          "startLine": 70,
+          "endLine": 82,
+          "params": [
+            "clientId"
+          ]
+        },
+        {
+          "name": "getTransactionsByInvoice",
+          "startLine": 87,
+          "endLine": 99,
+          "params": [
+            "invoiceId"
+          ]
+        },
+        {
+          "name": "getInvoicePaidAmount",
+          "startLine": 104,
+          "endLine": 116,
+          "params": [
+            "invoiceId"
+          ]
+        },
+        {
+          "name": "createPaymentTransaction",
+          "startLine": 121,
+          "endLine": 161,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "createSaleTransaction",
+          "startLine": 166,
+          "endLine": 204,
+          "params": [
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getTransactions",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "getTransactionsByClient",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "getTransactionsByInvoice",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "getInvoicePaidAmount",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "createPaymentTransaction",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "createSaleTransaction",
+          "line": 166,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sendTransactionSms",
+          "callee": "console.log",
+          "lineNumber": 35
+        },
+        {
+          "caller": "sendTransactionSms",
+          "callee": "supabase.functions.invoke",
+          "lineNumber": 36
+        },
+        {
+          "caller": "sendTransactionSms",
+          "callee": "console.error",
+          "lineNumber": 41
+        },
+        {
+          "caller": "sendTransactionSms",
+          "callee": "console.log",
+          "lineNumber": 43
+        },
+        {
+          "caller": "sendTransactionSms",
+          "callee": "console.error",
+          "lineNumber": 47
+        },
+        {
+          "caller": "getTransactions",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getTransactions",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .order",
+          "lineNumber": 57
+        },
+        {
+          "caller": "getTransactions",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq",
+          "lineNumber": 57
+        },
+        {
+          "caller": "getTransactions",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select",
+          "lineNumber": 57
+        },
+        {
+          "caller": "getTransactions",
+          "callee": "supabase\n    .from",
+          "lineNumber": 57
+        },
+        {
+          "caller": "getTransactionsByClient",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 71
+        },
+        {
+          "caller": "getTransactionsByClient",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .eq(\"client_id\", clientId)\n    .order",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getTransactionsByClient",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .eq",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getTransactionsByClient",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getTransactionsByClient",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getTransactionsByClient",
+          "callee": "supabase\n    .from",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getTransactionsByInvoice",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 88
+        },
+        {
+          "caller": "getTransactionsByInvoice",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .eq(\"invoice_id\", invoiceId)\n    .order",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getTransactionsByInvoice",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq(\"tenant_id\", tenantId)\n    .eq",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getTransactionsByInvoice",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"*\")\n    .eq",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getTransactionsByInvoice",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getTransactionsByInvoice",
+          "callee": "supabase\n    .from",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 105
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"amount\")\n    .eq(\"tenant_id\", tenantId)\n    .eq(\"invoice_id\", invoiceId)\n    .eq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"amount\")\n    .eq(\"tenant_id\", tenantId)\n    .eq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select(\"amount\")\n    .eq",
+          "lineNumber": 107
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "supabase\n    .from(\"transactions\")\n    .select",
+          "lineNumber": 107
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "supabase\n    .from",
+          "lineNumber": 107
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "data?.reduce",
+          "lineNumber": 115
+        },
+        {
+          "caller": "getInvoicePaidAmount",
+          "callee": "Number",
+          "lineNumber": 115
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 122
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from(\"transactions\")\n    .insert({\n      tenant_id: tenantId,\n      client_id: data.clientId,\n      invoice_id: data.invoiceId,\n      amount: data.amount,\n      type: \"payment\",\n      date: data.date.toISOString(),\n      notes: data.notes,\n    })\n    .select()\n    .single",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from(\"transactions\")\n    .insert({\n      tenant_id: tenantId,\n      client_id: data.clientId,\n      invoice_id: data.invoiceId,\n      amount: data.amount,\n      type: \"payment\",\n      date: data.date.toISOString(),\n      notes: data.notes,\n    })\n    .select",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from(\"transactions\")\n    .insert",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "data.date.toISOString",
+          "lineNumber": 132
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from(\"invoices\")\n    .select(\"invoice_number, amount\")\n    .eq(\"id\", data.invoiceId)\n    .single",
+          "lineNumber": 141
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from(\"invoices\")\n    .select(\"invoice_number, amount\")\n    .eq",
+          "lineNumber": 141
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from(\"invoices\")\n    .select",
+          "lineNumber": 141
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "supabase\n    .from",
+          "lineNumber": 141
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "getInvoicePaidAmount",
+          "lineNumber": 148
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "Number",
+          "lineNumber": 149
+        },
+        {
+          "caller": "createPaymentTransaction",
+          "callee": "sendTransactionSms",
+          "lineNumber": 152
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "getCurrentTenantId",
+          "lineNumber": 167
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from(\"transactions\")\n    .insert({\n      tenant_id: tenantId,\n      client_id: data.clientId,\n      invoice_id: data.invoiceId,\n      amount: data.amount,\n      type: \"sale\",\n      date: new Date().toISOString(),\n      notes: data.notes,\n    })\n    .select()\n    .single",
+          "lineNumber": 169
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from(\"transactions\")\n    .insert({\n      tenant_id: tenantId,\n      client_id: data.clientId,\n      invoice_id: data.invoiceId,\n      amount: data.amount,\n      type: \"sale\",\n      date: new Date().toISOString(),\n      notes: data.notes,\n    })\n    .select",
+          "lineNumber": 169
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from(\"transactions\")\n    .insert",
+          "lineNumber": 169
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from",
+          "lineNumber": 169
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "new Date().toISOString",
+          "lineNumber": 177
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from(\"invoices\")\n    .select(\"invoice_number, product_id, products(name)\")\n    .eq(\"id\", data.invoiceId)\n    .single",
+          "lineNumber": 186
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from(\"invoices\")\n    .select(\"invoice_number, product_id, products(name)\")\n    .eq",
+          "lineNumber": 186
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from(\"invoices\")\n    .select",
+          "lineNumber": 186
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "supabase\n    .from",
+          "lineNumber": 186
+        },
+        {
+          "caller": "createSaleTransaction",
+          "callee": "sendTransactionSms",
+          "lineNumber": 195
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/clients/ClientTransactionsDialog.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 198,
+      "nonEmptyLines": 183,
+      "functions": [
+        {
+          "name": "ClientTransactionsDialog",
+          "startLine": 21,
+          "endLine": 198,
+          "params": [
+            "{ open, onClose, client }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ClientTransactionsDialog",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "useEffect",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "fetchData",
+          "lineNumber": 28
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setLoading",
+          "lineNumber": 35
+        },
+        {
+          "caller": "fetchData",
+          "callee": "Promise.all",
+          "lineNumber": 37
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from(\"transactions\")\n          .select(\"*\")\n          .eq(\"client_id\", client.id)\n          .order",
+          "lineNumber": 38
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from(\"transactions\")\n          .select(\"*\")\n          .eq",
+          "lineNumber": 38
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from(\"transactions\")\n          .select",
+          "lineNumber": 38
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from",
+          "lineNumber": 38
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from(\"invoices\")\n          .select(\"*, products(name)\")\n          .eq(\"client_id\", client.id)\n          .order",
+          "lineNumber": 43
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from(\"invoices\")\n          .select(\"*, products(name)\")\n          .eq",
+          "lineNumber": 43
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from(\"invoices\")\n          .select",
+          "lineNumber": 43
+        },
+        {
+          "caller": "fetchData",
+          "callee": "supabase\n          .from",
+          "lineNumber": 43
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setTransactions",
+          "lineNumber": 53
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setInvoices",
+          "lineNumber": 54
+        },
+        {
+          "caller": "fetchData",
+          "callee": "console.error",
+          "lineNumber": 56
+        },
+        {
+          "caller": "fetchData",
+          "callee": "toast.error",
+          "lineNumber": 57
+        },
+        {
+          "caller": "fetchData",
+          "callee": "setLoading",
+          "lineNumber": 59
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "invoices.reduce",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "transactions\n    .filter((txn) => txn.type === \"payment\")\n    .reduce",
+          "lineNumber": 66
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "transactions\n    .filter",
+          "lineNumber": 66
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number",
+          "lineNumber": 68
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "[1, 2, 3].map",
+          "lineNumber": 97
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "transactions.map",
+          "lineNumber": 110
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "new Date(txn.date).toLocaleDateString",
+          "lineNumber": 126
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number(txn.amount).toLocaleString",
+          "lineNumber": 135
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number",
+          "lineNumber": 135
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "[1, 2].map",
+          "lineNumber": 145
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "invoices.map",
+          "lineNumber": 157
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number(invoice.amount).toLocaleString",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number(totalInvoiced ?? 0).toLocaleString",
+          "lineNumber": 178
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number",
+          "lineNumber": 178
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number(balance ?? 0).toLocaleString",
+          "lineNumber": 187
+        },
+        {
+          "caller": "ClientTransactionsDialog",
+          "callee": "Number",
+          "lineNumber": 187
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useGlobalSearch.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 93,
+      "functions": [
+        {
+          "name": "useGlobalSearch",
+          "startLine": 14,
+          "endLine": 105,
+          "params": [
+            "query"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useGlobalSearch",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useGlobalSearch",
+          "callee": "useState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useGlobalSearch",
+          "callee": "useState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useGlobalSearch",
+          "callee": "useEffect",
+          "lineNumber": 18
+        },
+        {
+          "caller": "useGlobalSearch",
+          "callee": "query.trim",
+          "lineNumber": 19
+        },
+        {
+          "caller": "useGlobalSearch",
+          "callee": "setResults",
+          "lineNumber": 20
+        },
+        {
+          "caller": "searchData",
+          "callee": "setLoading",
+          "lineNumber": 25
+        },
+        {
+          "caller": "searchData",
+          "callee": "query.trim",
+          "lineNumber": 27
+        },
+        {
+          "caller": "searchData",
+          "callee": "Promise.all",
+          "lineNumber": 29
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('clients')\n            .select('*')\n            .or(`name.ilike.${searchTerm},email.ilike.${searchTerm},phone_number.ilike.${searchTerm}`)\n            .limit",
+          "lineNumber": 30
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('clients')\n            .select('*')\n            .or",
+          "lineNumber": 30
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('clients')\n            .select",
+          "lineNumber": 30
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from",
+          "lineNumber": 30
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('invoices')\n            .select('*')\n            .or(`invoice_number.ilike.${searchTerm},notes.ilike.${searchTerm}`)\n            .limit",
+          "lineNumber": 35
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('invoices')\n            .select('*')\n            .or",
+          "lineNumber": 35
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('invoices')\n            .select",
+          "lineNumber": 35
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from",
+          "lineNumber": 35
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('products')\n            .select('*')\n            .or(`name.ilike.${searchTerm},description.ilike.${searchTerm}`)\n            .limit",
+          "lineNumber": 40
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('products')\n            .select('*')\n            .or",
+          "lineNumber": 40
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from('products')\n            .select",
+          "lineNumber": 40
+        },
+        {
+          "caller": "searchData",
+          "callee": "supabase\n            .from",
+          "lineNumber": 40
+        },
+        {
+          "caller": "searchData",
+          "callee": "searchResults.push",
+          "lineNumber": 51
+        },
+        {
+          "caller": "searchData",
+          "callee": "clientsRes.data.map",
+          "lineNumber": 52
+        },
+        {
+          "caller": "searchData",
+          "callee": "searchResults.push",
+          "lineNumber": 65
+        },
+        {
+          "caller": "searchData",
+          "callee": "invoicesRes.data.map",
+          "lineNumber": 66
+        },
+        {
+          "caller": "searchData",
+          "callee": "Number(invoice.amount).toLocaleString",
+          "lineNumber": 70
+        },
+        {
+          "caller": "searchData",
+          "callee": "Number",
+          "lineNumber": 70
+        },
+        {
+          "caller": "searchData",
+          "callee": "searchResults.push",
+          "lineNumber": 79
+        },
+        {
+          "caller": "searchData",
+          "callee": "productsRes.data.map",
+          "lineNumber": 80
+        },
+        {
+          "caller": "searchData",
+          "callee": "Number(product.price).toLocaleString",
+          "lineNumber": 84
+        },
+        {
+          "caller": "searchData",
+          "callee": "Number",
+          "lineNumber": 84
+        },
+        {
+          "caller": "searchData",
+          "callee": "setResults",
+          "lineNumber": 91
+        },
+        {
+          "caller": "searchData",
+          "callee": "console.error",
+          "lineNumber": 93
+        },
+        {
+          "caller": "searchData",
+          "callee": "setResults",
+          "lineNumber": 94
+        },
+        {
+          "caller": "searchData",
+          "callee": "setLoading",
+          "lineNumber": 96
+        },
+        {
+          "caller": "useGlobalSearch",
+          "callee": "setTimeout",
+          "lineNumber": 100
+        },
+        {
+          "caller": "useGlobalSearch",
+          "callee": "clearTimeout",
+          "lineNumber": 101
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useNotifications.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 115,
+      "functions": [
+        {
+          "name": "useNotifications",
+          "startLine": 14,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "useUnreadCount",
+          "startLine": 51,
+          "endLine": 56,
+          "params": []
+        },
+        {
+          "name": "useMarkAsRead",
+          "startLine": 61,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "useMarkAllAsRead",
+          "startLine": 79,
+          "endLine": 93,
+          "params": []
+        },
+        {
+          "name": "useDeleteNotification",
+          "startLine": 98,
+          "endLine": 111,
+          "params": []
+        },
+        {
+          "name": "useCreateNotification",
+          "startLine": 116,
+          "endLine": 130,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useNotifications",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "useUnreadCount",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "useMarkAsRead",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "useMarkAllAsRead",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "useDeleteNotification",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "useCreateNotification",
+          "line": 116,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useNotifications",
+          "callee": "useQueryClient",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "useQuery",
+          "lineNumber": 17
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "useEffect",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "supabase\n      .channel('notifications')\n      .on(\n        'postgres_changes',\n        {\n          event: '*',\n          schema: 'public',\n          table: 'notifications',\n        },\n        () => {\n          queryClient.invalidateQueries({ queryKey: QUERY_KEY });\n          queryClient.invalidateQueries({ queryKey: UNREAD_COUNT_KEY });\n        }\n      )\n      .subscribe",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "supabase\n      .channel('notifications')\n      .on",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "supabase\n      .channel",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useNotifications",
+          "callee": "supabase.removeChannel",
+          "lineNumber": 41
+        },
+        {
+          "caller": "useUnreadCount",
+          "callee": "useQuery",
+          "lineNumber": 52
+        },
+        {
+          "caller": "useMarkAsRead",
+          "callee": "useQueryClient",
+          "lineNumber": 62
+        },
+        {
+          "caller": "useMarkAsRead",
+          "callee": "useMutation",
+          "lineNumber": 64
+        },
+        {
+          "caller": "useMarkAsRead",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 67
+        },
+        {
+          "caller": "useMarkAsRead",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 68
+        },
+        {
+          "caller": "useMarkAsRead",
+          "callee": "toast.error",
+          "lineNumber": 71
+        },
+        {
+          "caller": "useMarkAllAsRead",
+          "callee": "useQueryClient",
+          "lineNumber": 80
+        },
+        {
+          "caller": "useMarkAllAsRead",
+          "callee": "useMutation",
+          "lineNumber": 82
+        },
+        {
+          "caller": "useMarkAllAsRead",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 85
+        },
+        {
+          "caller": "useMarkAllAsRead",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 86
+        },
+        {
+          "caller": "useMarkAllAsRead",
+          "callee": "toast.success",
+          "lineNumber": 87
+        },
+        {
+          "caller": "useMarkAllAsRead",
+          "callee": "toast.error",
+          "lineNumber": 90
+        },
+        {
+          "caller": "useDeleteNotification",
+          "callee": "useQueryClient",
+          "lineNumber": 99
+        },
+        {
+          "caller": "useDeleteNotification",
+          "callee": "useMutation",
+          "lineNumber": 101
+        },
+        {
+          "caller": "useDeleteNotification",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 104
+        },
+        {
+          "caller": "useDeleteNotification",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 105
+        },
+        {
+          "caller": "useDeleteNotification",
+          "callee": "toast.error",
+          "lineNumber": 108
+        },
+        {
+          "caller": "useCreateNotification",
+          "callee": "useQueryClient",
+          "lineNumber": 117
+        },
+        {
+          "caller": "useCreateNotification",
+          "callee": "useMutation",
+          "lineNumber": 119
+        },
+        {
+          "caller": "useCreateNotification",
+          "callee": "notificationsApi.createNotification",
+          "lineNumber": 121
+        },
+        {
+          "caller": "useCreateNotification",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 123
+        },
+        {
+          "caller": "useCreateNotification",
+          "callee": "queryClient.invalidateQueries",
+          "lineNumber": 124
+        },
+        {
+          "caller": "useCreateNotification",
+          "callee": "console.error",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/integrations/supabase/client.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 14,
+      "exports": [
+        {
+          "name": "supabase",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/integrations/supabase/types.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 977,
+      "nonEmptyLines": 968,
+      "exports": [
+        {
+          "name": "Constants",
+          "line": 967,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/shared/hooks/useTenant.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 23,
+      "functions": [
+        {
+          "name": "useTenantId",
+          "startLine": 7,
+          "endLine": 14,
+          "params": []
+        },
+        {
+          "name": "useCurrentUser",
+          "startLine": 19,
+          "endLine": 25,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useTenantId",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "useCurrentUser",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useTenantId",
+          "callee": "useQuery",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useCurrentUser",
+          "callee": "useQuery",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

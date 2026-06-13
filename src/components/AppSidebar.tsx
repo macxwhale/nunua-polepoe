@@ -14,7 +14,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useUserRole } from "@/hooks/useUserRole";
 import { cn } from "@/lib/utils";
 import { PLAN_FEATURES, PlanFeatures } from "@/lib/featureFlags";
-import { ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users, Settings } from "lucide-react";
+import { ArrowLeftRight, ChevronDown, FileText, LayoutDashboard, Package, Plus, Smartphone, Users, Settings } from "lucide-react";
 import { FeatureGate } from "./FeatureGate";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -45,6 +45,7 @@ const menuGroups: MenuGroup[] = [
     items: [
       { title: "Clients", url: "/clients", icon: Users, iconColor: "green" },
       { title: "Invoices", url: "/invoices", icon: FileText, iconColor: "red" },
+      { title: "Transactions", url: "/transactions", icon: ArrowLeftRight, iconColor: "green" },
       { title: "Products", url: "/products", icon: Package, iconColor: "green" },
     ]
   },

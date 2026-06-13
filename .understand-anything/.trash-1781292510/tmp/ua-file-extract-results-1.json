@@ -1,0 +1,2274 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 20,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 194,
+      "functions": [
+        {
+          "name": "ProtectedRoute",
+          "startLine": 29,
+          "endLine": 68,
+          "params": [
+            "{ children, requireOwner = false, requireSuperAdmin = false }"
+          ]
+        },
+        {
+          "name": "DashboardRouter",
+          "startLine": 70,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "App",
+          "startLine": 91,
+          "endLine": 207,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ProtectedRoute",
+          "callee": "useAuth",
+          "lineNumber": 30
+        },
+        {
+          "caller": "ProtectedRoute",
+          "callee": "useUserRole",
+          "lineNumber": 31
+        },
+        {
+          "caller": "ProtectedRoute",
+          "callee": "useLocation",
+          "lineNumber": 32
+        },
+        {
+          "caller": "ProtectedRoute",
+          "callee": "location.pathname.startsWith",
+          "lineNumber": 63
+        },
+        {
+          "caller": "DashboardRouter",
+          "callee": "useUserRole",
+          "lineNumber": 71
+        },
+        {
+          "caller": "DashboardRouter",
+          "callee": "useAuth",
+          "lineNumber": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 24,
+        "exportCount": 0,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/AppSidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 304,
+      "nonEmptyLines": 280,
+      "functions": [
+        {
+          "name": "getIconColorClass",
+          "startLine": 61,
+          "endLine": 64,
+          "params": [
+            "color",
+            "isActive"
+          ]
+        },
+        {
+          "name": "getHoverClass",
+          "startLine": 67,
+          "endLine": 71,
+          "params": [
+            "color"
+          ]
+        },
+        {
+          "name": "getActiveClass",
+          "startLine": 74,
+          "endLine": 78,
+          "params": [
+            "color"
+          ]
+        },
+        {
+          "name": "AppSidebar",
+          "startLine": 80,
+          "endLine": 304,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AppSidebar",
+          "line": 80,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AppSidebar",
+          "callee": "useSidebar",
+          "lineNumber": 81
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "useUserRole",
+          "lineNumber": 82
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "useIsMobile",
+          "lineNumber": 83
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "useState",
+          "lineNumber": 84
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "useState",
+          "lineNumber": 85
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "menuGroups.filter",
+          "lineNumber": 88
+        },
+        {
+          "caller": "handleMobileMenuClick",
+          "callee": "setOpenMobile",
+          "lineNumber": 101
+        },
+        {
+          "caller": "toggleGroup",
+          "callee": "setOpenGroups",
+          "lineNumber": 106
+        },
+        {
+          "caller": "toggleGroup",
+          "callee": "prev.includes",
+          "lineNumber": 107
+        },
+        {
+          "caller": "toggleGroup",
+          "callee": "prev.filter",
+          "lineNumber": 108
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 116
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "dynamicMenuGroups.map",
+          "lineNumber": 130
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "openGroups.includes",
+          "lineNumber": 135
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "toggleGroup",
+          "lineNumber": 136
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 141
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "openGroups.includes",
+          "lineNumber": 143
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "setClientDialogOpen",
+          "lineNumber": 160
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "handleMobileMenuClick",
+          "lineNumber": 161
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "group.items.map",
+          "lineNumber": 172
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 188
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 191
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "getActiveClass",
+          "lineNumber": 191
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 192
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "getHoverClass",
+          "lineNumber": 192
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 198
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "getIconColorClass",
+          "lineNumber": 198
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "setClientDialogOpen",
+          "lineNumber": 236
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "handleMobileMenuClick",
+          "lineNumber": 237
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "group.items.map",
+          "lineNumber": 248
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 265
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 268
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "getActiveClass",
+          "lineNumber": 268
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 269
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "cn",
+          "lineNumber": 274
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "getIconColorClass",
+          "lineNumber": 274
+        },
+        {
+          "caller": "AppSidebar",
+          "callee": "setClientDialogOpen",
+          "lineNumber": 299
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/Layout.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 133,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "Layout",
+          "startLine": 21,
+          "endLine": 133,
+          "params": [
+            "{ children }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Layout",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Layout",
+          "callee": "useAuth",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Layout",
+          "callee": "useUserRole",
+          "lineNumber": 23
+        },
+        {
+          "caller": "Layout",
+          "callee": "useNavigate",
+          "lineNumber": 24
+        },
+        {
+          "caller": "Layout",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "supabase.auth.signOut",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "toast.error",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "toast.success",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleLogout",
+          "callee": "navigate",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getUserName",
+          "callee": "user.email?.split",
+          "lineNumber": 39
+        },
+        {
+          "caller": "getInitials",
+          "callee": "getUserName",
+          "lineNumber": 43
+        },
+        {
+          "caller": "getInitials",
+          "callee": "name.slice(0, 2).toUpperCase",
+          "lineNumber": 44
+        },
+        {
+          "caller": "getInitials",
+          "callee": "name.slice",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Layout",
+          "callee": "setSearchOpen",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Layout",
+          "callee": "getUserName",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Layout",
+          "callee": "navigate",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Layout",
+          "callee": "navigate",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Layout",
+          "callee": "navigate",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Layout",
+          "callee": "navigate",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/SuperAdminLayout.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 94,
+      "functions": [
+        {
+          "name": "SuperAdminLayout",
+          "startLine": 26,
+          "endLine": 102,
+          "params": [
+            "{ children }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SuperAdminLayout",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SuperAdminLayout",
+          "callee": "useAuth",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getUserName",
+          "callee": "user.email?.split",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SuperAdminLayout",
+          "callee": "getUserName().charAt(0).toUpperCase",
+          "lineNumber": 65
+        },
+        {
+          "caller": "SuperAdminLayout",
+          "callee": "getUserName().charAt",
+          "lineNumber": 65
+        },
+        {
+          "caller": "SuperAdminLayout",
+          "callee": "getUserName",
+          "lineNumber": 65
+        },
+        {
+          "caller": "SuperAdminLayout",
+          "callee": "getUserName",
+          "lineNumber": 68
+        },
+        {
+          "caller": "SuperAdminLayout",
+          "callee": "signOut",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/SuperAdminSidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "SuperAdminSidebar",
+          "startLine": 16,
+          "endLine": 113,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SuperAdminSidebar",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SuperAdminSidebar",
+          "callee": "useSidebar",
+          "lineNumber": 17
+        },
+        {
+          "caller": "SuperAdminSidebar",
+          "callee": "useIsMobile",
+          "lineNumber": 18
+        },
+        {
+          "caller": "SuperAdminSidebar",
+          "callee": "cn",
+          "lineNumber": 25
+        },
+        {
+          "caller": "SuperAdminSidebar",
+          "callee": "cn",
+          "lineNumber": 51
+        },
+        {
+          "caller": "SuperAdminSidebar",
+          "callee": "cn",
+          "lineNumber": 68
+        },
+        {
+          "caller": "SuperAdminSidebar",
+          "callee": "cn",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/WhatsAppButton.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 119,
+      "nonEmptyLines": 109,
+      "functions": [
+        {
+          "name": "WhatsAppIcon",
+          "startLine": 13,
+          "endLine": 22,
+          "params": [
+            "{ className }"
+          ]
+        },
+        {
+          "name": "WhatsAppButton",
+          "startLine": 24,
+          "endLine": 119,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "WhatsAppButton",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "WhatsAppButton",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "handleStartChat",
+          "callee": "encodeURIComponent",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleStartChat",
+          "callee": "WHATSAPP_PHONE.replace",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handleStartChat",
+          "callee": "window.open",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handleStartChat",
+          "callee": "setIsOpen",
+          "lineNumber": 31
+        },
+        {
+          "caller": "WhatsAppButton",
+          "callee": "setIsOpen",
+          "lineNumber": 38
+        },
+        {
+          "caller": "WhatsAppButton",
+          "callee": "setIsOpen",
+          "lineNumber": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/collapsible.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 9,
+      "nonEmptyLines": 5,
+      "exports": [
+        {
+          "name": "Collapsible",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "CollapsibleTrigger",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "CollapsibleContent",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/separator.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 17,
+      "exports": [
+        {
+          "name": "Separator",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 93,
+      "functions": [
+        {
+          "name": "SheetHeader",
+          "startLine": 70,
+          "endLine": 72,
+          "params": [
+            "{ className, ...props }"
+          ]
+        },
+        {
+          "name": "SheetFooter",
+          "startLine": 75,
+          "endLine": 77,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Sheet",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetClose",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetContent",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetDescription",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetFooter",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetHeader",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetOverlay",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetPortal",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetTitle",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SheetTrigger",
+          "line": 96,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SheetHeader",
+          "callee": "cn",
+          "lineNumber": 71
+        },
+        {
+          "caller": "SheetFooter",
+          "callee": "cn",
+          "lineNumber": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/sidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 637,
+      "nonEmptyLines": 584,
+      "functions": [
+        {
+          "name": "useSidebar",
+          "startLine": 34,
+          "endLine": 41,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Sidebar",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarContent",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarFooter",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarGroup",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarGroupAction",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarGroupContent",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarGroupLabel",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarHeader",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarInput",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarInset",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenu",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuAction",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuBadge",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuButton",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuItem",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuSkeleton",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuSub",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuSubButton",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarMenuSubItem",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarProvider",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarRail",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarSeparator",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "SidebarTrigger",
+          "line": 612,
+          "isDefault": false
+        },
+        {
+          "name": "useSidebar",
+          "line": 612,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useSidebar",
+          "callee": "React.useContext",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleKeyDown",
+          "callee": "event.preventDefault",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleKeyDown",
+          "callee": "toggleSidebar",
+          "lineNumber": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 24,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/skeleton.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 5,
+      "functions": [
+        {
+          "name": "Skeleton",
+          "startLine": 3,
+          "endLine": 5,
+          "params": [
+            "{ className, ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Skeleton",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Skeleton",
+          "callee": "cn",
+          "lineNumber": 4
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 23,
+      "functions": [
+        {
+          "name": "Toaster",
+          "startLine": 6,
+          "endLine": 25,
+          "params": [
+            "{ ...props }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Toaster",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "toast",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Toaster",
+          "callee": "useTheme",
+          "lineNumber": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/tooltip.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 22,
+      "exports": [
+        {
+          "name": "Tooltip",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "TooltipTrigger",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "TooltipContent",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "TooltipProvider",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/use-mobile.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "useIsMobile",
+          "startLine": 5,
+          "endLine": 19,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useIsMobile",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useIsMobile",
+          "callee": "React.useState",
+          "lineNumber": 6
+        },
+        {
+          "caller": "useIsMobile",
+          "callee": "React.useEffect",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useIsMobile",
+          "callee": "window.matchMedia",
+          "lineNumber": 9
+        },
+        {
+          "caller": "onChange",
+          "callee": "setIsMobile",
+          "lineNumber": 11
+        },
+        {
+          "caller": "useIsMobile",
+          "callee": "mql.addEventListener",
+          "lineNumber": 13
+        },
+        {
+          "caller": "useIsMobile",
+          "callee": "setIsMobile",
+          "lineNumber": 14
+        },
+        {
+          "caller": "useIsMobile",
+          "callee": "mql.removeEventListener",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useAuth.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "useAuth",
+          "startLine": 5,
+          "endLine": 35,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useAuth",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useAuth",
+          "callee": "useState",
+          "lineNumber": 6
+        },
+        {
+          "caller": "useAuth",
+          "callee": "useState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useAuth",
+          "callee": "useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useAuth",
+          "callee": "useEffect",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useAuth",
+          "callee": "supabase.auth.onAuthStateChange",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useAuth",
+          "callee": "setSession",
+          "lineNumber": 14
+        },
+        {
+          "caller": "useAuth",
+          "callee": "setUser",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useAuth",
+          "callee": "setLoading",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useAuth",
+          "callee": "supabase.auth.getSession().then",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useAuth",
+          "callee": "supabase.auth.getSession",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useAuth",
+          "callee": "setSession",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useAuth",
+          "callee": "setUser",
+          "lineNumber": 23
+        },
+        {
+          "caller": "useAuth",
+          "callee": "setLoading",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useAuth",
+          "callee": "subscription.unsubscribe",
+          "lineNumber": 27
+        },
+        {
+          "caller": "signOut",
+          "callee": "supabase.auth.signOut",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useUserRole.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "useUserRole",
+          "startLine": 7,
+          "endLine": 76,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useUserRole",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useUserRole",
+          "callee": "useAuth",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "useState",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "useState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "useEffect",
+          "lineNumber": 18
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "setRole",
+          "lineNumber": 20
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "setCapabilities",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "setIsLoading",
+          "lineNumber": 22
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setIsLoading",
+          "lineNumber": 27
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "supabase\n          .from('user_roles')\n          .select('role')\n          .eq",
+          "lineNumber": 29
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "supabase\n          .from('user_roles')\n          .select",
+          "lineNumber": 29
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "supabase\n          .from",
+          "lineNumber": 29
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "console.error",
+          "lineNumber": 35
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setRole",
+          "lineNumber": 36
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "rolesData?.map",
+          "lineNumber": 40
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "roles.includes",
+          "lineNumber": 42
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "roles.includes",
+          "lineNumber": 43
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "roles.includes",
+          "lineNumber": 44
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "roles.includes",
+          "lineNumber": 45
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setCapabilities",
+          "lineNumber": 47
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setRole",
+          "lineNumber": 55
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setRole",
+          "lineNumber": 56
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setRole",
+          "lineNumber": 57
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setRole",
+          "lineNumber": 58
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setRole",
+          "lineNumber": 59
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "console.error",
+          "lineNumber": 62
+        },
+        {
+          "caller": "fetchRole",
+          "callee": "setIsLoading",
+          "lineNumber": 64
+        },
+        {
+          "caller": "useUserRole",
+          "callee": "fetchRole",
+          "lineNumber": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Dashboard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 553,
+      "nonEmptyLines": 517,
+      "functions": [
+        {
+          "name": "Dashboard",
+          "startLine": 54,
+          "endLine": 553,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Dashboard",
+          "line": 54,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Dashboard",
+          "callee": "useAuth",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useNavigate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 69
+        },
+        {
+          "caller": "getUserName",
+          "callee": "user.email?.split",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getUserName",
+          "callee": "name.split",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useEffect",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "fetchDashboardData",
+          "lineNumber": 78
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Promise.all",
+          "lineNumber": 83
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from(\"clients\").select",
+          "lineNumber": 84
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from",
+          "lineNumber": 84
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from(\"invoices\").select(\"*\").order",
+          "lineNumber": 85
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from(\"invoices\").select",
+          "lineNumber": 85
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from",
+          "lineNumber": 85
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from(\"transactions\").select",
+          "lineNumber": 86
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "supabase.from",
+          "lineNumber": 86
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "invoices.filter",
+          "lineNumber": 95
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "invoices.filter",
+          "lineNumber": 96
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "unpaidInvoices.reduce",
+          "lineNumber": 99
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 99
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n        .filter((txn) => txn.type === \"payment\" && unpaidInvoices.some(inv => inv.id === txn.invoice_id))\n        .reduce",
+          "lineNumber": 100
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n        .filter",
+          "lineNumber": 100
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "unpaidInvoices.some",
+          "lineNumber": 101
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 102
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n        .filter((txn) => txn.type === \"payment\")\n        .reduce",
+          "lineNumber": 104
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n        .filter",
+          "lineNumber": 104
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 106
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setStats",
+          "lineNumber": 108
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setPaymentDistribution",
+          "lineNumber": 116
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "clients.map",
+          "lineNumber": 121
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "invoices.slice(0, 5).map",
+          "lineNumber": 122
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "invoices.slice",
+          "lineNumber": 122
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "clientMap.get",
+          "lineNumber": 124
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setLatestInvoices",
+          "lineNumber": 126
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n        .filter((t) => t.type === \"payment\")\n        .forEach",
+          "lineNumber": 129
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n        .filter",
+          "lineNumber": 129
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "clientPayments.get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "clientPayments.set",
+          "lineNumber": 133
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 133
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Array.from(clientPayments.entries())\n        .map(([clientId, total]) => ({\n          name: clientMap.get(clientId) || \"Unknown\",\n          totalSpent: total,\n        }))\n        .sort((a, b) => b.totalSpent - a.totalSpent)\n        .slice",
+          "lineNumber": 136
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Array.from(clientPayments.entries())\n        .map(([clientId, total]) => ({\n          name: clientMap.get(clientId) || \"Unknown\",\n          totalSpent: total,\n        }))\n        .sort",
+          "lineNumber": 136
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Array.from(clientPayments.entries())\n        .map",
+          "lineNumber": 136
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Array.from",
+          "lineNumber": 136
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "clientPayments.entries",
+          "lineNumber": 136
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "clientMap.get",
+          "lineNumber": 138
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setTopClients",
+          "lineNumber": 143
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "thisWeekStart.setDate",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "today.getDate",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "today.getDay",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "lastWeekStart.setDate",
+          "lineNumber": 150
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "lastWeekStart.getDate",
+          "lineNumber": 150
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "days.map",
+          "lineNumber": 152
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "thisWeekDay.setDate",
+          "lineNumber": 154
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "thisWeekStart.getDate",
+          "lineNumber": 154
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "lastWeekDay.setDate",
+          "lineNumber": 156
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "lastWeekStart.getDate",
+          "lineNumber": 156
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n          .filter((t) => {\n            const tDate = new Date(t.date);\n            return t.type === \"payment\" && tDate.toDateString() === thisWeekDay.toDateString();\n          })\n          .reduce",
+          "lineNumber": 158
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n          .filter",
+          "lineNumber": 158
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "tDate.toDateString",
+          "lineNumber": 161
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "thisWeekDay.toDateString",
+          "lineNumber": 161
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 163
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n          .filter((t) => {\n            const tDate = new Date(t.date);\n            return t.type === \"payment\" && tDate.toDateString() === lastWeekDay.toDateString();\n          })\n          .reduce",
+          "lineNumber": 165
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n          .filter",
+          "lineNumber": 165
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "tDate.toDateString",
+          "lineNumber": 168
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "lastWeekDay.toDateString",
+          "lineNumber": 168
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 170
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setWeeklyPayments",
+          "lineNumber": 174
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "today.getFullYear",
+          "lineNumber": 177
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "months.map",
+          "lineNumber": 178
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n          .filter((t) => {\n            const tDate = new Date(t.date);\n            return t.type === \"payment\" && tDate.getMonth() === index && tDate.getFullYear() === currentYear;\n          })\n          .reduce",
+          "lineNumber": 179
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "transactions\n          .filter",
+          "lineNumber": 179
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "tDate.getMonth",
+          "lineNumber": 182
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "tDate.getFullYear",
+          "lineNumber": 182
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "Number",
+          "lineNumber": 184
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setYearlyCollection",
+          "lineNumber": 187
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "console.error",
+          "lineNumber": 190
+        },
+        {
+          "caller": "fetchDashboardData",
+          "callee": "setLoading",
+          "lineNumber": 192
+        },
+        {
+          "caller": "formatCurrency",
+          "callee": "amount.toLocaleString",
+          "lineNumber": 202
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "[...Array(4)].map",
+          "lineNumber": 209
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "Array",
+          "lineNumber": 209
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "Math.round",
+          "lineNumber": 222
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "Math.round",
+          "lineNumber": 223
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "getUserName",
+          "lineNumber": 233
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "navigate",
+          "lineNumber": 242
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "stats.totalRevenue.toLocaleString",
+          "lineNumber": 250
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "navigate",
+          "lineNumber": 258
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "stats.pendingAmount.toLocaleString",
+          "lineNumber": 266
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "navigate",
+          "lineNumber": 278
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "navigate",
+          "lineNumber": 296
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "latestInvoices.map",
+          "lineNumber": 338
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "navigate",
+          "lineNumber": 339
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "invoice.amount.toLocaleString",
+          "lineNumber": 341
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "new Date(invoice.created_at).toLocaleDateString",
+          "lineNumber": 344
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "topClients.map",
+          "lineNumber": 369
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "navigate",
+          "lineNumber": 373
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "client.name.charAt(0).toUpperCase",
+          "lineNumber": 377
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "client.name.charAt",
+          "lineNumber": 377
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "client.totalSpent.toLocaleString",
+          "lineNumber": 382
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatCurrency",
+          "lineNumber": 434
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "pieData.map",
+          "lineNumber": 469
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatCurrency",
+          "lineNumber": 530
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/Landing.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 570,
+      "nonEmptyLines": 539,
+      "functions": [
+        {
+          "name": "Landing",
+          "startLine": 26,
+          "endLine": 568,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Landing",
+          "callee": "useNavigate",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Landing",
+          "callee": "useAuth",
+          "lineNumber": 28
+        },
+        {
+          "caller": "Landing",
+          "callee": "useEffect",
+          "lineNumber": 30
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 32
+        },
+        {
+          "caller": "scrollToSection",
+          "callee": "document.getElementById",
+          "lineNumber": 37
+        },
+        {
+          "caller": "scrollToSection",
+          "callee": "element.scrollIntoView",
+          "lineNumber": 39
+        },
+        {
+          "caller": "NavLinks",
+          "callee": "scrollToSection",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NavLinks",
+          "callee": "onClick",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NavLinks",
+          "callee": "scrollToSection",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NavLinks",
+          "callee": "onClick",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NavLinks",
+          "callee": "scrollToSection",
+          "lineNumber": 58
+        },
+        {
+          "caller": "NavLinks",
+          "callee": "onClick",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 149
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 195
+        },
+        {
+          "caller": "Landing",
+          "callee": "[1, 2, 3, 4].map",
+          "lineNumber": 206
+        },
+        {
+          "caller": "Landing",
+          "callee": "[40, 70, 45, 90, 65, 80, 50, 85, 60, 95].map",
+          "lineNumber": 253
+        },
+        {
+          "caller": "Landing",
+          "callee": "features.map",
+          "lineNumber": 315
+        },
+        {
+          "caller": "Landing",
+          "callee": "benefits.map",
+          "lineNumber": 346
+        },
+        {
+          "caller": "Landing",
+          "callee": "[\n                    \"5 User Seats\",\n                    \"50 Clients / 20 Products\",\n                    \"100 Invoices per month\",\n                    \"Core Invoicing Modules\",\n                    \"Real-time Notifications\"\n                  ].map",
+          "lineNumber": 408
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 421
+        },
+        {
+          "caller": "Landing",
+          "callee": "[\n                    \"15 User Seats\",\n                    \"500 Clients / 100 Products\",\n                    \"1,000 Invoices per month\",\n                    \"Business Insights (PDF)\",\n                    \"Priority Support\",\n                    \"Everything in Essential\"\n                  ].map",
+          "lineNumber": 448
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 462
+        },
+        {
+          "caller": "Landing",
+          "callee": "[\n                    \"Unlimited Users & Clients\",\n                    \"Unlimited Invoices\",\n                    \"Bulk Data Operations\",\n                    \"Dedicated Account Manager\",\n                    \"Custom Branding\",\n                    \"Everything in Professional\"\n                  ].map",
+          "lineNumber": 486
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 500
+        },
+        {
+          "caller": "Landing",
+          "callee": "navigate",
+          "lineNumber": 543
+        },
+        {
+          "caller": "Landing",
+          "callee": "new Date().getFullYear",
+          "lineNumber": 561
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/NotFound.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 69,
+      "functions": [
+        {
+          "name": "NotFound",
+          "startLine": 6,
+          "endLine": 76,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NotFound",
+          "callee": "useLocation",
+          "lineNumber": 7
+        },
+        {
+          "caller": "NotFound",
+          "callee": "useEffect",
+          "lineNumber": 9
+        },
+        {
+          "caller": "NotFound",
+          "callee": "console.error",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/SuperAdmin.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 188,
+      "nonEmptyLines": 178,
+      "functions": [
+        {
+          "name": "SuperAdmin",
+          "startLine": 17,
+          "endLine": 186,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SuperAdmin",
+          "callee": "useQuery",
+          "lineNumber": 18
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "Promise.all",
+          "lineNumber": 21
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from(\"tenants\").select",
+          "lineNumber": 22
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from",
+          "lineNumber": 22
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from(\"transactions\").select(\"amount, type\").eq",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from(\"transactions\").select",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from(\"clients\").select",
+          "lineNumber": 24
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "supabase.from",
+          "lineNumber": 24
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "tenants.data?.filter",
+          "lineNumber": 27
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "txs.data?.reduce",
+          "lineNumber": 28
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "Number",
+          "lineNumber": 28
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "globalStats?.totalRevenue.toLocaleString",
+          "lineNumber": 69
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "[\n                    { label: 'Business Nodes', val: globalStats?.totalTenants, icon: Building2, color: 'text-primary' },\n                    { label: 'Active End-Users', val: globalStats?.totalClients.toLocaleString(), icon: Users, color: 'text-primary' },\n                    { label: 'Transaction Pulse', val: globalStats?.txCount.toLocaleString(), icon: Activity, color: 'text-primary' }\n                ].map",
+          "lineNumber": 74
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "globalStats?.totalClients.toLocaleString",
+          "lineNumber": 76
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "globalStats?.txCount.toLocaleString",
+          "lineNumber": 77
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "Math.round",
+          "lineNumber": 113
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "[\n                                { label: 'Operational Yield', share: 75, color: 'bg-primary' },\n                                { label: 'Platform Reserves', share: 15, color: 'bg-primary/60' },\n                                { label: 'Infrastructure Cost', share: 10, color: 'bg-destructive' }\n                            ].map",
+          "lineNumber": 155
+        },
+        {
+          "caller": "SuperAdmin",
+          "callee": "globalStats?.totalRevenue.toLocaleString",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

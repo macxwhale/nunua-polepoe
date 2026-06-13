@@ -1,0 +1,157 @@
+{
+  "nodes": [
+    {
+      "id": "config:.env",
+      "type": "config",
+      "name": ".env",
+      "filePath": ".env",
+      "summary": "Environment variable file configuring runtime secrets for Supabase (URL, project ID, API key), Paystack payment gateway (test and production keys, plan codes for monthly/6-month/12-month tiers), Africa's Talking SMS credentials, and superadmin email.",
+      "tags": ["configuration", "security", "environment", "secrets"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview for Nunua Polepole — a multi-tenant business directory and credit management platform. Covers core features, superadmin capabilities, local development setup, and the technology stack (Vite, React, TypeScript, shadcn/ui, Tailwind CSS, Supabase).",
+      "tags": ["documentation", "entry-point", "overview"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:components.json",
+      "type": "config",
+      "name": "components.json",
+      "filePath": "components.json",
+      "summary": "shadcn/ui CLI configuration specifying default style, TSX mode, Tailwind setup (config path, CSS entry, slate base color, CSS variables), and path aliases for components, utils, ui, lib, and hooks directories.",
+      "tags": ["configuration", "ui-components", "shadcn", "tailwind"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "Vite SPA entry HTML document for LipiaPolePole credit management system. Declares viewport, favicon, Open Graph and Twitter card metadata, Google Fonts imports (Outfit + Plus Jakarta Sans), and the root div that bootstraps src/main.tsx.",
+      "tags": ["entry-point", "markup", "spa"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Node.js project manifest defining build scripts (dev, build, lint, preview), runtime dependencies (React, Radix UI primitives, Supabase JS client, Tanstack Query, Paystack, Recharts, Zod, React Hook Form), and dev dependencies (Vite, TypeScript, Tailwind CSS, ESLint).",
+      "tags": ["configuration", "build-system", "dependencies", "npm"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:tsconfig.app.json",
+      "type": "config",
+      "name": "tsconfig.app.json",
+      "filePath": "tsconfig.app.json",
+      "summary": "TypeScript compiler configuration for the React application source targeting ES2020 with react-jsx transform, bundler module resolution, the @/* path alias mapped to src/*, noEmit enabled, and strict mode disabled to allow gradual type safety adoption.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "Root TypeScript project file using composite project references to delegate compilation to tsconfig.app.json (src/ application code) and tsconfig.node.json (Vite config tooling), with shared loose compiler options and the @/* path alias.",
+      "tags": ["configuration", "typescript", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.node.json",
+      "type": "config",
+      "name": "tsconfig.node.json",
+      "filePath": "tsconfig.node.json",
+      "summary": "TypeScript compiler configuration for Vite's Node.js tooling (vite.config.ts), using bundler module resolution with ESNext target and composite project reference support.",
+      "tags": ["configuration", "typescript", "build-system", "vite"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:vercel.json",
+      "type": "config",
+      "name": "vercel.json",
+      "filePath": "vercel.json",
+      "summary": "Vercel deployment configuration with a catch-all rewrite rule that redirects all routes to index.html, enabling client-side routing for the React SPA.",
+      "tags": ["configuration", "deployment", "infrastructure"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:index.html",
+      "target": "file:src/main.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "config:tsconfig.app.json",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "config:tsconfig.node.json",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "config:tsconfig.app.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.env",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:components.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:vercel.json",
+      "target": "file:index.html",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

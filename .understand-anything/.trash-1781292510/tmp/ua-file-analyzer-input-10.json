@@ -1,0 +1,7 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": ".github/workflows/main.yml", "language": "yaml", "sizeLines": 69, "fileCategory": "infra"}
+  ],
+  "batchImportData": {".github/workflows/main.yml": []}
+}

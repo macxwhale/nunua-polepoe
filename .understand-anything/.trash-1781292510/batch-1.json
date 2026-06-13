@@ -1,0 +1,1174 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/App.tsx",
+      "summary": "Root application component that configures the React Router, wraps routes with authentication guards and subscription providers, and handles role-based access control for tenant and super-admin users.",
+      "tags": ["entry-point", "routing", "authentication", "middleware"],
+      "complexity": "complex",
+      "languageNotes": "Defines ProtectedRoute and DashboardRouter helper components inline to encapsulate guard logic before delegating to page components."
+    },
+    {
+      "id": "function:src/App.tsx:ProtectedRoute",
+      "type": "function",
+      "name": "ProtectedRoute",
+      "filePath": "src/App.tsx",
+      "lineRange": [29, 68],
+      "summary": "Route guard that redirects unauthenticated users to /auth and optionally enforces owner or super-admin role requirements before rendering children.",
+      "tags": ["authentication", "authorization", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/App.tsx:DashboardRouter",
+      "type": "function",
+      "name": "DashboardRouter",
+      "filePath": "src/App.tsx",
+      "lineRange": [70, 87],
+      "summary": "Determines which dashboard view to render based on the user's active role — client dashboard for client users, standard dashboard for everyone else.",
+      "tags": ["routing", "authorization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/App.tsx",
+      "lineRange": [91, 207],
+      "summary": "Main application component that composes all providers (QueryClient, Subscription, Tooltip) and declares the full route tree with protected and public paths.",
+      "tags": ["entry-point", "routing", "component"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/AppSidebar.tsx",
+      "type": "file",
+      "name": "AppSidebar.tsx",
+      "filePath": "src/components/AppSidebar.tsx",
+      "summary": "Main application sidebar that renders role-filtered navigation groups with collapsible sections, color-coded icons, and a client-creation dialog trigger.",
+      "tags": ["component", "navigation", "sidebar"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/AppSidebar.tsx:AppSidebar",
+      "type": "function",
+      "name": "AppSidebar",
+      "filePath": "src/components/AppSidebar.tsx",
+      "lineRange": [80, 304],
+      "summary": "Exported sidebar component that renders dynamic menu groups filtered by user role, with collapsible group support and mobile-aware close behavior.",
+      "tags": ["component", "navigation", "sidebar"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/Layout.tsx",
+      "type": "file",
+      "name": "Layout.tsx",
+      "filePath": "src/components/Layout.tsx",
+      "summary": "Primary authenticated layout wrapping pages in a sidebar provider with a top navigation bar, user avatar dropdown, global search, and logout handling.",
+      "tags": ["component", "layout", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout.tsx:Layout",
+      "type": "function",
+      "name": "Layout",
+      "filePath": "src/components/Layout.tsx",
+      "lineRange": [21, 133],
+      "summary": "Exported layout component that composes the AppSidebar, TrialBanner, NotificationDropdown, and a header with user profile controls and logout navigation.",
+      "tags": ["component", "layout", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/SuperAdminLayout.tsx",
+      "type": "file",
+      "name": "SuperAdminLayout.tsx",
+      "filePath": "src/components/SuperAdminLayout.tsx",
+      "summary": "Dedicated layout for the super-admin section, providing the SuperAdminSidebar and a header with a user profile avatar and sign-out button.",
+      "tags": ["component", "layout", "super-admin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/SuperAdminLayout.tsx:SuperAdminLayout",
+      "type": "function",
+      "name": "SuperAdminLayout",
+      "filePath": "src/components/SuperAdminLayout.tsx",
+      "lineRange": [26, 102],
+      "summary": "Exported layout component wrapping super-admin pages with the SuperAdminSidebar and a branded header containing user identity and sign-out controls.",
+      "tags": ["component", "layout", "super-admin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/SuperAdminSidebar.tsx",
+      "type": "file",
+      "name": "SuperAdminSidebar.tsx",
+      "filePath": "src/components/SuperAdminSidebar.tsx",
+      "summary": "Sidebar navigation component for the super-admin section with links to tenants, users, and overview, adapting its layout to mobile breakpoints.",
+      "tags": ["component", "navigation", "super-admin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/SuperAdminSidebar.tsx:SuperAdminSidebar",
+      "type": "function",
+      "name": "SuperAdminSidebar",
+      "filePath": "src/components/SuperAdminSidebar.tsx",
+      "lineRange": [16, 113],
+      "summary": "Exported sidebar component for super-admin pages, rendering platform navigation links and using the shared Sidebar primitives with mobile-awareness.",
+      "tags": ["component", "navigation", "super-admin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/WhatsAppButton.tsx",
+      "type": "file",
+      "name": "WhatsAppButton.tsx",
+      "filePath": "src/components/WhatsAppButton.tsx",
+      "summary": "Floating WhatsApp contact button that opens a dialog with a pre-filled message input and redirects the user to the WhatsApp web chat on submission.",
+      "tags": ["component", "ui", "communication"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/WhatsAppButton.tsx:WhatsAppButton",
+      "type": "function",
+      "name": "WhatsAppButton",
+      "filePath": "src/components/WhatsAppButton.tsx",
+      "lineRange": [24, 119],
+      "summary": "Exported floating action button that renders a WhatsApp chat dialog, constructs a wa.me deep link with a URL-encoded message, and opens it in a new tab.",
+      "tags": ["component", "ui", "communication"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/collapsible.tsx",
+      "type": "file",
+      "name": "collapsible.tsx",
+      "filePath": "src/components/ui/collapsible.tsx",
+      "summary": "Re-exports the Radix UI Collapsible primitive components (Collapsible, CollapsibleTrigger, CollapsibleContent) for use throughout the application.",
+      "tags": ["component", "ui", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/separator.tsx",
+      "type": "file",
+      "name": "separator.tsx",
+      "filePath": "src/components/ui/separator.tsx",
+      "summary": "Thin wrapper around the Radix UI Separator primitive that merges custom className props with default orientation styling via the cn utility.",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/sheet.tsx",
+      "type": "file",
+      "name": "sheet.tsx",
+      "filePath": "src/components/ui/sheet.tsx",
+      "summary": "Slide-in panel (Sheet) component built on Radix UI Dialog, exporting all sub-components including overlay, content, header, footer, title, and description.",
+      "tags": ["component", "ui", "modal"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/sidebar.tsx",
+      "type": "file",
+      "name": "sidebar.tsx",
+      "filePath": "src/components/ui/sidebar.tsx",
+      "summary": "Comprehensive sidebar UI primitive library providing SidebarProvider context, collapsible rail, full set of layout sub-components, and the useSidebar hook.",
+      "tags": ["component", "ui", "sidebar"],
+      "complexity": "complex",
+      "languageNotes": "Centralizes sidebar state (open/closed, mobile breakpoint, keyboard shortcut) in a React context to keep sub-components decoupled."
+    },
+    {
+      "id": "function:src/components/ui/sidebar.tsx:useSidebar",
+      "type": "function",
+      "name": "useSidebar",
+      "filePath": "src/components/ui/sidebar.tsx",
+      "lineRange": [34, 41],
+      "summary": "Custom hook that reads the SidebarContext and throws an error if used outside a SidebarProvider, ensuring context availability at runtime.",
+      "tags": ["hook", "ui", "sidebar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/skeleton.tsx",
+      "type": "file",
+      "name": "skeleton.tsx",
+      "filePath": "src/components/ui/skeleton.tsx",
+      "summary": "Minimal Skeleton loading placeholder component that applies an animated pulse CSS class with optional className override.",
+      "tags": ["component", "ui", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/sonner.tsx",
+      "type": "file",
+      "name": "sonner.tsx",
+      "filePath": "src/components/ui/sonner.tsx",
+      "summary": "Themed Toaster wrapper around the sonner library that reads the current theme to pass to the toast renderer, also re-exporting the toast helper.",
+      "tags": ["component", "ui", "notification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/tooltip.tsx",
+      "type": "file",
+      "name": "tooltip.tsx",
+      "filePath": "src/components/ui/tooltip.tsx",
+      "summary": "Re-exports Radix UI Tooltip primitives (Tooltip, TooltipTrigger, TooltipContent, TooltipProvider) as styled wrappers using the cn utility.",
+      "tags": ["component", "ui", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/use-mobile.tsx",
+      "type": "file",
+      "name": "use-mobile.tsx",
+      "filePath": "src/hooks/use-mobile.tsx",
+      "summary": "React hook that tracks whether the current viewport width is below the mobile breakpoint (768px) using a matchMedia listener.",
+      "tags": ["hook", "utility", "responsive"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/use-mobile.tsx:useIsMobile",
+      "type": "function",
+      "name": "useIsMobile",
+      "filePath": "src/hooks/use-mobile.tsx",
+      "lineRange": [5, 19],
+      "summary": "Exported hook that subscribes to a matchMedia query for max-width 767px and returns a boolean that updates reactively on viewport changes.",
+      "tags": ["hook", "utility", "responsive"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/useAuth.tsx",
+      "type": "file",
+      "name": "useAuth.tsx",
+      "filePath": "src/hooks/useAuth.tsx",
+      "summary": "Authentication hook that listens to Supabase auth state changes to expose the current user, session, loading state, and a signOut helper.",
+      "tags": ["hook", "authentication", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "function",
+      "name": "useAuth",
+      "filePath": "src/hooks/useAuth.tsx",
+      "lineRange": [5, 35],
+      "summary": "Exported hook that subscribes to Supabase onAuthStateChange, retrieves the current session on mount, and returns user, session, loading, and signOut.",
+      "tags": ["hook", "authentication", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/useUserRole.ts",
+      "type": "file",
+      "name": "useUserRole.ts",
+      "filePath": "src/hooks/useUserRole.ts",
+      "summary": "Hook that fetches the authenticated user's role(s) from the user_roles table in Supabase and computes capability flags for owner, super-admin, manager, and client access.",
+      "tags": ["hook", "authorization", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "function",
+      "name": "useUserRole",
+      "filePath": "src/hooks/useUserRole.ts",
+      "lineRange": [7, 76],
+      "summary": "Exported hook that queries the user_roles table, derives capability booleans (isOwner, isSuperAdmin, isManager, isClient), and exposes role and loading state.",
+      "tags": ["hook", "authorization", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/Dashboard.tsx",
+      "type": "file",
+      "name": "Dashboard.tsx",
+      "filePath": "src/pages/Dashboard.tsx",
+      "summary": "Main tenant dashboard page that aggregates KPI statistics, revenue charts, latest invoices, and top clients by fetching data from multiple API modules and Supabase directly.",
+      "tags": ["component", "dashboard", "data-visualization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/Dashboard.tsx:Dashboard",
+      "type": "function",
+      "name": "Dashboard",
+      "filePath": "src/pages/Dashboard.tsx",
+      "lineRange": [54, 553],
+      "summary": "Default-exported page component that loads and displays revenue metrics, payment distribution pie chart, weekly/yearly revenue charts, recent invoices, and top clients.",
+      "tags": ["component", "dashboard", "data-visualization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/Landing.tsx",
+      "type": "file",
+      "name": "Landing.tsx",
+      "filePath": "src/pages/Landing.tsx",
+      "summary": "Public marketing landing page with hero section, feature highlights, animated revenue chart preview, pricing tiers, and call-to-action buttons for sign-up and login.",
+      "tags": ["component", "marketing", "landing-page"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/Landing.tsx:Landing",
+      "type": "function",
+      "name": "Landing",
+      "filePath": "src/pages/Landing.tsx",
+      "lineRange": [26, 568],
+      "summary": "Exported page component rendering the full marketing landing page with navigation, hero, features, benefits, pricing cards, testimonials section, and footer.",
+      "tags": ["component", "marketing", "landing-page"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/NotFound.tsx",
+      "type": "file",
+      "name": "NotFound.tsx",
+      "filePath": "src/pages/NotFound.tsx",
+      "summary": "404 error page that logs the invalid route to the console and renders a friendly message with a home navigation link.",
+      "tags": ["component", "error-handling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/NotFound.tsx:NotFound",
+      "type": "function",
+      "name": "NotFound",
+      "filePath": "src/pages/NotFound.tsx",
+      "lineRange": [6, 76],
+      "summary": "Page component that captures the current URL via useLocation, logs it as a 404 error, and presents a styled not-found message with a return-to-home link.",
+      "tags": ["component", "error-handling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/SuperAdmin.tsx",
+      "type": "file",
+      "name": "SuperAdmin.tsx",
+      "filePath": "src/pages/SuperAdmin.tsx",
+      "summary": "Super-admin overview dashboard displaying global platform statistics — total tenants, clients, revenue, and transactions — fetched via React Query from Supabase.",
+      "tags": ["component", "super-admin", "dashboard"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/SuperAdmin.tsx:SuperAdmin",
+      "type": "function",
+      "name": "SuperAdmin",
+      "filePath": "src/pages/SuperAdmin.tsx",
+      "lineRange": [17, 186],
+      "summary": "Exported page component that uses React Query to load global tenant, transaction, and client counts and renders KPI cards alongside a revenue allocation breakdown.",
+      "tags": ["component", "super-admin", "dashboard"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:ProtectedRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:DashboardRouter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/Layout.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/providers/SubscriptionProvider.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/SubscriptionGuard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/SuperAdminLayout.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/ui/sonner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/ui/toaster.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/ui/tooltip.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/WhatsAppButton.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/hooks/useUserRole.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Auth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/ClientDashboard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Clients.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Dashboard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Invoices.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Landing.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/NotFound.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Payments.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Products.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Settings.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/Subscription.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/SuperAdmin.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/SuperAdminTenants.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/pages/SuperAdminUsers.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/App.tsx:ProtectedRoute",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/App.tsx:ProtectedRoute",
+      "target": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/App.tsx:DashboardRouter",
+      "target": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "function:src/components/AppSidebar.tsx:AppSidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "function:src/components/AppSidebar.tsx:AppSidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/components/clients/ClientDialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/components/ui/collapsible.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/components/ui/sidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/hooks/use-mobile.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/hooks/useUserRole.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/lib/featureFlags.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/AppSidebar.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/components/AppSidebar.tsx:AppSidebar",
+      "target": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "function:src/components/Layout.tsx:Layout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "function:src/components/Layout.tsx:Layout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/AppSidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/GlobalSearch.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/NotificationDropdown.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/TrialBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/ui/dropdown-menu.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/components/ui/sidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/hooks/useUserRole.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/Layout.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/components/Layout.tsx:Layout",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/Layout.tsx:Layout",
+      "target": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "function:src/components/SuperAdminLayout.tsx:SuperAdminLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "function:src/components/SuperAdminLayout.tsx:SuperAdminLayout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "file:src/components/SuperAdminSidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "file:src/components/ui/dropdown-menu.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "file:src/components/ui/sidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SuperAdminLayout.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/components/SuperAdminLayout.tsx:SuperAdminLayout",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SuperAdminSidebar.tsx",
+      "target": "function:src/components/SuperAdminSidebar.tsx:SuperAdminSidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/SuperAdminSidebar.tsx",
+      "target": "function:src/components/SuperAdminSidebar.tsx:SuperAdminSidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SuperAdminSidebar.tsx",
+      "target": "file:src/components/ui/sidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SuperAdminSidebar.tsx",
+      "target": "file:src/hooks/use-mobile.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SuperAdminSidebar.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/WhatsAppButton.tsx",
+      "target": "function:src/components/WhatsAppButton.tsx:WhatsAppButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/WhatsAppButton.tsx",
+      "target": "function:src/components/WhatsAppButton.tsx:WhatsAppButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/WhatsAppButton.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/separator.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sheet.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "function:src/components/ui/sidebar.tsx:useSidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "function:src/components/ui/sidebar.tsx:useSidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/components/ui/separator.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/components/ui/sheet.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/components/ui/skeleton.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/components/ui/tooltip.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/hooks/use-mobile.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/sidebar.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/skeleton.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/tooltip.tsx",
+      "target": "file:src/lib/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useAuth.tsx",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useAuth.tsx",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useAuth.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useUserRole.ts",
+      "target": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useUserRole.ts",
+      "target": "function:src/hooks/useUserRole.ts:useUserRole",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useUserRole.ts",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useUserRole.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/hooks/useUserRole.ts:useUserRole",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/use-mobile.tsx",
+      "target": "function:src/hooks/use-mobile.tsx:useIsMobile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/use-mobile.tsx",
+      "target": "function:src/hooks/use-mobile.tsx:useIsMobile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "function:src/pages/Dashboard.tsx:Dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "function:src/pages/Dashboard.tsx:Dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/api/invoices.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/api/payments.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/api/products.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/components/FeatureGate.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/components/ui/chart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Dashboard.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Landing.tsx",
+      "target": "function:src/pages/Landing.tsx:Landing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Landing.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Landing.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/pages/Landing.tsx:Landing",
+      "target": "function:src/hooks/useAuth.tsx:useAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/NotFound.tsx",
+      "target": "function:src/pages/NotFound.tsx:NotFound",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/SuperAdmin.tsx",
+      "target": "function:src/pages/SuperAdmin.tsx:SuperAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/SuperAdmin.tsx",
+      "target": "file:src/api/clients.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdmin.tsx",
+      "target": "file:src/api/invoices.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdmin.tsx",
+      "target": "file:src/api/payments.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/SuperAdmin.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,694 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/api/profile.api.ts",
+      "type": "file",
+      "name": "profile.api.ts",
+      "filePath": "src/api/profile.api.ts",
+      "summary": "Provides Supabase-backed API functions for fetching and updating the authenticated user's profile record from the profiles table.",
+      "tags": ["api-handler", "utility", "service", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/profile.api.ts:getUserProfile",
+      "type": "function",
+      "name": "getUserProfile",
+      "filePath": "src/api/profile.api.ts",
+      "lineRange": [17, 36],
+      "summary": "Fetches the current authenticated user's profile row from the Supabase profiles table.",
+      "tags": ["api-handler", "utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/profile.api.ts:updateUserProfile",
+      "type": "function",
+      "name": "updateUserProfile",
+      "filePath": "src/api/profile.api.ts",
+      "lineRange": [41, 64],
+      "summary": "Updates the current authenticated user's profile record in Supabase with the provided field changes.",
+      "tags": ["api-handler", "utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/subscription.api.ts",
+      "type": "file",
+      "name": "subscription.api.ts",
+      "filePath": "src/api/subscription.api.ts",
+      "summary": "Provides subscription management API functions including status retrieval, Paystack payment initialization, subscription cancellation, and billing history retrieval via Supabase.",
+      "tags": ["api-handler", "service", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/api/subscription.api.ts:getSubscriptionStatus",
+      "type": "function",
+      "name": "getSubscriptionStatus",
+      "filePath": "src/api/subscription.api.ts",
+      "lineRange": [26, 95],
+      "summary": "Fetches a tenant's subscription state by querying trial period and active subscription records, returning a normalized SubscriptionStatus object with plan, status, trial info, and Paystack identifiers.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/api/subscription.api.ts:initializePaystackPayment",
+      "type": "function",
+      "name": "initializePaystackPayment",
+      "filePath": "src/api/subscription.api.ts",
+      "lineRange": [100, 107],
+      "summary": "Invokes a Supabase Edge Function to initialize a Paystack payment session for a given plan, returning an authorization URL.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/subscription.api.ts:cancelSubscription",
+      "type": "function",
+      "name": "cancelSubscription",
+      "filePath": "src/api/subscription.api.ts",
+      "lineRange": [112, 119],
+      "summary": "Invokes a Supabase Edge Function to cancel an active Paystack subscription by its subscription code.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/subscription.api.ts:getBillingHistory",
+      "type": "function",
+      "name": "getBillingHistory",
+      "filePath": "src/api/subscription.api.ts",
+      "lineRange": [124, 128],
+      "summary": "Stub function that returns an empty billing history array; logs a warning that billing history is not yet implemented.",
+      "tags": ["api-handler", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/SubscriptionGuard.tsx",
+      "type": "file",
+      "name": "SubscriptionGuard.tsx",
+      "filePath": "src/components/SubscriptionGuard.tsx",
+      "summary": "React component that conditionally renders its children based on subscription validity, redirecting unauthenticated or expired-subscription users to appropriate pages.",
+      "tags": ["component", "middleware", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/SubscriptionGuard.tsx:SubscriptionGuard",
+      "type": "function",
+      "name": "SubscriptionGuard",
+      "filePath": "src/components/SubscriptionGuard.tsx",
+      "lineRange": [15, 39],
+      "summary": "Route guard component that checks subscription state using useSubscription and renders children only when the user has an active or trial subscription.",
+      "tags": ["component", "middleware", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/TrialBanner.tsx",
+      "type": "file",
+      "name": "TrialBanner.tsx",
+      "filePath": "src/components/TrialBanner.tsx",
+      "summary": "Dismissible alert banner component that notifies users about their remaining trial days and prompts them to upgrade to a paid plan.",
+      "tags": ["component", "ui", "notification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/TrialBanner.tsx:TrialBanner",
+      "type": "function",
+      "name": "TrialBanner",
+      "filePath": "src/components/TrialBanner.tsx",
+      "lineRange": [6, 53],
+      "summary": "Renders a dismissible alert showing trial days remaining; hides if subscription is active, no trial is in progress, or the user has dismissed the banner.",
+      "tags": ["component", "ui", "notification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/providers/SubscriptionProvider.tsx",
+      "type": "file",
+      "name": "SubscriptionProvider.tsx",
+      "filePath": "src/components/providers/SubscriptionProvider.tsx",
+      "summary": "React context provider that loads and exposes subscription state for the current tenant, computing derived flags such as trial days remaining, feature access, and plan identifiers.",
+      "tags": ["component", "service", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/providers/SubscriptionProvider.tsx:SubscriptionProvider",
+      "type": "function",
+      "name": "SubscriptionProvider",
+      "filePath": "src/components/providers/SubscriptionProvider.tsx",
+      "lineRange": [10, 107],
+      "summary": "Provider component that fetches subscription status on mount and after auth changes, memoizes feature access and trial countdown, and supplies the SubscriptionContext value to its subtree.",
+      "tags": ["component", "service", "middleware"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/contexts/SubscriptionContext.tsx",
+      "type": "file",
+      "name": "SubscriptionContext.tsx",
+      "filePath": "src/contexts/SubscriptionContext.tsx",
+      "summary": "Defines and exports the React SubscriptionContext used to share subscription state across the component tree.",
+      "tags": ["service", "type-definition", "singleton"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/useSubscription.ts",
+      "type": "file",
+      "name": "useSubscription.ts",
+      "filePath": "src/hooks/useSubscription.ts",
+      "summary": "Custom React hook that consumes SubscriptionContext and throws an error if called outside of a SubscriptionProvider, ensuring safe access to subscription state.",
+      "tags": ["hook", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/useSubscription.ts:useSubscription",
+      "type": "function",
+      "name": "useSubscription",
+      "filePath": "src/hooks/useSubscription.ts",
+      "lineRange": [15, 23],
+      "summary": "React hook that reads and returns the current subscription context value, enforcing usage within a SubscriptionProvider.",
+      "tags": ["hook", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lib/featureFlags.ts",
+      "type": "file",
+      "name": "featureFlags.ts",
+      "filePath": "src/lib/featureFlags.ts",
+      "summary": "Defines and exports static configuration maps for subscription plan features (PLAN_FEATURES), human-readable plan labels (PLAN_LABELS), and plan pricing (PLAN_PRICES) used throughout the application.",
+      "tags": ["configuration", "utility", "type-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/lib/paystackConfig.ts",
+      "type": "file",
+      "name": "paystackConfig.ts",
+      "filePath": "src/lib/paystackConfig.ts",
+      "summary": "Exports a paystackConfig object containing Paystack public key and plan codes for each subscription tier, sourced from environment variables.",
+      "tags": ["configuration", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/Settings.tsx",
+      "type": "file",
+      "name": "Settings.tsx",
+      "filePath": "src/pages/Settings.tsx",
+      "summary": "Full-featured settings page that allows users to view and edit their profile, manage their subscription status and cancellation, and review billing history across tabbed sections.",
+      "tags": ["component", "api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/Settings.tsx:Settings",
+      "type": "function",
+      "name": "Settings",
+      "filePath": "src/pages/Settings.tsx",
+      "lineRange": [13, 437],
+      "summary": "Page component rendering tabbed UI for profile editing, subscription management, and billing history; orchestrates multiple API calls and subscription state from context.",
+      "tags": ["component", "api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/Subscription.tsx",
+      "type": "file",
+      "name": "Subscription.tsx",
+      "filePath": "src/pages/Subscription.tsx",
+      "summary": "Subscription management page where users can view their current plan, compare available plans with feature lists, enter a payment email, and initiate a Paystack checkout for plan upgrades.",
+      "tags": ["component", "api-handler", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/Subscription.tsx:Subscription",
+      "type": "function",
+      "name": "Subscription",
+      "filePath": "src/pages/Subscription.tsx",
+      "lineRange": [88, 368],
+      "summary": "Page component that renders plan selection cards with feature comparisons, handles Paystack payment initialization, and displays current subscription status badge on load.",
+      "tags": ["component", "api-handler", "service"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/api/profile.api.ts",
+      "target": "function:src/api/profile.api.ts:getUserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/profile.api.ts",
+      "target": "function:src/api/profile.api.ts:getUserProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/profile.api.ts",
+      "target": "function:src/api/profile.api.ts:updateUserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/profile.api.ts",
+      "target": "function:src/api/profile.api.ts:updateUserProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/profile.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:getSubscriptionStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:getSubscriptionStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:initializePaystackPayment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:initializePaystackPayment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:cancelSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:cancelSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:getBillingHistory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "function:src/api/subscription.api.ts:getBillingHistory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/subscription.api.ts",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SubscriptionGuard.tsx",
+      "target": "function:src/components/SubscriptionGuard.tsx:SubscriptionGuard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/SubscriptionGuard.tsx",
+      "target": "function:src/components/SubscriptionGuard.tsx:SubscriptionGuard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SubscriptionGuard.tsx",
+      "target": "file:src/hooks/useSubscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/SubscriptionGuard.tsx",
+      "target": "file:src/hooks/useSubscription.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/TrialBanner.tsx",
+      "target": "function:src/components/TrialBanner.tsx:TrialBanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/TrialBanner.tsx",
+      "target": "function:src/components/TrialBanner.tsx:TrialBanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/TrialBanner.tsx",
+      "target": "file:src/hooks/useSubscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/TrialBanner.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/TrialBanner.tsx",
+      "target": "file:src/components/ui/alert.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "function:src/components/providers/SubscriptionProvider.tsx:SubscriptionProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "function:src/components/providers/SubscriptionProvider.tsx:SubscriptionProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/api/subscription.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/api/tenant.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/contexts/SubscriptionContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/lib/featureFlags.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/lib/paystackConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/providers/SubscriptionProvider.tsx",
+      "target": "file:src/api/subscription.api.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useSubscription.ts",
+      "target": "function:src/hooks/useSubscription.ts:useSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/hooks/useSubscription.ts",
+      "target": "function:src/hooks/useSubscription.ts:useSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useSubscription.ts",
+      "target": "file:src/contexts/SubscriptionContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/hooks/useSubscription.ts",
+      "target": "file:src/contexts/SubscriptionContext.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "function:src/pages/Settings.tsx:Settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/api/profile.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/api/subscription.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/dialog.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/form.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/input.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/label.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/select.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/switch.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/components/ui/tabs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/integrations/supabase/client.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/lib/featureFlags.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "file:src/lib/paystackConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "function:src/api/profile.api.ts:getUserProfile",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "function:src/api/profile.api.ts:updateUserProfile",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "function:src/api/subscription.api.ts:getBillingHistory",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Settings.tsx",
+      "target": "function:src/api/subscription.api.ts:cancelSubscription",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "function:src/pages/Subscription.tsx:Subscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/api/subscription.api.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/components/ui/badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/components/ui/button.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/components/ui/card.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/hooks/useAuth.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/hooks/useSubscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/lib/featureFlags.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "file:src/lib/paystackConfig.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/Subscription.tsx",
+      "target": "function:src/api/subscription.api.ts:initializePaystackPayment",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

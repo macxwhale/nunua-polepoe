@@ -1,0 +1,15 @@
+{
+  "projectRoot": "/home/max/Github/nunua-polepoe",
+  "batchFiles": [
+    {"path": ".env", "language": "config", "sizeLines": 16, "fileCategory": "config"},
+    {"path": "README.md", "language": "markdown", "sizeLines": 52, "fileCategory": "docs"},
+    {"path": "components.json", "language": "json", "sizeLines": 20, "fileCategory": "config"},
+    {"path": "index.html", "language": "html", "sizeLines": 36, "fileCategory": "markup"},
+    {"path": "package.json", "language": "json", "sizeLines": 88, "fileCategory": "config"},
+    {"path": "tsconfig.app.json", "language": "json", "sizeLines": 31, "fileCategory": "config"},
+    {"path": "tsconfig.json", "language": "json", "sizeLines": 23, "fileCategory": "config"},
+    {"path": "tsconfig.node.json", "language": "json", "sizeLines": 22, "fileCategory": "config"},
+    {"path": "vercel.json", "language": "json", "fileCategory": "config", "sizeLines": 8}
+  ],
+  "batchImportData": {".env":[],"README.md":[],"components.json":[],"index.html":["src/main.tsx"],"package.json":[],"tsconfig.app.json":[],"tsconfig.json":["tsconfig.app.json","tsconfig.node.json"],"tsconfig.node.json":[],"vercel.json":[]}
+}

@@ -1,0 +1,735 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 26,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "supabase/migrations/20251013111652_2112e2fa-4ab5-4a26-a099-668c9c53e422.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 257,
+      "nonEmptyLines": 217,
+      "definitions": [
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "business_name",
+            "phone_number",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 8,
+          "endLine": 16
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "tenant_id",
+            "full_name",
+            "phone_number",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 19,
+          "endLine": 29
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "role",
+            "created_at"
+          ],
+          "startLine": 32,
+          "endLine": 38
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "name",
+            "phone_number",
+            "email",
+            "total_balance",
+            "status",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 41,
+          "endLine": 53
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "name",
+            "price",
+            "description",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 56,
+          "endLine": 64
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "client_id",
+            "invoice_number",
+            "amount",
+            "status",
+            "notes",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 67,
+          "endLine": 78
+        },
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "client_id",
+            "invoice_id",
+            "amount",
+            "type",
+            "date",
+            "notes",
+            "created_at"
+          ],
+          "startLine": 81,
+          "endLine": 91
+        },
+        {
+          "name": "idx_profiles_user_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 248,
+          "endLine": 248
+        },
+        {
+          "name": "idx_profiles_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 249,
+          "endLine": 249
+        },
+        {
+          "name": "idx_user_roles_user_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 250,
+          "endLine": 250
+        },
+        {
+          "name": "idx_clients_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 251,
+          "endLine": 251
+        },
+        {
+          "name": "idx_products_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 252,
+          "endLine": 252
+        },
+        {
+          "name": "idx_invoices_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 253,
+          "endLine": 253
+        },
+        {
+          "name": "idx_invoices_client_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 254,
+          "endLine": 254
+        },
+        {
+          "name": "idx_transactions_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 255,
+          "endLine": 255
+        },
+        {
+          "name": "idx_transactions_client_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 256,
+          "endLine": 256
+        },
+        {
+          "name": "idx_transactions_invoice_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 257,
+          "endLine": 257
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 17
+      }
+    },
+    {
+      "path": "supabase/migrations/20251013111722_13b9afc3-22a7-4486-ad66-df27906b1a62.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 12,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015063134_57ca11aa-1900-4de9-b6e3-a67c3e774699.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 9,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015122022_1a3c4a0d-bf79-4c4b-b95d-6d5096f663f5.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 20,
+      "nonEmptyLines": 19,
+      "definitions": [
+        {
+          "name": "client_details",
+          "kind": "view",
+          "fields": [],
+          "startLine": 2,
+          "endLine": 2
+        },
+        {
+          "name": "idx_invoices_client_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "idx_invoices_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 14,
+          "endLine": 14
+        },
+        {
+          "name": "idx_transactions_client_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 15,
+          "endLine": 15
+        },
+        {
+          "name": "idx_transactions_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 16,
+          "endLine": 16
+        },
+        {
+          "name": "idx_transactions_type",
+          "kind": "index",
+          "fields": [],
+          "startLine": 17,
+          "endLine": 17
+        },
+        {
+          "name": "idx_products_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 18,
+          "endLine": 18
+        },
+        {
+          "name": "idx_clients_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "idx_clients_status",
+          "kind": "index",
+          "fields": [],
+          "startLine": 20,
+          "endLine": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 9
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015122229_ff79d4e9-c23c-4fef-ba7d-4aa635163522.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "definitions": [
+        {
+          "name": "client_details",
+          "kind": "view",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015130904_73b74a13-ff7b-47c7-90e7-1740050ff2f2.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015190746_375e4b33-ba67-41ef-9624-7c1dbafc120d.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 61,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015190810_5faec757-77c9-4fcb-8440-590ca6deeeb0.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 57,
+      "nonEmptyLines": 49,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251015192346_18fd6657-87d2-4dd8-8195-616e9ea7ba81.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251016065143_82266887-cad1-4150-a5c9-496b797340e2.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 8,
+      "nonEmptyLines": 6,
+      "definitions": [
+        {
+          "name": "for",
+          "kind": "index",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "idx_invoices_product_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 2
+      }
+    },
+    {
+      "path": "supabase/migrations/20251016070618_b0505774-97b8-4d57-af3c-d1e33afa64fe.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 27,
+      "nonEmptyLines": 22,
+      "definitions": [
+        {
+          "name": "idx_invoices_status",
+          "kind": "index",
+          "fields": [],
+          "startLine": 27,
+          "endLine": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "path": "supabase/migrations/20251016072528_a8fe3e42-6dd3-4a3e-8aa5-900e7c62d2a5.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 50,
+      "nonEmptyLines": 42,
+      "definitions": [
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "user_id",
+            "title",
+            "message",
+            "type",
+            "read",
+            "link",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 2,
+          "endLine": 13
+        },
+        {
+          "name": "for",
+          "kind": "index",
+          "fields": [],
+          "startLine": 45,
+          "endLine": 45
+        },
+        {
+          "name": "idx_notifications_user_tenant",
+          "kind": "index",
+          "fields": [],
+          "startLine": 46,
+          "endLine": 46
+        },
+        {
+          "name": "idx_notifications_read",
+          "kind": "index",
+          "fields": [],
+          "startLine": 47,
+          "endLine": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 4
+      }
+    },
+    {
+      "path": "supabase/migrations/20251018093444_5d49a42c-309b-46b4-9222-293cf07bf193.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 20,
+      "nonEmptyLines": 19,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251104064235_55f253d9-d7ff-40ea-baef-a0ebbfd26698.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 55,
+      "nonEmptyLines": 48,
+      "definitions": [
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "payment_type",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 2,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "path": "supabase/migrations/20251109131639_345e95b5-dfd7-47ac-a35e-8854ca4ef7a3.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 37,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251221141116_3d237c03-d4ca-465d-92ce-68afd17f286c.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 64,
+      "nonEmptyLines": 57,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20251221141143_e23df4d7-cc88-4e9c-8d7f-7efc30e20e4f.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 111,
+      "nonEmptyLines": 98,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260127155500_add_superadmin_role.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260127203127_add_subscription_tiers.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260127224000_superadmin_rls_expansion.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 35,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260127230000_comprehensive_superadmin_rls.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 46,
+      "nonEmptyLines": 39,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260127233000_superadmin_tenant_update_rls.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260128110000_superadmin_user_management_rls.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 19,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260326193736_673b14aa-788f-45bf-ab5a-f29852d47dc2.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 8,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260327214000_add_profile_email.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 17,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "supabase/migrations/20260328192957_add_subscription_billing_history.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 31,
+      "nonEmptyLines": 26,
+      "definitions": [
+        {
+          "name": "public",
+          "kind": "table",
+          "fields": [
+            "id",
+            "tenant_id",
+            "event_type",
+            "amount",
+            "status",
+            "paystack_subscription_code",
+            "created_at"
+          ],
+          "startLine": 3,
+          "endLine": 14
+        },
+        {
+          "name": "idx_subscription_billing_history_tenant_id",
+          "kind": "index",
+          "fields": [],
+          "startLine": 26,
+          "endLine": 26
+        },
+        {
+          "name": "idx_subscription_billing_history_reference",
+          "kind": "index",
+          "fields": [],
+          "startLine": 30,
+          "endLine": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 3
+      }
+    }
+  ]
+}
